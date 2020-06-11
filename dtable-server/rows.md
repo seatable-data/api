@@ -1,5 +1,7 @@
 # Rows
 
+You can find the data format for row in <https://docs.seatable.io/published/dtable-sdk/data-structure.md>
+
 ## List Rows of a Table By ViewName
 
 **GET** [https://cloud.seatable.io/dtable-server/api/v1/dtables/:dtable_uuid/rows/](https://cloud.seatable.com/api/v1/dtables/:dtable_uuid/rows/)
