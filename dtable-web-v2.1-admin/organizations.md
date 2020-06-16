@@ -143,14 +143,17 @@ curl --request DELETE 'https://cloud.seatable.io/api/v2.1/admin/organizations/3/
 * **org_name**: org name, optional
 * **max_user_number**: max user number, optional
 * **role**: role of organization, optional
+* **row_limit**: the limit of tables' row, optional
+* **asset_quota_mb**: the limit of user's asset quota in Mb, optional
 
 **Request Sample**
 
 ```
 curl --request PUT 'https://cloud.seatable.io/api/v2.1/admin/organizations/1/' \
 --header 'Authorization: Token 64b9ee55dc4ab902ff36763ef5c604a76d52875e' \
---form 'org_name=rename-org'
---form 'role=guest'
+--form 'org_name=rename-org' \
+--form 'role=guest' \
+--form 'row_limit=100'
 
 ```
 
@@ -168,7 +171,9 @@ curl --request PUT 'https://cloud.seatable.io/api/v2.1/admin/organizations/1/' \
     "creator_contact_email": "456@qq.com",
     "quota": -2,
     "storage_usage": 1426,
-    "max_user_number": 5
+    "max_user_number": 5,
+    "rows_count":34,
+    "row_limit":100,
 }
 
 ```

@@ -140,13 +140,16 @@ curl --request DELETE 'https://cloud.seatable.io/api/v2.1/admin/users/0ef256cb71
 * **is_staff**: whether is an admin user, optional
 * **is_active**: whether the user is active, optional
 * **role**: the user's role, optional
+* **row_limit: **the limit of tables' row, optional
+* **asset_quota_mb**: the limit of user's asset quota in Mb, optional
 
 **Request Smaple**
 
 ```
 curl --request PUT 'https://cloud.seatable.io/api/v2.1/admin/users/5bc29d150e874522a2a0563ca2dc5fb4@auth.local/' \
 --header 'Authorization: Token 64b9ee55dc4ab902ff36763ef5c604a76d52875e' \
---form 'is_staff=true'
+--form 'is_staff=true' \
+--form 'row_limit=10'
 
 ```
 
@@ -154,15 +157,19 @@ curl --request PUT 'https://cloud.seatable.io/api/v2.1/admin/users/5bc29d150e874
 
 ```
 {
-    "email": "5bc29d150e874522a2a0563ca2dc5fb4@auth.local",
-    "name": "for-add",
-    "contact_email": "for-add@seafile.com",
-    "login_id": "",
-    "is_staff": true,
-    "is_active": true,
-    "create_time": "2020-04-07T10:46:41+00:00",
-    "role": "default",
-    "update_status_tip": ""
+    "email":"5bc29d150e874522a2a0563ca2dc5fb4@auth.local",
+    "name":"\u6210\u96c4\u8d85",
+    "contact_email":"for-add@seafile.com",
+    "login_id":"",
+    "is_staff":true,
+    "is_active":true,
+    "create_time":"2019-10-31T07:50:32+00:00",
+    "role":"default",
+    "avatar_url":"http://127.0.0.1:8000/media/avatars/c/7/1a012b2491288d53e4de27f403e584/resized/64/e9d4953412684d3eccf7eaed805541f1_gQbhZe5.png",
+    "storage_usage":59610270,
+    "storage_quota":-2,
+    "row_usage":27,
+    "row_limit":10
 }
 
 ```
