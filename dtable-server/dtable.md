@@ -199,4 +199,28 @@ curl -X POST 'https://cloud.seatable.io/dtable-server/api/v1/a57b56d31cc54ebd8a6
 * Permission Denied.
 * Internal Server Error.
 
+## Append a Table By Uploading a csv File
+
+**POST** <https://cloud.seatable.io/dtable-server/api/v1/dtables/:dtable_uuid/append-csv/>﻿
+
+* dtable_uuid
+* table_name
+* csv_file
+
+**Sample request**
+
+```
+curl -X POST -d "table_name=Table1" -F "csv_file=@/tmp/test.csv" -H 'Authorization: Token eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6IjFAMS5jb20iLCJkdGFibGVfdXVpZCI6IjYyMmYxZTZkMzM3NDQ5ZTQ5YjQyOWYyMjUzMDM3YTc2In0.3ytwzZsfZwzifAQtsLzn0AFMnEDSeHxkKlIgD6XKuIs' -H "Content-type: application/json" https://cloud.seatable.io/dtable-server/api/v1/dtables/7f7dc9c7187a4d9fb6cfff5e5019a6d5/append-csv/
+
+```
+
+**Sample response**
+
+```
+{    
+    "success": true
+}
+
+```
+
 
