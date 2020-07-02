@@ -1,4 +1,4 @@
-# dtables
+# DTables
 
 ## List All DTables
 
@@ -59,6 +59,84 @@ curl -H 'Authorization:Token 5f971000df0d6f35ed7c59580766329a5b37a6df' -H 'Accep
 
 * 403 Permission Denied.
 * 500 Internal Server Error.
+
+## List User's DTables
+
+**GET** /api/v2.1/admin/users/:email/dtables/
+
+**Request Params**
+
+* **page**: the number of page to list, default 1, optional
+* **per_page**: the number of tables per page, default 25, optional
+
+**Sample Request**
+
+```
+curl --request GET 'https://cloud.seatable.io/api/v2.1/admin/users/xiongchao.cheng%40seafile.com/dtables/?page=2' \
+--header 'Authorization: Token 64b9ee55dc4ab902ff36763ef5c604a76d52875e'
+
+```
+
+**Sample Response**
+
+```
+{
+    "dtable_list": [
+        {
+            "id": 371,
+            "workspace_id": 107,
+            "uuid": "d091825a-960f-42ce-a7b4-4273cb114f07",
+            "name": "for-add-restore-15",
+            "creator": "admin",
+            "modifier": "admin",
+            "created_at": "2020-06-23T02:18:39+00:00",
+            "updated_at": "2020-06-23T02:18:39+00:00",
+            "rows_count": 0
+        }
+    ],
+    "count": 34
+}
+
+```
+
+## List Organization DTables
+
+**GET** /api/v2.1/admin/organizations/:org_id/dtables/
+
+**Request Params:**
+
+* **page**: the number of page to list, default 1, optional
+* **per_page**: the number of tables per page, default 25, optional
+
+**Sample Request**
+
+```
+curl --request GET 'https://cloud.seatable.io/api/v2.1/admin/organizations/23/dtables/?page=2&per_page=3' \
+--header 'Authorization: Token 64b9ee55dc4ab902ff36763ef5c604a76d52875e'
+
+```
+
+**Sample Response**
+
+```
+{
+    "dtable_list": [
+        {
+            "id": 276,
+            "workspace_id": 109,
+            "uuid": "24fdb4a5-282e-41f2-9724-5d9b41199694",
+            "name": "for-delete-restore",
+            "creator": "org~4-admin-1",
+            "modifier": "org~4-admin-1",
+            "created_at": "2020-04-14T07:15:13+00:00",
+            "updated_at": "2020-04-14T07:15:13+00:00",
+            "rows_count": 0
+        }
+    ],
+    "count": 6
+}
+
+```
 
 ## List Trash DTables
 
