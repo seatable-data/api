@@ -185,4 +185,147 @@ curl --request PUT 'https://cloud.seatable.io/api/v2.1/admin/organizations/1/' \
 * **404**: User Not Found.
 * **500**: Internal Server Error.
 
+## List Organization Users
+
+**GET** api/v2.1/admin/organizations/:org_id/users/
+
+**Request Sample**
+
+```
+curl --request GET 'https://cloud.seatable.io/api/v2.1/admin/organizations/1/users/' \
+--header 'Authorization: Token 64b9ee55dc4ab902ff36763ef5c604a76d52875e' \
+
+```
+
+**Response Sample**
+
+```json
+{
+    "users": [
+        {
+            "org_id": 1,
+            "email": "7be075486d9544d4aad907cb62cabfe7@auth.local",
+            "name": "ss",
+            "contact_email": "ss@ss.com",
+            "quota_total": -2,
+            "quota_usage": 0,
+            "create_time": "2020-06-30T07:50:44+00:00",
+            "last_login": "2020-06-30T07:51:14.641145",
+            "active": true
+        }
+    ]
+}
+
+```
+
+## Delete Organization User
+
+**DELETE** api/v2.1/admin/organizations/:org_id/users/:email/
+
+**Request Sample**
+
+```
+curl --request DELETE 'https://cloud.seatable.io/api/v2.1/admin/organizations/1/users/ss@seafile.com/' \
+--header 'Authorization: Token 64b9ee55dc4ab902ff36763ef5c604a76d52875e' \
+
+```
+
+**Response Sample**
+
+```json
+{
+    "success": true
+}
+
+```
+
+## List Organization Groups
+
+**GET** api/v2.1/admin/organizations/:org_id/groups/
+
+**Request Sample**
+
+```
+curl --request GET 'https://cloud.seatable.io/api/v2.1/admin/organizations/1/groups/' \
+--header 'Authorization: Token 64b9ee55dc4ab902ff36763ef5c604a76d52875e' \
+
+```
+
+**Response Sample**
+
+```json
+{
+    "group_list": [
+        {
+            "group_name": "t2",
+            "creator_email": "a624b0997e0f4294a1f863d3d8739fd4@auth.local",
+            "creator_name": "a624b0997e0f4294a1f863d3d8739fd4",
+            "created_at": "2020-06-30T06:18:56+00:00",
+            "group_id": 31
+        }
+    ]
+}
+
+```
+
+## Delete Organization Group
+
+**DELETE** api/v2.1/admin/groups/:group_id/
+
+**Request Sample**
+
+```
+curl --request DELETE 'https://cloud.seatable.io/api/v2.1/admin/groups/1/' \
+--header 'Authorization: Token 64b9ee55dc4ab902ff36763ef5c604a76d52875e' \
+
+```
+
+**Response Sample**
+
+```json
+{
+    "success": true
+}
+
+```
+
+## List Organization Bases
+
+**GET** api/v2.1/admin/organizations/:org_id/dtables/
+
+**Request Params**
+
+* **page**: page number, default 1
+* **per_page**: the number of users per page, default 25
+
+**Request Sample**
+
+```
+curl --request GET 'https://cloud.seatable.io/api/v2.1/admin/organizations/1/groups/' \
+--header 'Authorization: Token 64b9ee55dc4ab902ff36763ef5c604a76d52875e' \
+
+```
+
+**Response Sample**
+
+```json
+{
+    "dtable_list": [
+        {
+            "id": 462,
+            "workspace_id": 87,
+            "uuid": "306f2f3a-99ab-4fd8-82a2-5d82fedf2a98",
+            "name": "base1",
+            "creator": "o1a",
+            "modifier": "o1a",
+            "created_at": "2020-07-04T03:14:23+00:00",
+            "updated_at": "2020-07-04T03:14:23+00:00",
+            "rows_count": 0
+        }
+    ],
+    "count": 1
+}
+
+```
+
 
