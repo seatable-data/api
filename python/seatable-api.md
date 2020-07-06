@@ -417,6 +417,60 @@ seatable.get_metadata()
 
 ```
 
+### Convert Row
+
+Convert websocket row data to readable row data
+
+```
+from seatable_api import SeaTableAPI
+from seatable_api.constants import UPDATE_DTABLE
+from seatable_api.utils import convert_row
+
+server_url = 'https://docs.seatable.io/'
+api_token = 'xxxxxx'
+
+seatable = SeaTableAPI(api_token, server_url)
+seatable.auth(with_socket_io=True)
+
+
+# You can overwrite this event
+def on_update_seatable(data, index, *args):
+    row = convert_row(metadata, data)
+    print(row)
+
+
+global metadata
+metadata = seatable_api.get_metadata()
+
+seatable.socketIO.on(UPDATE_DTABLE, on_update_seatable)
+seatable.socketIO.wait()
+
+```
+
+**Sample params**
+
+* server_url:  `str` , seatable server url
+* api_token:  `str` , seatable api token
+
+**Sample return**
+
+* `dict`
+
+
+```
+{
+    '_id': 'NeWm5ZgDTHmbCY28wU2aew', 'table_name': 'Table1', 'op_type': 'insert_row'
+}
+
+```
+
+```
+{
+    '_id': 'NeWm5ZgDTHmbCY28wU2aew', 'table_name': 'Table1', 'op_type': 'modify_row', 'Name': 'new name'
+}
+
+```
+
 ### Add a Link
 
 ```
