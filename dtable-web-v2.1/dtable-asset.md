@@ -43,7 +43,7 @@ curl -H 'Authorization: Token 5f971000df0d6f35ed7c59580766329a5b37a6df' -H 'Acce
 **Sample Request **
 
 ```
-curl --request POST 'https://cloud.seatable.io/api/v2.1/dtable-asset/00390415-b6dc-416a-8f2a-70a3a1356a18/zip-task/' \
+curl --request POST 'https://cloud.seatable.io/api/v2.1/dtable-asset/00390415b6dc416a8f2a70a3a1356a18/zip-task/' \
 --header 'Authorization: Token 64b9ee55dc4ab902ff36763ef5c604a76d52875e' \
 --form 'file=images/2020-04/00000000000000000000000000000011.jpg' \
 --form 'file=images/2020-04/dcced81d4fee390e13e3254c7858da68.jpg' \
