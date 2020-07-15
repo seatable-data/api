@@ -1,6 +1,6 @@
 # Activities
 
-## List Row Activities
+## List row activities
 
 **GET** /api/v1/dtables/:dtable_uuid/activities/
 
