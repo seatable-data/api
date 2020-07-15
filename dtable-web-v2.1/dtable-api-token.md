@@ -134,7 +134,7 @@ curl -X DELETE -H 'Authorization: Token 5f971000df0d6f35ed7c59580766329a5b37a6df
 * 403 permission denied.
 * 500 Internal Server Error.
 
-## Get JWT Token by DTable API Token
+## Get base access token by dtable API token
 
 **GET** /api/v2.1/dtable/app-access-token/
 

@@ -1,6 +1,6 @@
 # DTables
 
-## Get a DTable
+## Get a dtable
 
 **GET** <https://cloud.seatable.io/dtable-server/api/v1/dtables/:dtable_uuid>
 
@@ -29,7 +29,7 @@ curl -H 'Authorization: Token eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZ
 * Not Found.
 * Internal Server Error.
 
-## Get a DTable's Metadata
+## Get a dtable's metadata
 
 **GET** <https://cloud.seatable.io/dtable-server/api/v1/dtables/:dtable_uuid/metadata>
 
@@ -161,7 +161,7 @@ curl -H 'Accept: application/json; charset=utf-8; indent=4' -H 'Authorization: T
 * Not Found.
 * Internal Server Error.
 
-## Import a Table By Uploading a csv File
+## Import a table by uploading a csv file
 
 **POST** <https://cloud.seatable.io/dtable-server/api/v1/:dtable_uuid/import-csv/>
 
@@ -199,7 +199,7 @@ curl -X POST 'https://cloud.seatable.io/dtable-server/api/v1/a57b56d31cc54ebd8a6
 * Permission Denied.
 * Internal Server Error.
 
-## Append a Table By Uploading a csv File
+## Append a table by uploading a csv file
 
 **POST** <https://cloud.seatable.io/dtable-server/api/v1/dtables/:dtable_uuid/append-csv/>﻿
 

@@ -1,6 +1,6 @@
 # Comments
 
-## Get Comments Count
+## Get comments count
 
 **GET** /dtable-server/api/v1/dtables/:dtable_uuid/comments-count/
 
@@ -34,7 +34,7 @@ curl -X GET \
 * **403**: permission denied
 * **500**: internal server error
 
-## List Comments
+## List comments
 
 **GET** /dtable-server/api/v1/dtables/:dtable_uuid/comments/
 
@@ -89,7 +89,7 @@ curl -X GET \
 * **403**: permission denied
 * **500**: internal server error
 
-## Create a Comment
+## Create a comment
 
 **POST** /dtable-server/api/v1/dtables/:dtable_uuid/comments/
 
@@ -131,7 +131,7 @@ curl -X POST \
 * **403**: permission denied
 * **500**: internal server error
 
-## Update a Comment
+## Update a comment
 
 **PUT** /dtable-server/api/v1/dtables/:dtable_uuid/comments/:comment_id/
 
@@ -173,7 +173,7 @@ curl -X PUT \
 * **403**: permission denied
 * **500**: internal server error
 
-## Delete a Comment
+## Delete a comment
 
 **DELETE** /dtable-server/api/v1/dtables/:dtable_uuid/comments/:comment_id/
 
@@ -203,7 +203,7 @@ curl -X DELETE \
 * **403**: permission denied
 * **500**: internal server error
 
-## Get Comment by ID
+## Get comment by id
 
 **GET** /dtable-server/api/v1/dtables/:dtable_uuid>/comments/:comment_id/
 
@@ -239,7 +239,7 @@ curl -X GET \
 * **403**: permission denied
 * **500**: internal server error
 
-## List Comments within Days
+## List comments within days
 
 **GET** https\://cloud.seatable.io/dtable-server/api/v1/dtables/:dtable_uuid/comments-within-days/
 
@@ -291,7 +291,5 @@ curl --request GET 'https://cloud.seatable.io/dtable-server/api/v1/dtables/00390
 * **403**: Permission Denied.
 * **404**: Not Found.
 * **500**: Internal Server Error.
-
-
 
 

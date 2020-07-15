@@ -1,6 +1,6 @@
 # Ping
 
-## ping
+## Ping
 
 **GET **/dtable-server/ping/
 

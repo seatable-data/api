@@ -1,6 +1,6 @@
 # Notifications
 
-## List Notifications
+## List notifications
 
 **GET** /api/v1/dtables/:dtable_uuid/notifications/
 
@@ -47,7 +47,7 @@ curl -H 'Authorization: Token eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE1N
 * **404**: Not Found
 * **500**: Internal Server Error
 
-## Add a Notification
+## Add a notification
 
 **POST** /api/v1/dtables/:dtable_uuid/notifications/
 
@@ -85,7 +85,7 @@ curl -X POST -d '{
 * **404**: Not Found
 * **500**: Internal Server Error
 
-## Mark all Notifications
+## Mark all notifications
 
 **PUT** /api/v1/dtables/:dtable_uuid/notifications/
 
@@ -117,7 +117,7 @@ curl -X PUT -d 'seen=true' -H 'Authorization: Token eyJ0eXAiOiJKV1QiLCJhbGciOiJI
 * **404**: Not Found
 * **500**: Internal Server Error
 
-## Mark a Notification
+## Mark a notification
 
 **PUT** /api/v1/dtables/:dtable_uuid/notifications/:notification_id/
 
@@ -150,7 +150,7 @@ curl -X PUT -d 'seen=true' -H 'Authorization: Token eyJ0eXAiOiJKV1QiLCJhbGciOiJI
 * **404**: Not Found
 * **500**: Internal Server Error
 
-## Clear Notifications
+## Clear notifications
 
 **DELETE** /api/v1/dtables/:dtable_uuid/notifications/
 
@@ -180,7 +180,5 @@ curl -X DELETE -H 'Authorization: Token eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ
 * **403**: Permission Denied
 * **404**: Not Found
 * **500**: Internal Server Error
-
-
 
 
