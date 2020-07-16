@@ -1,6 +1,6 @@
-# DTables
+# Bases
 
-## Get a dtable
+## Get a base
 
 **GET** <https://cloud.seatable.io/dtable-server/api/v1/dtables/:dtable_uuid>
 
@@ -29,7 +29,7 @@ curl -H 'Authorization: Token eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZ
 * Not Found.
 * Internal Server Error.
 
-## Get a dtable's metadata
+## Get a base's metadata
 
 **GET** <https://cloud.seatable.io/dtable-server/api/v1/dtables/:dtable_uuid/metadata>
 

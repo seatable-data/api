@@ -1,6 +1,6 @@
 # Collaborators
 
-## List collaborators of a table
+## List collaborators of a base
 
 **GET** /api/v1/dtables/:dtable_uuid/related-users/
 
