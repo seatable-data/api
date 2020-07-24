@@ -53,7 +53,10 @@ curl -H "Authorization: Token 3f1e23157c3a1fd740e9dc1c5d748929fe319b95" -H 'Acce
          "permission":"rw",
          "table_id":"0000",
          "view_id":"0000",
-         "workspace_id":1
+         "workspace_id":1,
+         "color":null,
+         "text_color":null,
+         "icon":null
       },
       {
          "id":3,
@@ -65,7 +68,10 @@ curl -H "Authorization: Token 3f1e23157c3a1fd740e9dc1c5d748929fe319b95" -H 'Acce
          "permission":"rw",
          "table_id":"0000",
          "view_id":"7NgV",
-         "workspace_id":1
+         "workspace_id":1,
+         "color":null,
+         "text_color":null,
+         "icon":null
       }
    ]
 }

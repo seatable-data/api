@@ -53,7 +53,10 @@ curl -H "Authorization: Token 3f1e23157c3a1fd740e9dc1c5d748929fe319b95" -H 'Acce
             "modifier":"admin",
             "created_at":"2020-02-20T03:45:13+00:00",
             "updated_at":"2020-04-16T07:05:49+00:00",
-            "view_share_id":2
+            "view_share_id":2,
+            "color":null,
+            "text_color":null,
+            "icon":null
          },
          {
             "id":1,
@@ -64,7 +67,10 @@ curl -H "Authorization: Token 3f1e23157c3a1fd740e9dc1c5d748929fe319b95" -H 'Acce
             "modifier":"admin",
             "created_at":"2020-02-20T03:45:13+00:00",
             "updated_at":"2020-04-16T07:05:49+00:00",
-            "view_share_id":3
+            "view_share_id":3,
+            "color":null,
+            "text_color":null,
+            "icon":null
          }
       ]
    }
