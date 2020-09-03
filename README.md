@@ -2,12 +2,12 @@
 
 ## Basic
 
-A table in SeaTable is called a database table (dtable).
+SeaTable manages your bases. A base contains multiple tables. A table contains columns and rows. A base is also called dtable in this API document.
 
 SeaTable server consists of following component:
 
-* dtable-web: The web site for manage dtables.
-* dtable-server: Store the dtables and provide collaborating feature.
+* dtable-web: The web site for manage bases.
+* dtable-server: Store the bases and provide collaborating feature.
 * seaf-server: Store attachments (files and images)
 
 ## API Basics
@@ -20,9 +20,11 @@ cloud.seatable.io/api2/auth/ping/
 
 ```
 
-The api key can be retrieved by the obtain auth api. See `Quick Start` below.
+The API key can be retrieved by the obtain auth token API. See `Quick Start` below.
 
-For each API, we provide `curl` examples to illustrate the usage. We also provide `python` and `javascript` examples, please refer to <https://github.com/haiwen/webapi-examples> for details.
+For each API, we provide `curl` examples to illustrate the usage. We also provide `python`  examples:
+
+* <https://github.com/seatable/seatable-python-scripts-examples>
 
 ## Status Code
 
@@ -119,5 +121,3 @@ The two ways will give you the same response as following
 ```
 
 With the access token and other information, you can call the APIs of [dtable-server](dtable-server)
-
-
