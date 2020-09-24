@@ -20,7 +20,7 @@ pip3 install seatable-api
 ### Examples
 
 ```
-from seatable_api import SeaTableAPI
+from seatable_api import Base
 
 
 # auth first
@@ -28,15 +28,15 @@ from seatable_api import SeaTableAPI
 server_url = 'https://docs.seatable.io/'
 api_token = 'xxxxxx'
 
-seatable = SeaTableAPI(api_token, server_url)
-seatable.auth()
+base = Base(api_token, server_url)
+base.auth()
 
 
 
 # list rows
 
 table_name = 'Users'
-rows = seatable.list_rows(table_name)
+rows = base.list_rows(table_name)
 
 
 
@@ -49,7 +49,7 @@ row_data = {
     "Name": "Update Row",                  # Column key and cell content
     "Email": "seatable@seatable.com",
 }
-seatable.update_row(table_name, row_id, row_data)
+base.update_row(table_name, row_id, row_data)
 
 ```
 
@@ -62,20 +62,20 @@ You can find the data format for row, column and table in <https://docs.seatable
 ### Auth
 
 ```
-from seatable_api import SeaTableAPI
+from seatable_api import Base
 
 server_url = 'https://docs.seatable.io/'
 api_token = 'xxxxxx'
 
-seatable = SeaTableAPI(api_token, server_url)
-seatable.auth()
+base = Base(api_token, server_url)
+base.auth()
 
 ```
 
 **Sample params**
 
-* server_url:  `str` , seatable server url
-* api_token:  `str` , seatable api token
+* server_url:  `str` , SeaTable server url
+* api_token:  `str` , SeaTable API token
 
 **Sample return**
 
@@ -84,14 +84,14 @@ seatable.auth()
 ### Connect Websocket
 
 ```
-from seatable_api import SeaTableAPI
+from seatable_api import Base
 from seatable_api.constants import UPDATE_DTABLE
 
 server_url = 'https://docs.seatable.io/'
 api_token = 'xxxxxx'
 
-seatable = SeaTableAPI(api_token, server_url)
-seatable.auth(with_socket_io=True)
+base = Base(api_token, server_url)
+base.auth(with_socket_io=True)
 
 
 # You can overwrite this event
@@ -99,16 +99,16 @@ def on_update_seatable(data, index, *args):
     print(data)
 
 
-seatable.socketIO.on(UPDATE_DTABLE, on_update_seatable)
-seatable.socketIO.wait()  # forever
-# seatable.socketIO.wait(seconds=10)  # limit
+base.socketIO.on(UPDATE_DTABLE, on_update_seatable)
+base.socketIO.wait()  # forever
+# base.socketIO.wait(seconds=10)  # limit
 
 ```
 
 **Sample params**
 
-* server_url:  `str` , seatable server url
-* api_token:  `str` , seatable api token
+* server_url:  `str` , SeaTable server url
+* api_token:  `str` , SeaTable API token
 
 **Sample return**
 
@@ -127,13 +127,13 @@ seatable.socketIO.wait()  # forever
 
 ```
 
-### List Rows of a Sub-table
+### List rows of a table
 
 ```
 # Without view_name
 
 table_name = 'Users'
-rows = seatable.list_rows(table_name)
+rows = base.list_rows(table_name)
 
 ```
 
@@ -142,7 +142,7 @@ rows = seatable.list_rows(table_name)
 
 table_name = 'Users'
 view_name = 'Default'
-rows = seatable.list_rows(table_name, view_name)
+rows = base.list_rows(table_name, view_name)
 
 ```
 
@@ -170,7 +170,7 @@ rows = seatable.list_rows(table_name, view_name)
 
 ```
 
-### List Filtered Rows of a Sub-table
+### List filtered rows of a table
 
 If you want to get rows that meet a certain condition, you can use this API
 
@@ -191,7 +191,7 @@ filters = [
     }
 ]
 
-filtered_rows = seatable.filter_rows(table_name, filters=filters, filter_conjunction='Or')
+filtered_rows = base.filter_rows(table_name, filters=filters, filter_conjunction='Or')
 
 ```
 
@@ -213,7 +213,7 @@ filters = [
     }
 ]
 
-filtered_rows = seatable.filter_rows(table_name, view_name, filters=filters, filter_conjunction='Or')
+filtered_rows = base.filter_rows(table_name, view_name, filters=filters, filter_conjunction='Or')
 
 ```
 
@@ -243,7 +243,7 @@ filtered_rows = seatable.filter_rows(table_name, view_name, filters=filters, fil
 
 ```
 
-### Append a Row
+### Append a row
 
 ```
 table_name = 'Users'
@@ -252,7 +252,7 @@ row_data = {
     "Name": "I am new Row"
 }
 
-seatable.append_row(table_name, row_data)
+base.append_row(table_name, row_data)
 
 ```
 
@@ -271,7 +271,7 @@ seatable.append_row(table_name, row_data)
 
 ```
 
-### Insert a Row
+### Insert a row
 
 ```
 table_name = 'Users'
@@ -283,7 +283,7 @@ row_data = {
 anchor_row = rows[0]
 anchor_row_id = anchor_row['_id']
 
-seatable.insert_row(table_name, row_data, anchor_row_id)
+base.insert_row(table_name, row_data, anchor_row_id)
 
 ```
 
@@ -303,7 +303,7 @@ seatable.insert_row(table_name, row_data, anchor_row_id)
 
 ```
 
-### Update a Row
+### Update a row
 
 ```
 table_name = 'Users'
@@ -315,7 +315,7 @@ row_data = {
 row = rows[1]
 row_id = row['_id']
 
-seatable.update_row(table_name, row_id, row_data)
+base.update_row(table_name, row_id, row_data)
 
 ```
 
@@ -335,7 +335,7 @@ seatable.update_row(table_name, row_id, row_data)
 
 ```
 
-### Delete a Row
+### Delete a row
 
 ```
 table_name = 'Users'
@@ -343,7 +343,7 @@ table_name = 'Users'
 row = rows[1]
 row_id = row['_id']
 
-seatable.delete_row(table_name, row_id)
+base.delete_row(table_name, row_id)
 
 ```
 
@@ -362,10 +362,10 @@ seatable.delete_row(table_name, row_id)
 
 ```
 
-### Get Seatable Metadata
+### Get base metadata
 
 ```
-seatable.get_metadata()
+base.get_metadata()
 
 ```
 
@@ -417,20 +417,20 @@ seatable.get_metadata()
 
 ```
 
-### Convert Row
+### Convert row
 
 Convert websocket row data to readable row data
 
 ```
-from seatable_api import SeaTableAPI
+from seatable_api import Base
 from seatable_api.constants import UPDATE_DTABLE
 from seatable_api.utils import convert_row
 
 server_url = 'https://docs.seatable.io/'
 api_token = 'xxxxxx'
 
-seatable = SeaTableAPI(api_token, server_url)
-seatable.auth(with_socket_io=True)
+base = Base(api_token, server_url)
+base.auth(with_socket_io=True)
 
 
 # You can overwrite this event
@@ -440,10 +440,10 @@ def on_update_seatable(data, index, *args):
 
 
 global metadata
-metadata = seatable_api.get_metadata()
+metadata = base.get_metadata()
 
-seatable.socketIO.on(UPDATE_DTABLE, on_update_seatable)
-seatable.socketIO.wait()
+base.socketIO.on(UPDATE_DTABLE, on_update_seatable)
+base.socketIO.wait()
 
 ```
 
@@ -471,7 +471,7 @@ seatable.socketIO.wait()
 
 ```
 
-### Add a Link
+### Add a link
 
 ```
 table_name = 'Table1'
@@ -481,7 +481,7 @@ column_name = 'Foreign Key'
 # get column link_id from metadata
 # note, the link_id will not change after created, 
 # you can get the link_id once and save it in your config file
-metadata = seatable.get_metadata()️
+metadata = base.get_metadata()️
 table = None
 for item in metadata['tables']:
     if item['name'] == table_name:
@@ -497,12 +497,12 @@ for item in table['columns']:
 link_id = column['data']['link_id']
 
 # get row
-rows = seatable.list_rows(table_name)
-other_rows = seatable.list_rows(other_table_name)
+rows = base.list_rows(table_name)
+other_rows = base.list_rows(other_table_name)
 row_id = rows[0]['_id']
 other_row_id = other_rows[0]['_id']
 
-seatable.add_link(link_id, table_name, other_table_name, row_id, other_row_id)
+base.add_link(link_id, table_name, other_table_name, row_id, other_row_id)
 
 ```
 
@@ -524,7 +524,7 @@ seatable.add_link(link_id, table_name, other_table_name, row_id, other_row_id)
 
 ```
 
-### Remove a Link
+### Remove a link
 
 ```
 table_name = 'Table1'
@@ -532,7 +532,7 @@ other_table_name = 'Table2'
 column_name = 'Foreign Key'
 
 # get column link_id from metadata
-metadata = seatable.get_metadata()️
+metadata = base.get_metadata()️
 table = None
 for item in metadata['tables']:
     if item['name'] == table_name:
@@ -548,12 +548,12 @@ for item in table['columns']:
 link_id = column['data']['link_id']
 
 # get row
-rows = seatable.list_rows(table_name)
-other_rows = seatable.list_rows(other_table_name)
+rows = base.list_rows(table_name)
+other_rows = base.list_rows(other_table_name)
 row_id = rows[0]['_id']
 other_row_id = other_rows[0]['_id']
 
-seatable.remove_link(link_id, table_name, other_table_name, row_id, other_row_id)
+base.remove_link(link_id, table_name, other_table_name, row_id, other_row_id)
 
 ```
 
@@ -575,11 +575,11 @@ seatable.remove_link(link_id, table_name, other_table_name, row_id, other_row_id
 
 ```
 
-### Get File Download Link By Path
+### Get file download link by path
 
 ```
 path = '/files/2020-02/test_pic.jpg'
-download_link = seatable.get_file_download_link(path)
+download_link = base.get_file_download_link(path)
 
 ```
 
@@ -597,10 +597,10 @@ https://cloud.seatable.io/seafhttp/files/498fe8b6-68f4-4878-8ce7-91517b9c6e1c/te
 
 ```
 
-### Get File Upload Link
+### Get file upload link
 
 ```
-upload_link = seatable.get_file_upload_link()
+upload_link = base.get_file_upload_link()
 
 ```
 
