@@ -120,4 +120,4 @@ The two ways will give you the same response as following
 
 ```
 
-With the access token and other information, you can call the APIs of [dtable-server](dtable-server)
+With the **access token, dtable_uuid **and** dtable_server** information, you can call the APIs of [dtable-server](dtable-server)
