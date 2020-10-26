@@ -2,7 +2,9 @@
 
 You can find the data format for row in <https://docs.seatable.io/published/dtable-sdk/data-structure.md>
 
-## List rows of a table by view name
+## List rows
+
+### List rows in a view
 
 **GET** [https://cloud.seatable.io/dtable-server/api/v1/dtables/:dtable_uuid/rows/](https://cloud.seatable.com/api/v1/dtables/:dtable_uuid/rows/)
 
@@ -35,15 +37,31 @@ curl -H 'Authorization: Token eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZ
 
 ```
 
-## List filtered rows of a table by view name
+### List rows by filters
 
 **GET** [https://cloud.seatable.io/dtable-server/api/v1/dtables/:dtable_uuid/filtered-rows/](https://cloud.seatable.com/api/v1/dtables/:dtable_uuid/filtered-rows/)
 
 * dtable_uuid
 * table_name, necessary
 * view_name, optional, if not given, "Default View"'s rows will be returned
-* filters, array
+* filters, a list of filters.
 * filter_conjunction, 'And' or 'Or'
+
+A filter contains four fields `column_name` , `filter_predicate` , `filter_term` , `filter_term_modifier` . For different column types, different `filter_predicate`, `filter_term` , `filter_term_modifier` are supported.
+
+**Text**
+
+* filter_predicate: contains, does_not_contain, is, is_not, is_empty, is_not_empty
+* filter_term: a string or an empty string
+* filter_term_modifier: an empty string
+
+**Number**
+
+* filter_predicate: equal, not_equal, less, greater, less_or_equal, greater_or_equal, is_empty, is_not_empty
+* filter_term: a string containing the number  (like "10") or an empty string
+* filter_term_modifier: an empty string
+
+
 
 **Sample request**
 
@@ -92,7 +110,7 @@ curl -H "Content-Type: application/json" -d
 
 ```
 
-## List groups of a table by view name
+### List grouped rows in a view
 
 **GET** [https://cloud.seatable.io/dtable-server/api/v1/dtables/:dtable_uuid/rows/](https://cloud.seatable.com/api/v1/dtables/:dtable_uuid/rows/)
 
