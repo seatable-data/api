@@ -49,7 +49,7 @@ curl -H 'Authorization: Token eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZ
 
 A filter contains four fields `column_name` , `filter_predicate` , `filter_term` , `filter_term_modifier` . For different column types, different `filter_predicate`, `filter_term` , `filter_term_modifier` are supported.
 
-**Text**
+**Text、Geolocation**
 
 * filter_predicate: contains, does_not_contain, is, is_not, is_empty, is_not_empty
 * filter_term: a string or an empty string
@@ -61,7 +61,69 @@ A filter contains four fields `column_name` , `filter_predicate` , `filter_term`
 * filter_term: a string containing the number  (like "10") or an empty string
 * filter_term_modifier: an empty string
 
+**Checkbox**
 
+* filter_predicate: is
+* filter_term: true or false
+* filter_term_modifier: an empty string
+
+**Single-select**
+
+* filter_predicate: is, is_not, is_empty, is_not_empty
+* filter_term: a string containing the name of option (like "seaTable") or an empty string
+* filter_term_modifier: an empty string
+
+**Multiple-select**
+
+* filter_predicate: has_any_of, has_all_of, has_none_of, is_exactly, is_empty, is_not_empty
+* filter_term: an array that some items are the names of options or an empty array or an empty string
+* filter_term_modifier: an empty string
+
+**Date、Ctime、Mtime**
+
+* filter_predicate: is, is_within, is_before, is_after, is_on_or_before, is_on_or_after, is_not, is_empty, is_not_empty
+* filter_term: a date string (like "2020-10-27 12:00") or an empty string
+* filter_term_modifier: changes with the change of filter_predicate
+
+   if filter_predicate is 'is_within', it can be one of the_past_week, the_past_month, the_past_year, this_week, this_month,    this_year, the_next_week, the_next_month, the_next_year, the_next_numbers_of_days, the_past_numbers_of_days.
+
+  if filter_predicate is 'is_empty' or 'is_not_empty', it is an empty string.
+
+  Otherwise,  it can be one of today, tomorrow, yesterday, one_week_ago, one_week_from_now, one_month_ago, one_month_from_now, number_of_days_ago, number_of_days_from_now, exact_date or an empty string.
+
+**Collaborator**
+
+* filter_predicate:  has_any_of, has_all_of, has_none_of, is_exactly, is_empty, is_not_empty, include_me
+* filter_term: an array or an empty array or an empty string
+* filter_term_modifier: an empty string
+
+**Creator、Last_modifier**
+
+* filter_predicate: contains, dost_not_contain, include_me, is, is_not
+* filter_term: an array or an empty array or an empty string
+* filter_term_modifier: an empty string
+
+**Formula**
+
+* If the result type is 'string' or 'bool', process according to the text column type.
+* If the result type is 'date', process according to the date column type.
+* If the result type is 'number', process according to the number column type.
+
+**Link**
+
+* filter_predicate: contains, dost_not_contain, is_empty, is_not_empty
+* filter_term: a string or an empty string
+* filter_term_modifier: an empty string
+
+**Auto-number**
+
+* filter_predicate: contains, dost_not_contain, is, is_not
+* filter_term: a string or an empty string
+* filter_term_modifier: an empty string
+
+**File、Image、Long_text、URL**
+
+* not support 
 
 **Sample request**
 
