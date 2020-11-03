@@ -6,13 +6,16 @@
 
 **Request parameters**
 
-* owner
-* name: personal or a group id
+* owner: personal or a group id
+* name: name of dtable
+* color: color of dtable, optional
+* icon: icon of dtable, optional
+* text_color: text_color of dtable, optional
 
 **Sample request**
 
 ```
-curl -X POST -d 'name=nice&owner=1@1.com' -H 'Authorization:Token 5f971000df0d6f35ed7c59580766329a5b37a6df' -H 'Accept: application/json; indent=4' "http://127.0.0.1:8000/api/v2.1/dtables/"
+curl -X POST -d 'name=nice&owner=1@1.com&color=#7626FD&icon=icon-software-test-management' -H 'Authorization:Token 5f971000df0d6f35ed7c59580766329a5b37a6df' -H 'Accept: application/json; indent=4' "http://127.0.0.1:8000/api/v2.1/dtables/"
 
 ```
 
@@ -28,7 +31,10 @@ curl -X POST -d 'name=nice&owner=1@1.com' -H 'Authorization:Token 5f971000df0d6f
         "created_at": "2019-06-25T07:51:55+00:00",
         "modifier": "one",
         "id": 6,
-        "uuid": "747d0ded-2d55-4465-adbc-a74100e458a5"
+        "uuid": "747d0ded-2d55-4465-adbc-a74100e458a5",
+        "color": "#7626FD",
+        "text_color": null,
+        "icon": "icon-software-test-management"
     }
 }
 
