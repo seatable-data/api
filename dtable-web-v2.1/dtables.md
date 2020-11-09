@@ -1,12 +1,12 @@
-# DTables
+# Bases (DTables)
 
-## Create a DTable
+## Create a base
 
 **POST **api/v2.1/dtables/
 
 **Request parameters**
 
-* owner: personal or a group id
+* owner: the ID of the owner (xxxx@auth.local) or a group ID
 * name: name of dtable
 * color: color of dtable, optional
 * icon: icon of dtable, optional
@@ -15,7 +15,7 @@
 **Sample request**
 
 ```
-curl -X POST -d 'name=nice&owner=1@1.com&color=#7626FD&icon=icon-software-test-management' -H 'Authorization:Token 5f971000df0d6f35ed7c59580766329a5b37a6df' -H 'Accept: application/json; indent=4' "http://127.0.0.1:8000/api/v2.1/dtables/"
+curl -X POST -d 'name=nice&owner=xxxx@auth.local&color=#7626FD&icon=icon-software-test-management' -H 'Authorization:Token 5f971000df0d6f35ed7c59580766329a5b37a6df' -H 'Accept: application/json; indent=4' "http://127.0.0.1:8000/api/v2.1/dtables/"
 
 ```
 
@@ -47,20 +47,20 @@ curl -X POST -d 'name=nice&owner=1@1.com&color=#7626FD&icon=icon-software-test-m
 * 403 Permission Denied.
 * 500 Internal Server Error.
 
-## Rename a DTable
+## Rename a base
 
 **PUT **api/v2.1/workspace/\<workspace_id>/dtable/
 
 **Request parameters**
 
 * workspace_id
-* old_name
+* name
 * new_name
 
 **Sample request**
 
 ```
-curl -X PUT -d "old_name=hi&new_name=hey" -H 'Authorization:Token 5f971000df0d6f35ed7c59580766329a5b37a6df' -H 'Accept: application/json; indent=4' "http://127.0.0.1:8000/api/v2.1/workspace/1/dtable/"
+curl -X PUT -d "name=hi&new_name=hey" -H 'Authorization:Token 5f971000df0d6f35ed7c59580766329a5b37a6df' -H 'Accept: application/json; indent=4' "http://127.0.0.1:8000/api/v2.1/workspace/1/dtable/"
 
 ```
 
@@ -84,7 +84,7 @@ curl -X PUT -d "old_name=hi&new_name=hey" -H 'Authorization:Token 5f971000df0d6f
 * 403 Permission Denied.
 * 500 Internal Server Error.
 
-## Delete a DTable
+## Delete a base
 
 **DELETE **api/v2.1/workspace/\<workspace_id>/dtable/
 
@@ -116,7 +116,7 @@ curl -X DELETE -d "name=dtable_2" -H 'Authorization:Token 5f971000df0d6f35ed7c59
 * 404 Not Found.
 * 500 Internal Server Error.
 
-## Update a Base
+## Update a base
 
 **PUT** /api/v2.1/:workspace_id/107/dtable/
 
