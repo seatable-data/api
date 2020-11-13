@@ -7,7 +7,7 @@
 **Sample request**
 
 ```
-curl -H 'Authorization: Token 57782e1e42a7fefc6a5026e00c6a62c9d249e760' -H Accept: application/json; charset=utf-8; indent=4' "https://cloud.seatable.io/api/v2.1/workspace/1/dtable/hello/access-token/"
+curl -H 'Authorization: Token 57782e1e42a7fefc6a5026e00c6a62c9d249e760' -H 'Accept: application/json; charset=utf-8; indent=4' "https://cloud.seatable.io/api/v2.1/workspace/1/dtable/hello/access-token/"
 
 ```
 

@@ -220,24 +220,7 @@ curl --request GET 'https://cloud.seatable.io/api/v2.1/admin/organizations/1/use
 
 ## Delete Organization User
 
-**DELETE** api/v2.1/admin/organizations/:org_id/users/:email/
-
-**Request Sample**
-
-```
-curl --request DELETE 'https://cloud.seatable.io/api/v2.1/admin/organizations/1/users/ss@seafile.com/' \
---header 'Authorization: Token 64b9ee55dc4ab902ff36763ef5c604a76d52875e' \
-
-```
-
-**Response Sample**
-
-```json
-{
-    "success": true
-}
-
-```
+Admins cannot use the API call** 'DELETE** api/v2.1/admin/organizations/:org_id/users/:email/' to delete an organization user. To delete a user as admin, refer to [Users - Delete user](https://docs.seatable.io/published/seatable-api/dtable-web-v2.1-admin/users.md).
 
 ## List Organization Groups
 
