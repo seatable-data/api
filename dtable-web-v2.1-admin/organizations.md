@@ -12,8 +12,7 @@
 **Request Sample**
 
 ```
-curl --request GET 'https://cloud.seatable.io/api/v2.1/admin/organizations/' \
---header 'Authorization: Token 64b9ee55dc4ab902ff36763ef5c604a76d52875e'
+curl --request GET 'https://cloud.seatable.io/api/v2.1/admin/organizations/' --header 'Authorization: Token 64b9ee55dc4ab902ff36763ef5c604a76d52875e'
 
 ```
 
@@ -73,12 +72,7 @@ curl --request GET 'https://cloud.seatable.io/api/v2.1/admin/organizations/' \
 **Request Sample**
 
 ```
-curl --request POST 'https://cloud.seatable.io/api/v2.1/admin/organizations/' \
---header 'Authorization: Token 64b9ee55dc4ab902ff36763ef5c604a76d52875e' \
---form 'org_name=org-for-add' \
---form 'admin_email=for-add@seafile.com' \
---form 'admin_name=for-add' \
---form 'password=123'
+curl --request POST 'https://cloud.seatable.io/api/v2.1/admin/organizations/' --header 'Authorization: Token 64b9ee55dc4ab902ff36763ef5c604a76d52875e' --form 'org_name=org-for-add' --form 'admin_email=for-add@seafile.com' --form 'admin_name=for-add' --form 'password=123'
 
 ```
 
@@ -114,8 +108,7 @@ curl --request POST 'https://cloud.seatable.io/api/v2.1/admin/organizations/' \
 **Request Sample**
 
 ```
-curl --request DELETE 'https://cloud.seatable.io/api/v2.1/admin/organizations/3/' \
---header 'Authorization: Token 64b9ee55dc4ab902ff36763ef5c604a76d52875e'
+curl --request DELETE 'https://cloud.seatable.io/api/v2.1/admin/organizations/3/' --header 'Authorization: Token 64b9ee55dc4ab902ff36763ef5c604a76d52875e'
 
 ```
 
@@ -149,11 +142,7 @@ curl --request DELETE 'https://cloud.seatable.io/api/v2.1/admin/organizations/3/
 **Request Sample**
 
 ```
-curl --request PUT 'https://cloud.seatable.io/api/v2.1/admin/organizations/1/' \
---header 'Authorization: Token 64b9ee55dc4ab902ff36763ef5c604a76d52875e' \
---form 'org_name=rename-org' \
---form 'role=guest' \
---form 'row_limit=100'
+curl --request PUT 'https://cloud.seatable.io/api/v2.1/admin/organizations/1/' --header 'Authorization: Token 64b9ee55dc4ab902ff36763ef5c604a76d52875e' --form 'org_name=rename-org' --form 'role=guest' --form 'row_limit=100'
 
 ```
 
@@ -192,8 +181,7 @@ curl --request PUT 'https://cloud.seatable.io/api/v2.1/admin/organizations/1/' \
 **Request Sample**
 
 ```
-curl --request GET 'https://cloud.seatable.io/api/v2.1/admin/organizations/1/users/' \
---header 'Authorization: Token 64b9ee55dc4ab902ff36763ef5c604a76d52875e' \
+curl --request GET 'https://cloud.seatable.io/api/v2.1/admin/organizations/1/users/' --header 'Authorization: Token 64b9ee55dc4ab902ff36763ef5c604a76d52875e'
 
 ```
 
@@ -229,8 +217,7 @@ Admins cannot use the API call** 'DELETE** api/v2.1/admin/organizations/:org_id/
 **Request Sample**
 
 ```
-curl --request GET 'https://cloud.seatable.io/api/v2.1/admin/organizations/1/groups/' \
---header 'Authorization: Token 64b9ee55dc4ab902ff36763ef5c604a76d52875e' \
+curl --request GET 'https://cloud.seatable.io/api/v2.1/admin/organizations/1/groups/' --header 'Authorization: Token 64b9ee55dc4ab902ff36763ef5c604a76d52875e'
 
 ```
 
@@ -258,8 +245,7 @@ curl --request GET 'https://cloud.seatable.io/api/v2.1/admin/organizations/1/gro
 **Request Sample**
 
 ```
-curl --request DELETE 'https://cloud.seatable.io/api/v2.1/admin/groups/1/' \
---header 'Authorization: Token 64b9ee55dc4ab902ff36763ef5c604a76d52875e' \
+curl --request DELETE 'https://cloud.seatable.io/api/v2.1/admin/groups/1/' --header 'Authorization: Token 64b9ee55dc4ab902ff36763ef5c604a76d52875e'
 
 ```
 
@@ -284,8 +270,7 @@ curl --request DELETE 'https://cloud.seatable.io/api/v2.1/admin/groups/1/' \
 **Request Sample**
 
 ```
-curl --request GET 'https://cloud.seatable.io/api/v2.1/admin/organizations/1/groups/' \
---header 'Authorization: Token 64b9ee55dc4ab902ff36763ef5c604a76d52875e' \
+curl --request GET 'https://cloud.seatable.io/api/v2.1/admin/organizations/1/groups/' --header 'Authorization: Token 64b9ee55dc4ab902ff36763ef5c604a76d52875e'
 
 ```
 

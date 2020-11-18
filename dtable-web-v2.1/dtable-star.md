@@ -7,8 +7,7 @@
 **Sample Request**
 
 ```
-curl --request GET 'https://cloud.seatable.io/api/v2.1/starred-dtables/' \
---header 'Authorization: Token 64b9ee55dc4ab902ff36763ef5c604a76d52875e'
+curl --request GET 'https://cloud.seatable.io/api/v2.1/starred-dtables/' --header 'Authorization: Token 64b9ee55dc4ab902ff36763ef5c604a76d52875e'
 
 ```
 
@@ -53,9 +52,7 @@ curl --request GET 'https://cloud.seatable.io/api/v2.1/starred-dtables/' \
 **Sample Request**
 
 ```
-curl --request POST 'https://cloud.seatable.io/api/v2.1/starred-dtables/' \
---header 'Authorization: Token 64b9ee55dc4ab902ff36763ef5c604a76d52875e' \
---form 'dtable_uuid=00390415b6dc416a8f2a70a3a1356a18'
+curl --request POST 'https://cloud.seatable.io/api/v2.1/starred-dtables/' --header 'Authorization: Token 64b9ee55dc4ab902ff36763ef5c604a76d52875e' --form 'dtable_uuid=00390415b6dc416a8f2a70a3a1356a18'
 
 ```
 
@@ -79,8 +76,7 @@ curl --request POST 'https://cloud.seatable.io/api/v2.1/starred-dtables/' \
 **Sample Request**
 
 ```
-curl --request DELETE 'https://cloud.seatable.io/api/v2.1/starred-dtables/?dtable_uuid=00390415b6dc416a8f2a70a3a1356a18' \
---header 'Authorization: Token 64b9ee55dc4ab902ff36763ef5c604a76d52875e'
+curl --request DELETE 'https://cloud.seatable.io/api/v2.1/starred-dtables/?dtable_uuid=00390415b6dc416a8f2a70a3a1356a18' --header 'Authorization: Token 64b9ee55dc4ab902ff36763ef5c604a76d52875e'
 
 ```
 
@@ -92,7 +88,5 @@ curl --request DELETE 'https://cloud.seatable.io/api/v2.1/starred-dtables/?dtabl
 }
 
 ```
-
-
 
 

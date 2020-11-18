@@ -7,8 +7,7 @@
 **Sample Request**
 
 ```
-curl --request GET 'https://cloud.seatable.io/api/v2.1/workspace/107/dtable/for-add/temp-api-token/' \
---header 'Authorization: Token 64b9ee55dc4ab902ff36763ef5c604a76d52875e'
+curl --request GET 'https://cloud.seatable.io/api/v2.1/workspace/107/dtable/for-add/temp-api-token/' --header 'Authorization: Token 64b9ee55dc4ab902ff36763ef5c604a76d52875e'
 
 ```
 

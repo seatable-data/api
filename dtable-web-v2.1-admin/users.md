@@ -12,8 +12,7 @@
 **Request Sample**
 
 ```
-curl --request GET 'https://cloud.seatable.io/api/v2.1/admin/users/' \
---header 'Authorization: Token 64b9ee55dc4ab902ff36763ef5c604a76d52875e'
+curl --request GET 'https://cloud.seatable.io/api/v2.1/admin/users/' --header 'Authorization: Token 64b9ee55dc4ab902ff36763ef5c604a76d52875e'
 
 ```
 
@@ -73,11 +72,7 @@ curl --request GET 'https://cloud.seatable.io/api/v2.1/admin/users/' \
 **Request Sample**
 
 ```
-curl --request POST 'https://cloud.seatable.io/api/v2.1/admin/users/' \
---header 'Authorization: Token 64b9ee55dc4ab902ff36763ef5c604a76d52875e' \
---form 'email=for-add@seafile.com' \
---form 'password=123' \
---form 'name=for-add'
+curl --request POST 'https://cloud.seatable.io/api/v2.1/admin/users/' --header 'Authorization: Token 64b9ee55dc4ab902ff36763ef5c604a76d52875e' --form 'email=for-add@seafile.com' --form 'password=123' --form 'name=for-add'
 
 ```
 
@@ -111,8 +106,7 @@ curl --request POST 'https://cloud.seatable.io/api/v2.1/admin/users/' \
 **Request Sample**
 
 ```
-curl --request DELETE 'https://cloud.seatable.io/api/v2.1/admin/users/0ef256cb715841dd81b147b2530c2904@auth.local/' \
---header 'Authorization: Token 64b9ee55dc4ab902ff36763ef5c604a76d52875e'
+curl --request DELETE 'https://cloud.seatable.io/api/v2.1/admin/users/0ef256cb715841dd81b147b2530c2904@auth.local/' --header 'Authorization: Token 64b9ee55dc4ab902ff36763ef5c604a76d52875e'
 
 ```
 
@@ -146,10 +140,7 @@ curl --request DELETE 'https://cloud.seatable.io/api/v2.1/admin/users/0ef256cb71
 **Request Smaple**
 
 ```
-curl --request PUT 'https://cloud.seatable.io/api/v2.1/admin/users/5bc29d150e874522a2a0563ca2dc5fb4@auth.local/' \
---header 'Authorization: Token 64b9ee55dc4ab902ff36763ef5c604a76d52875e' \
---form 'is_staff=true' \
---form 'row_limit=10'
+curl --request PUT 'https://cloud.seatable.io/api/v2.1/admin/users/5bc29d150e874522a2a0563ca2dc5fb4@auth.local/' --header 'Authorization: Token 64b9ee55dc4ab902ff36763ef5c604a76d52875e' --form 'is_staff=true' --form 'row_limit=10'
 
 ```
 
@@ -188,8 +179,7 @@ curl --request PUT 'https://cloud.seatable.io/api/v2.1/admin/users/5bc29d150e874
 **Request Sample**
 
 ```
-curl --request PUT 'https://cloud.seatable.io/api/v2.1/admin/users/5a96afda39ec4bf4805d884588d44f7f@auth.local/reset-password/' \
---header 'Authorization: Token 64b9ee55dc4ab902ff36763ef5c604a76d52875e'
+curl --request PUT 'https://cloud.seatable.io/api/v2.1/admin/users/5a96afda39ec4bf4805d884588d44f7f@auth.local/reset-password/' --header 'Authorization: Token 64b9ee55dc4ab902ff36763ef5c604a76d52875e'
 
 ```
 
@@ -216,8 +206,7 @@ curl --request PUT 'https://cloud.seatable.io/api/v2.1/admin/users/5a96afda39ec4
 **Request Sample**
 
 ```
-curl --request GET 'https://cloud.seatable.io/api/v2.1/admin/admin-users/' \
---header 'Authorization: Token 64b9ee55dc4ab902ff36763ef5c604a76d52875e'
+curl --request GET 'https://cloud.seatable.io/api/v2.1/admin/admin-users/' --header 'Authorization: Token 64b9ee55dc4ab902ff36763ef5c604a76d52875e'
 
 ```
 

@@ -131,11 +131,7 @@ curl -X DELETE -d "name=dtable_2" -H 'Authorization:Token 5f971000df0d6f35ed7c59
 **Request Sample**
 
 ```
-curl --request PUT 'https://cloud.seatable.io/api/v2.1/workspace/107/dtable/' \
---header 'Authorization: Token 64b9ee55dc4ab902ff36763ef5c604a76d52875e' \
---form 'name=for-email-put-3' \
---form 'color=red' \
---form 'text_color=blue'
+curl --request PUT 'https://cloud.seatable.io/api/v2.1/workspace/107/dtable/' --header 'Authorization: Token 64b9ee55dc4ab902ff36763ef5c604a76d52875e' --form 'name=for-email-put-3' --form 'color=red' --form 'text_color=blue'
 
 ```
 

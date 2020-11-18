@@ -11,8 +11,7 @@
 **Sample Request**
 
 ```
-curl --request GET 'https://cloud.seatable.io/api/v2.1/admin/users/xiongchao.cheng%40seafile.com/storage/' \
---header 'Authorization: Token 3120688f207383ba90e6160190ff70036d2e185d'
+curl --request GET 'https://cloud.seatable.io/api/v2.1/admin/users/xiongchao.cheng%40seafile.com/storage/' --header 'Authorization: Token 3120688f207383ba90e6160190ff70036d2e185d'
 
 ```
 

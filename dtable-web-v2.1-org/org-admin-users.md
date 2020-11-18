@@ -54,11 +54,7 @@ Request Params
 **Sample request**
 
 ```
-curl --request POST 'https://cloud.seatable.io/api/v2.1/org/23/admin/users/' \
---header 'Authorization: Token 95ca2c5f0bf469742f21023b191520f5a5c63eb6' \
---form 'email=org~4-member-3@seafile.com' \
---form 'name=org~4-member-3' \
---form 'password=123'
+curl --request POST 'https://cloud.seatable.io/api/v2.1/org/23/admin/users/' --header 'Authorization: Token 95ca2c5f0bf469742f21023b191520f5a5c63eb6' --form 'email=org~4-member-3@seafile.com' --form 'name=org~4-member-3' --form 'password=123'
 
 ```
 

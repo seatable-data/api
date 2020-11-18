@@ -174,13 +174,7 @@ curl -H 'Accept: application/json; charset=utf-8; indent=4' -H 'Authorization: T
 **Request Sample**
 
 ```
-curl -X POST 'https://cloud.seatable.io/dtable-server/api/v1/a57b56d31cc54ebd8a6ca1b28ac3dbdf/import-csv/' \
-  -H 'authorization: Token eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE1ODM4MzA4MTUsImR0YWJsZV91dWlkIjoiYTU3YjU2ZDMxY2M1NGViZDhhNmNhMWIyOGFjM2RiZGYiLCJ1c2VybmFtZSI6Inhpb25nY2hhby5jaGVuZ0BzZWFmaWxlLmNvbSIsInBlcm1pc3Npb24iOiJydyJ9.hY_dMfsfWa2iO9U0MxPhdQA_v6E7LB55uVAKKAn7kX8' \
-  -H 'content-type: multipart/form-data; boundary=----WebKitFormBoundary7MA4YWxkTrZu0gW' \
-  -H 'enctype: multipart/form-data' \
-  -F csv_file=@yt_2018-03-01-2.csv \
-  -F table_name=yt-2 \
-  -F lang=zh-cn
+curl -X POST 'https://cloud.seatable.io/dtable-server/api/v1/a57b56d31cc54ebd8a6ca1b28ac3dbdf/import-csv/' -H 'authorization: Token eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE1ODM4MzA4MTUsImR0YWJsZV91dWlkIjoiYTU3YjU2ZDMxY2M1NGViZDhhNmNhMWIyOGFjM2RiZGYiLCJ1c2VybmFtZSI6Inhpb25nY2hhby5jaGVuZ0BzZWFmaWxlLmNvbSIsInBlcm1pc3Npb24iOiJydyJ9.hY_dMfsfWa2iO9U0MxPhdQA_v6E7LB55uVAKKAn7kX8' -H 'content-type: multipart/form-data; boundary=----WebKitFormBoundary7MA4YWxkTrZu0gW' -H 'enctype: multipart/form-data' -F csv_file=@yt_2018-03-01-2.csv -F table_name=yt-2 -F lang=zh-cn
 
 ```
 

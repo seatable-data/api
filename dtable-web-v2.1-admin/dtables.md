@@ -72,8 +72,7 @@ curl -H 'Authorization:Token 5f971000df0d6f35ed7c59580766329a5b37a6df' -H 'Accep
 **Sample Request**
 
 ```
-curl --request GET 'https://cloud.seatable.io/api/v2.1/admin/users/xiongchao.cheng%40seafile.com/dtables/?page=2' \
---header 'Authorization: Token 64b9ee55dc4ab902ff36763ef5c604a76d52875e'
+curl --request GET 'https://cloud.seatable.io/api/v2.1/admin/users/xiongchao.cheng%40seafile.com/dtables/?page=2' --header 'Authorization: Token 64b9ee55dc4ab902ff36763ef5c604a76d52875e'
 
 ```
 
@@ -111,8 +110,7 @@ curl --request GET 'https://cloud.seatable.io/api/v2.1/admin/users/xiongchao.che
 **Sample Request**
 
 ```
-curl --request GET 'https://cloud.seatable.io/api/v2.1/admin/organizations/23/dtables/?page=2&per_page=3' \
---header 'Authorization: Token 64b9ee55dc4ab902ff36763ef5c604a76d52875e'
+curl --request GET 'https://cloud.seatable.io/api/v2.1/admin/organizations/23/dtables/?page=2&per_page=3' --header 'Authorization: Token 64b9ee55dc4ab902ff36763ef5c604a76d52875e'
 
 ```
 
@@ -150,8 +148,7 @@ curl --request GET 'https://cloud.seatable.io/api/v2.1/admin/organizations/23/dt
 **Request Sample**
 
 ```
-curl -X GET 'https://cloud.seatable.io/api/v2.1/admin/trash-dtables/?per_page=25&page=1' \
-  -H 'authorization: Token 64b9ee55dc4ab902ff36763ef5c604a76d52875e'
+curl -X GET 'https://cloud.seatable.io/api/v2.1/admin/trash-dtables/?per_page=25&page=1' -H 'authorization: Token 64b9ee55dc4ab902ff36763ef5c604a76d52875e'
 
 ```
 
@@ -191,8 +188,7 @@ curl -X GET 'https://cloud.seatable.io/api/v2.1/admin/trash-dtables/?per_page=25
 **Request Sample**
 
 ```
-curl -X PUT 'https://cloud.seatable.io/api/v2.1/admin/trash-dtables/30/' \
-  -H 'authorization: Token 64b9ee55dc4ab902ff36763ef5c604a76d52875e'
+curl -X PUT 'https://cloud.seatable.io/api/v2.1/admin/trash-dtables/30/' -H 'authorization: Token 64b9ee55dc4ab902ff36763ef5c604a76d52875e'
 
 ```
 

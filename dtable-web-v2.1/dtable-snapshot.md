@@ -11,9 +11,7 @@
 **Sample Request**
 
 ```
-curl --request POST 'https://cloud.seatable.io/api/v2.1/workspace/107/dtable/for-add/snapshots/aaeea690cfddb542627d0223426ba0840c03c7de/restore/' \
---header 'Authorization: Token 64b9ee55dc4ab902ff36763ef5c604a76d52875e' \
---form 'snapshot_name=for-add-restore-4'
+curl --request POST 'https://cloud.seatable.io/api/v2.1/workspace/107/dtable/for-add/snapshots/aaeea690cfddb542627d0223426ba0840c03c7de/restore/' --header 'Authorization: Token 64b9ee55dc4ab902ff36763ef5c604a76d52875e' --form 'snapshot_name=for-add-restore-4'
 
 ```
 

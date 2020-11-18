@@ -13,13 +13,7 @@
 **Request sample**
 
 ```
-curl -X POST \
-  https://cloud.seatable.io/api/v2.1/dtable-copy/ \
-  -H 'authorization: Token 64b9ee55dc4ab902ff36763ef5c604a76d52875e' \
-  -H 'content-type: multipart/form-data; boundary=----WebKitFormBoundary7MA4YWxkTrZu0gW' \
-  -F src_workspace_id=1 \
-  -F name=test-dtable \
-  -F dst_workspace_id=80
+curl -X POST https://cloud.seatable.io/api/v2.1/dtable-copy/ -H 'authorization: Token 64b9ee55dc4ab902ff36763ef5c604a76d52875e' -H 'content-type: multipart/form-data; boundary=----WebKitFormBoundary7MA4YWxkTrZu0gW' -F src_workspace_id=1 -F name=test-dtable -F dst_workspace_id=80
 
 ```
 
@@ -62,12 +56,7 @@ curl -X POST \
 **Request sample**
 
 ```
-curl -X POST \
-  https://cloud.seatable.io/api/v2.1/dtable-external-link/dtable-copy/ \
-  -H 'authorization: Token 64b9ee55dc4ab902ff36763ef5c604a76d52875e' \
-  -H 'content-type: multipart/form-data; boundary=----WebKitFormBoundary7MA4YWxkTrZu0gW' \
-  -F link='https://cloud.seatable.io/dtable/external-links/6be92845836f41febafe/' \
-  -F dst_workspace_id=80
+curl -X POST https://cloud.seatable.io/api/v2.1/dtable-external-link/dtable-copy/ -H 'authorization: Token 64b9ee55dc4ab902ff36763ef5c604a76d52875e' -H 'content-type: multipart/form-data; boundary=----WebKitFormBoundary7MA4YWxkTrZu0gW' -F link='https://cloud.seatable.io/dtable/external-links/6be92845836f41febafe/' -F dst_workspace_id=80
 
 ```
 

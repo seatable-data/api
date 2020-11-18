@@ -14,8 +14,7 @@ Request Query Params:
 Sample Request
 
 ```
-curl --request GET 'https://cloud.seatable.io/dtable-server/api/v1/dtables/626e40fa76304a4fb7641b71efab4795/columns/?table_name=Table1' \
---header 'Authorization: Token eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE2MDE1MjA1OTYsImR0YWJsZV91dWlkIjoiNjI2ZTQwZmE3NjMwNGE0ZmI3NjQxYjcxZWZhYjQ3OTUiLCJ1c2VybmFtZSI6Inhpb25nY2hhby5jaGVuZ0BzZWFmaWxlLmNvbSIsInBlcm1pc3Npb24iOiJydyJ9.y8igfax5-SiDuaU_CQYj0_uMw8OgBeTfzTbxltdvVfU'
+curl --request GET 'https://cloud.seatable.io/dtable-server/api/v1/dtables/626e40fa76304a4fb7641b71efab4795/columns/?table_name=Table1' --header 'Authorization: Token eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE2MDE1MjA1OTYsImR0YWJsZV91dWlkIjoiNjI2ZTQwZmE3NjMwNGE0ZmI3NjQxYjcxZWZhYjQ3OTUiLCJ1c2VybmFtZSI6Inhpb25nY2hhby5jaGVuZ0BzZWFmaWxlLmNvbSIsInBlcm1pc3Npb24iOiJydyJ9.y8igfax5-SiDuaU_CQYj0_uMw8OgBeTfzTbxltdvVfU'
 
 ```
 
@@ -63,10 +62,7 @@ Request Params
 Sample Request
 
 ```
-curl --request POST 'https://cloud.seatable.io/dtable-server/api/v1/dtables/626e40fa76304a4fb7641b71efab4795/columns/' \
---header 'Authorization: Token eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE2MDE1MjA1OTYsImR0YWJsZV91dWlkIjoiNjI2ZTQwZmE3NjMwNGE0ZmI3NjQxYjcxZWZhYjQ3OTUiLCJ1c2VybmFtZSI6Inhpb25nY2hhby5jaGVuZ0BzZWFmaWxlLmNvbSIsInBlcm1pc3Npb24iOiJydyJ9.y8igfax5-SiDuaU_CQYj0_uMw8OgBeTfzTbxltdvVfU' \
---header 'Content-Type: application/json' \
---data-raw '{
+curl --request POST 'https://cloud.seatable.io/dtable-server/api/v1/dtables/626e40fa76304a4fb7641b71efab4795/columns/' --header 'Authorization: Token eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE2MDE1MjA1OTYsImR0YWJsZV91dWlkIjoiNjI2ZTQwZmE3NjMwNGE0ZmI3NjQxYjcxZWZhYjQ3OTUiLCJ1c2VybmFtZSI6Inhpb25nY2hhby5jaGVuZ0BzZWFmaWxlLmNvbSIsInBlcm1pc3Npb24iOiJydyJ9.y8igfax5-SiDuaU_CQYj0_uMw8OgBeTfzTbxltdvVfU' --header 'Content-Type: application/json' --data-raw '{
     "table_name": "Table1",
     "column_name": "api3",
     "column_type": "number",
@@ -89,10 +85,7 @@ Request Params:
 Sample Request
 
 ```
-curl --request POST 'https://cloud.seatable.io/dtable-server/api/v1/dtables/626e40fa76304a4fb7641b71efab4795/columns/' \
---header 'Authorization: Token eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE2MDE1MjA1OTYsImR0YWJsZV91dWlkIjoiNjI2ZTQwZmE3NjMwNGE0ZmI3NjQxYjcxZWZhYjQ3OTUiLCJ1c2VybmFtZSI6Inhpb25nY2hhby5jaGVuZ0BzZWFmaWxlLmNvbSIsInBlcm1pc3Npb24iOiJydyJ9.y8igfax5-SiDuaU_CQYj0_uMw8OgBeTfzTbxltdvVfU' \
---header 'Content-Type: application/json' \
---data-raw '{
+curl --request POST 'https://cloud.seatable.io/dtable-server/api/v1/dtables/626e40fa76304a4fb7641b71efab4795/columns/' --header 'Authorization: Token eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE2MDE1MjA1OTYsImR0YWJsZV91dWlkIjoiNjI2ZTQwZmE3NjMwNGE0ZmI3NjQxYjcxZWZhYjQ3OTUiLCJ1c2VybmFtZSI6Inhpb25nY2hhby5jaGVuZ0BzZWFmaWxlLmNvbSIsInBlcm1pc3Npb24iOiJydyJ9.y8igfax5-SiDuaU_CQYj0_uMw8OgBeTfzTbxltdvVfU' --header 'Content-Type: application/json' --data-raw '{
     "op_type": "rename_column",
     "table_name": "Table1",
     "column_key": "61Lc",
@@ -115,10 +108,7 @@ Request Params:
 Sample Request
 
 ```
-curl --request POST 'https://cloud.seatable.io/dtable-server/api/v1/dtables/626e40fa76304a4fb7641b71efab4795/columns/' \
---header 'Authorization: Token eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE2MDE1MjA1OTYsImR0YWJsZV91dWlkIjoiNjI2ZTQwZmE3NjMwNGE0ZmI3NjQxYjcxZWZhYjQ3OTUiLCJ1c2VybmFtZSI6Inhpb25nY2hhby5jaGVuZ0BzZWFmaWxlLmNvbSIsInBlcm1pc3Npb24iOiJydyJ9.y8igfax5-SiDuaU_CQYj0_uMw8OgBeTfzTbxltdvVfU' \
---header 'Content-Type: application/json' \
---data-raw '{
+curl --request POST 'https://cloud.seatable.io/dtable-server/api/v1/dtables/626e40fa76304a4fb7641b71efab4795/columns/' --header 'Authorization: Token eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE2MDE1MjA1OTYsImR0YWJsZV91dWlkIjoiNjI2ZTQwZmE3NjMwNGE0ZmI3NjQxYjcxZWZhYjQ3OTUiLCJ1c2VybmFtZSI6Inhpb25nY2hhby5jaGVuZ0BzZWFmaWxlLmNvbSIsInBlcm1pc3Npb24iOiJydyJ9.y8igfax5-SiDuaU_CQYj0_uMw8OgBeTfzTbxltdvVfU' --header 'Content-Type: application/json' --data-raw '{
     "op_type": "resize_column",
     "table_name": "Table1",
     "column_key": "0000",
@@ -141,10 +131,7 @@ Request Params:
 Sample Request
 
 ```
-curl --request POST 'https://cloud.seatable.io/dtable-server/api/v1/dtables/626e40fa76304a4fb7641b71efab4795/columns/' \
---header 'Authorization: Token eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE2MDE1MjA1OTYsImR0YWJsZV91dWlkIjoiNjI2ZTQwZmE3NjMwNGE0ZmI3NjQxYjcxZWZhYjQ3OTUiLCJ1c2VybmFtZSI6Inhpb25nY2hhby5jaGVuZ0BzZWFmaWxlLmNvbSIsInBlcm1pc3Npb24iOiJydyJ9.y8igfax5-SiDuaU_CQYj0_uMw8OgBeTfzTbxltdvVfU' \
---header 'Content-Type: application/json' \
---data-raw '{
+curl --request POST 'https://cloud.seatable.io/dtable-server/api/v1/dtables/626e40fa76304a4fb7641b71efab4795/columns/' --header 'Authorization: Token eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE2MDE1MjA1OTYsImR0YWJsZV91dWlkIjoiNjI2ZTQwZmE3NjMwNGE0ZmI3NjQxYjcxZWZhYjQ3OTUiLCJ1c2VybmFtZSI6Inhpb25nY2hhby5jaGVuZ0BzZWFmaWxlLmNvbSIsInBlcm1pc3Npb24iOiJydyJ9.y8igfax5-SiDuaU_CQYj0_uMw8OgBeTfzTbxltdvVfU' --header 'Content-Type: application/json' --data-raw '{
     "op_type": "freeze_column",
     "table_name": "Table1",
     "column_key": "VnTa",
@@ -167,10 +154,7 @@ Request Params:
 Sample Request
 
 ```
-curl --location --request PUT 'https://cloud.seatable.io/dtable-server/api/v1/dtables/626e40fa76304a4fb7641b71efab4795/columns/' \
---header 'Authorization: Token eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE2MDI1MjU5NjUsImR0YWJsZV91dWlkIjoiNjI2ZTQwZmE3NjMwNGE0ZmI3NjQxYjcxZWZhYjQ3OTUiLCJ1c2VybmFtZSI6Inhpb25nY2hhby5jaGVuZ0BzZWFmaWxlLmNvbSIsInBlcm1pc3Npb24iOiJydyJ9.V_qYR7Mk1Wt4_5n2dAM2fP_CWWwibokWlUX1-OfBn4s' \
---header 'Content-Type: application/json' \
---data-raw '{
+curl --location --request PUT 'https://cloud.seatable.io/dtable-server/api/v1/dtables/626e40fa76304a4fb7641b71efab4795/columns/' --header 'Authorization: Token eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE2MDI1MjU5NjUsImR0YWJsZV91dWlkIjoiNjI2ZTQwZmE3NjMwNGE0ZmI3NjQxYjcxZWZhYjQ3OTUiLCJ1c2VybmFtZSI6Inhpb25nY2hhby5jaGVuZ0BzZWFmaWxlLmNvbSIsInBlcm1pc3Npb24iOiJydyJ9.V_qYR7Mk1Wt4_5n2dAM2fP_CWWwibokWlUX1-OfBn4s' --header 'Content-Type: application/json' --data-raw '{
     "op_type": "move_column",
     "table_name": "Table1",
     "column_key": "0bp2",
@@ -200,10 +184,7 @@ Column type:
 Sample Request
 
 ```
-curl --request PUT 'https://cloud.seatable.io/dtable-server/api/v1/dtables/626e40fa76304a4fb7641b71efab4795/columns/' \
---header 'Authorization: Token eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE2MDI1MjU5NjUsImR0YWJsZV91dWlkIjoiNjI2ZTQwZmE3NjMwNGE0ZmI3NjQxYjcxZWZhYjQ3OTUiLCJ1c2VybmFtZSI6Inhpb25nY2hhby5jaGVuZ0BzZWFmaWxlLmNvbSIsInBlcm1pc3Npb24iOiJydyJ9.V_qYR7Mk1Wt4_5n2dAM2fP_CWWwibokWlUX1-OfBn4s' \
---header 'Content-Type: application/json' \
---data-raw '{
+curl --request PUT 'https://cloud.seatable.io/dtable-server/api/v1/dtables/626e40fa76304a4fb7641b71efab4795/columns/' --header 'Authorization: Token eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE2MDI1MjU5NjUsImR0YWJsZV91dWlkIjoiNjI2ZTQwZmE3NjMwNGE0ZmI3NjQxYjcxZWZhYjQ3OTUiLCJ1c2VybmFtZSI6Inhpb25nY2hhby5jaGVuZ0BzZWFmaWxlLmNvbSIsInBlcm1pc3Npb24iOiJydyJ9.V_qYR7Mk1Wt4_5n2dAM2fP_CWWwibokWlUX1-OfBn4s' --header 'Content-Type: application/json' --data-raw '{
     "op_type": "modify_column_type",
     "table_name": "Table1",
     "column_key": "EGS5",
@@ -224,10 +205,7 @@ Request Params:
 Sample Request
 
 ```
-curl --request DELETE ''https://cloud.seatable.io/dtable-server/api/v1/dtables/626e40fa76304a4fb7641b71efab4795/columns/' \
---header 'Authorization: Token eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE2MDE1MjA1OTYsImR0YWJsZV91dWlkIjoiNjI2ZTQwZmE3NjMwNGE0ZmI3NjQxYjcxZWZhYjQ3OTUiLCJ1c2VybmFtZSI6Inhpb25nY2hhby5jaGVuZ0BzZWFmaWxlLmNvbSIsInBlcm1pc3Npb24iOiJydyJ9.y8igfax5-SiDuaU_CQYj0_uMw8OgBeTfzTbxltdvVfU' \
---header 'Content-Type: application/json' \
---data-raw '{
+curl --request DELETE ''https://cloud.seatable.io/dtable-server/api/v1/dtables/626e40fa76304a4fb7641b71efab4795/columns/' --header 'Authorization: Token eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE2MDE1MjA1OTYsImR0YWJsZV91dWlkIjoiNjI2ZTQwZmE3NjMwNGE0ZmI3NjQxYjcxZWZhYjQ3OTUiLCJ1c2VybmFtZSI6Inhpb25nY2hhby5jaGVuZ0BzZWFmaWxlLmNvbSIsInBlcm1pc3Npb24iOiJydyJ9.y8igfax5-SiDuaU_CQYj0_uMw8OgBeTfzTbxltdvVfU' --header 'Content-Type: application/json' --data-raw '{
     "table_name": "Table1",
     "column_key": "wYVM"
 }'
