@@ -294,10 +294,7 @@ curl -H 'Authorization: Token eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZ
 **Sample request**
 
 ```
-curl --request POST ' https://cloud.seatable.io/dtable-server/api/v1/dtables/41cd05dab29a4428bc31bd66f4600817/batch-append-rows/' \
---header 'Authorization: Token eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE2MDQxMTUwMTcsImR0YWJsZV91dWlkIjoiNDFjZDA1ZGFiMjlhNDQyOGJjMzFiZDY2ZjQ2MDA4MTciLCJ1c2VybmFtZSI6Inhpb25nY2hhby5jaGVuZ0BzZWFmaWxlLmNvbSIsInBlcm1pc3Npb24iOiJydyJ9.jAIndSyeNivFnAb9f3nF8MENYK2I26JS8BLUyo7aJRw' \
---header 'Content-Type: application/json' \
---data-raw '{
+curl --request POST ' https://cloud.seatable.io/dtable-server/api/v1/dtables/41cd05dab29a4428bc31bd66f4600817/batch-append-rows/' --header 'Authorization: Token eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE2MDQxMTUwMTcsImR0YWJsZV91dWlkIjoiNDFjZDA1ZGFiMjlhNDQyOGJjMzFiZDY2ZjQ2MDA4MTciLCJ1c2VybmFtZSI6Inhpb25nY2hhby5jaGVuZ0BzZWFmaWxlLmNvbSIsInBlcm1pc3Npb24iOiJydyJ9.jAIndSyeNivFnAb9f3nF8MENYK2I26JS8BLUyo7aJRw' --header 'Content-Type: application/json' --data-raw '{
     "rows": [{
                 "name": "test", 
                 "content": "batch append rows"

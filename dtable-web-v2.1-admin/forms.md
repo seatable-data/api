@@ -12,8 +12,7 @@
 **Sample Request**
 
 ```
-curl --request GET 'https://cloud.seatable.io/api/v2.1/admin/forms/' \
---header 'Authorization: Token 64b9ee55dc4ab902ff36763ef5c604a76d52875e'
+curl --request GET 'https://cloud.seatable.io/api/v2.1/admin/forms/' --header 'Authorization: Token 64b9ee55dc4ab902ff36763ef5c604a76d52875e'
 
 ```
 
@@ -49,8 +48,7 @@ DELETE /api/v2.1/admin/forms/:token/
 **Sample Request**
 
 ```
-curl --request DELETE 'https://cloud.seatable.io/api/v2.1/admin/forms/3f9ee7c8-7338-4ca5-b877-4df454c6ad8b/' \
---header 'Authorization: Token 64b9ee55dc4ab902ff36763ef5c604a76d52875e'
+curl --request DELETE 'https://cloud.seatable.io/api/v2.1/admin/forms/3f9ee7c8-7338-4ca5-b877-4df454c6ad8b/' --header 'Authorization: Token 64b9ee55dc4ab902ff36763ef5c604a76d52875e'
 
 ```
 
@@ -63,6 +61,6 @@ curl --request DELETE 'https://cloud.seatable.io/api/v2.1/admin/forms/3f9ee7c8-7
 
 ```
 
-****
+---
 
 

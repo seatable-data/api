@@ -7,8 +7,7 @@
 **Sample Request**
 
 ```
-curl --request GET 'https://cloud.seatable.io/api/v2.1/org/23/admin/work-weixin/info/' \
---header 'Authorization: Token 95ca2c5f0bf469742f21023b191520f5a5c63eb6'
+curl --request GET 'https://cloud.seatable.io/api/v2.1/org/23/admin/work-weixin/info/' --header 'Authorization: Token 95ca2c5f0bf469742f21023b191520f5a5c63eb6'
 
 ```
 

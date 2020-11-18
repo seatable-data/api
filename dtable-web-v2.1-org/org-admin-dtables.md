@@ -12,8 +12,7 @@
 **Request Sample**
 
 ```
-curl --request GET 'https://cloud.seatable.io/api/v2.1/org/23/admin/dtables/?page=1&per_page=1' \
---header 'Authorization: Token 95ca2c5f0bf469742f21023b191520f5a5c63eb6'
+curl --request GET 'https://cloud.seatable.io/api/v2.1/org/23/admin/dtables/?page=1&per_page=1' --header 'Authorization: Token 95ca2c5f0bf469742f21023b191520f5a5c63eb6'
 
 ```
 
@@ -52,8 +51,7 @@ curl --request GET 'https://cloud.seatable.io/api/v2.1/org/23/admin/dtables/?pag
 **Request Sample**
 
 ```
-curl --request DELETE 'https://cloud.seatable.io/api/v2.1/org/23/admin/dtables/277/' \
---header 'Authorization: Token 95ca2c5f0bf469742f21023b191520f5a5c63eb6'
+curl --request DELETE 'https://cloud.seatable.io/api/v2.1/org/23/admin/dtables/277/' --header 'Authorization: Token 95ca2c5f0bf469742f21023b191520f5a5c63eb6'
 
 ```
 
@@ -85,8 +83,7 @@ curl --request DELETE 'https://cloud.seatable.io/api/v2.1/org/23/admin/dtables/2
 **Request Sample**
 
 ```
-curl --request GET 'https://cloud.seatable.io/api/v2.1/org/23/admin/trash-dtables/?page=1&per_page=1' \
---header 'Authorization: Token 95ca2c5f0bf469742f21023b191520f5a5c63eb6'
+curl --request GET 'https://cloud.seatable.io/api/v2.1/org/23/admin/trash-dtables/?page=1&per_page=1' --header 'Authorization: Token 95ca2c5f0bf469742f21023b191520f5a5c63eb6'
 
 ```
 
@@ -127,8 +124,7 @@ curl --request GET 'https://cloud.seatable.io/api/v2.1/org/23/admin/trash-dtable
 **Request Sample**
 
 ```
-curl --request PUT 'https://cloud.seatable.io/api/v2.1/org/23/admin/trash-dtables/277/' \
---header 'Authorization: Token 95ca2c5f0bf469742f21023b191520f5a5c63eb6'
+curl --request PUT 'https://cloud.seatable.io/api/v2.1/org/23/admin/trash-dtables/277/' --header 'Authorization: Token 95ca2c5f0bf469742f21023b191520f5a5c63eb6'
 
 ```
 

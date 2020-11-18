@@ -1,13 +1,13 @@
 # Forms
 
-## Get a DTable's Forms
+## Get a Base's Forms
 
 **GET** api/v2.1/forms/
 
 **Request parameters**
 
 * workspace_id
-* name
+* name (of the base)
 
 **Sample request**
 
@@ -53,21 +53,21 @@ curl -H 'Authorization: Token e39d9392d02a770e3edccdc5116da293a7773533' -H 'Acce
 * 403 Permission Denied.
 * 500 Internal Server Error.
 
-## Create a DTable Form
+## Create a Form
 
 **POST** api/v2.1/forms/
 
 **Request parameters**
 
 * workspace_id
-* name
-* form_id
-* form_config
+* name (of the base)
+* form_id (a 4-digit combination of numbers and letters)
+* form_config (Use form_config={"form_name":"abc"} to give your form the name "abc")
 
 **Sample request**
 
 ```
-curl -X POST -d 'workspace_id=1&name=hello&form_id=1KOJ&form_config={...}' -H 'Authorization: Token e39d9392d02a770e3edccdc5116da293a7773533' -H 'Accept: application/json; charset=utf-8; indent=4' "http://127.0.0.1:8001/api/v2.1/forms/"
+curl -X POST -d 'workspace_id=1&name=hello&form_id=1KOJ&form_config={"form_name":"abc"}' -H 'Authorization: Token e39d9392d02a770e3edccdc5116da293a7773533' -H 'Accept: application/json; charset=utf-8; indent=4' "http://127.0.0.1:8001/api/v2.1/forms/"
 
 ```
 
@@ -81,7 +81,7 @@ curl -X POST -d 'workspace_id=1&name=hello&form_id=1KOJ&form_config={...}' -H 'A
         "workspace_id": "1",
         "dtable_uuid": "5a40dd8e59b749ff84a73c9fb8a0cf60",
         "form_id": "1KOJ",
-        "form_config": "{...}",
+        "form_config": "{\"form_name\":\"abc\"}",
         "token": "d76d7428-ba53-4628-8a5b-2e090d693fbf",
         "form_link": "http://127.0.0.1:8001/dtable/forms/d76d7428-ba53-4628-8a5b-2e090d693fbf"
     }
@@ -96,19 +96,19 @@ curl -X POST -d 'workspace_id=1&name=hello&form_id=1KOJ&form_config={...}' -H 'A
 * 403 Permission Denied.
 * 500 Internal Server Error.
 
-## Update a DTable Form
+## Update a Form
 
 **PUT** api/v2.1/forms/\<token>/
 
 **Request parameters**
 
-* token
-* form_config
+* token (suffix of the form link)
+* form_config (Use form_config={"form_name":"new name"} to give your form the name "new name")
 
 **Sample request**
 
 ```
-curl -X PUT -d 'form_config={...}' -H 'Authorization: Token e39d9392d02a770e3edccdc5116da293a7773533' -H 'Accept: application/json; charset=utf-8; indent=4' "http://127.0.0.1:8001/api/v2.1/forms/d76d7428-ba53-4628-8a5b-2e090d693fbf/"
+curl -X PUT -d 'form_config={"form_name":"new name"}' -H 'Authorization: Token e39d9392d02a770e3edccdc5116da293a7773533' -H 'Accept: application/json; charset=utf-8; indent=4' "http://127.0.0.1:8001/api/v2.1/forms/d76d7428-ba53-4628-8a5b-2e090d693fbf/"
 
 ```
 
@@ -122,7 +122,7 @@ curl -X PUT -d 'form_config={...}' -H 'Authorization: Token e39d9392d02a770e3edc
         "workspace_id": "1",
         "dtable_uuid": "5a40dd8e59b749ff84a73c9fb8a0cf60",
         "form_id": "1KOJ",
-        "form_config": "{...}",
+        "form_config": "{\"form_name\":\"new name\"}",
         "token": "d76d7428-ba53-4628-8a5b-2e090d693fbf",
         "form_link": "http://127.0.0.1:8001/dtable/forms/d76d7428-ba53-4628-8a5b-2e090d693fbf"
     }
@@ -137,13 +137,13 @@ curl -X PUT -d 'form_config={...}' -H 'Authorization: Token e39d9392d02a770e3edc
 * 403 Permission Denied.
 * 500 Internal Server Error.
 
-## Delete a DTable Form
+## Delete a Form
 
 **DELETE** api/v2.1/forms/\<token>/
 
 **Request parameters**
 
-* token
+* token (suffix of the form link)
 
 **Sample request**
 
@@ -196,10 +196,6 @@ curl http://127.0.0.1:8001/api/v2.1/forms/5ac7517a-6315-410f-ac70-a7e02593faf9/u
 
 **GET** api/v2.1/forms/
 
-**Request parameters**
-
-* null
-
 **Sample request**
 
 ```
@@ -246,15 +242,15 @@ curl -H 'Authorization: Token e39d9392d02a770e3edccdc5116da293a7773533' -H 'Acce
 * 403 Permission Denied.
 * 500 Internal Server Error.
 
-## Form share
+## Share a Form to Groups
 
 **POST** api/v2.1/forms/\<token>/share/
 
 **Request parameters**
 
-* token
+* token (suffix of the form link)
 * share_type
-* group_ids
+* group_ids (if you don't know the group ids, contact your organization administrator)
 
 **Sample request**
 
@@ -283,10 +279,6 @@ curl -X POST -d 'share_type='group' group_ids=[1, 3, 17]' -H 'Authorization: Tok
 ## List shared forms
 
 **GET** api/v2.1/forms/shared/
-
-**Request parameters**
-
-* null
 
 **Sample request**
 

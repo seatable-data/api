@@ -7,8 +7,7 @@
 **Request Sample**
 
 ```
-curl --request GET 'https://cloud.seatable.io/api/v2.1/dtables/group-shared/' \
---header 'Authorization: Token 64b9ee55dc4ab902ff36763ef5c604a76d52875e'
+curl --request GET 'https://cloud.seatable.io/api/v2.1/dtables/group-shared/' --header 'Authorization: Token 64b9ee55dc4ab902ff36763ef5c604a76d52875e'
 
 ```
 
@@ -60,10 +59,7 @@ curl --request GET 'https://cloud.seatable.io/api/v2.1/dtables/group-shared/' \
 **Request Sample**
 
 ```
-curl --request POST 'https://cloud.seatable.io/api/v2.1/workspace/103/dtable/for-group-share/group-shares/' \
---header 'Authorization: Token 64b9ee55dc4ab902ff36763ef5c604a76d52875e' \
---form 'group_id=64' \
---form 'permission=r'
+curl --request POST 'https://cloud.seatable.io/api/v2.1/workspace/103/dtable/for-group-share/group-shares/' --header 'Authorization: Token 64b9ee55dc4ab902ff36763ef5c604a76d52875e' --form 'group_id=64' --form 'permission=r'
 
 ```
 
@@ -97,9 +93,7 @@ curl --request POST 'https://cloud.seatable.io/api/v2.1/workspace/103/dtable/for
 **Request Sample**
 
 ```
-curl --location --request PUT 'https://cloud.seatable.io/api/v2.1/workspace/103/dtable/for-copy-4/group-shares/64/' \
---header 'Authorization: Token 64b9ee55dc4ab902ff36763ef5c604a76d52875e' \
---form 'permission=rw'
+curl --location --request PUT 'https://cloud.seatable.io/api/v2.1/workspace/103/dtable/for-copy-4/group-shares/64/' --header 'Authorization: Token 64b9ee55dc4ab902ff36763ef5c604a76d52875e' --form 'permission=rw'
 
 ```
 
@@ -125,8 +119,7 @@ curl --location --request PUT 'https://cloud.seatable.io/api/v2.1/workspace/103/
 **Request Sample**
 
 ```
-curl --request GET 'https://cloud.seatable.io/api/v2.1/workspace/103/dtable/for-copy/group-shares/' \
---header 'Authorization: Token 64b9ee55dc4ab902ff36763ef5c604a76d52875e'
+curl --request GET 'https://cloud.seatable.io/api/v2.1/workspace/103/dtable/for-copy/group-shares/' --header 'Authorization: Token 64b9ee55dc4ab902ff36763ef5c604a76d52875e'
 
 ```
 
@@ -158,8 +151,7 @@ curl --request GET 'https://cloud.seatable.io/api/v2.1/workspace/103/dtable/for-
 **Request Sample**
 
 ```
-curl --request DELETE 'https://cloud.seatable.io/api/v2.1/workspace/103/dtable/for-copy-4/group-shares/64/' \
---header 'Authorization: Token 64b9ee55dc4ab902ff36763ef5c604a76d52875e'
+curl --request DELETE 'https://cloud.seatable.io/api/v2.1/workspace/103/dtable/for-copy-4/group-shares/64/' --header 'Authorization: Token 64b9ee55dc4ab902ff36763ef5c604a76d52875e'
 
 ```
 

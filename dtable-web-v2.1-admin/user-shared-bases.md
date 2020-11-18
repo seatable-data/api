@@ -12,8 +12,7 @@
 **Sample request**
 
 ```
-curl --request GET 'https://cloud.seatable.io/api/v2.1/admin/users/xiongchao.cheng@seafile.com/shared-dtables/' \
---header 'Authorization: Token 64b9ee55dc4ab902ff36763ef5c604a76d52875e'
+curl --request GET 'https://cloud.seatable.io/api/v2.1/admin/users/xiongchao.cheng@seafile.com/shared-dtables/' --header 'Authorization: Token 64b9ee55dc4ab902ff36763ef5c604a76d52875e'
 
 ```
 

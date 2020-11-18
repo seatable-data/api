@@ -11,11 +11,7 @@
 **request sample**
 
 ```
-curl -X GET \
-  'https://cloud.seatable.io/dtable-server/api/v1/dtables/a57b56d31cc54ebd8a6ca1b28ac3dbdf/comments-count/?row_id=289eb40b-cd25-47aa-b664-da35b4afa210' \
-  -H 'authorization: Token eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE1NzYyMTg4MzAsImR0YWJsZV91dWlkIjoiYTU3YjU2ZDMxY2M1NGViZDhhNmNhMWIyOGFjM2RiZGYiLCJ1c2VybmFtZSI6Inhpb25nY2hhby5jaGVuZ0BzZWFmaWxlLmNvbSIsInBlcm1pc3Npb24iOiJydyJ9.DDp5q4hg98cvHUqBhJdFxbENm7ukrwDvlnNdY0OFCXs' \
-  -H 'cache-control: no-cache' \
-  -H 'postman-token: fe1e4d7b-bfd2-7a24-1948-60df75fc6a90'
+curl -X GET 'https://cloud.seatable.io/dtable-server/api/v1/dtables/a57b56d31cc54ebd8a6ca1b28ac3dbdf/comments-count/?row_id=289eb40b-cd25-47aa-b664-da35b4afa210' -H 'authorization: Token eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE1NzYyMTg4MzAsImR0YWJsZV91dWlkIjoiYTU3YjU2ZDMxY2M1NGViZDhhNmNhMWIyOGFjM2RiZGYiLCJ1c2VybmFtZSI6Inhpb25nY2hhby5jaGVuZ0BzZWFmaWxlLmNvbSIsInBlcm1pc3Npb24iOiJydyJ9.DDp5q4hg98cvHUqBhJdFxbENm7ukrwDvlnNdY0OFCXs' -H 'cache-control: no-cache' -H 'postman-token: fe1e4d7b-bfd2-7a24-1948-60df75fc6a90'
 
 ```
 
@@ -47,11 +43,7 @@ curl -X GET \
 **request sample**
 
 ```
-curl -X GET \
-  'https://cloud.seatable.io/dtable-server/api/v1/dtables/a57b56d31cc54ebd8a6ca1b28ac3dbdf/comments/?page=1&count=10&row_id=289eb40b-cd25-47aa-b664-da35b4afa210' \
-  -H 'authorization: Token eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE1NzYyMTg4MzAsImR0YWJsZV91dWlkIjoiYTU3YjU2ZDMxY2M1NGViZDhhNmNhMWIyOGFjM2RiZGYiLCJ1c2VybmFtZSI6Inhpb25nY2hhby5jaGVuZ0BzZWFmaWxlLmNvbSIsInBlcm1pc3Npb24iOiJydyJ9.DDp5q4hg98cvHUqBhJdFxbENm7ukrwDvlnNdY0OFCXs' \
-  -H 'cache-control: no-cache' \
-  -H 'postman-token: 9afab10e-86f1-abb8-dc9d-0cb0f290cf10'
+curl -X GET 'https://cloud.seatable.io/dtable-server/api/v1/dtables/a57b56d31cc54ebd8a6ca1b28ac3dbdf/comments/?page=1&count=10&row_id=289eb40b-cd25-47aa-b664-da35b4afa210' -H 'authorization: Token eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE1NzYyMTg4MzAsImR0YWJsZV91dWlkIjoiYTU3YjU2ZDMxY2M1NGViZDhhNmNhMWIyOGFjM2RiZGYiLCJ1c2VybmFtZSI6Inhpb25nY2hhby5jaGVuZ0BzZWFmaWxlLmNvbSIsInBlcm1pc3Npb24iOiJydyJ9.DDp5q4hg98cvHUqBhJdFxbENm7ukrwDvlnNdY0OFCXs' -H 'cache-control: no-cache' -H 'postman-token: 9afab10e-86f1-abb8-dc9d-0cb0f290cf10'
 
 ```
 
@@ -104,13 +96,7 @@ curl -X GET \
 **request sample**
 
 ```
-curl -X POST \
-  'https://cloud.seatable.io/dtable-server/api/v1/dtables/a57b56d31cc54ebd8a6ca1b28ac3dbdf/comments/?row_id=289eb40b-cd25-47aa-b664-da35b4afa210' \
-  -H 'authorization: Token eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE1NzYyMTg4MzAsImR0YWJsZV91dWlkIjoiYTU3YjU2ZDMxY2M1NGViZDhhNmNhMWIyOGFjM2RiZGYiLCJ1c2VybmFtZSI6Inhpb25nY2hhby5jaGVuZ0BzZWFmaWxlLmNvbSIsInBlcm1pc3Npb24iOiJydyJ9.DDp5q4hg98cvHUqBhJdFxbENm7ukrwDvlnNdY0OFCXs' \
-  -H 'cache-control: no-cache' \
-  -H 'content-type: application/json' \
-  -H 'postman-token: 532a7a07-74a1-db4b-4199-9f57193c891e' \
-  -d '{
+curl -X POST 'https://cloud.seatable.io/dtable-server/api/v1/dtables/a57b56d31cc54ebd8a6ca1b28ac3dbdf/comments/?row_id=289eb40b-cd25-47aa-b664-da35b4afa210' -H 'authorization: Token eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE1NzYyMTg4MzAsImR0YWJsZV91dWlkIjoiYTU3YjU2ZDMxY2M1NGViZDhhNmNhMWIyOGFjM2RiZGYiLCJ1c2VybmFtZSI6Inhpb25nY2hhby5jaGVuZ0BzZWFmaWxlLmNvbSIsInBlcm1pc3Npb24iOiJydyJ9.DDp5q4hg98cvHUqBhJdFxbENm7ukrwDvlnNdY0OFCXs' -H 'cache-control: no-cache' -H 'content-type: application/json' -H 'postman-token: 532a7a07-74a1-db4b-4199-9f57193c891e' -d '{
 	"comment": "test-comment-again-after-changing"
 }'
 
@@ -143,13 +129,7 @@ curl -X POST \
 **request sample**
 
 ```
-curl -X PUT \
-  https://cloud.seatable.io/dtable-server/api/v1/dtables/a57b56d31cc54ebd8a6ca1b28ac3dbdf/comments/9/ \
-  -H 'authorization: Token eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE1NzYyMTg4MzAsImR0YWJsZV91dWlkIjoiYTU3YjU2ZDMxY2M1NGViZDhhNmNhMWIyOGFjM2RiZGYiLCJ1c2VybmFtZSI6Inhpb25nY2hhby5jaGVuZ0BzZWFmaWxlLmNvbSIsInBlcm1pc3Npb24iOiJydyJ9.DDp5q4hg98cvHUqBhJdFxbENm7ukrwDvlnNdY0OFCXs' \
-  -H 'cache-control: no-cache' \
-  -H 'content-type: application/json' \
-  -H 'postman-token: 65535e11-afe4-3870-e476-760dd54c771b' \
-  -d '{
+curl -X PUT https://cloud.seatable.io/dtable-server/api/v1/dtables/a57b56d31cc54ebd8a6ca1b28ac3dbdf/comments/9/ -H 'authorization: Token eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE1NzYyMTg4MzAsImR0YWJsZV91dWlkIjoiYTU3YjU2ZDMxY2M1NGViZDhhNmNhMWIyOGFjM2RiZGYiLCJ1c2VybmFtZSI6Inhpb25nY2hhby5jaGVuZ0BzZWFmaWxlLmNvbSIsInBlcm1pc3Npb24iOiJydyJ9.DDp5q4hg98cvHUqBhJdFxbENm7ukrwDvlnNdY0OFCXs' -H 'cache-control: no-cache' -H 'content-type: application/json' -H 'postman-token: 65535e11-afe4-3870-e476-760dd54c771b' -d '{
 	"options": {
 		"comment": "wowwwwwwww",
 		"resolved": 1
@@ -180,11 +160,7 @@ curl -X PUT \
 **request sample**
 
 ```
-curl -X DELETE \
-  https://cloud.seatable.io/dtable-server/api/v1/dtables/a57b56d31cc54ebd8a6ca1b28ac3dbdf/comments/7/ \
-  -H 'authorization: Token eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE1NzYyMTg4MzAsImR0YWJsZV91dWlkIjoiYTU3YjU2ZDMxY2M1NGViZDhhNmNhMWIyOGFjM2RiZGYiLCJ1c2VybmFtZSI6Inhpb25nY2hhby5jaGVuZ0BzZWFmaWxlLmNvbSIsInBlcm1pc3Npb24iOiJydyJ9.DDp5q4hg98cvHUqBhJdFxbENm7ukrwDvlnNdY0OFCXs' \
-  -H 'cache-control: no-cache' \
-  -H 'postman-token: 0eb3fafb-88cd-c41b-70b1-ff968a53c964'
+curl -X DELETE https://cloud.seatable.io/dtable-server/api/v1/dtables/a57b56d31cc54ebd8a6ca1b28ac3dbdf/comments/7/ -H 'authorization: Token eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE1NzYyMTg4MzAsImR0YWJsZV91dWlkIjoiYTU3YjU2ZDMxY2M1NGViZDhhNmNhMWIyOGFjM2RiZGYiLCJ1c2VybmFtZSI6Inhpb25nY2hhby5jaGVuZ0BzZWFmaWxlLmNvbSIsInBlcm1pc3Npb24iOiJydyJ9.DDp5q4hg98cvHUqBhJdFxbENm7ukrwDvlnNdY0OFCXs' -H 'cache-control: no-cache' -H 'postman-token: 0eb3fafb-88cd-c41b-70b1-ff968a53c964'
 
 ```
 
@@ -210,11 +186,7 @@ curl -X DELETE \
 **request sample**
 
 ```
-curl -X GET \
-  https://cloud.seatable.io/dtable-server/api/v1/dtables/a57b56d31cc54ebd8a6ca1b28ac3dbdf/comments/8/ \
-  -H 'authorization: Token eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE1NzYyMTg4MzAsImR0YWJsZV91dWlkIjoiYTU3YjU2ZDMxY2M1NGViZDhhNmNhMWIyOGFjM2RiZGYiLCJ1c2VybmFtZSI6Inhpb25nY2hhby5jaGVuZ0BzZWFmaWxlLmNvbSIsInBlcm1pc3Npb24iOiJydyJ9.DDp5q4hg98cvHUqBhJdFxbENm7ukrwDvlnNdY0OFCXs' \
-  -H 'cache-control: no-cache' \
-  -H 'postman-token: 967ba77d-a72c-11c9-4ce9-a68ae7fd87b7'
+curl -X GET https://cloud.seatable.io/dtable-server/api/v1/dtables/a57b56d31cc54ebd8a6ca1b28ac3dbdf/comments/8/ -H 'authorization: Token eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE1NzYyMTg4MzAsImR0YWJsZV91dWlkIjoiYTU3YjU2ZDMxY2M1NGViZDhhNmNhMWIyOGFjM2RiZGYiLCJ1c2VybmFtZSI6Inhpb25nY2hhby5jaGVuZ0BzZWFmaWxlLmNvbSIsInBlcm1pc3Npb24iOiJydyJ9.DDp5q4hg98cvHUqBhJdFxbENm7ukrwDvlnNdY0OFCXs' -H 'cache-control: no-cache' -H 'postman-token: 967ba77d-a72c-11c9-4ce9-a68ae7fd87b7'
 
 ```
 
@@ -250,8 +222,7 @@ curl -X GET \
 **Sample Request**
 
 ```
-curl --request GET 'https://cloud.seatable.io/dtable-server/api/v1/dtables/00390415b6dc416a8f2a70a3a1356a18/comments-within-days/?days=3' \
---header 'Authorization: Token eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE1ODczNDk0NzQsImR0YWJsZV91dWlkIjoiMDAzOTA0MTViNmRjNDE2YThmMmE3MGEzYTEzNTZhMTgiLCJ1c2VybmFtZSI6Inhpb25nY2hhby5jaGVuZ0BzZWFmaWxlLmNvbSIsInBlcm1pc3Npb24iOiJydyJ9.BG55vZP0WMkM8cx_12aI-dNQiNp0l8kHlTqmErclX8Y'
+curl --request GET 'https://cloud.seatable.io/dtable-server/api/v1/dtables/00390415b6dc416a8f2a70a3a1356a18/comments-within-days/?days=3' --header 'Authorization: Token eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE1ODczNDk0NzQsImR0YWJsZV91dWlkIjoiMDAzOTA0MTViNmRjNDE2YThmMmE3MGEzYTEzNTZhMTgiLCJ1c2VybmFtZSI6Inhpb25nY2hhby5jaGVuZ0BzZWFmaWxlLmNvbSIsInBlcm1pc3Npb24iOiJydyJ9.BG55vZP0WMkM8cx_12aI-dNQiNp0l8kHlTqmErclX8Y'
 
 ```
 

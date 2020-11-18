@@ -7,8 +7,7 @@
 **Sample request**
 
 ```
-curl --request GET 'https://cloud.seatable.io/api/v2.1/workspace/107/dtable/for-add%20(2)/webhooks/' \
---header 'Authorization: Token 3120688f207383ba90e6160190ff70036d2e185d'
+curl --request GET 'https://cloud.seatable.io/api/v2.1/workspace/107/dtable/for-add%20(2)/webhooks/' --header 'Authorization: Token 3120688f207383ba90e6160190ff70036d2e185d'
 
 ```
 
@@ -51,10 +50,7 @@ curl --request GET 'https://cloud.seatable.io/api/v2.1/workspace/107/dtable/for-
 **Sample request**
 
 ```
-curl --request POST 'https://cloud.seatable.io/api/v2.1/workspace/107/dtable/for-add%20(2)/webhooks/' \
---header 'Authorization: Token 3120688f207383ba90e6160190ff70036d2e185d' \
---form 'url=http://127.0.0.1:5004' \
---form 'secret=123'
+curl --request POST 'https://cloud.seatable.io/api/v2.1/workspace/107/dtable/for-add%20(2)/webhooks/' --header 'Authorization: Token 3120688f207383ba90e6160190ff70036d2e185d' --form 'url=http://127.0.0.1:5004' --form 'secret=123'
 
 ```
 
@@ -88,10 +84,7 @@ curl --request POST 'https://cloud.seatable.io/api/v2.1/workspace/107/dtable/for
 **Sample request**
 
 ```
-curl --request PUT 'https://cloud.seatable.io/api/v2.1/workspace/107/dtable/for-add%20(2)/webhooks/15/' \
---header 'Authorization: Token 3120688f207383ba90e6160190ff70036d2e185d' \
---form 'url=http://127.0.0.1:5005' \
---form 'secret=456'
+curl --request PUT 'https://cloud.seatable.io/api/v2.1/workspace/107/dtable/for-add%20(2)/webhooks/15/' --header 'Authorization: Token 3120688f207383ba90e6160190ff70036d2e185d' --form 'url=http://127.0.0.1:5005' --form 'secret=456'
 
 ```
 
@@ -120,8 +113,7 @@ curl --request PUT 'https://cloud.seatable.io/api/v2.1/workspace/107/dtable/for-
 **Sample request**
 
 ```
-curl --request DELETE 'https://cloud.seatable.io/api/v2.1/workspace/107/dtable/for-add%20(2)/webhooks/15/' \
---header 'Authorization: Token 3120688f207383ba90e6160190ff70036d2e185d'
+curl --request DELETE 'https://cloud.seatable.io/api/v2.1/workspace/107/dtable/for-add%20(2)/webhooks/15/' --header 'Authorization: Token 3120688f207383ba90e6160190ff70036d2e185d'
 
 ```
 

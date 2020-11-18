@@ -13,9 +13,7 @@
 **Sample Request**
 
 ```
-curl -X GET \
-  https://cloud.seatable.io/dtable-server/api/v1/dtables/a57b56d31cc54ebd8a6ca1b28ac3dbdf/activities/?page=1&row_id=YMIviMeERQCUiQhPPqo6Gw \
-  -H 'authorization: Token eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE1Nzg4MDIxNjUsImR0YWJsZV91dWlkIjoiYTU3YjU2ZDMxY2M1NGViZDhhNmNhMWIyOGFjM2RiZGYiLCJ1c2VybmFtZSI6Inhpb25nY2hhby5jaGVuZ0BzZWFmaWxlLmNvbSIsInBlcm1pc3Npb24iOiJydyJ9.CfhFnZ_zG2oVU3awhbeRMv_ttya5Jb7I4hKrUgoLook'
+curl -X GET https://cloud.seatable.io/dtable-server/api/v1/dtables/a57b56d31cc54ebd8a6ca1b28ac3dbdf/activities/?page=1&row_id=YMIviMeERQCUiQhPPqo6Gw -H 'authorization: Token eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE1Nzg4MDIxNjUsImR0YWJsZV91dWlkIjoiYTU3YjU2ZDMxY2M1NGViZDhhNmNhMWIyOGFjM2RiZGYiLCJ1c2VybmFtZSI6Inhpb25nY2hhby5jaGVuZ0BzZWFmaWxlLmNvbSIsInBlcm1pc3Npb24iOiJydyJ9.CfhFnZ_zG2oVU3awhbeRMv_ttya5Jb7I4hKrUgoLook'
 
 ```
 
