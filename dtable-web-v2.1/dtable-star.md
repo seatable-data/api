@@ -1,6 +1,6 @@
 # Dtable Star
 
-## Get Starred DTables
+## Get Starred Bases
 
 **GET** /api/v2.1/starred-dtables/
 
@@ -41,13 +41,13 @@ curl --request GET 'https://cloud.seatable.io/api/v2.1/starred-dtables/' --heade
 
 ```
 
-## Add a Star to a DTable
+## Add a Star to a Base
 
 **POST** /api/v2.1/starred-dtables/
 
 **Request Params**
 
-* **dtable_uuid**: the uuid of dtable, required
+* **dtable_uuid**: the uuid of the base, required
 
 **Sample Request**
 
@@ -65,13 +65,13 @@ curl --request POST 'https://cloud.seatable.io/api/v2.1/starred-dtables/' --head
 
 ```
 
-## Delete Star of a DTable
+## Delete Star of a Base
 
- **DELETE** /api/v2.1/starred-dtables/
+ **DELETE** /api/v2.1/starred-dtables/?dtable_uuid=\<dtable_uuid>
 
 **Request Params**
 
-* **dtable_uuid**: the uuid of starred dtable, required
+* **dtable_uuid**: the uuid of the starred base, required
 
 **Sample Request**
 

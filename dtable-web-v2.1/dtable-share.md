@@ -1,8 +1,8 @@
 # DTable Share
 
-## List DTables Shared to me
+## List Bases Shared to me
 
-**GET** http\://127.0.0.1:8000/api/v2.1/dtables/shared/
+**GET** /api/v2.1/dtables/shared/
 
 **Sample request**
 
@@ -53,14 +53,14 @@ curl -H 'Authorization: Token 5f971000df0d6f35ed7c59580766329a5b37a6df' -H 'Acce
 
 * 500 Internal Server Error.
 
-## List DTable Shares
+## List Users Sharing a Base
 
-**GET** http\://127.0.0.1:8000/api/v2.1/workspace/\<workspace_id>/dtable/\<name>/share/
+**GET** /api/v2.1/workspace/\<workspace_id>/dtable/\<name>/share/
 
 **Request parameters**
 
-* workspace_id
-* name
+* **workspace_id**
+* **name** of the base
 
 **Sample request**
 
@@ -92,21 +92,21 @@ curl -H 'Authorization: Token 5f971000df0d6f35ed7c59580766329a5b37a6df' -H 'Acce
 * 403 PERMISSION DENIED.
 * 500 Internal Server Error.
 
-## Share DTable
+## Share a Base to Another User in the Organization
 
-**POST** http\://127.0.0.1:8000/api/v2.1/workspace/\<workspace_id>/dtable/\<name>/share/
+**POST** /api/v2.1/workspace/\<workspace_id>/dtable/\<name>/share/
 
 **Request parameters**
 
-* workspace_id
-* name
-* permission
-* email
+* **workspace_id**
+* **name** of the base
+* **permission**, share permission, with the options `r` and `rw` meaning read-only and read-write, required
+* **email **is not the contact email, but the user's ID ending with @auth.local
 
 **Sample request**
 
 ```
-curl -X POST -d "permission=rw&email=2@2.com" -H 'Authorization: Token 5f971000df0d6f35ed7c59580766329a5b37a6df' -H 'Accept: application/json; charset=utf-8; indent=4' "http://127.0.0.1:8000/api/v2.1/workspace/12/dtable/test/share/"
+curl -X POST -d "permission=rw&email=2436ce64315b4b4azfcff9e5491db296@auth.local" -H 'Authorization: Token 5f971000df0d6f35ed7c59580766329a5b37a6df' -H 'Accept: application/json; charset=utf-8; indent=4' "http://127.0.0.1:8000/api/v2.1/workspace/12/dtable/test/share/"
 
 ```
 
@@ -114,7 +114,7 @@ curl -X POST -d "permission=rw&email=2@2.com" -H 'Authorization: Token 5f971000d
 
 ```
 {
-    "success": true
+    "success":true
 }
 
 ```
@@ -127,16 +127,16 @@ curl -X POST -d "permission=rw&email=2@2.com" -H 'Authorization: Token 5f971000d
 * 409 CONFLICT.
 * 500 Internal Server Error.
 
-## Update DTable Share Permission
+## Update a Base's Sharing Permission to a User
 
-**PUT** http\://127.0.0.1:8000/api/v2.1/workspace/\<workspace_id>/dtable/\<name>/share/
+**PUT** /api/v2.1/workspace/\<workspace_id>/dtable/\<name>/share/
 
 **Request parameters**
 
-* workspace_id
-* name
-* permission
-* email
+* **workspace_id**
+* **name** of the base
+* **permission**, share permission, with the options `r` and `rw` meaning read-only and read-write, required
+* **email **is not the contact email, but the user's ID ending with @auth.local
 
 **Sample request**
 
@@ -149,7 +149,7 @@ curl -X PUT -d "permission=r&email=2@2.com" -H 'Authorization: Token 5f971000df0
 
 ```
 {
-    "success": true
+    "success":true
 }
 
 ```
@@ -161,20 +161,20 @@ curl -X PUT -d "permission=r&email=2@2.com" -H 'Authorization: Token 5f971000df0
 * 403 PERMISSION DENIED.
 * 500 Internal Server Error.
 
-## Cancel DTable Share
+## Cancel a Base's Share to a User
 
-**DELETE** http\://127.0.0.1:8000/api/v2.1/workspace/\<workspace_id>/dtable/\<name>/share/
+**DELETE** /api/v2.1/workspace/\<workspace_id>/dtable/\<name>/share/
 
 **Request parameters**
 
-* workspace_id
-* name
-* email
+* **workspace_id**
+* **name** of the base
+* **email **is not the contact email, but the user's ID ending with @auth.local
 
 **Sample request**
 
 ```
-curl -X DELETE -d "email=2@2.com" -H 'Authorization: Token 5f971000df0d6f35ed7c59580766329a5b37a6df' -H 'Accept: application/json; charset=utf-8; indent=4' "http://127.0.0.1:8000/api/v2.1/workspace/12/dtable/test/share/"
+curl -X DELETE -d "email=2436ce64315b4b4azfcff9e5491db296@auth.local" -H 'Authorization: Token 5f971000df0d6f35ed7c59580766329a5b37a6df' -H 'Accept: application/json; charset=utf-8; indent=4' "http://127.0.0.1:8000/api/v2.1/workspace/12/dtable/test/share/"
 
 ```
 
@@ -182,7 +182,7 @@ curl -X DELETE -d "email=2@2.com" -H 'Authorization: Token 5f971000df0d6f35ed7c5
 
 ```
 {
-    "success": true
+    "success":true
 }
 
 ```
