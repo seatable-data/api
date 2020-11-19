@@ -6,11 +6,11 @@
 
 **Request parameters**
 
-* owner: the ID of the owner (xxxx@auth.local) or a group ID
-* name: name of dtable
-* color: color of dtable, optional
-* icon: icon of dtable, optional
-* text_color: text_color of dtable, optional
+* **owner**: the ID of the owner (xxxx@auth.local) or a group ID (Contact your organization admin for the group ID)
+* **name**: name of base
+* **color**: color of base, optional
+* **icon**: icon of base, optional
+* **text_color**: text_color of base, optional
 
 **Sample request**
 
@@ -53,9 +53,9 @@ curl -X POST -d 'name=nice&owner=xxxx@auth.local&color=#7626FD&icon=icon-softwar
 
 **Request parameters**
 
-* workspace_id
-* name
-* new_name
+* **workspace_id**
+* **name **of the base
+* **new_name**
 
 **Sample request**
 
@@ -90,8 +90,8 @@ curl -X PUT -d "name=hi&new_name=hey" -H 'Authorization:Token 5f971000df0d6f35ed
 
 **Request parameters**
 
-* workspace_id
-* name
+* **workspace_id**
+* **name** of the base
 
 **Sample request**
 
@@ -104,7 +104,7 @@ curl -X DELETE -d "name=dtable_2" -H 'Authorization:Token 5f971000df0d6f35ed7c59
 
 ```
 {
-    "success": "true"
+    "success":"true"
 }
 
 ```
@@ -118,15 +118,15 @@ curl -X DELETE -d "name=dtable_2" -H 'Authorization:Token 5f971000df0d6f35ed7c59
 
 ## Update a base
 
-**PUT** /api/v2.1/:workspace_id/107/dtable/
+**PUT** /api/v2.1/workspace/:workspace_id/dtable/
 
 **Request parameters**:
 
-* **name**: table name, required
-* **new_name**: new table name, optional
-* **color**: table color, optional
+* **name**: base name, required
+* **new_name**: new base name, optional
+* **color**: base color, optional
 * **text_color**: text color, optional
-* **icon**: table icon, optional
+* **icon**: base icon, optional
 
 **Request Sample**
 

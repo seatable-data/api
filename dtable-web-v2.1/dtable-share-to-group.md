@@ -1,6 +1,6 @@
 # Dtable share to group
 
-## List All DTables Shares to All Groups Which I am in
+## List All Bases' Shares to All Groups Which I am in
 
 **GET** api/v2.1/dtables/group-shared/
 
@@ -47,14 +47,14 @@ curl --request GET 'https://cloud.seatable.io/api/v2.1/dtables/group-shared/' --
 
 * **500**: Internal Server Error.
 
-## Add a DTable Share to Group
+## Add a Base Share to Group
 
 **POST** api/v2.1/workspace/:workspace_id/dtable/:name/group-shares/
 
 **Request Params**
 
-* **group_id**: which group you will share to, required
-* **permission**: share permission, there are options `r` `rw` means read-only and read-write, required
+* **group_id**: which group you will share to, required. Contact your orgnization administrator for the group_id.
+* **permission**: share permission, with the options `r` and `rw` meaning read-only and read-write, required
 
 **Request Sample**
 
@@ -82,13 +82,13 @@ curl --request POST 'https://cloud.seatable.io/api/v2.1/workspace/103/dtable/for
 * **404**: Not Found.
 * **500**: Internal Server Error.
 
-## Update a DTable Share Permission to Group
+## Update a Base's Share Permission to a Group
 
 **PUT** api/v2.1/workspace/:workspace_id/dtable/:name/group-shares/:group_id/
 
 **Request Params**
 
-* **permission**: share permission, there are options `r` `rw` means read-only and read-write, required
+* **permission**: share permission, with the options `r` and `rw` meaning read-only and read-write, required
 
 **Request Sample**
 
@@ -112,7 +112,7 @@ curl --location --request PUT 'https://cloud.seatable.io/api/v2.1/workspace/103/
 * **404**: Not Found.
 * **500**: Internal Server Error.
 
-## List a DTable Shares to Groups
+## List a Base's Shares to Groups
 
 **GET** api/v2.1/workspace/:workspace_id/dtable/:name/group-shares/
 
@@ -127,7 +127,7 @@ curl --request GET 'https://cloud.seatable.io/api/v2.1/workspace/103/dtable/for-
 
 ```
 {
-    "dtable_group_shares": [
+    "dtable_group_share_list": [
         {
             "group_id": 64,
             "group_name": "after-delete-2",
@@ -144,7 +144,7 @@ curl --request GET 'https://cloud.seatable.io/api/v2.1/workspace/103/dtable/for-
 * **404**: Not Found.
 * **500**: Internal Server Error.
 
-## Delete a DTable Share to Group
+## Delete a Base's Share to a Group
 
 **DELETE** api/v2.1/workspace/:workspace_id/dtable/:name/group-shares/:group_id/
 
