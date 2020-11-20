@@ -6,10 +6,10 @@
 
 **Request parameters**
 
-* workspace_id, the ID of the workspace where your base is
-* name, the name of the base
-* table_name, the name of the table in the base
-* view_name, optional, if not given, rows of Default View will be exported
+* **workspace_id**, the ID of the workspace where your base is
+* **name**, the name of the base
+* **table_name**, the name of the table in the base
+* **view_name**, optional, if not given, rows of Default View will be exported
 
 **Sample request**
 
