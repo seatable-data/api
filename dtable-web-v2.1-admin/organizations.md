@@ -58,6 +58,45 @@ curl --request GET 'https://cloud.seatable.io/api/v2.1/admin/organizations/' --h
 * **400**: Bad Request.
 * **500**: Internal Server Error.
 
+## List organizations by org id list
+
+**GET** api/v2.1/admin/organizations-basic-info/
+
+**Request Params**
+
+* **org_ids**: org_id, multiple
+
+**Request Sample**
+
+```
+curl --request GET "https://cloud.seatable.io/api/v2.1/admin/organizations-basic-info/?org_ids=2&org_ids=1" --header 'Authorization: Token 9308058de7056a5213d55831e184eb443c1936b4'
+
+```
+
+**Response Sample**
+
+
+
+```
+{
+    "organization_list": [
+        {
+            "org_id": 2,
+            "org_name": "org2"
+        },
+        {
+            "org_id": 1,
+            "org_name": "org1"
+        }
+    ]
+}
+
+```
+
+**Errors**
+
+* **403**: Permission Denied.
+
 ## Add Organization
 
 **POST** api/v2.1/admin/organizations/
