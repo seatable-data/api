@@ -1,210 +1,486 @@
-# DTables
+# DTables (Bases)
 
-## List All DTables
+## List All Bases
 
-**GET **api/v2.1/admin/dtables/
+List all the bases of all organizations and users.
 
-**Sample request**
+**URL Structure**
 
-```
-curl -H 'Authorization:Token 5f971000df0d6f35ed7c59580766329a5b37a6df' -H 'Accept: application/json; indent=4' "http://127.0.0.1:8000/api/v2.1/admin/dtables/?page=1&per_page=100"
+>**\[GET]** /api/v2.1/admin/dtables/
 
-```
+**Request Authentication**
 
-**Sample response**
+> Admin Authentication (Token)
 
-```
-{
-    "page_info": {
-        "has_next_page": false,
-        "current_page": 1
-    },
-    "dtables": [
-        {
-            "id": 1,
-            "workspace_id": 1,
-            "uuid": "251d501a-4492-4c17-97e1-c7bc64d87d13",
-            "name": "t1",
-            "creator": "123",
-            "modifier": "123",
-            "created_at": "2019-10-18T08:28:27+00:00",
-            "updated_at": "2019-10-18T08:28:27+00:00"
-        },
-        {
-            "id": 2,
-            "workspace_id": 1,
-            "uuid": "3cc5aff5-d4ca-488b-9ccd-9758b624cbd8",
-            "name": "t2",
-            "creator": "123",
-            "modifier": "123",
-            "created_at": "2019-10-18T08:54:06+00:00",
-            "updated_at": "2019-10-18T08:54:06+00:00"
-        },
-        {
-            "id": 7,
-            "workspace_id": 2,
-            "uuid": "52a2ae0d-d675-4a42-8e89-b14bfd0f4118",
-            "name": "gt-1",
-            "creator": "123",
-            "modifier": "123",
-            "created_at": "2019-10-21T07:14:32+00:00",
-            "updated_at": "2019-10-21T07:14:32+00:00"
-        }
-    ]
-}
-
-```
-
-**Errors**
-
-* 403 Permission Denied.
-* 500 Internal Server Error.
-
-## List User's DTables
-
-**GET** /api/v2.1/admin/users/:email/dtables/
-
-**Request Params**
-
-* **page**: the number of page to list, default 1, optional
-* **per_page**: the number of tables per page, default 25, optional
 
 **Sample Request**
 
-```
-curl --request GET 'https://cloud.seatable.io/api/v2.1/admin/users/xiongchao.cheng%40seafile.com/dtables/?page=2' --header 'Authorization: Token 64b9ee55dc4ab902ff36763ef5c604a76d52875e'
+>```
+> curl \
+> -H 'Authorization:Token 5f971000df0d6f35ed7c59580766329a5b37a6df' \
+> -H 'Accept: application/json; indent=4' \
+> "https://127.0.0.1:8000/api/v2.1/admin/dtables/?page=1&per_page=3"
+>```
 
-```
+**Input Parameters**
 
-**Sample Response**
+**page** _\[numeric, optional, 1 by default]_ 
+> Page number of the returned base list.
 
-```
-{
-    "dtable_list": [
-        {
-            "id": 371,
-            "workspace_id": 107,
-            "uuid": "d091825a-960f-42ce-a7b4-4273cb114f07",
-            "name": "for-add-restore-15",
-            "creator": "admin",
-            "modifier": "admin",
-            "created_at": "2020-06-23T02:18:39+00:00",
-            "updated_at": "2020-06-23T02:18:39+00:00",
-            "rows_count": 0
-        }
-    ],
-    "count": 34
-}
+**per_page** _\[numeric, optional, 100 by default]_
+> Number of bases displayed on each page.
 
-```
+**Sample Response (200)**
 
-## List Organization DTables
+Response from the sample request shows Page 1 with 3 bases and indicates the existence of next page(s). In the list of bases, the ID, workspace ID, UUID etc. of each base are displayed.
 
-**GET** /api/v2.1/admin/organizations/:org_id/dtables/
+>```
+>{
+>    "page_info": {
+>        "has_next_page": true,
+>        "current_page": 1
+>    },
+>    "dtables": [
+>        {
+>            "id": 1,
+>            "workspace_id": 1,
+>            "uuid": "42a120a7-f6c8-4005-b527-b4976cdea7c7",
+>            "name": "test",
+>            "creator": "Meng Wu",
+>            "modifier": "Meng Wu",
+>            "created_at": "2019-11-13T11:15:58+00:00",
+>            "updated_at": "2019-11-13T11:15:58+00:00",
+>            "color": null,
+>            "text_color": null,
+>            "icon": null,
+>            "owner": "Meng Wu",
+>            "org_id": -1,
+>            "rows_count": 6
+>        },
+>        {
+>            "id": 2,
+>            "workspace_id": 3,
+>            "uuid": "0f0564f8-350b-4222-a4b4-7f74d0b72892",
+>            "name": "Seafile Issues Report",
+>            "creator": "Daniel Pan",
+>            "modifier": "Christoph Dyllick-Brenzinger",
+>            "created_at": "2019-11-14T02:28:02+00:00",
+>            "updated_at": "2020-07-17T08:17:19+00:00",
+>            "color": null,
+>            "text_color": null,
+>            "icon": null,
+>            "owner": "Seafile-Datamate (group)",
+>            "org_id": -1,
+>            "rows_count": 80
+>        },
+>        {
+>            "id": 5,
+>            "workspace_id": 4,
+>            "uuid": "1cf7aa4a-e02e-44fe-a03e-1392b5742392",
+>            "name": "Online Testing",
+>            "creator": "Meng Wu",
+>            "modifier": "Meng Wu",
+>            "created_at": "2019-11-14T07:53:17+00:00",
+>            "updated_at": "2019-11-14T07:54:30+00:00",
+>            "color": null,
+>            "text_color": null,
+>            "icon": null,
+>            "owner": "Meng Wu",
+>            "org_id": -1,
+>            "rows_count": 0
+>        }
+>    ]
+>}
+>```
 
-**Request Params:**
+**Possible Errors**
 
-* **page**: the number of page to list, default 1, optional
-* **per_page**: the number of tables per page, default 25, optional
+401 Unauthorized: The auth token is invalid.
+>```
+>{
+>    "detail": "Invalid token"
+>}
+>```
+
+403 Forbidden: The user doesn't have admin permission.
+>```
+>{
+>    "detail": "You do not have permission to perform this action."
+>}
+>```
+
+
+
+
+## List a User's Bases
+
+List all the bases of a certain user by user's ID.
+
+**URL Structure**
+
+> **\[GET]** /api/v2.1/admin/users/<email>/dtables/
+
+
+**Request Authentication**
+
+> Admin Authentication (Token)
+
 
 **Sample Request**
 
-```
-curl --request GET 'https://cloud.seatable.io/api/v2.1/admin/organizations/23/dtables/?page=2&per_page=3' --header 'Authorization: Token 64b9ee55dc4ab902ff36763ef5c604a76d52875e'
+>```
+> curl --request GET \
+> --header 'Authorization: Token 64b9ee55dc4ab902ff36763ef5c604a76d52875e' \
+> 'https://cloud.seatable.io/api/v2.1/admin/users/0ef256cb71584188b1b147b2530c2904@auth.local/dtables/?page=1&per_page=3' 
+>```
 
-```
+
+**Input Parameters**
+
+**email** _\[string, required]_
+> The user ID ending with @auth.local, e.g. '0ef256cb71584188b1b147b2530c2904@auth.local'.
+
+**page** _\[numeric, optional, 1 by default]_ 
+> Page number of the returned base list.
+
+**per_page** _\[numeric, optional, 25 by default]_
+> Number of bases displayed on each page.
+
+
+
+**Sample Response (200)**
+
+Response from the sample request shows Page 1 with 3 bases and their detailed infos. The returned "count" value shows that this user has 5 bases in total.
+
+>```
+>{
+>    "dtable_list": [
+>        {
+>            "id": 258,
+>            "workspace_id": 135,
+>            "uuid": "4b572a04-39b7-4ce7-aa08-7fe1f4dad0b6",
+>            "name": "DtableTestBase",
+>            "creator": "Robert Mitarbeiter",
+>            "modifier": "Robert Mitarbeiter",
+>            "created_at": "2020-11-19T14:43:24+00:00",
+>            "updated_at": "2020-11-19T14:43:24+00:00",
+>            "color": "#7626FD",
+>            "text_color": "#7626FD",
+>            "icon": "icon-software-test-management",
+>            "rows_count": 0
+>        },
+>        {
+>            "id": 124,
+>            "workspace_id": 136,
+>            "uuid": "29000004-6236-4cf7-90ae-cbe649959776",
+>            "name": "external",
+>            "creator": "Robert Mitarbeiter",
+>            "modifier": "Robert Mitarbeiter",
+>            "created_at": "2020-11-17T15:29:48+00:00",
+>            "updated_at": "2020-11-17T15:29:48+00:00",
+>            "color": null,
+>            "text_color": null,
+>            "icon": null,
+>            "rows_count": 0
+>        },
+>        {
+>            "id": 305,
+>            "workspace_id": 137,
+>            "uuid": "03d8a71c-84c7-4a16-b314-94c886dc170b",
+>            "name": "formtest",
+>            "creator": "Robert Mitarbeiter",
+>            "modifier": "Robert Mitarbeiter",
+>            "created_at": "2020-11-17T15:39:26+00:00",
+>            "updated_at": "2020-11-17T15:39:26+00:00",
+>            "color": null,
+>            "text_color": null,
+>            "icon": null,
+>            "rows_count": 8
+>        },
+>    ],
+>    "count": 5
+>}
+>
+>```
+
+**Possible Errors**
+
+401 Unauthorized: The auth token is invalid.
+>```
+>{
+>    "detail": "Invalid token"
+>}
+>```
+
+403 Forbidden: The user doesn't have admin permission.
+>```
+>{
+>    "detail": "You do not have permission to perform this action."
+>}
+>```
+
+If the user's ID was not found, no errors will be raised. Instead, an empty list is returned.
+>```
+>{
+>    "dtable_list": [],
+>    "count": 0
+>}
+>```
+
+## List an Organization's Bases
+
+List all the bases of a certain organization by ID.
+
+**URL Structure**
+
+> **\[GET]** /api/v2.1/admin/organizations/<org_id>/dtables/
+
+
+**Request Authentication**
+
+> Admin Authentication (Token)
+
+
+**Sample Request**
+
+>```
+> curl --request GET \
+> --header 'Authorization: Token 64b9ee55dc4ab902ff36763ef5c604a76d52875e' \
+> 'https://cloud.seatable.io/api/v2.1/admin/organizations/23/dtables/?page=1&per_page=1'
+>```
+
+**Input Parameters**
+
+**org_id** _[numeric, required]_
+> The organization ID. 
+
+**page** _\[numeric, optional, 1 by default]_ 
+> Page number of the returned base list.
+
+**per_page** _\[numeric, optional, 25 by default]_
+> Number of bases displayed on each page.
+
+
 
 **Sample Response**
 
-```
-{
-    "dtable_list": [
-        {
-            "id": 276,
-            "workspace_id": 109,
-            "uuid": "24fdb4a5-282e-41f2-9724-5d9b41199694",
-            "name": "for-delete-restore",
-            "creator": "org~4-admin-1",
-            "modifier": "org~4-admin-1",
-            "created_at": "2020-04-14T07:15:13+00:00",
-            "updated_at": "2020-04-14T07:15:13+00:00",
-            "rows_count": 0
-        }
-    ],
-    "count": 6
-}
+Response from the sample request shows Page 1 with 1 base and its detailed infos. The returned "count" value indicates this organization has 6 bases in total. 
 
-```
+>```
+>{
+>    "dtable_list": [
+>        {
+>            "id": 276,
+>            "workspace_id": 109,
+>            "uuid": "24fdb4a5-282e-41f2-9724-5d9b41199694",
+>            "name": "for-delete-restore",
+>            "creator": "org~4-admin-1",
+>            "modifier": "org~4-admin-1",
+>            "created_at": "2020-04-14T07:15:13+00:00",
+>            "updated_at": "2020-04-14T07:15:13+00:00",
+>            "rows_count": 0
+>        }
+>    ],
+>    "count": 6
+>}
+>
+>```
 
-## List Trash DTables
+**Possible Errors**
 
-**GET** /api/v2.1/admin/trash-dtables/
+401 Unauthorized: The auth token is invalid.
+>```
+>{
+>    "detail": "Invalid token"
+>}
+>```
 
-**Request query params**
+403 Forbidden: The user doesn't have admin permission.
+>```
+>{
+>    "detail": "You do not have permission to perform this action."
+>}
+>```
 
-* **per_page**: number of dtables in per page response, default 25
-* **page**: which page default 1
+404 Not Found: The organization ID was not found.
+>```
+>{
+>    "error_msg": "Organization 177 not found."
+>}
+>```
 
-**Request Sample**
 
-```
-curl -X GET 'https://cloud.seatable.io/api/v2.1/admin/trash-dtables/?per_page=25&page=1' -H 'authorization: Token 64b9ee55dc4ab902ff36763ef5c604a76d52875e'
 
-```
+## List Trash Bases
+
+List all the bases that are in the trash bin.
+
+**URL Structure**
+
+> **\[GET]** /api/v2.1/admin/trash-dtables/
+
+
+**Request Authentication**
+
+> Admin Authentication (Token)
+
+
+**Sample Request**
+
+>```
+> curl -X GET \
+> -H 'Authorization: Token 64b9ee55dc4ab902ff36763ef5c604a76d52875e' \
+> 'https://cloud.seatable.io/api/v2.1/admin/trash-dtables/?page=1&per_page=3' 
+>```
+
+**Input Parameters**
+
+**page** _\[numeric, optional, 1 by default]_ 
+> Page number of the returned base list.
+
+**per_page** _\[numeric, optional, 25 by default]_
+> Number of bases displayed on each page.
+
+
+**Sample Response**
+
+Response from the sample request shows Page 1 with 3 bases and their infos. The returned "count" indicates there're 41 bases in the trash bin.
+
+>```
+>{
+>    "count": 41,
+>    "trash_dtable_list": [
+>        {
+>            "id": 382,
+>            "workspace_id": 177,
+>            "uuid": "9ba13c04-7154-4b51-a0c7-3ce500d96b5e",
+>            "name": "pt",
+>            "creator": "Robert Mitarbeiter",
+>            "modifier": "Robert Mitarbeiter",
+>            "created_at": "2020-11-27T11:00:07+00:00",
+>            "updated_at": "2020-11-27T11:00:07+00:00",
+>            "color": null,
+>            "text_color": null,
+>            "icon": null,
+>            "deleted": true,
+>            "delete_time": "2020-11-27T11:12:12+00:00",
+>            "owner": "Robert Mitarbeiter",
+>            "org_id": 120,
+>            "org_name": "API Test"
+>        },
+>        {
+>            "id": 381,
+>            "workspace_id": 177,
+>            "uuid": "f76d153f-8104-4775-8e13-ea0f1b9ef2bc",
+>            "name": "pt",
+>            "creator": "Robert Mitarbeiter",
+>            "modifier": "Robert Mitarbeiter",
+>            "created_at": "2020-11-27T10:43:44+00:00",
+>            "updated_at": "2020-11-27T10:43:44+00:00",
+>            "color": null,
+>            "text_color": null,
+>            "icon": null,
+>            "deleted": true,
+>            "delete_time": "2020-11-27T10:59:56+00:00",
+>            "owner": "Robert Mitarbeiter",
+>            "org_id": 120,
+>            "org_name": "API Test"
+>        },
+>        {
+>            "id": 309,
+>            "workspace_id": 5,
+>            "uuid": "f1b991ee-9964-489c-9172-87c83358a5df",
+>            "name": "fafds",
+>            "creator": "Robert Mitarbeiter",
+>            "modifier": "Robert Mitarbeiter",
+>            "created_at": "2020-11-02T16:50:12+00:00",
+>            "updated_at": "2020-11-02T16:57:52+00:00",
+>            "color": "#1DDD1D",
+>            "text_color": null,
+>            "icon": "icon-customer-inquiry",
+>            "deleted": true,
+>            "delete_time": "2020-11-26T12:35:52+00:00",
+>            "owner": "Robert Mitarbeiter",
+>            "org_id": -1
+>        }
+>    ]
+>}
+>```
+
+**Possible Errors**
+
+401 Unauthorized: The auth token is invalid.
+>```
+>{
+>    "detail": "Invalid token"
+>}
+>```
+
+403 Forbidden: The user doesn't have admin permission.
+>```
+>{
+>    "detail": "You do not have permission to perform this action."
+>}
+>```
+
+
+## Restore a Base from Trash
+
+Restore a deleted base from the trash bin and put it back where it was.
+
+**URL Structure**
+
+> **\[PUT]** /api/v2.1/admin/trash-dtables/<dtable_id>/
+
+**Request Authentication**
+
+> Admin Authentication (Token)
+
+**Sample Request**
+
+>```
+>curl -X PUT \
+>-H 'authorization: Token 64b9ee55dc4ab902ff36763ef5c604a76d52875e' \
+>'https://cloud.seatable.io/api/v2.1/admin/trash-dtables/30/' 
+>```
+
+**Input Parameters**
+
+**dtable_id** _\[numeric, required]_
+> The ID of the base that needs to be restored.
+
 
 **Response Sample**
 
-```
-{
-    "count": 1,
-    "trash_dtable_list": [
-        {
-            "id": 30,
-            "workspace_id": 56,
-            "uuid": "52394e1a-05a5-4a90-afe0-cea0555c1e91",
-            "name": "for-delete",
-            "creator": "Big Boss",
-            "modifier": "Big Boss",
-            "created_at": "2020-02-18T03:35:57+00:00",
-            "updated_at": "2020-02-18T03:35:57+00:00",
-            "deleted": true,
-            "delete_time": "2020-02-18T03:40:48.082457"
-        }
-    ]
-}
+Response from the sample request shows the base has been restored successfully.
 
-```
+>```
+>{
+>    "success": true
+>}
+>
+>```
 
-**Errors**
+**Possible Errors**
 
-* **400**: Bad Request
-* **403**: Permission denied
-* **500**: Internal Server Error
+401 Unauthorized: The auth token is invalid.
+>```
+>{
+>    "detail": "Invalid token"
+>}
+>```
 
-## Restore a Trash DTable
+403 Forbidden: The user doesn't have admin permission.
+>```
+>{
+>    "detail": "You do not have permission to perform this action."
+>}
+>```
 
-**PUT** /api/v2.1/admin/trash-dtables/:dtable_id/
-
-**Request Sample**
-
-```
-curl -X PUT 'https://cloud.seatable.io/api/v2.1/admin/trash-dtables/30/' -H 'authorization: Token 64b9ee55dc4ab902ff36763ef5c604a76d52875e'
-
-```
-
-**Response Sample**
-
-```
-{
-    "success": true
-}
-
-```
-
-**Errors**
-
-* **400**: Bad Request
-* **403**: Permission denied
-* **500**: Internal Server Error
-
+404 Not Found: The base is not in the trash.
+>```
+>{
+>    "error_msg": "Table not found"
+>}
+>```
 
