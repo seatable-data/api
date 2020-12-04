@@ -15,11 +15,12 @@ List all the bases of all organizations and users.
 
 **Sample Request**
 
+List 3 bases:
 >```
 > curl \
 > -H 'Authorization:Token 5f971000df0d6f35ed7c59580766329a5b37a6df' \
 > -H 'Accept: application/json; indent=4' \
-> "https://127.0.0.1:8000/api/v2.1/admin/dtables/?page=1&per_page=3"
+> "https://cloud.seatable.io/api/v2.1/admin/dtables/?page=1&per_page=3"
 >```
 
 **Input Parameters**
@@ -32,7 +33,7 @@ List all the bases of all organizations and users.
 
 **Sample Response (200)**
 
-Response from the sample request shows Page 1 with 3 bases and indicates the existence of next page(s). In the list of bases, the ID, workspace ID, UUID etc. of each base are displayed.
+Response from the sample request shows Page 1 with 3 bases and their detailed infos. The returned "has_next_page" value indicates there are more pages:
 
 >```
 >{
@@ -44,7 +45,7 @@ Response from the sample request shows Page 1 with 3 bases and indicates the exi
 >        {
 >            "id": 1,
 >            "workspace_id": 1,
->            "uuid": "42a120a7-f6c8-4005-b527-b4976cdea7c7",
+>            "uuid": "42a120a7-f6c8-4005-b527-b4971234a7c7",
 >            "name": "test",
 >            "creator": "Meng Wu",
 >            "modifier": "Meng Wu",
@@ -60,7 +61,7 @@ Response from the sample request shows Page 1 with 3 bases and indicates the exi
 >        {
 >            "id": 2,
 >            "workspace_id": 3,
->            "uuid": "0f0564f8-350b-4222-a4b4-7f74d0b72892",
+>            "uuid": "0f0564f8-350b-4222-a4b4-7f74d0b12342",
 >            "name": "Seafile Issues Report",
 >            "creator": "Daniel Pan",
 >            "modifier": "Christoph Dyllick-Brenzinger",
@@ -76,7 +77,7 @@ Response from the sample request shows Page 1 with 3 bases and indicates the exi
 >        {
 >            "id": 5,
 >            "workspace_id": 4,
->            "uuid": "1cf7aa4a-e02e-44fe-a03e-1392b5742392",
+>            "uuid": "1cf7aa4a-e02e-44fe-a03e-1332b5742392",
 >            "name": "Online Testing",
 >            "creator": "Meng Wu",
 >            "modifier": "Meng Wu",
@@ -95,14 +96,14 @@ Response from the sample request shows Page 1 with 3 bases and indicates the exi
 
 **Possible Errors**
 
-401 Unauthorized: The auth token is invalid.
+401 Unauthorized: The auth token is invalid:
 >```
 >{
 >    "detail": "Invalid token"
 >}
 >```
 
-403 Forbidden: The user doesn't have admin permission.
+403 Forbidden: The user doesn't have admin permission:
 >```
 >{
 >    "detail": "You do not have permission to perform this action."
@@ -128,6 +129,7 @@ List all the bases of a certain user by user's ID.
 
 **Sample Request**
 
+List 3 bases of the user with ID 0ef256cb71584188b1b147b2530c2904@auth.local:
 >```
 > curl --request GET \
 > --header 'Authorization: Token 64b9ee55dc4ab902ff36763ef5c604a76d52875e' \
@@ -150,7 +152,7 @@ List all the bases of a certain user by user's ID.
 
 **Sample Response (200)**
 
-Response from the sample request shows Page 1 with 3 bases and their detailed infos. The returned "count" value shows that this user has 5 bases in total.
+Response from the sample request shows Page 1 with 3 bases and their detailed infos. The returned "count" value shows that this user has 5 bases in total:
 
 >```
 >{
@@ -205,21 +207,21 @@ Response from the sample request shows Page 1 with 3 bases and their detailed in
 
 **Possible Errors**
 
-401 Unauthorized: The auth token is invalid.
+401 Unauthorized: The auth token is invalid:
 >```
 >{
 >    "detail": "Invalid token"
 >}
 >```
 
-403 Forbidden: The user doesn't have admin permission.
+403 Forbidden: The user doesn't have admin permission:
 >```
 >{
 >    "detail": "You do not have permission to perform this action."
 >}
 >```
 
-If the user's ID was not found, no errors will be raised. Instead, an empty list is returned.
+If the user's ID was not found, no errors will be raised. Instead, an empty list is returned:
 >```
 >{
 >    "dtable_list": [],
@@ -243,6 +245,8 @@ List all the bases of a certain organization by ID.
 
 **Sample Request**
 
+List 1 base of the organization with ID 23:
+
 >```
 > curl --request GET \
 > --header 'Authorization: Token 64b9ee55dc4ab902ff36763ef5c604a76d52875e' \
@@ -264,15 +268,15 @@ List all the bases of a certain organization by ID.
 
 **Sample Response**
 
-Response from the sample request shows Page 1 with 1 base and its detailed infos. The returned "count" value indicates this organization has 6 bases in total. 
+Response from the sample request shows Page 1 with 1 base and its detailed infos. The returned "count" value indicates this organization has 6 bases in total: 
 
 >```
 >{
 >    "dtable_list": [
 >        {
->            "id": 276,
->            "workspace_id": 109,
->            "uuid": "24fdb4a5-282e-41f2-9724-5d9b41199694",
+>            "id": 999,
+>            "workspace_id": 909,
+>            "uuid": "24fdb4a5-282e-41f2-9724-5d9b42345694",
 >            "name": "for-delete-restore",
 >            "creator": "org~4-admin-1",
 >            "modifier": "org~4-admin-1",
@@ -288,21 +292,21 @@ Response from the sample request shows Page 1 with 1 base and its detailed infos
 
 **Possible Errors**
 
-401 Unauthorized: The auth token is invalid.
+401 Unauthorized: The auth token is invalid:
 >```
 >{
 >    "detail": "Invalid token"
 >}
 >```
 
-403 Forbidden: The user doesn't have admin permission.
+403 Forbidden: The user doesn't have admin permission:
 >```
 >{
 >    "detail": "You do not have permission to perform this action."
 >}
 >```
 
-404 Not Found: The organization ID was not found.
+404 Not Found: The organization ID was not found:
 >```
 >{
 >    "error_msg": "Organization 177 not found."
@@ -327,6 +331,8 @@ List all the bases that are in the trash bin.
 
 **Sample Request**
 
+List 3 trashed bases in the current system:
+
 >```
 > curl -X GET \
 > -H 'Authorization: Token 64b9ee55dc4ab902ff36763ef5c604a76d52875e' \
@@ -344,7 +350,7 @@ List all the bases that are in the trash bin.
 
 **Sample Response**
 
-Response from the sample request shows Page 1 with 3 bases and their infos. The returned "count" indicates there're 41 bases in the trash bin.
+Response from the sample request shows Page 1 with 3 bases and their infos. The returned "count" indicates there're 41 bases in the trash bin:
 
 >```
 >{
@@ -409,14 +415,14 @@ Response from the sample request shows Page 1 with 3 bases and their infos. The 
 
 **Possible Errors**
 
-401 Unauthorized: The auth token is invalid.
+401 Unauthorized: The auth token is invalid:
 >```
 >{
 >    "detail": "Invalid token"
 >}
 >```
 
-403 Forbidden: The user doesn't have admin permission.
+403 Forbidden: The user doesn't have admin permission:
 >```
 >{
 >    "detail": "You do not have permission to perform this action."
@@ -438,6 +444,8 @@ Restore a deleted base from the trash bin and put it back where it was.
 
 **Sample Request**
 
+Restore the base with token 64b9ee55dc4ab902ff36763ef5c604a76d52875e from the trash bin:
+
 >```
 >curl -X PUT \
 >-H 'authorization: Token 64b9ee55dc4ab902ff36763ef5c604a76d52875e' \
@@ -452,7 +460,7 @@ Restore a deleted base from the trash bin and put it back where it was.
 
 **Response Sample**
 
-Response from the sample request shows the base has been restored successfully.
+Response from the sample request shows the base has been restored successfully:
 
 >```
 >{
@@ -463,21 +471,21 @@ Response from the sample request shows the base has been restored successfully.
 
 **Possible Errors**
 
-401 Unauthorized: The auth token is invalid.
+401 Unauthorized: The auth token is invalid:
 >```
 >{
 >    "detail": "Invalid token"
 >}
 >```
 
-403 Forbidden: The user doesn't have admin permission.
+403 Forbidden: The user doesn't have admin permission:
 >```
 >{
 >    "detail": "You do not have permission to perform this action."
 >}
 >```
 
-404 Not Found: The base is not in the trash.
+404 Not Found: The base is not in the trash:
 >```
 >{
 >    "error_msg": "Table not found"

@@ -16,6 +16,8 @@ List the daily active users on a given day.
 
 **Sample Request**
 
+Request the daily active users list on 19 June, 2020:
+
 >```
 > curl \
 > -H 'Authorization:Token a407800e307ee8eb545fab94e2d22bb37944661f' \
@@ -42,7 +44,7 @@ List the daily active users on a given day.
 
 **Sample response (200)**
 
-Response from the sample request shows 2 active users and their avatar URL, ID (<email>), contact email address, name and registration time.
+Response from the sample request shows 2 active users and their avatar URL, ID (<email>), contact email address, name and registration time:
 
 > ```
 > {
@@ -75,14 +77,14 @@ Response from the sample request shows 2 active users and their avatar URL, ID (
 
 **Possible Errors**
 
-401 Unauthorized: The auth token is invalid.
+401 Unauthorized: The auth token is invalid:
 >```
 >{
 >    "detail": "Invalid token"
 >}
 >```
 
-403 Forbidden: The user doesn't have admin permission.
+403 Forbidden: The user doesn't have admin permission:
 >```
 >{
 >    "detail": "You do not have permission to perform this action."
