@@ -2,65 +2,133 @@
 
 ## List All Forms
 
-**GET** /api/v2.1/admin/forms/
+List all the forms in the current system.
 
-**Request Params:**
+**URL Structure**
 
-* **page**: the number of page to list, default 1, optional
-* **per_page**: the number of tables per page, default 25, optional
+> **\[GET]** /api/v2.1/admin/forms/
+
+
+**Request Authentication**
+
+> Admin Authentication (Token)
+
 
 **Sample Request**
 
-```
-curl --request GET 'https://cloud.seatable.io/api/v2.1/admin/forms/' --header 'Authorization: Token 64b9ee55dc4ab902ff36763ef5c604a76d52875e'
+List the forms without inputing any parameter:
 
-```
+>```
+>curl --request GET \
+>--header 'Authorization: Token 64b9ee55dc4ab902ff36763ef5c604a76d52875e' \
+>'https://cloud.seatable.io/api/v2.1/admin/forms/' 
+>```
+
+**Input Parameters**
+
+**page** _\[numeric, optional, 1 by default]_ 
+> Page number of the returned form list.
+
+**per_page** _\[numeric, optional, 2 by default]_
+> Number of forms displayed on each page.
 
 **Sample Response**
 
-```
-{
-    "form_list": [
-        {
-            "id": 14,
-            "form_name": "for-add-form-1",
-            "username": "admin",
-            "dtable_name": "for-add",
-            "token": "b1d5d00b-2da2-4b8d-9164-a0afa32ed5ee"
-        },
-        {
-            "id": 16,
-            "form_name": "for-add-form-2",
-            "username": "admin",
-            "dtable_name": "for-add",
-            "token": "3f9ee7c8-7338-4ca5-b877-4df454c6ad8b"
-        }
-    ],
-    "count": 2
-}
+Response from the sample request shows the details of 2 forms by default, as the "page" and "per_page" parameters were not given in the sample request. The returned "count" value indicates that there are 46 forms in total:
 
-```
+>```
+>{
+>    "form_list": [
+>        {
+>            "id": 5,
+>            "form_name": "Input",
+>            "username": "Max Mustermann",
+>            "dtable_name": "Financials",
+>            "token": "428e84b8-c2a2-4ba2-a056-efc395e8f38b",
+>            "created_at": null,
+>            "submit_count": 3
+>        },
+>        {
+>            "id": 7,
+>            "form_name": "Zufriedenheitsanalyse",
+>            "username": "Meng Wu",
+>            "dtable_name": "Tests",
+>            "token": "839697dc-588b-4a0f-92d1-86f05e64d313",
+>            "created_at": null,
+>            "submit_count": 0
+>        }
+>    ],
+>    "count": 46
+>}
+>```
+
+**Possible Errors**
+
+401 Unauthorized: The auth token is invalid:
+>```
+>{
+>    "detail": "Invalid token"
+>}
+>```
+
+403 Forbidden: The user doesn't have admin permission:
+>```
+>{
+>    "detail": "You do not have permission to perform this action."
+>}
+>```
 
 ## Delete a Form
 
-DELETE /api/v2.1/admin/forms/:token/
+Delete a form with its token.
+
+**URL Structure**
+
+> **\[DELETE]** /api/v2.1/admin/forms/<token>/
+
+**Request Authentication**
+
+> Admin Authentication (Token)
+
+
 
 **Sample Request**
 
-```
-curl --request DELETE 'https://cloud.seatable.io/api/v2.1/admin/forms/3f9ee7c8-7338-4ca5-b877-4df454c6ad8b/' --header 'Authorization: Token 64b9ee55dc4ab902ff36763ef5c604a76d52875e'
+Delete the form with the token 3f9ee7c8-7338-4ca5-b877-4df454c6ad8b:
 
-```
+>```
+>curl --request DELETE \
+>--header 'Authorization: Token 64b9ee55dc4ab902ff36763ef5c604a76d52875e' \
+>'https://cloud.seatable.io/api/v2.1/admin/forms/3f9ee7c8-7338-4ca5-b877-4df454c6ad8b/' 
+>```
 
 **Sample Response**
 
-```
-{
-    "success": true
-}
+The form with the token given in the sample request is now deleted:
+>```
+>{
+>    "success": true
+>}
+>```
+This API call ensures that the form with the given token will not exist in the system after the request, therefore when an invalid token is given, the response will also indicate success.
 
-```
 
----
+
+**Possible Errors**
+
+401 Unauthorized: The auth token is invalid:
+>```
+>{
+>    "detail": "Invalid token"
+>}
+>```
+The token here means the auth token, not the form's token.
+
+403 Forbidden: The user doesn't have admin permission:
+>```
+>{
+>    "detail": "You do not have permission to perform this action."
+>}
+>```
 
 
