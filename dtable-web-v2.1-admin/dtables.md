@@ -31,6 +31,10 @@ List 3 bases:
 **per_page** _\[numeric, optional, 100 by default]_
 > Number of bases displayed on each page.
 
+**Return Values**
+
+JSON-object with the list of bases.
+
 **Sample Response (200)**
 
 Response from the sample request shows Page 1 with 3 bases and their detailed infos. The returned "has_next_page" value indicates there are more pages:
@@ -119,7 +123,7 @@ List all the bases of a certain user by user's ID.
 
 **URL Structure**
 
-> **\[GET]** /api/v2.1/admin/users/<email>/dtables/
+> **\[GET]** /api/v2.1/admin/users/`<email>`/dtables/
 
 
 **Request Authentication**
@@ -148,6 +152,11 @@ List 3 bases of the user with ID 0ef256cb71584188b1b147b2530c2904@auth.local:
 **per_page** _\[numeric, optional, 25 by default]_
 > Number of bases displayed on each page.
 
+
+
+**Return Values**
+
+JSON-object with the list of bases.
 
 
 **Sample Response (200)**
@@ -235,7 +244,7 @@ List all the bases of a certain organization by ID.
 
 **URL Structure**
 
-> **\[GET]** /api/v2.1/admin/organizations/<org_id>/dtables/
+> **\[GET]** /api/v2.1/admin/organizations/`<org_id>`/dtables/
 
 
 **Request Authentication**
@@ -263,6 +272,12 @@ List 1 base of the organization with ID 23:
 
 **per_page** _\[numeric, optional, 25 by default]_
 > Number of bases displayed on each page.
+
+
+
+**Return Values**
+
+JSON-object with the list of bases.
 
 
 
@@ -346,6 +361,11 @@ List 3 trashed bases in the current system:
 
 **per_page** _\[numeric, optional, 25 by default]_
 > Number of bases displayed on each page.
+
+
+**Return Values**
+
+JSON-object with the list of trashed bases.
 
 
 **Sample Response**
@@ -436,7 +456,7 @@ Restore a deleted base from the trash bin and put it back where it was.
 
 **URL Structure**
 
-> **\[PUT]** /api/v2.1/admin/trash-dtables/<dtable_id>/
+> **\[PUT]** /api/v2.1/admin/trash-dtables/`<dtable_id>`/
 
 **Request Authentication**
 
@@ -456,6 +476,11 @@ Restore the base with token 64b9ee55dc4ab902ff36763ef5c604a76d52875e from the tr
 
 **dtable_id** _\[numeric, required]_
 > The ID of the base that needs to be restored.
+
+
+**Return Values**
+
+JSON-object with the result of operation.
 
 
 **Response Sample**

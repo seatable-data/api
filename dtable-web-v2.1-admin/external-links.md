@@ -36,6 +36,10 @@ List 3 external links in the current system:
 > Number of links displayed on each page.
 
 
+**Return Values**
+
+JSON-object with the list of all external links.
+
 
 **Sample response**
 
@@ -101,7 +105,7 @@ An external link can be deleted by its token.
 
 **URL Structure**
 
-> **\[DELETE]** /api/v2.1/admin/dtables/<token>/
+> **\[DELETE]** /api/v2.1/admin/dtables/`<token>`/
 
 **Request Authentication**
 
@@ -122,7 +126,13 @@ Delete the external link with the token acbdef3e30a3404084b6:
 **Input Parameters**
 
 **token** _\[string, required]_
-> As an external link is generated, its token is used as the suffix to its link: https\://cloud.seatable.io/dtable/external-links/<token>/
+> As an external link is generated, its token is used as the suffix to its link. For example: https\://cloud.seatable.io/dtable/external-links/`<token>`/
+
+
+**Return Values**
+
+JSON-object with the result of the operation.
+
 
 **Sample Response**
 
