@@ -33,6 +33,11 @@ List 2 organizations in the system:
 > Number of organizations displayed on each page.
 
 
+**Return Values**
+
+JSON-object with the list of organizations.
+
+
 
 **Sample Response (200)**
 
@@ -96,16 +101,20 @@ List 2 organizations in the system:
 
 ## List Basic Info of Organizations by Organization ID list
 
-With a list of org_id, list the org_names of these organizations.
+With a list of `org_ids`, list the `org_name` of these organizations.
 
 **URL Structure**
 
 > **\[GET]** api/v2.1/admin/organizations-basic-info/
 
 
+**Request Authentication**
+
+> Admin Authentication (Token)
+
 **Sample Request**
 
-List the basic info of the organizations with org_id 1 and 2:
+List the basic info of the organizations with `org_ids` 1 and 2:
 >```
 >curl --request GET \
 >-header 'Authorization: Token 9308058de7056a5213d55831e184eb443c1936b4' \
@@ -115,7 +124,12 @@ List the basic info of the organizations with org_id 1 and 2:
 **Input Parameters**
 
 **org_ids** _\[multiple, numeric, required]_
-> With each org_ids, the basic info of the corresponding organization will be returned. If an org_id is invalid, it'll be ignored and no errors will be returned.
+> With each `org_ids`, the basic info of the corresponding organization will be returned. If an `org_ids` is invalid, it'll be ignored and no errors will be returned.
+
+
+**Return Values**
+
+JSON-object with the list of organizations' basic infos.
 
 
 **Sample Response (200)**
@@ -188,13 +202,18 @@ Add an organization with the name, administrator email and name, as well as admi
 > The name of the organization. It'll appear in the base library as "Team <org_name>". It doesn't have to be unique in the system.
 
 **admin_email** _\[string, email, required]_ 
-> Organization administrator's email to log in. It must be a valid email address and is unique.
+> Organization administrator's email to log in. It must be a valid email address and is unique in the system.
 
 **admin_name** _\[string, optional]_ 
 > The organization administrator's full name.
 
 **password** _\[string, required]_ 
 > Organization administrator's password to log in.
+
+
+**Return Values**
+
+JSON-object with the details of the added organization. The `org_id` is automatically generated.
 
 
 **Sample Response (201)**
@@ -233,7 +252,7 @@ The organization requested in the sample is added in the system, and its details
 400 Bad Request: The administrator's email is not unique in the system:
 >```
 >{
->    "error_msg": "User for-adding@seafile.com already exists."
+>    "error_msg": "User for-add@seafile.com already exists."
 >}
 >```
 
@@ -258,7 +277,7 @@ Delete an organization with its ID.
 
 **URL Structure**
 
-> **\[DELETE]** /api/v2.1/admin/organizations/<org_id>/
+> **\[DELETE]** /api/v2.1/admin/organizations/`<org_id>`/
 
 
 **Request Authentication**
@@ -281,16 +300,20 @@ Delete the organization with the ID 3:
 > The ID of the organization to be deleted.
 
 
+**Return Values**
+
+JSON-object with the result of the operation.
+
+
 
 **Sample Response (200)**
 
 The organization with the ID 3 was deleted successfully:
-```
-{
-    "success": true
-}
-
-```
+>```
+>{
+>    "success": true
+>}
+>>```
 
 **Possible Errors**
 
@@ -321,7 +344,7 @@ Change the attributes of an organization.
 
 **URL Structure**
 
-> **\[PUT]** /api/v2.1/admin/organizations/<org_id>/
+> **\[PUT]** /api/v2.1/admin/organizations/`<org_id>`/
 
 
 
@@ -361,6 +384,10 @@ Rename, change role and row limit of the organization with the ID 1:
 > The new limit of user's asset quota in Mb.
 
 
+
+**Return Values**
+
+JSON-object with the updated details of the organization.
 
 
 
@@ -415,7 +442,7 @@ List all the users in a certain organization.
 
 **URL Structure**
 
-> **\[GET]** /api/v2.1/admin/organizations/<org_id>/users/
+> **\[GET]** /api/v2.1/admin/organizations/`<org_id>`/users/
 
 
 **Request Authentication**
@@ -438,7 +465,14 @@ List all the users in the organization with the ID 120:
 **org_id** _\[numeric, required]_
 > The ID of the organization whose users are to be listed.
 
-**Sample Response**
+
+**Return Values**
+
+JSON-object with the list of users.
+
+
+
+**Sample Response (200)**
 
 The users in the organization with ID 120 are listed:
 >```
@@ -506,88 +540,255 @@ The users in the organization with ID 120 are listed:
 
 ## List Organization Groups
 
-**GET** api/v2.1/admin/organizations/:org_id/groups/
+List all the groups in a certain organization with its ID.
 
-**Request Sample**
+**URL Structure**
 
-```
-curl --request GET 'https://cloud.seatable.io/api/v2.1/admin/organizations/1/groups/' --header 'Authorization: Token 64b9ee55dc4ab902ff36763ef5c604a76d52875e'
+> **\[GET]** /api/v2.1/admin/organizations/`<org_id>`/groups/
 
-```
 
-**Response Sample**
+**Request Authentication**
 
-```json
-{
-    "group_list": [
-        {
-            "group_name": "t2",
-            "creator_email": "a624b0997e0f4294a1f863d3d8739fd4@auth.local",
-            "creator_name": "a624b0997e0f4294a1f863d3d8739fd4",
-            "created_at": "2020-06-30T06:18:56+00:00",
-            "group_id": 31
-        }
-    ]
-}
+> Admin Authentication (Token)
 
-```
 
-## Delete Organization Group
 
-**DELETE** api/v2.1/admin/groups/:group_id/
+**Sample Request**
 
-**Request Sample**
+List all the groups within the organization 135:
 
-```
-curl --request DELETE 'https://cloud.seatable.io/api/v2.1/admin/groups/1/' --header 'Authorization: Token 64b9ee55dc4ab902ff36763ef5c604a76d52875e'
+>```
+>curl --request GET \
+>--header 'Authorization: Token 64b9ee55dc4ab902ff36763ef5c604a76d52875e' \
+>'https://cloud.seatable.io/api/v2.1/admin/organizations/135/groups/' 
+>```
 
-```
 
-**Response Sample**
+**Input Parameters**
 
-```json
-{
-    "success": true
-}
+**org_id** _\[numeric, required]_
+> The ID of the requested organization.
 
-```
+
+**Return Values**
+
+JSON-object with the list of groups.
+
+
+**Sample Response (200)**
+
+3 groups in the organization requested in the sample are listed in the response:
+
+>```
+>{
+>    "group_list": [
+>        {
+>            "group_name": "Project 1",
+>            "creator_name": "Demo User1",
+>            "creator_email": "4cc894da2cd14502bf7dfd922a2ee8e4@auth.local",
+>            "created_at": "2020-11-06T23:07:01+00:00",
+>            "group_id": 4
+>        },
+>        {
+>            "group_name": "Project 2",
+>            "creator_name": "Demo User2",
+>            "creator_email": "4cc894da2cd14502bf7dfd944a2ff8e4@auth.local",
+>            "created_at": "2020-11-06T23:07:07+00:00",
+>            "group_id": 5
+>        },
+>        {
+>            "group_name": "Project 3",
+>            "creator_name": "Demo User3",
+>            "creator_email": "4cc894da2cd17802bf7dfd944a2ee8e4@auth.local",
+>            "created_at": "2020-11-07T00:56:03+00:00",
+>            "group_id": 6
+>        },
+>    ]
+>}
+>```
+If an organization doesn't have any groups in it, an empty list will be returned.
+
+**Possible Errors**
+
+401 Unauthorized: The auth token is invalid:
+>```
+>{
+>    "detail": "Invalid token"
+>}
+>```
+
+403 Forbidden: The user doesn't have admin permission:
+>```
+>{
+>    "detail": "You do not have permission to perform this action."
+>}
+>```
+
+404 Not Found: The given organization ID was not found:
+>```
+>{
+>    "error_msg": "Organization 113 not found."
+>}
+>```
+
+
+
+## Delete A Group
+
+Delete a group with its `group_id`.
+
+**URL Structure**
+
+> **\[DELETE]** /api/v2.1/admin/groups/`<group_id>`/
+
+
+**Request Authentication**
+
+> Admin Authentication (Token)
+
+
+**Sample Request**
+
+Delete the group with `group_id` 1:
+
+>```
+>curl --request DELETE \
+>--header 'Authorization: Token 64b9ee55dc4ab902ff36763ef5c604a76d52875e' \
+>'https://cloud.seatable.io/api/v2.1/admin/groups/1/' 
+>```
+
+
+**Input Parameters**
+
+**group_id** _\[numeric, required]_
+> The numeric ID of the group to be deleted.
+
+
+**Return Values**
+
+JSON-object with the result of the operation.
+
+
+**Sample Response (200)**
+
+The returned phrase indicates success:
+
+>```
+>{
+>    "success": true
+>}
+>```
+As this API call ensures the group with the given `group_id` doesn't exist any more after the request, even if the given `group_id` is not found, the response will still indicate success.
+
+
+**Possible Errors**
+
 
 ## List Organization Bases
 
-**GET** api/v2.1/admin/organizations/:org_id/dtables/
+List all the bases inside of an organization with its ID.
 
-**Request Params**
+**URL Structure**
 
-* **page**: page number, default 1
-* **per_page**: the number of users per page, default 25
-
-**Request Sample**
-
-```
-curl --request GET 'https://cloud.seatable.io/api/v2.1/admin/organizations/1/groups/' --header 'Authorization: Token 64b9ee55dc4ab902ff36763ef5c604a76d52875e'
-
-```
-
-**Response Sample**
-
-```json
-{
-    "dtable_list": [
-        {
-            "id": 462,
-            "workspace_id": 87,
-            "uuid": "306f2f3a-99ab-4fd8-82a2-5d82fedf2a98",
-            "name": "base1",
-            "creator": "o1a",
-            "modifier": "o1a",
-            "created_at": "2020-07-04T03:14:23+00:00",
-            "updated_at": "2020-07-04T03:14:23+00:00",
-            "rows_count": 0
-        }
-    ],
-    "count": 1
-}
-
-```
+> **\[GET]** /api/v2.1/admin/organizations/`<org_id>`/dtables/
 
 
+**Request Authentication**
+
+> Admin Authentication (Token)
+
+
+**Sample Request**
+
+List all the bases inside the organization with `org_id` 1:
+
+>```
+>curl --request GET \
+>--header 'Authorization: Token 64b9ee55dc4ab902ff36763ef5c604a76d52875e' \
+>'https://cloud.seatable.io/api/v2.1/admin/organizations/1/dtables/' 
+>```
+
+
+**Input Parameters**
+
+**org_id** _\[numeric, required]_
+> The numeric ID of the organization to be requested.
+
+**page** _\[numeric, optional, 1 by default]_ 
+> Page number of the returned base list.
+
+**per_page** _\[numeric, optional, 25 by default]_
+> Number of bases displayed on each page.
+
+
+**Return Values**
+
+JSON-object with the list of bases.
+
+
+**Sample Response (200)**
+
+The returned sample response indicates there are two bases inside this organization, and the details of the bases are listed:
+
+>```
+>{
+>    "dtable_list": [
+>        {
+>            "id": 216,
+>            "workspace_id": 122,
+>            "uuid": "d5be63a2-0fc0-4bbf-9731-e706a002ba81",
+>            "name": "Project Tracker",
+>            "creator": "Jasmin Tee",
+>            "modifier": "Jasmin Tee",
+>            "created_at": "2020-10-26T14:05:53+00:00",
+>            "updated_at": "2020-10-26T14:05:58+00:00",
+>            "color": "#656463",
+>            "text_color": null,
+>            "icon": "icon-company-inventory",
+>            "owner": "Jasmin Tee",
+>            "rows_count": 0
+>        },
+>        {
+>            "id": 163,
+>            "workspace_id": 123,
+>            "uuid": "5db730e5-2d33-3h75-b640-b94728ee9984",
+>            "name": "CRM & Sales",
+>            "creator": "Jasmin Tee",
+>            "modifier": "Jasmin Tee",
+>            "created_at": "2020-10-26T14:05:58+00:00",
+>            "updated_at": "2020-10-26T14:06:05+00:00",
+>            "color": "#4CAF50",
+>            "text_color": null,
+>            "icon": "icon-dollar",
+>            "owner": "Jasmin Tee",
+>            "rows_count": 65
+>        }
+>    ],
+>    "count": 2
+>}
+>```
+
+
+
+**Possible Errors**
+
+401 Unauthorized: The auth token is invalid:
+>```
+>{
+>    "detail": "Invalid token"
+>}
+>```
+
+403 Forbidden: The user doesn't have admin permission:
+>```
+>{
+>    "detail": "You do not have permission to perform this action."
+>}
+>```
+
+404 Not Found: The requested organization was not found:
+>```
+>{
+>    "error_msg": "Organization 1299 not found."
+>}
+>```

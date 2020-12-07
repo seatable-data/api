@@ -2,175 +2,391 @@
 
 ## List Users
 
-**GET** api/v2.1/admin/users/
+List all the users in the current system.
 
-**Request Params**
 
-* **page**: page number, default 1
-* **per_page**: the number of users per page, default 25
+**URL Structure**
 
-**Request Sample**
+> \[**GET**] /api/v2.1/admin/users/
 
-```
-curl --request GET 'https://cloud.seatable.io/api/v2.1/admin/users/' --header 'Authorization: Token 64b9ee55dc4ab902ff36763ef5c604a76d52875e'
 
-```
+**Request Authentication**
 
-**Response Sample**
+> Admin Authentication (Token)
 
-```
-{
-    "data": [
-        {
-            "email": "xiongchao.cheng@seafile.com",
-            "name": "cheng",
-            "contact_email": "xiongchao.cheng@seafile.com",
-            "login_id": "",
-            "is_staff": true,
-            "is_active": true,
-            "create_time": "2019-10-31T07:50:32+00:00",
-            "last_login": "2020-04-07T08:35:07+00:00",
-            "role": "default",
-            "storage_usage": 0
-        },
-        {
-            "email": "test@seafiletest.com",
-            "name": "test",
-            "contact_email": null,
-            "login_id": "",
-            "is_staff": true,
-            "is_active": true,
-            "create_time": "2019-11-04T02:23:22+00:00",
-            "last_login": "2020-03-06T09:49:59+00:00",
-            "role": "default",
-            "storage_usage": 0
-        }
-    ],
-    "total_count": 2
-}
 
-```
 
-**Errors**:
+**Sample Request**
 
-* **400**: Bad Request.
-* **500**: Internal Server Error.
+List two users in the current system:
 
-## Add User
+>```
+>curl --request GET \
+>--header 'Authorization: Token 64b9ee55dc4ab902ff36763ef5c604a76d52875e' \
+>'https://cloud.seatable.io/api/v2.1/admin/users/?page=1&per_page=2' 
+>```
 
-**POST** api/v2.1/admin/users/
+**Input Parameters**
 
-**Request Params**
+**page** _\[numeric, optional, 1 by default]_ 
+> Page number of the returned user list.
 
-* **email**: user's email, required
-* **name**: user's name
-* **is_staff**: whether is an admin user, default false
-* **is_active**: whether the user is active, default true
-* **role**: the user's role, default None meaning default role
-* **password**: the user's password
+**per_page** _\[numeric, optional, 25 by default]_
+> Number of users displayed on each page.
 
-**Request Sample**
 
-```
-curl --request POST 'https://cloud.seatable.io/api/v2.1/admin/users/' --header 'Authorization: Token 64b9ee55dc4ab902ff36763ef5c604a76d52875e' --form 'email=for-add@seafile.com' --form 'password=123' --form 'name=for-add'
+**Return Values**
 
-```
+JSON-object with the list of users.
+
 
 **Response Sample**
 
-```
-{
-    "email": "0ef256cb715841dd81b147b2530c2904@auth.local",
-    "name": "for-add",
-    "contact_email": "for-add@seafile.com",
-    "login_id": "",
-    "is_staff": false,
-    "is_active": true,
-    "create_time": "2020-04-07T07:51:33+00:00",
-    "role": "default",
-    "add_user_tip": "Successfully added user for-add@seafile.com. An email notification has been sent."
-}
+The response from the sample request lists two users with details, and the returned "total_count" value indicates there are 209 users in the current system:
 
-```
+>```
+>{
+>    "data": [
+>        {
+>            "email": "111b8c1666874f15bd5b17afc3527754@auth.local",
+>            "name": "admin",
+>            "contact_email": "admin@example.com",
+>            "login_id": "",
+>            "is_staff": true,
+>            "is_active": true,
+>            "create_time": "2019-11-13T11:07:24+00:00",
+>            "last_login": "2020-12-04T16:10:20+00:00",
+>            "role": "default",
+>            "storage_usage": 2853,
+>            "rows_count": 6
+>        },
+>        {
+>            "email": "66ff22ke9f1e4c8d8e1c31415867317c@auth.local",
+>            "name": "Daniel",
+>            "contact_email": "daniel@example.com",
+>            "login_id": "",
+>            "is_staff": false,
+>            "is_active": true,
+>            "create_time": "2019-11-14T02:25:39+00:00",
+>            "last_login": "2020-12-03T08:21:22+00:00",
+>            "role": "guest",
+>            "storage_usage": 1721496,
+>            "rows_count": 142
+>        }
+>    ],
+>    "total_count": 209
+>}
+>```
 
-**Errors**
+**Possible Errors**:
 
-* **400**: Bad Requst.
-* **403**: Permission Denied.
-* **500**: Internal Server Error.
+401 Unauthorized: The auth token is invalid:
+>```
+>{
+>    "detail": "Invalid token"
+>}
+>```
 
-## Delete User
+403 Forbidden: The user doesn't have admin permission:
+>```
+>{
+>    "detail": "You do not have permission to perform this action."
+>}
+>```
 
-**DELETE** api/v2.1/admin/users/:email/
 
-**Request Sample**
+## Add A User
 
-```
-curl --request DELETE 'https://cloud.seatable.io/api/v2.1/admin/users/0ef256cb715841dd81b147b2530c2904@auth.local/' --header 'Authorization: Token 64b9ee55dc4ab902ff36763ef5c604a76d52875e'
+Add a user with specified details.
 
-```
+
+**URL Structure**
+
+> **\[POST]** /api/v2.1/admin/users/
+
+
+**Request Authentication**
+
+> Admin Authentication (Token)
+
+
+
+**Sample Request**
+
+Add a new user with their email address, password and name:
+>```
+>curl --request POST \
+>--header 'Authorization: Token 64b9ee55dc4ab902ff36763ef5c604a76d52875e' \
+>'https://cloud.seatable.io/api/v2.1/admin/users/' \
+>--form 'email=new-user@seafile.com' \
+>--form 'password=123456' \
+>--form 'name=New-User'
+>```
+
+
+**Input Parameters**
+
+**email** _\[string,required]_ 
+> This is the real email address of the user. SeaTable will save this value as `contact_email`.
+
+
+**password** _\[string,required]_
+> The user's password. Minimum length: 6 characters.
+
+
+**name** _\[string,required]_ 
+> Surname and lastname of the user.
+
+
+**is_staff** _\[enum(`false`, `true`), optional]_ 
+> Determine if the user is a staff:
+> * `false` = normal user
+> * `true` = user becomes an admin
+> * default value is `false`
+
+**is_active** _\[enum(`false`, `true`), optional]_ 
+> Determine if the user is added as active:
+> * `false` = user is deactivated and can not login
+> * `true` = user is activated
+> * default value is `true`
+
+**role** _\[string, optional]_ 
+
+> Define the user's role. SeaTable comes with two built-in roles `default` and `guest`, and this can be customized / extended. For more details, refer to the article [Roles and Permissions Support.](https://docs.seatable.io/published/seatable-manual/config/enterprise/roles_permissions.md)
+
+
+**Return Values**
+
+JSON-object with new user's info and a response `add_user_tip`. The `email` (user's ID in the system) is generated automatically.
+
+
 
 **Response Sample**
 
-```
-{
-    "success": true
-}
+> ```
+> {             
+>     "email": "0ef256cb715841dd81b147b2530c2904@auth.local",
+>     "name": "New-User",
+>     "contact_email": "new-user@example.com",
+>     "login_id": "",
+>     "is_staff": false,
+>     "is_active": true,
+>     "create_time": "2020-04-07T07:51:33+00:00",
+>     "role": "default",
+>     "add_user_tip": "Successfully added user new-user@example.com. An email notification has been sent."
+> }
+> ```
 
-```
+**Possible Errors**
 
-**Errors**
+400 Bad Request: User already exists:
+> ```
+> {
+>     "error_msg": "User existing-user@example.com already exists."
+> }
+> ```
 
-* **403**: Permission Denied.
-* **404**: User Not Found.
-* **500**: Internal Server Error.
+401 Unauthorized: The auth token is invalid:
+>```
+>{
+>    "detail": "Invalid token"
+>}
+>```
 
-## Update User
+403 Forbidden: The user doesn't have admin permission:
+>```
+>{
+>    "detail": "You do not have permission to perform this action."
+>}
+>```
 
-**PUT** api/v2.1/admin/users/:email/
+## Delete A User
 
-**Request Params**
+Delete a user permanently.
 
-* **is_staff**: whether is an admin user, optional
-* **is_active**: whether the user is active, optional
-* **role**: the user's role, optional
-* **row_limit: **the limit of tables' row, optional
-* **asset_quota_mb**: the limit of user's asset quota in Mb, optional
+**URL Structure**
 
-**Request Smaple**
+> **\[DELETE]** /api/v2.1/admin/users/`<email>`/
 
-```
-curl --request PUT 'https://cloud.seatable.io/api/v2.1/admin/users/5bc29d150e874522a2a0563ca2dc5fb4@auth.local/' --header 'Authorization: Token 64b9ee55dc4ab902ff36763ef5c604a76d52875e' --form 'is_staff=true' --form 'row_limit=10'
 
-```
+**Request Authentication**
+
+> Admin Authentication (Token)
+
+
+
+**Sample Request**
+
+Delete the user with the ID (`email`) `2fca46c0eaa8499cb4aa9871cc7d9560@auth.local`: 
+
+> ```
+> curl --request DELETE \
+> --header 'Authorization: Token 64b9ee55dc4ab902ff36763ef5c604a76d52875e' \
+> 'https://cloud.seatable.io/api/v2.1/admin/users/2fca46c0eaa8499cb4aa9871cc7d9560@auth.local/' 
+> ```
+
+**Input Parameters**
+
+**email** _\[string, required]_
+> The ID of the user (not the email address).
+
+**Return Values**
+
+JSON-object with the result of the operation.
+
+
+**Sample Response**
+
+> ```
+> {
+>     "success": true
+> }
+> ```
+
+**Possible Errors**
+
+
+401 Unauthorized: The auth token is invalid:
+>```
+>{
+>    "detail": "Invalid token"
+>}
+>```
+
+403 Forbidden: The user doesn't have admin permission:
+>```
+>{
+>    "detail": "You do not have permission to perform this action."
+>}
+>```
+
+404 Not Found: User's ID is not found:
+> ```
+> {
+>     "error_msg": "User 2fca46c0eaa8499cb4aa9871cc7d9560@auth.local not found."
+> }
+> ```
+
+404 Not Found: User's email address was used instead of ID by mistake:
+> ```
+> {
+>     "error_msg": "User existing-user@example.com not found."
+> }
+> ```
+
+## Update A User
+
+Update the details of a user, which includes permission, role, row limit etc.
+
+
+**URL Structure**
+
+> **\[PUT]** /api/v2.1/admin/users/`<email>`/
+
+
+**Request Authentication**
+
+> Admin Authentication (Token)
+
+
+**Sample Request**
+
+Update the permission level and the row limit of the user with ID `5bc29d150e874522a2a0563ca2dc5fb4@auth.local`:
+
+> ```
+> curl --request PUT \
+> --header 'Authorization: Token 64b9ee55dc4ab902ff36763ef5c604a76d52875e' \
+> 'https://cloud.seatable.io/api/v2.1/admin/users/5bc29d150e874522a2a0563ca2dc5fb4@auth.local/' \
+> --form 'is_staff=true' \ 
+> --form 'row_limit=10'
+> ```
+
+
+**Input Parameters**
+
+**is_staff** _\[enum(`false`, `true`), optional]_ 
+> Set the user as staff or normal:
+> * `false` = user becomes normal
+> * `true` = user becomes an admin
+
+**is_active** _\[enum(`false`, `true`), optional]_ 
+> Set the user as active or inactive:
+> * `false` = user is deactivated and can not login
+> * `true` = user is activated
+
+
+**role** _\[string, optional]_ 
+
+> Define the user's role. SeaTable comes with two built-in roles `default` and `guest`, and this can be customized / extended. For more details, refer to the article [Roles and Permissions Support.](https://docs.seatable.io/published/seatable-manual/config/enterprise/roles_permissions.md)
+
+
+**row_limit** _\[numeric, optional]_
+> Set the new limit of rows.
+
+
+**asset_quota_mb** _\[numeric, optional]_
+> Set the limit of user's asset quota in Mb
+
+
+**Return Values**
+
+JSON-object with the updated details as well as an `update_status_tip`.
+
 
 **Response Sample**
 
-```
-{
-    "email":"5bc29d150e874522a2a0563ca2dc5fb4@auth.local",
-    "name":"\u6210\u96c4\u8d85",
-    "contact_email":"for-add@seafile.com",
-    "login_id":"",
-    "is_staff":true,
-    "is_active":true,
-    "create_time":"2019-10-31T07:50:32+00:00",
-    "role":"default",
-    "avatar_url":"http://127.0.0.1:8000/media/avatars/c/7/1a012b2491288d53e4de27f403e584/resized/64/e9d4953412684d3eccf7eaed805541f1_gQbhZe5.png",
-    "storage_usage":59610270,
-    "storage_quota":-2,
-    "row_usage":27,
-    "row_limit":10
-}
+> ```
+> {
+>     "email": "5bc29d150e874522a2a0563ca2dc5fb4@auth.local",
+>     "name": "Max Teamleader",
+>     "contact_email": "teamleader@example.de",
+>     "login_id": "",
+>     "is_staff": true,
+>     "is_active": true,
+>     "org_id": 999,
+>     "org_name": "Beef Test",
+>     "create_time": "2020-11-06T09:36:39+00:00",
+>     "role": "default",
+>     "update_status_tip": "Edit succeeded, an email has been sent."
+> }
+> ```
 
-```
+**Possible Errors**
 
-**Errors**
+400 Bad Request: The given parameter was not valid:
+> ```
+> {
+>     "error_msg": "role must be in ['default', 'guest']."
+> }
+> ```
 
-* **400**: Bad Requst.
-* **403**: Permission Denied.
-* **404**: User Not Found.
-* **500**: Internal Server Error.
+401 Unauthorized: The auth token is invalid:
+>```
+>{
+>    "detail": "Invalid token"
+>}
+>```
+
+403 Forbidden: The user doesn't have admin permission:
+>```
+>{
+>    "detail": "You do not have permission to perform this action."
+>}
+>```
+
+404 Not Found: The user's ID was not found:
+> ```
+> {
+>     "error_msg": "User 26815cfaf1154efba122f92359f4e581@auth.local not found."
+> }
+> ```
+
+404 Not Found: User's email address was used instead of ID by mistake:
+> ```
+> {
+>     "error_msg": "User existing-user@example.com not found."
+> }
+> ```
 
 ## Reset Password
 

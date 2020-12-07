@@ -32,6 +32,12 @@ List the forms without inputing any parameter:
 **per_page** _\[numeric, optional, 2 by default]_
 > Number of forms displayed on each page.
 
+
+**Return Values**
+
+JSON-object with the list of forms.
+
+
 **Sample Response**
 
 Response from the sample request shows the details of 2 forms by default, as the "page" and "per_page" parameters were not given in the sample request. The returned "count" value indicates that there are 46 forms in total:
@@ -84,7 +90,7 @@ Delete a form with its token.
 
 **URL Structure**
 
-> **\[DELETE]** /api/v2.1/admin/forms/<token>/
+> **\[DELETE]** /api/v2.1/admin/forms/`<token>`/
 
 **Request Authentication**
 
@@ -101,6 +107,17 @@ Delete the form with the token 3f9ee7c8-7338-4ca5-b877-4df454c6ad8b:
 >--header 'Authorization: Token 64b9ee55dc4ab902ff36763ef5c604a76d52875e' \
 >'https://cloud.seatable.io/api/v2.1/admin/forms/3f9ee7c8-7338-4ca5-b877-4df454c6ad8b/' 
 >```
+
+**Input Parameters**
+
+**token** _\[string, required]_
+> As a form is generated, its token is used as the suffix to its link. For example: https\://cloud.seatable.io/dtable/forms/`<token>`/
+
+
+**Return Values**
+
+JSON-object with the result of the operation.
+
 
 **Sample Response**
 
