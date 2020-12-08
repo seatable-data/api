@@ -45,7 +45,7 @@ JSON-object with the list of storage objects.
 
 
 
-**Sample Response**
+**Sample Response (200)**
 
 The following response shows three items with their details in the parent directory:
 
@@ -95,12 +95,6 @@ If the ID (`email` that ends with `@auth.local`) was mistaken by the user's `con
 
 **Possible Errors**
 
-400 Not Found: The given user's not found:
->```
->{
->    "error_msg": "Workspace not found."
->}
->```
 
 401 Unauthorized: The auth token is invalid:
 >```
@@ -113,5 +107,12 @@ If the ID (`email` that ends with `@auth.local`) was mistaken by the user's `con
 >```
 >{
 >    "detail": "You do not have permission to perform this action."
+>}
+>```
+
+404 Not Found: The given user's not found:
+>```
+>{
+>    "error_msg": "Workspace not found."
 >}
 >```

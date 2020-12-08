@@ -41,9 +41,9 @@ List 1 base that is shared to the user with ID `9f11ca9949b946a3b2pad55db5de1d23
 JSON-object with the list of bases.
 
 
-**Sample Response**
+**Sample Response (200)**
 
-The response from the sample request lists 1 base that is shared to the user, with details of the base including the ID of the `from_user`, the returned "count" value indicates there are 3 bases shared to this user in total:
+The response from the sample request lists 1 base that is shared to the user, with details of the base including the ID of the `from_user`, the returned `"count"` value indicates there are 3 bases shared to this user in total:
 >```
 >{
 >    "dtable_list": [

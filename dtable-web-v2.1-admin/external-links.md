@@ -43,7 +43,7 @@ JSON-object with the list of all external links.
 
 **Sample response**
 
-Response from the sample request shows Page 1 with 3 external links and their detailed infos. The returned "has_next_page" value indicates that there are more external links in the system:
+Response from the sample request shows Page 1 with 3 external links and their detailed infos. The returned `"has_next_page"` value indicates that there are more external links in the system:
 
 >```
 >{

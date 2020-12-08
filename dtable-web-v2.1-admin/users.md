@@ -40,9 +40,9 @@ List two users in the current system:
 JSON-object with the list of users.
 
 
-**Response Sample**
+**Sample Response (200)**
 
-The response from the sample request lists two users with details, and the returned "total_count" value indicates there are 209 users in the current system:
+The response from the sample request lists two users with details, and the returned `"total_count"` value indicates there are 209 users in the current system:
 
 >```
 >{
@@ -118,7 +118,7 @@ Add a new user with their email address, password and name:
 >curl --request POST \
 >--header 'Authorization: Token 64b9ee55dc4ab902ff36763ef5c604a76d52875e' \
 >'https://cloud.seatable.io/api/v2.1/admin/users/' \
->--form 'email=new-user@seafile.com' \
+>--form 'email=new-user@example.com' \
 >--form 'password=123456' \
 >--form 'name=New-User'
 >```
@@ -161,7 +161,7 @@ JSON-object with new user's info and a response `add_user_tip`. The `email` (use
 
 
 
-**Response Sample**
+**Sample Response (201)**
 
 > ```
 > {             
@@ -235,7 +235,7 @@ Delete the user with the ID (`email`) `2fca46c0eaa8499cb4aa9871cc7d9560@auth.loc
 JSON-object with the result of the operation.
 
 
-**Sample Response**
+**Sample Response (200)**
 
 > ```
 > {
@@ -333,7 +333,7 @@ Update the permission level and the row limit of the user with ID `5bc29d150e874
 JSON-object with the updated details as well as an `update_status_tip`.
 
 
-**Response Sample**
+**Sample Response (200)**
 
 > ```
 > {
@@ -390,77 +390,148 @@ JSON-object with the updated details as well as an `update_status_tip`.
 
 ## Reset Password
 
-**PUT** api/v2.1/admin/users/:email/reset-password/
+Reset the password of a certain user.
 
-**Request Sample**
 
-```
-curl --request PUT 'https://cloud.seatable.io/api/v2.1/admin/users/5a96afda39ec4bf4805d884588d44f7f@auth.local/reset-password/' --header 'Authorization: Token 64b9ee55dc4ab902ff36763ef5c604a76d52875e'
+**URL Structure**
 
-```
+> **\[PUT]** /api/v2.1/admin/users/`<email>`/reset-password/
 
-**Response Sample**
 
-```
-{
-    "new_password": "sC8INE9MdW",
-    "reset_tip": "Successfully reset password to sC8INE9MdW, an email has been sent to None."
-}
 
-```
+**Request Authentication**
 
-**Errors**
+> Admin Authentication (Token)
 
-* **403**: Permission Denied.
-* **404**: User Not Found.
-* **500**: Internal Server Error.
+
+
+**Sample Request**
+
+Reset the password of the user with ID `5a96afda39ec4bf4805d884588d44f7f@auth.local`:
+
+> ```
+> curl --request PUT \
+> --header 'Authorization: Token 64b9ee55dc4ab902ff36763ef5c604a76d52875e' \
+> 'https://cloud.seatable.io/api/v2.1/admin/users/5a96afda39ec4bf4805d884588d44f7f@auth.local/reset-password/' 
+> ```
+
+**Input Parameters**
+
+**email** _\[string, required]_
+> The ID (not email address) of the user, ending with `@auth.local`.
+
+
+
+**Return Value**
+
+JSON-object with the `new_password` and a `reset_tip`.
+
+
+
+**Sample Response (200)**
+
+In the response to the sample request, a new password is automatically generated and an email has been sent to the user's email address:
+
+> ```
+> {
+>     "new_password": "sC8INE9MdW",
+>     "reset_tip": "Successfully reset password to sC8INE9MdW, an email has been sent to user@example.com."
+> }
+> ```
+
+**Possible Errors**
+
+400 Bad Request: `email` was wrong, or was mistaken by the user's email address:
+> ```
+> {
+>     "error_msg": "email invalid."
+> }
+> ```
+
+401 Unauthorized: The auth token is invalid:
+>```
+>{
+>    "detail": "Invalid token"
+>}
+>```
+
+403 Forbidden: The user doesn't have admin permission:
+>```
+>{
+>    "detail": "You do not have permission to perform this action."
+>}
+>```
+
 
 ## List Admin Users
 
-**GET** api/v2.1/admin/admin-users/
+List all the users that have administrator permissions.
 
-**Request Sample**
 
-```
-curl --request GET 'https://cloud.seatable.io/api/v2.1/admin/admin-users/' --header 'Authorization: Token 64b9ee55dc4ab902ff36763ef5c604a76d52875e'
+**URL Structure**
 
-```
+> **\[GET]** /api/v2.1/admin/admin-users/
 
-**Response Sample**
 
-```
-{
-    "admin_user_list": [
-        {
-            "email": "test@seafiletest.com",
-            "name": "test",
-            "contact_email": null,
-            "login_id": "",
-            "is_staff": true,
-            "is_active": true,
-            "create_time": "2019-11-04T02:23:22+00:00",
-            "last_login": "2020-03-06T09:49:59+00:00",
-            "admin_role": "default_admin"
-        },
-        {
-            "email": "admin@seafiletest.com",
-            "name": "admin",
-            "contact_email": "admin@seafiletest.com",
-            "login_id": "",
-            "is_staff": true,
-            "is_active": true,
-            "create_time": "2019-11-04T02:24:40+00:00",
-            "last_login": "2020-04-07T03:51:51+00:00",
-            "admin_role": "default_admin"
-        }
-    ]
-}
+**Request Authentication**
 
-```
+> Admin Authentication (Token)
 
-**Errors**
 
-* **403**: Permission Denied.
-* **500**: Internal Server Error.
+**Sample Request**
+
+> ```
+> curl --request GET \
+> --header 'Authorization: Token 64b9ee55dc4ab902ff36763ef5c604a76d52875e' \
+> 'https://cloud.seatable.io/api/v2.1/admin/admin-users/' 
+> ```
+
+**Input Parameters**
+
+None.
+
+
+**Return Value**
+
+JSON-object with the list of administrator users and their detailed infos.
+
+
+**Sample Response (200)**
+
+> ```
+> {
+>     "admin_user_list": [
+>         {
+>             "email": "297b8c16a3b20055bd5b17afc39dfnfg54@auth.local",
+>             "name": "admin",
+>             "contact_email": "admin@example.com",
+>             "login_id": "",
+>             "is_staff": true,
+>             "is_active": true,
+>             "storage_usage": 2853,
+>             "rows_count": 6,
+>             "create_time": "2019-11-13T11:07:24+00:00",
+>             "last_login": "2020-12-04T16:10:20+00:00",
+>             "admin_role": "default_admin"
+>         }
+>     ]
+> }
+> ```
+
+**Possible Errors**
+
+401 Unauthorized: The auth token is invalid:
+>```
+>{
+>    "detail": "Invalid token"
+>}
+>```
+
+403 Forbidden: The user doesn't have admin permission:
+>```
+>{
+>    "detail": "You do not have permission to perform this action."
+>}
+>```
 
 

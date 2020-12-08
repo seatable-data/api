@@ -40,7 +40,7 @@ JSON-object with the list of forms.
 
 **Sample Response**
 
-Response from the sample request shows the details of 2 forms by default, as the "page" and "per_page" parameters were not given in the sample request. The returned "count" value indicates that there are 46 forms in total:
+Response from the sample request shows the details of 2 forms by default, as the `"page"` and `"per_page"` parameters were not given in the sample request. The returned `"count"` value indicates that there are 46 forms in total:
 
 >```
 >{
