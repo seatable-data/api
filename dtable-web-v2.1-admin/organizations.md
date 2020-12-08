@@ -41,7 +41,7 @@ JSON-object with the list of organizations.
 
 **Sample Response (200)**
 
-2 organizations with their details are listed in the response to the sample request. The returned "count" value indicates there are 152 organizations in total:
+2 organizations with their details are listed in the response to the sample request. The returned `"count"` value indicates there are 152 organizations in total:
 
 >```
 >{

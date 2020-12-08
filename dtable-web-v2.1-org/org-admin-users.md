@@ -1,158 +1,432 @@
-# Org admin users
+# Organization Administrator: Users Operations
 
-## List Users
+## List All Users
 
-**GET** /api/v2.1/org/{org_id}/admin/users/
+List all the users in the current organization.
 
-**Request Params**
 
-* **is_staff**: whether list admin users, true or false
-* **page**: for pagination
-* **per_page**: for pagination
+**URL Structure**
 
-**Sample request**
+> **\[GET]** /api/v2.1/org/`<org_id>`/admin/users/
 
-```
-curl -H "Authorization: Token 3f1e23157c3a1fd740e9dc1c5d748929fe319b95" -H 'Accept: application/json; indent=4' https://cloud.seatable.io/api/v2.1/org/12/admin/users/curl -H "Authorization: Token 3f1e23157c3a1fd740e9dc1c5d748929fe319b95"
 
-```
+**Request Authentication**
 
-**Sample response**
+> Org-admin Authentication (Token)
 
-```
-{
-	"user_list": [{
-		"email": "0f57ceedc87049a2af1b2726c147c617@auth.local",
-		"name": "org~4-member-1",
-		"contact_email": "org~4-member-1@seafile.com",
-		"quota_usage": 0,
-		"quota_total": -2,
-		"last_login": "2020-05-20T07:11:51+00:00",
-		"id": 155,
-		"is_active": true,
-		"ctime": "2020-04-10T09:52:41+00:00",
-		"self_usage": 0,
-		"quota": -2
-	}],
-	"per_page": 100,
-	"page": 1,
-	"page_next": false
-}
 
-```
 
-## Add User
+**Sample Request**
 
-**POST** /api/v2.1/org/{org_id}/admin/users/
+> ```
+> curl --request GET \
+> -H "Authorization: Token 3f1e23157c3a1fd740e9dc1c5d748929fe319b95" \
+> https://cloud.seatable.io/api/v2.1/org/12/admin/users/
+> ```
 
-Request Params
 
-* email: user's email
-* name: user's name
-* password: user's password
 
-**Sample request**
+**Input Parameters**
 
-```
-curl --request POST 'https://cloud.seatable.io/api/v2.1/org/23/admin/users/' --header 'Authorization: Token 95ca2c5f0bf469742f21023b191520f5a5c63eb6' --form 'email=org~4-member-3@seafile.com' --form 'name=org~4-member-3' --form 'password=123'
+**is_staff** _\[enum(`true` or `1`, `false` or `0`), optional]_
+> If `true` or `1`, will only list org-admin users. 
 
-```
+**page** _\[numeric, optional, 1 by default]_ 
+> Page number of the returned user list.
 
-**Sample response**
+**per_page** _\[numeric, optional, 100 by default]_
+> Number of users displayed on each page.
 
-```
-{
-    "id": 169,
-    "is_active": true,
-    "ctime": "2020-05-20T07:48:11+00:00",
-    "name": "org~4-member-3",
-    "email": "4b2160a16f4f49d8aa5ece84520d519b@auth.local",
-    "contact_email": "org~4-member-3@seafile.com",
-    "last_login": null,
-    "self_usage": 0,
-    "quota": -2
-}
 
-```
+
+**Return Values**
+
+JSON-object with the list of users.
+
+
+**Sample Response**
+
+The response from the sample request lists off two users in the organization. The returned `per_page`, `page` and `page_next` values indicate that all the users in this organization are listed.
+
+> ```
+> {
+> 	"user_list": [{
+> 		"email": "0f57ceedc87049a2af1b2726c147c617@auth.local",
+> 		"name": "Org Member",
+> 		"contact_email": "org-member@example.com",
+> 		"quota_usage": 0,
+> 		"quota_total": -2,
+> 		"last_login": "2020-05-20T07:11:51+00:00",
+> 		"id": 155,
+> 		"is_active": true,
+> 		"ctime": "2020-04-10T09:52:41+00:00",
+> 		"self_usage": 0,
+> 		"quota": -2
+> 		"is_org_admin": false
+> 	}, 
+> 	{
+> 		"email": "31590xfaf1154efba122f92359f4e580@auth.local",
+> 		"name": "Max Teamleader",
+> 		"contact_email": "teamleader@sexample.com",
+> 		"quota_usage": 0,
+> 		"quota_total": -2,
+> 		"last_login": "2020-11-08T15:15:16+00:00",
+> 		"id": 217,
+> 		"is_active": true,
+> 		"ctime": "2020-11-06T09:36:39+00:00",
+> 		"self_usage": 0,
+> 		"quota": -2,
+> 		"is_org_admin": true
+> 	}],
+> 	"per_page": 100,
+> 	"page": 1,
+> 	"page_next": false
+> }
+> ```
+
+**Possible Errors**
+
+401 Unauthorized: The auth token is invalid:
+>```
+>{
+>    "detail": "Invalid token"
+>}
+>```
+
+403 Forbidden: The user doesn't have org-admin permission in the requested org:
+>```
+>{
+>    "detail": "You do not have permission to perform this action."
+>}
+>```
+
+## Add A User
+
+Add a new user in the organization and define email, name and password.
+
+
+**URL Structure**
+
+> **\[POST]** /api/v2.1/org/`<org_id>`/admin/users/
+
+
+**Request Authentication**
+
+> Org-admin Authentication (Token)
+
+
+**Sample Request**
+
+> ```
+> curl --request POST \
+> --header 'Authorization: Token 95ca2c5f0bf469742f21023b191520f5a5c63eb6' \
+> 'https://cloud.seatable.io/api/v2.1/org/23/admin/users/' 
+> --form 'email=new-user@example.com' \
+> --form 'name=New-user' \
+> --form 'password=123456' \
+> ```
+
+
+**Input Parameters**
+
+**email** _\[string,required]_ 
+> This is the real email address of the user. SeaTable will save this value as `contact_email`.
+
+
+**password** _\[string,required]_
+> The user's password. Minimum length: 6 characters.
+
+
+**name** _\[string,required]_ 
+> Surname and lastname of the user.
+
+
+
+**Return Values**
+
+JSON-object with new user's info. The `email` (user's ID in the system) is generated automatically.
+
+
+
+**Sample Response**
+
+The new user is added and their `email` (ID) is generated:
+
+> ```
+> {
+>     "id": 268,
+>     "is_active": true,
+>     "ctime": "2020-11-08T16:21:47+00:00",
+>     "name": "new-user",
+>     "email": "d49f768b2425487fa5d6f5b443515a87@auth.local",
+>     "contact_email": "new-user@example.com",
+>     "last_login": null,
+>     "self_usage": 0,
+>     "quota": -2
+> }
+> ```
+
+
+**Possible Errors**
+
+400 Bad Request: The user's email address is already registered in the system:
+> ```
+> {
+>     "error_msg": "User new-user@example.com already exists."
+> }
+> ```
+
+401 Unauthorized: The auth token is invalid:
+>```
+>{
+>    "detail": "Invalid token"
+>}
+>```
+
+403 Forbidden: The user doesn't have org-admin permission:
+>```
+>{
+>    "detail": "You do not have permission to perform this action."
+>}
+>```
+
+
+
 
 ## Update User
 
-**PUT** /api/v2.1/org/{org_id}/admin/users/{email}/
+Update the info and settings of a user.
+
+
+**URL Structure**
+
+> **\[PUT]** /api/v2.1/org/`<org_id>`/admin/users/`<email>`/
+
+
+**Request Authentication**
+
+> Org-admin Authentication (Token)
+
+
+**Sample Request**
+
+Change the name of the user with the ID (`email`) of `d49f768b2425487fa5d6f5b443515a87@auth.local`:
+
+> ```
+> curl -X PUT \
+> -H "Authorization: Token 3f1e23157c3a1fd740e9dc1c5d748929fe319b95" \
+> https://cloud.seatable.io/api/v2.1/org/12/admin/users/d49f768b2425487fa5d6f5b443515a87@auth.local/ \
+> -d "name=Old-user" \
+> -d "is_active=false" \
+> ```
+
+
 
 **Request Parameters**
 
-choose one attribute to update
+**name** _\[string, optional]_
+> The new name of the user.
 
-* name
-* contact_email
-* is_active
-* is_staff
+**contact_email** _\[string, optional]_
+> The new contact email address of the user (currently, user's contact email address cannot be changed on cloud.seatable.io)
 
-**Sample request**
+**is_active** _\[enum(`true` or `1`, `false` or `0`), optional]_
+> Determine if the user is set as active:
+> * `false` = user is deactivated and can not login
+> * `true` = user is activated
 
-```
-curl -X PUT -d "name=o2aa" -H "Authorization: Token 3f1e23157c3a1fd740e9dc1c5d748929fe319b95" -H 'Accept: application/json; indent=4' https://cloud.seatable.io/api/v2.1/org/12/admin/users/o2a@o2a.com/curl -X PUT -d "name=o2aa" -H "Authorization: Token 3f1e23157c3a1fd740e9dc1c5d748929fe319b95"
+**is_staff** _\[enum(`true` or `1`, `false` or `0`), optional]_
+> Determine if the user is set as staff:
+> * `false` = normal user
+> * `true` = user becomes an org-admin
+> * If user is already/not an org-admin, setting this attribute again will cause an error (see the **Possible Errors**)
 
-```
 
-**Sample response**
+**Return Values**
 
-```
-{
-	"email": "5ef77767e76345bdb72469923f2c2904@auth.local",
-	"name": "o2aa",
-	"contact_email": "org~4-member-2@seafile.com",
-	"quota_usage": 0,
-	"quota_total": -2,
-	"is_active": false,
-	"id": 168,
-	"ctime": "2020-05-20T07:35:24+00:00",
-	"last_login": null,
-	"self_usage": 0,
-	"quota": -2,
-	"email_sent": false
-}
+JSON-object with the details of the user.
 
-```
+
+
+**Sample Response**
+
+The returned values confirm the change:
+
+> ```
+> {
+> 	"email": "5ef77767e76345bdb72469923f2c2904@auth.local",
+> 	"name": "old-user",
+> 	"contact_email": "new-user@example.com",
+> 	"quota_usage": 0,
+> 	"quota_total": -2,
+> 	"is_active": false,
+> 	"id": 168,
+> 	"ctime": "2020-05-20T07:35:24+00:00",
+> 	"last_login": null,
+> 	"self_usage": 0,
+> 	"quota": -2,
+> 	"email_sent": false
+> }
+> ```
+
+
+**Possible Errors**
+
+400 Bad Request: A user is already (or not) an org-admin:
+> ```
+> {
+>     "error_msg": "d49f768b2425487fa5d6f5b443515a87@auth.local is already organization staff."
+> }
+> ```
+
+401 Unauthorized: The auth token is invalid:
+>```
+>{
+>    "detail": "Invalid token"
+>}
+>```
+
+403 Forbidden: The user doesn't have org-admin permission:
+>```
+>{
+>    "detail": "You do not have permission to perform this action."
+>}
+>```
 
 ## Delete User
 
-**DELETE** /api/v2.1/org/{org_id}/admin/users/{email}/
+Delete a user permanently.
 
-**Sample request**
 
-```
-curl -X DELETE -H "Authorization: Token 3f1e23157c3a1fd740e9dc1c5d748929fe319b95" -H 'Accept: application/json; indent=4' https://cloud.seatable.io/api/v2.1/org/12/admin/users/o2a@o2a.com/curl -X DELETE -H "Authorization: Token 3f1e23157c3a1fd740e9dc1c5d748929fe319b95"
+**URL Structure**
 
-```
+> **\[DELETE]** /api/v2.1/org/`<org_id>`/admin/users/`<email>`/
 
-**Sample response**
 
-```
-{
-    "success": true
-}
 
-```
+**Request Authentication**
+
+> Org-admin Authentication (Token)
+
+
+
+**Sample Request**
+
+Delete the user with ID `d49f768b2425487fa5d6f5b443515a87@auth.local`:
+
+> ```
+> curl -X DELETE \
+> -H "Authorization: Token 3f1e23157c3a1fd740e9dc1c5d748929fe319b95" \
+> https://cloud.seatable.io/api/v2.1/org/12/admin/users/d49f768b2425487fa5d6f5b443515a87@auth.local/
+> ```
+
+
+**Input Parameters**
+
+**email** _\[string, required]_
+> The ID (not email address) of the user to be deleted.
+
+
+**Return Values**
+
+JSON-object indicating the result of the operation.
+
+
+
+**Sample Response**
+
+Response from the sample request indicates the successful deletion of the user:
+> ```
+> {
+>     "success": true
+> }
+> ```
+
+
+**Possible Errors**
+
+401 Unauthorized: The auth token is invalid:
+>```
+>{
+>    "detail": "Invalid token"
+>}
+>```
+
+403 Forbidden: The user doesn't have org-admin permission:
+>```
+>{
+>    "detail": "You do not have permission to perform this action."
+>}
+>```
+
+404 Not Found: The user's ID was wrong, or not found (already deleted):
+> ```
+> {
+>     "error_msg": "User new-user@example.com not found."
+> }
+> ```
 
 ## Reset User Password
 
-**PUT** /api/v2.1/org/{org_id}/admin/users/{email}/set-password/
+Reset the password of a user.
 
-**Sample request**
+**URL Structure**
 
-```
-curl -X PUT -H "Authorization: Token 3f1e23157c3a1fd740e9dc1c5d748929fe319b95" -H 'Accept: application/json; indent=4' https://cloud.seatable.io/api/v2.1/org/12/admin/users/o2a@o2a.com/set-password/curl -X PUT -H "Authorization: Token 3f1e23157c3a1fd740e9dc1c5d748929fe319b95"
-
-```
-
-**Sample response**
-
-```
-{
-    "new_password": "PcqK9nwSR0"
-}
-
-```
+> **\[PUT]** /api/v2.1/org/`<org_id>`/admin/users/`<email>`/set-password/
 
 
+
+**Request Authentication**
+
+> Org-admin Authentication (Token)
+
+
+
+**Sample Request**
+
+Reset the password of the user with ID `b5cdf2ab97ef426ea00f55f674a74b99@auth.local`:
+> ```
+> curl -X PUT 
+> -H "Authorization: Token 3f1e23157c3a1fd740e9dc1c5d748929fe319b95" \
+> https://cloud.seatable.io/api/v2.1/org/12/admin/users/b5cdf2ab97ef426ea00f55f674a74b99@auth.local/set-password/
+> ```
+
+
+**Input Parameters**
+
+JSON-object with the new password.
+
+
+
+**Sample Response**
+
+A new password is returned:
+> ```
+> {
+>     "new_password": "PcqK9nwSR0"
+> }
+> ```
+
+
+**Possible Errors**
+
+401 Unauthorized: The auth token is invalid:
+>```
+>{
+>    "detail": "Invalid token"
+>}
+>```
+
+403 Forbidden: The user doesn't have org-admin permission:
+>```
+>{
+>    "detail": "You do not have permission to perform this action."
+>}
+>```
+
+404 Not Found: The user's ID was wrong, or not found:
+> ```
+> {
+>     "error_msg": "User new-user@example.com not found."
+> }
+> ```
