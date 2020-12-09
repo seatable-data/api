@@ -1,32 +1,67 @@
-# Org Info
+# Organization Administration: Information
 
-## Update Org Info
+## Update Organization Information
 
-**PUT** https\://cloud.seatable.io/api/v2.1/org/admin/info/
+Update the organization's basic information.
 
-**Request parameters**
 
-* new_org_name: optional
+**URL Structure**
 
-**Request Sample**
+> **\[PUT]** /api/v2.1/org/admin/info/
 
-```
-curl -X PUT -H 'Authorization: Token 95ca2c5f0bf469742f21023b191520f5a5c63eb6' -H 'Content-Type: multipart/form-data' 'https://cloud.seatable.io/api/v2.1/org/admin/info/' -F 'org_name=org~4-put-2'
 
-```
+**Request Authentication**
 
-**Response Sample**
+> Org-admin Authentication (Token)
 
-```
-{
-    "success": true
-}
+**Sample Request**
 
-```
+Change the name of the organization into "SeaTable":
 
-**Errors**
+> ```
+> curl -X PUT \
+> -H 'Authorization: Token 95ca2c5f0bf469742f21023b191520f5a5c63eb6' \
+> -H 'Content-Type: multipart/form-data' \
+> 'https://cloud.seatable.io/api/v2.1/org/admin/info/' \
+> -F 'new_org_name=SeaTable'
+> ```
 
-* **403** Permission Denied.
-* **500** Internal Server Error.
+
+**Input Parameters**
+
+**new_org_name**  _\[string, optional]_
+> New name of the organization.
+
+
+**Return Values**
+
+JSON-object with the result of the operation.
+
+
+**Sample Response**
+
+The response indicates that the changes were successful:
+> ```
+> {
+>     "success": true
+> }
+> ```
+The same response will be also returned even if the `new_org_name` is identical to the current name, i.e. nothing was changed.
+
+**Possible Errors**
+
+401 Unauthorized: The auth token is invalid:
+>```
+>{
+>    "detail": "Invalid token"
+>}
+>```
+
+403 Forbidden: The user doesn't have org-admin permission:
+>```
+>{
+>    "detail": "You do not have permission to perform this action."
+>}
+>```
 
 
