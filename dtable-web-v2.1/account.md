@@ -1,42 +1,70 @@
 # Account
 
-## Get account info
+## Get Account Info
 
-**GET** /api2/account/info/﻿
+Get the account details with the user's auth token.
 
-**Sample request**
 
-```
-curl -H "Authorization: Token asd410d592f59efc64410bbf4ee7602eb6854dd7" -H 'Accept: application/json; indent=4' https://cloud.seatable.io/api2/account/info/
+**URL Structure**
 
-```
+> **\[GET]** /api2/account/info/
 
-**Sample response**
 
-```json
-{
-    "space_usage": "0%",
-    "total": -2,
-    "usage": 3198516,
-    "row_usage_rate": "1.15%",
-    "row_total": 2000,
-    "row_usage": 23,
-    "avatar_url": "https://cloud.seatable.io/image-view/avatars/5/2/731e5a1304b90d990dce20afb2cf33/resized/72/03e77af8819c66f25260297dd5e97dc7_5kJmrG6.png",
-    "email": "user@email.com",
-    "name": "username",
-    "login_id": "",
-    "contact_email": "user@email.com",
-    "institution": "",
-    "is_staff": false,
-    "enable_chargebee": false,
-    "enable_subscription": false,
-    "email_notification_interval": 0
-}
+**Request Authentication**
 
-```
+> User Authentication (Token)
 
-**Errors**
+**Sample Request**
 
-* 403 Invalid token
+> ```
+> curl \
+> -H "Authorization: Token asd410d592f59efc64410bbf4ee7602eb6854dd7" \
+> -H 'Accept: application/json; indent=4' \
+> https://cloud.seatable.io/api2/account/info/
+> ```
 
+**Input Parameters**
+
+None.
+
+
+
+**Return Values**
+
+JSON-object with account details.
+
+
+
+**Sample Response**
+
+> ```
+> {
+>     "is_org_staff": 0,
+>     "space_usage": "0.295870636%",
+>     "total": 100000000000,
+>     "usage": 295870636,
+>     "row_usage_rate": "0%",
+>     "row_total": -1,
+>     "row_usage": 55,
+>     "avatar_url": "https://cloud.seatable.io/media/avatars/default.png",
+>     "email": "6534ce64315b4b4abfcff9e5491db296@auth.local",
+>     "name": "Karlheinz Mitarbeiter",
+>     "login_id": "",
+>     "contact_email": "karlheinz@example.com",
+>     "institution": "",
+>     "is_staff": false,
+>     "enable_chargebee": true,
+>     "enable_subscription": false,
+>     "email_notification_interval": 0
+> }
+> ```
+
+**Possible Errors**
+
+401 Unauthorized: The auth token is invalid:
+>```
+>{
+>    "detail": "Invalid token"
+>}
+>```
 
