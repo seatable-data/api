@@ -117,7 +117,7 @@ Response from the sample request shows Page 1 with 3 bases and their detailed in
 
 
 
-## List a User's Bases
+## List A User's Bases
 
 List all the bases of a certain user by user's ID.
 
@@ -238,7 +238,7 @@ If the user's ID was not found, no errors will be raised. Instead, an empty list
 >}
 >```
 
-## List an Organization's Bases
+## List An Organization's Bases
 
 List all the bases of a certain organization by ID.
 
@@ -450,7 +450,7 @@ Response from the sample request shows Page 1 with 3 bases and their infos. The 
 >```
 
 
-## Restore a Base from Trash
+## Restore A Base from Trash
 
 Restore a deleted base from the trash bin and put it back where it was.
 

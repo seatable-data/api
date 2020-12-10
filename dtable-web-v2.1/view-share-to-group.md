@@ -2,7 +2,7 @@
 
 ## Group User Get Shared View‘s Access Token
 
-**GET **[https://cloud.seatable.io/api/v2.1/workspace/:workspace_id/dtable/:dtable_name/group-view-share-access-token/](https://cloud.seatable.io/api/v2.1/workspace/:workspace_id/dtable/:dtable_name/user-view-share-access-token/)
+**GET **/api/v2.1/workspace/:workspace_id/dtable/:dtable_name/group-view-share-access-token/
 
 **Request Params**
 
@@ -29,7 +29,7 @@ curl -H "Authorization: Token 3f1e23157c3a1fd740e9dc1c5d748929fe319b95" -H 'Acce
 
 ## List Shared Views By ToUser
 
-**GET** [https://cloud.seatable.io/api/v2.1/dtables/view-shares-group-shared/](https://cloud.seatable.io/api/v2.1/dtables/view-shares-shared/)
+**GET** /api/v2.1/dtables/view-shares-group-shared/
 
 **Sample request**
 
@@ -80,7 +80,7 @@ curl -H "Authorization: Token 3f1e23157c3a1fd740e9dc1c5d748929fe319b95" -H 'Acce
 
 ## ToUser Leave Shared Views
 
-**DELETE** [https://cloud.seatable.io/api/v2.1/dtables/view-shares-group-shared/:view_share_id/](https://cloud.seatable.io/api/v2.1/dtables/view-shares-shared/:view_share_id/)
+**DELETE** /api/v2.1/dtables/view-shares-group-shared/:view_share_id/
 
 **Sample request**
 
@@ -100,7 +100,7 @@ curl -X DELETE -H "Authorization: Token 3f1e23157c3a1fd740e9dc1c5d748929fe319b95
 
 ## List Shared Views By FromUser
 
-**GET** [https://cloud.seatable.io/api/v2.1/workspace/:workspace_id/dtable/:dtable_name/group-view-shares/](https://cloud.seatable.io/api/v2.1/workspace/:workspace_id/dtable/:dtable_name/view-shares/)
+**GET** /api/v2.1/workspace/:workspace_id/dtable/:dtable_name/group-view-shares/
 
 this api default return view shares filter by dtable and from_user. You can add 'table_id', 'view_id', or both too get filterd results.
 
@@ -152,7 +152,7 @@ curl -H "Authorization: Token 3f1e23157c3a1fd740e9dc1c5d748929fe319b95" -H 'Acce
 
 ## Add View Share By FromUser
 
-**POST** [https://cloud.seatable.io/api/v2.1/workspace/:workspace_id/dtable/:dtable_name/group-view-shares/](https://cloud.seatable.io/api/v2.1/workspace/:workspace_id/dtable/:dtable_name/view-shares/)
+**POST** /api/v2.1/workspace/:workspace_id/dtable/:dtable_name/group-view-shares/
 
 **Request Params**
 
@@ -189,7 +189,7 @@ curl -X POST -d "permission=rw&to_user=6f46581085834012abc0ad20a5e85b8a@auth.loc
 
 ## Update View Share Permission By FromUser
 
-**PUT** [https://cloud.seatable.io/api/v2.1/workspace/:workspace_id/dtable/:dtable_name/group-view-shares/1/](https://cloud.seatable.io/api/v2.1/workspace/:workspace_id/dtable/:dtable_name/view-shares/10/)
+**PUT** /api/v2.1/workspace/:workspace_id/dtable/:dtable_name/group-view-shares/1/
 
 **Request Params**
 
@@ -224,7 +224,7 @@ curl -X PUT -d "permission=r" -H "Authorization: Token 3f1e23157c3a1fd740e9dc1c5
 
 ## Delete View Share Permission By FromUser
 
-**DELETE** [https://cloud.seatable.io/api/v2.1/workspace/:workspace_id/dtable/:dtable_name/group-view-shares/1/](https://cloud.seatable.io/api/v2.1/workspace/:workspace_id/dtable/:dtable_name/view-shares/10/)
+**DELETE** /api/v2.1/workspace/:workspace_id/dtable/:dtable_name/group-view-shares/1/
 
 **Request Params**
 
