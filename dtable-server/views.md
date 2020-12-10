@@ -2,7 +2,7 @@
 
 ## List views by table name or table id
 
-**GET** [https://cloud.seatable.io/dtable-server/api/v1/dtables/:dtable_uuid/views/](https://cloud.seatable.com/api/v1/dtables/:dtable_uuid/views/)
+**GET** /dtable-server/api/v1/dtables/:dtable_uuid/views/
 
 * dtable_uuid
 * table_name or table_id
@@ -42,7 +42,7 @@ curl -H 'Authorization: Token eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZ
 
 ## Create a new view
 
-**POST** [https://cloud.seatable.io/dtable-server/api/v1/dtables/:dtable_uuid/views/](https://cloud.seatable.com/api/v1/dtables/:dtable_uuid/views/)
+**POST** /dtable-server/api/v1/dtables/:dtable_uuid/views/
 
 * dtable_uuid
 * table_name or table_id
@@ -86,7 +86,7 @@ https://cloud.seatable.io/dtable-server/api/v1/dtables/7f7dc9c7187a4d9fb6cfff5e5
 
 ## Get a view by view name
 
-**GET** [https://cloud.seatable.io/dtable-server/api/v1/dtables/:dtable_uuid/views/:view_name/](https://cloud.seatable.com/api/v1/dtables/:dtable_uuid/views/)
+**GET** /dtable-server/api/v1/dtables/:dtable_uuid/views/:view_name/
 
 * dtable_uuid
 * table_name or table_id
@@ -123,7 +123,7 @@ https://cloud.seatable.io/dtable-server/api/v1/dtables/7f7dc9c7187a4d9fb6cfff5e5
 
 ## Update a view
 
-**PUT** [https://cloud.seatable.io/dtable-server/api/v1/dtables/:dtable_uuid/views/:view_name/](https://cloud.seatable.com/api/v1/dtables/:dtable_uuid/views/)
+**PUT** /dtable-server/api/v1/dtables/:dtable_uuid/views/:view_name/
 
 * dtable_uuid
 * table_name or table_id
@@ -206,7 +206,7 @@ https://cloud.seatable.io/dtable-server/api/v1/dtables/7f7dc9c7187a4d9fb6cfff5e5
 
 ## Delete a view
 
-**DELETE** [https://cloud.seatable.io/dtable-server/api/v1/dtables/:dtable_uuid/views/:view_name/](https://cloud.seatable.com/api/v1/dtables/:dtable_uuid/views/:view_name/)
+**DELETE** /dtable-server/api/v1/dtables/:dtable_uuid/views/:view_name/
 
 * dtable_uuid
 * table_name or table_id

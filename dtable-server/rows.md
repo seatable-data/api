@@ -6,7 +6,7 @@ You can find the data format for row in <https://docs.seatable.io/published/dtab
 
 ### List rows in a view
 
-**GET** [https://cloud.seatable.io/dtable-server/api/v1/dtables/:dtable_uuid/rows/](https://cloud.seatable.com/api/v1/dtables/:dtable_uuid/rows/)
+**GET** /dtable-server/api/v1/dtables/:dtable_uuid/rows/
 
 * dtable_uuid
 * table_name, necessary
@@ -39,7 +39,7 @@ curl -H 'Authorization: Token eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZ
 
 ### List rows by filters
 
-**GET** [https://cloud.seatable.io/dtable-server/api/v1/dtables/:dtable_uuid/filtered-rows/](https://cloud.seatable.com/api/v1/dtables/:dtable_uuid/filtered-rows/)
+**GET** /dtable-server/api/v1/dtables/:dtable_uuid/filtered-rows/
 
 * dtable_uuid
 * table_name, necessary
@@ -174,7 +174,7 @@ curl -H "Content-Type: application/json" -d
 
 ### List grouped rows in a view
 
-**GET** [https://cloud.seatable.io/dtable-server/api/v1/dtables/:dtable_uuid/rows/](https://cloud.seatable.com/api/v1/dtables/:dtable_uuid/rows/)
+**GET** /dtable-server/api/v1/dtables/:dtable_uuid/rows/
 
 * dtable_uuid
 * table_name, necessary
@@ -226,7 +226,7 @@ curl -H 'Authorization: Token eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZ
 
 ## Append a row
 
-**POST** <https://cloud.seatable.io/dtable-server/api/v1/dtables/:dtable_uuid/rows/>
+**POST** /dtable-server/api/v1/dtables/:dtable_uuid/rows/
 
 * dtable_uuid
 * table_name, necessary
@@ -254,7 +254,7 @@ curl -H 'Authorization: Token eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZ
 
 ## Insert a row
 
-**POST** [https://cloud.seatable.io/dtable-server/api/v1/dtables/:dtable_uuid/rows/](https://cloud.seatable.com/api/v1/dtables/:dtable_uuid/rows/)
+**POST** /dtable-server/api/v1/dtables/:dtable_uuid/rows/
 
 * dtable_uuid
 * table_name, necessary
@@ -285,7 +285,7 @@ curl -H 'Authorization: Token eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZ
 
 ## Batch append rows
 
-**POST** <https://cloud.seatable.io/dtable-server/api/v1/dtables/:dtable_uuid/batch-append-rows/>
+**POST** /dtable-server/api/v1/dtables/:dtable_uuid/batch-append-rows/
 
 * **dtable_uuid**
 * **table_name**, necessary
@@ -321,7 +321,7 @@ curl --request POST ' https://cloud.seatable.io/dtable-server/api/v1/dtables/41c
 
 ## Update a row
 
-**PUT** <https://cloud.seatable.io/dtable-server/api/v1/dtables/:dtable_uuid/rows/>
+**PUT** /dtable-server/api/v1/dtables/:dtable_uuid/rows/
 
 * dtable_uuid
 * table_name, necessary
@@ -350,7 +350,7 @@ curl -H 'Authorization: Token eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZ
 
 ## Delete a row
 
-**DELETE** <https://cloud.seatable.io/dtable-server/api/v1/dtables/:dtable_uuid/rows/>
+**DELETE** /dtable-server/api/v1/dtables/:dtable_uuid/rows/
 
 * dtable_uuid
 * table_name, necessary
@@ -375,9 +375,36 @@ curl -H 'Authorization: Token eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZ
 
 ```
 
+## Batch delete rows
+
+**DELETE** /dtable-server/api/v1/dtables/:dtable_uuid/batch-delete-rows/ 
+
+* dtable_uuid
+* table_name, necessary
+* row_ids, necessary
+
+**Sample request**
+
+```
+curl -H 'Authorization: Token eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6IjFAMS5jb20iLCJkdGFibGVfdXVpZCI6IjYyMmYxZTZkMzM3NDQ5ZTQ5YjQyOWYyMjUzMDM3YTc2In0.3ytwzZsfZwzifAQtsLzn0AFMnEDSeHxkKlIgD6XKuIs' -H "Accept: application/json" -H "Content-type: application/json" -X DELETE -d '{
+	"table_name": "Table1",
+    "row_ids": ["HT5R_PjVQrOyX3_5O-t6Aw", "IjFAMS5jb20iLCJkdGweffe",]
+}' https://cloud.seatable.io/dtable-server/api/v1/dtables/7f7dc9c7187a4d9fb6cfff5e5019a6d5/batch-delete-rows/
+
+```
+
+**Sample response**
+
+```
+{
+    "success": true
+}
+
+```
+
 ## Add a row link
 
-**POST** <https://cloud.seatable.io/dtable-server/api/v1/dtables/:dtable_uuid/links/>
+**POST** /dtable-server/api/v1/dtables/:dtable_uuid/links/
 
 * dtable_uuid
 * link_id, necessary
@@ -410,7 +437,7 @@ curl -H 'Authorization: Token eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZ
 
 ## Delete a row link
 
-**DELETE** <https://cloud.seatable.io/dtable-server/api/v1/dtables/:dtable_uuid/links/>
+**DELETE** /dtable-server/api/v1/dtables/:dtable_uuid/links/
 
 * dtable_uuid
 * link_id, necessary
@@ -443,7 +470,7 @@ curl -H 'Authorization: Token eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZ
 
 ## List deleted rows
 
-**GET** <https://cloud.seatable.io/dtable-server/api/v1/dtables/:dtable_uuid/deleted-rows/>
+**GET** /dtable-server/api/v1/dtables/:dtable_uuid/deleted-rows/
 
 **Request Parameters**
 

@@ -271,6 +271,38 @@ base.append_row(table_name, row_data)
 
 ```
 
+### Batch append rows
+
+```
+table_name = 'Users'
+
+rows_data = [
+    {"Name": "I am new Row"},
+    {"Name": "I am an another new Row"}
+]
+
+base.batch_append_rows(table_name, rows_data)
+
+```
+
+**Sample params**
+
+* table_name:  `str`  (case sensitive)
+* rows_data:  `list` 
+
+**Sample return**
+
+* `list` 
+
+
+```
+[
+    {'0000': 'I am new Row', '_id': 'L_nn31N2TbyNA1Nmm-NTtg'},
+    {'0000': 'I am an another new Row', '_id': '2ZKR_Cx923ID04ruA-NTtg'}
+]
+
+```
+
 ### Insert a row
 
 ```
@@ -351,6 +383,33 @@ base.delete_row(table_name, row_id)
 
 * table_name:  `str`  (case sensitive)
 * row_id:  `str`  (case sensitive)
+
+**Sample return**
+
+* `dict` 
+
+
+```
+{"success": True}
+
+```
+
+### Batch delete rows
+
+```
+table_name = 'Users'
+
+del_rows = rows[:3]
+row_ids = [row['_id'] for row in del_rows]
+
+base.batch_delete_rows(table_name, row_ids)
+
+```
+
+**Sample params**
+
+* table_name:  `str`  (case sensitive)
+* row_ids:  `list`  (row_id in `list` case sensitive)
 
 **Sample return**
 

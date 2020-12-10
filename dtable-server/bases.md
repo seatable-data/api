@@ -2,7 +2,7 @@
 
 ## Get a base
 
-**GET** <https://cloud.seatable.io/dtable-server/api/v1/dtables/:dtable_uuid>
+**GET** /dtable-server/api/v1/dtables/:dtable_uuid
 
 **Request parameters**
 
@@ -31,7 +31,7 @@ curl -H 'Authorization: Token eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZ
 
 ## Get a base's metadata
 
-**GET** <https://cloud.seatable.io/dtable-server/api/v1/dtables/:dtable_uuid/metadata>
+**GET** /dtable-server/api/v1/dtables/:dtable_uuid/metadata
 
 **Request parameters**
 
@@ -163,7 +163,7 @@ curl -H 'Accept: application/json; charset=utf-8; indent=4' -H 'Authorization: T
 
 ## Import a table by uploading a csv file
 
-**POST** <https://cloud.seatable.io/dtable-server/api/v1/:dtable_uuid/import-csv/>
+**POST** /dtable-server/api/v1/:dtable_uuid/import-csv/
 
 **Request parameters**
 
@@ -195,7 +195,7 @@ curl -X POST 'https://cloud.seatable.io/dtable-server/api/v1/a57b56d31cc54ebd8a6
 
 ## Append a table by uploading a csv file
 
-**POST** <https://cloud.seatable.io/dtable-server/api/v1/dtables/:dtable_uuid/append-csv/>﻿
+**POST** /dtable-server/api/v1/dtables/:dtable_uuid/append-csv/﻿
 
 * dtable_uuid
 * table_name
