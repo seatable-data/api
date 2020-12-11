@@ -29,10 +29,10 @@ List 3 external links in the current system:
 
 **Input Parameters**
 
-**page** _\[numeric, optional, 1 by default]_ 
+**page** _\[int, optional, 1 by default]_ 
 > Page number of the returned link list.
 
-**per_page** _\[numeric, optional, 25 by default]_
+**per_page** _\[int, optional, 25 by default]_
 > Number of links displayed on each page.
 
 

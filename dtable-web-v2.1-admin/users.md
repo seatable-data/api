@@ -28,10 +28,10 @@ List two users in the current system:
 
 **Input Parameters**
 
-**page** _\[numeric, optional, 1 by default]_ 
+**page** _\[int, optional, 1 by default]_ 
 > Page number of the returned user list.
 
-**per_page** _\[numeric, optional, 25 by default]_
+**per_page** _\[int, optional, 25 by default]_
 > Number of users displayed on each page.
 
 
@@ -320,11 +320,11 @@ Update the permission level and the row limit of the user with ID `5bc29d150e874
 > Define the user's role. SeaTable comes with two built-in roles `default` and `guest`, and this can be customized / extended. For more details, refer to the article [Roles and Permissions Support.](https://docs.seatable.io/published/seatable-manual/config/enterprise/roles_permissions.md)
 
 
-**row_limit** _\[numeric, optional]_
+**row_limit** _\[int, optional]_
 > Set the new limit of rows.
 
 
-**asset_quota_mb** _\[numeric, optional]_
+**asset_quota_mb** _\[int, optional]_
 > Set the limit of user's asset quota in Mb
 
 

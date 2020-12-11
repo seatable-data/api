@@ -31,7 +31,7 @@ Get the attachment upload link to the base named Merchandise in the workspace 1:
 
 **Input Parameters**
 
-**workspace_id** _\[numeric, required]_
+**workspace_id** _\[int, required]_
 > The ID of the workspace where the target base is stored.
 
 **name** _\[string, required]_
@@ -290,7 +290,7 @@ In the base `merchandise` in workspace "`1`, rotate the image `sample.png` under
 **path** _\[string, required]_
 > The image path, normally in the format like `images/2020-03` where `2020-03` is the upload time.
 
-**angle** _\[numeric(`90`, `180`, or `270`), required]_ 
+**angle** _\[int(`90`, `180`, or `270`), required]_ 
 > The rotating angle, choose between `90`, `180` and `270` to rotate the image counterclockwise. Any other value would trigger an error. See **Possible Errors**.
 
 
@@ -370,7 +370,7 @@ Check if the image `files/2020-04/apple.png` exists in the base `Test` which is 
 
 **Input Parameters**
 
-**workspace_id** _\[numeric, required]_
+**workspace_id** _\[int, required]_
 > The ID of the workspace where the target base is stored.
 
 **name** _\[string, required]_

@@ -31,7 +31,7 @@ Create a read & write API token "Google" for the base `Test` in the workspace `1
 
 **Input Parameters**
 
-**workspace_id** _\[numeric, required]_
+**workspace_id** _\[int, required]_
 > The ID of the workspace where the target base is stored.
 
 **name** _\[string, required]_
@@ -103,7 +103,7 @@ List all the API tokens of the base `Test` in the workspace `1`:
 
 **Input Parameters**
 
-**workspace_id** _\[numeric, required]_
+**workspace_id** _\[int, required]_
 > The ID of the workspace where the target base is stored.
 
 **name** _\[string, required]_
@@ -200,7 +200,7 @@ Change the permission of the API token "Google" of the base `Test` in the worksp
 **Input Parameters**
 
 
-**workspace_id** _\[numeric, required]_
+**workspace_id** _\[int, required]_
 > The ID of the workspace where the target base is stored.
 
 **name** _\[string, required]_
@@ -301,7 +301,7 @@ Request the tokens' status of the base `Test` in the workspace `1`:
 
 **Input Parameters**
 
-**workspace_id** _\[numeric, required]_
+**workspace_id** _\[int, required]_
 > The ID of the workspace where the target base is stored.
 
 **name** _\[string, required]_
@@ -387,7 +387,7 @@ Delete the API token "Google" from the base `Test` in the workspace `1`:
 
 **Input Parameters**
 
-**workspace_id** _\[numeric, required]_
+**workspace_id** _\[int, required]_
 > The ID of the workspace where the target base is stored.
 
 **name** _\[string, required]_

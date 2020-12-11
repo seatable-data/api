@@ -26,10 +26,10 @@ List 2 organizations in the system:
 
 **Input Parameters**
 
-**page** _\[numeric, optional, 1 by default]_ 
+**page** _\[int, optional, 1 by default]_ 
 > Page number of the returned organization list.
 
-**per_page** _\[numeric, optional, 25 by default]_
+**per_page** _\[int, optional, 25 by default]_
 > Number of organizations displayed on each page.
 
 
@@ -123,7 +123,7 @@ List the basic info of the organizations with `org_ids` 1 and 2:
 
 **Input Parameters**
 
-**org_ids** _\[multiple, numeric, required]_
+**org_ids** _\[multiple, int, required]_
 > With each `org_ids`, the basic info of the corresponding organization will be returned. If an `org_ids` is invalid, it'll be ignored and no errors will be returned.
 
 
@@ -296,7 +296,7 @@ Delete the organization with the ID 3:
 
 **Input Parameters**
 
-**org_id** _\[numeric, required]_
+**org_id** _\[int, required]_
 > The ID of the organization to be deleted.
 
 
@@ -371,16 +371,16 @@ Rename, change role and row limit of the organization with the ID 1:
 **org_name** _\[string, optional]_
 > The new name of the organization.
 
-**max_user_number** _\[numeric, optional]_
+**max_user_number** _\[int, optional]_
 > The new user number limit.
 
 **role** _\[string, optional]_
 > The role of the organization. SeaTable comes with two built-in roles `default` and `guest`. For more details, refer to the article [Roles and Permissions Support.](https://docs.seatable.io/published/seatable-manual/config/enterprise/roles_permissions.md)
 
-**row_limit** _\[numeric, optional]_
+**row_limit** _\[int, optional]_
 > The new row number limit.
 
-**asset_quota_mb** _\[numeric, optional]_
+**asset_quota_mb** _\[int, optional]_
 > The new limit of user's asset quota in Mb.
 
 
@@ -462,7 +462,7 @@ List all the users in the organization with the ID 120:
 
 **Input Parameters**
 
-**org_id** _\[numeric, required]_
+**org_id** _\[int, required]_
 > The ID of the organization whose users are to be listed.
 
 
@@ -566,7 +566,7 @@ List all the groups within the organization 135:
 
 **Input Parameters**
 
-**org_id** _\[numeric, required]_
+**org_id** _\[int, required]_
 > The ID of the requested organization.
 
 
@@ -660,8 +660,8 @@ Delete the group with `group_id` 1:
 
 **Input Parameters**
 
-**group_id** _\[numeric, required]_
-> The numeric ID of the group to be deleted.
+**group_id** _\[int, required]_
+> The ID of the group to be deleted.
 
 
 **Return Values**
@@ -711,13 +711,13 @@ List all the bases inside the organization with `org_id` 1:
 
 **Input Parameters**
 
-**org_id** _\[numeric, required]_
-> The numeric ID of the organization to be requested.
+**org_id** _\[int, required]_
+> The ID of the organization to be requested.
 
-**page** _\[numeric, optional, 1 by default]_ 
+**page** _\[int, optional, 1 by default]_ 
 > Page number of the returned base list.
 
-**per_page** _\[numeric, optional, 25 by default]_
+**per_page** _\[int, optional, 25 by default]_
 > Number of bases displayed on each page.
 
 

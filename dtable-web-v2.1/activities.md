@@ -30,13 +30,13 @@ List three activities done by the user:
 
 **Input Parameters**
 
-**avatar_size** _\[numeric, optional, 72 by default]_ 
+**avatar_size** _\[int, optional, 72 by default]_ 
 > The size of the user's avatar returned.
 
-**page** _\[numeric, optional, 1 by default]_ 
+**page** _\[int, optional, 1 by default]_ 
 > Page number of the returned base list.
 
-**per_page** _\[numeric, optional, 25 by default]_
+**per_page** _\[int, optional, 25 by default]_
 > Number of bases displayed on each page.
 
 

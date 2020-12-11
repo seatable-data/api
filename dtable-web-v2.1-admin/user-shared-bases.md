@@ -29,10 +29,10 @@ List 1 base that is shared to the user with ID `9f11ca9949b946a3b2pad55db5de1d23
 **email** _\[string, required]_
 > The internal ID (`<email>`) of the requested user, ends with `@auth.local`.
 
-**page** _\[numeric, optional, 1 by default]_ 
+**page** _\[int, optional, 1 by default]_ 
 > Page number of the returned base list.
 
-**per_page** _\[numeric, optional, 25 by default]_
+**per_page** _\[int, optional, 25 by default]_
 > Number of bases displayed on each page.
 
 

@@ -33,13 +33,13 @@ Request the daily active users list on 19 June, 2020:
 > This is the date on which you want the number of active user to be shown. \
 > Type in the ISO format like 2020-06-19+00:00:00
 
-**avatar_size** _\[numeric, optional, 72 by default]_ 
+**avatar_size** _\[int, optional, 72 by default]_ 
 > The size of the user's avatar returned.
 
-**page** _\[numeric, optional, 1 by default]_ 
+**page** _\[int, optional, 1 by default]_ 
 > Page number of the returned user list.
 
-**per_page** _\[numeric, optional, 25 by default]_
+**per_page** _\[int, optional, 25 by default]_
 > Number of users displayed on each page.
 
 
