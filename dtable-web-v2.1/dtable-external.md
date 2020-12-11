@@ -1,20 +1,51 @@
-# dtable-external
+# Base External Link
 
-## Download Base Through External Link
+## Download A Base Through its External Link
 
-**GET** dtable/external-links/\<token>/download-zip/
+Use this request to download a base through its external link.
 
-**Request parameters**
 
-* token, external link token
+**URL Structure**
 
-**Sample request**
+> **\[GET]** dtable/external-links/<token>/download-zip/
 
-```none
-curl GET -H 'Authorization:Token 0303f89b3607fb86039fdffcf1be6383797b437f' -H "Content-Type: multipart/form-data" https://cloud.seatable.io/dtable/external-links/8720e55e17a44aa89990/download-zip/
 
-```
+**Request Authentication**
 
-**Sample response**
+None.
 
-xxx.dtable zip file
+
+
+**Sample Request**
+
+Download the base through the external link with the token `8720e55e17a44aa89990`:
+
+> ```
+> curl GET \
+> https://cloud.seatable.io/dtable/external-links/8720e55e17a44aa89990/download-zip/
+> ```
+
+
+**Input Parameters**
+
+**token** _\[string, required]_
+> As an external link is generated, its token is used as the suffix to its link. For example: https\://cloud.seatable.io/dtable/external-links/`<token>`/
+
+
+
+**Return Values**
+
+.dtable file.
+
+
+**Sample Response**
+
+A .dtable zip file is downloaded.
+
+
+**Possible Errors**
+
+404 Not Found: The external link token is not valid:
+> ```
+> Sorry, but the requested page could not be found.
+> ```

@@ -26,10 +26,10 @@ List the forms without inputing any parameter:
 
 **Input Parameters**
 
-**page** _\[numeric, optional, 1 by default]_ 
+**page** _\[int, optional, 1 by default]_ 
 > Page number of the returned form list.
 
-**per_page** _\[numeric, optional, 2 by default]_
+**per_page** _\[int, optional, 2 by default]_
 > Number of forms displayed on each page.
 
 

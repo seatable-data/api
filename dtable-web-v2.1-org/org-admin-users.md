@@ -31,10 +31,10 @@ List all the users in the current organization.
 **is_staff** _\[enum(`true` or `1`, `false` or `0`), optional]_
 > If `true` or `1`, will only list org-admin users. 
 
-**page** _\[numeric, optional, 1 by default]_ 
+**page** _\[int, optional, 1 by default]_ 
 > Page number of the returned user list.
 
-**per_page** _\[numeric, optional, 100 by default]_
+**per_page** _\[int, optional, 100 by default]_
 > Number of users displayed on each page.
 
 

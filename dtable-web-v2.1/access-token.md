@@ -31,7 +31,7 @@ With the user's auth token, get the access token of the base "Hello" in the work
 
 **Input Parameters**
 
-**workspace_id** _\[numeric, required]_
+**workspace_id** _\[int, required]_
 > The ID of the workspace where the base is located.
 
 **dtable_name** _\[string, required]_

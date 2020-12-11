@@ -25,10 +25,10 @@ List 3 bases:
 
 **Input Parameters**
 
-**page** _\[numeric, optional, 1 by default]_ 
+**page** _\[int, optional, 1 by default]_ 
 > Page number of the returned base list.
 
-**per_page** _\[numeric, optional, 100 by default]_
+**per_page** _\[int, optional, 100 by default]_
 > Number of bases displayed on each page.
 
 **Return Values**
@@ -146,10 +146,10 @@ List 3 bases of the user with ID 0ef256cb71584188b1b147b2530c2904@auth.local:
 **email** _\[string, required]_
 > The user ID ending with @auth.local, e.g. '0ef256cb71584188b1b147b2530c2904@auth.local'.
 
-**page** _\[numeric, optional, 1 by default]_ 
+**page** _\[int, optional, 1 by default]_ 
 > Page number of the returned base list.
 
-**per_page** _\[numeric, optional, 25 by default]_
+**per_page** _\[int, optional, 25 by default]_
 > Number of bases displayed on each page.
 
 
@@ -264,13 +264,13 @@ List 1 base of the organization with ID 23:
 
 **Input Parameters**
 
-**org_id** _[numeric, required]_
+**org_id** _[int, required]_
 > The organization ID. 
 
-**page** _\[numeric, optional, 1 by default]_ 
+**page** _\[int, optional, 1 by default]_ 
 > Page number of the returned base list.
 
-**per_page** _\[numeric, optional, 25 by default]_
+**per_page** _\[int, optional, 25 by default]_
 > Number of bases displayed on each page.
 
 
@@ -356,10 +356,10 @@ List 3 trashed bases in the current system:
 
 **Input Parameters**
 
-**page** _\[numeric, optional, 1 by default]_ 
+**page** _\[int, optional, 1 by default]_ 
 > Page number of the returned base list.
 
-**per_page** _\[numeric, optional, 25 by default]_
+**per_page** _\[int, optional, 25 by default]_
 > Number of bases displayed on each page.
 
 
@@ -474,7 +474,7 @@ Restore the base with token 64b9ee55dc4ab902ff36763ef5c604a76d52875e from the tr
 
 **Input Parameters**
 
-**dtable_id** _\[numeric, required]_
+**dtable_id** _\[int, required]_
 > The ID of the base that needs to be restored.
 
 

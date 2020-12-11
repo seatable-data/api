@@ -1,331 +1,698 @@
 # Forms
 
-## Get a Base's Forms
+## List A Base's Forms
 
-**GET** api/v2.1/forms/
+List all the forms in a base.
 
-**Request parameters**
 
-* workspace_id
-* name (of the base)
+**URL Structure**
 
-**Sample request**
+> **\[GET]** api/v2.1/forms/
 
-```
-curl -H 'Authorization: Token e39d9392d02a770e3edccdc5116da293a7773533' -H 'Accept: application/json; charset=utf-8; indent=4' "http://127.0.0.1:8001/api/v2.1/forms/?workspace_id=1&name=hello"
 
-```
+**Request Authentication**
 
-**Sample response**
+> User Authentication (Token)
 
-```
-{
-    "form_list": [
-        {
-            "id": 1,
-            "username": "1@1.com",
-            "workspace_id": 1,
-            "dtable_uuid": "5a40dd8e59b749ff84a73c9fb8a0cf60",
-            "form_id": "0KOJ",
-            "form_config": "{...}",
-            "token": "2571d001-6bab-40ed-a335-173fe398cfe8",
-            "form_link": "http://127.0.0.1:8001/dtable/forms/2571d001-6bab-40ed-a335-173fe398cfe8"
-        },
-        {
-            "id": 2,
-            "username": "1@1.com",
-            "workspace_id": 1,
-            "dtable_uuid": "5a40dd8e59b749ff84a73c9fb8a0cf60",
-            "form_id": "1KOJ",
-            "form_config": "{...}",
-            "token": "d76d7428-ba53-4628-8a5b-2e090d693fbf",
-            "form_link": "http://127.0.0.1:8001/dtable/forms/d76d7428-ba53-4628-8a5b-2e090d693fbf"
-        }
-    ]
-}
 
-```
 
-**Errors**
+**Sample Request**
 
-* 400 Bad Request.
-* 404 Not Found.
-* 403 Permission Denied.
-* 500 Internal Server Error.
+List all the forms of the base `Survey` in the workspace `1`:
 
-## Create a Form
+> ```
+> curl \
+> -H 'Authorization: Token e39d9392d02a770e3edccdc5116da293a7773533' \
+> -H 'Accept: application/json; charset=utf-8; indent=4' \
+> "http://cloud.seatable.io/api/v2.1/forms/?workspace_id=1&name=Survey"
+> ```
 
-**POST** api/v2.1/forms/
 
-**Request parameters**
+**Input Parameters**
 
-* workspace_id
-* name (of the base)
-* form_id (a 4-digit combination of numbers and letters)
-* form_config (Use form_config={"form_name":"abc"} to give your form the name "abc")
+**workspace_id** _\[int, required]_
+> The ID of the workspace where the base is stored.
 
-**Sample request**
+**name** _\[string, required]_
+> The name of the base.
 
-```
-curl -X POST -d 'workspace_id=1&name=hello&form_id=1KOJ&form_config={"form_name":"abc"}' -H 'Authorization: Token e39d9392d02a770e3edccdc5116da293a7773533' -H 'Accept: application/json; charset=utf-8; indent=4' "http://127.0.0.1:8001/api/v2.1/forms/"
 
-```
+**Return Values**
 
-**Sample response**
+JSON-object with the list of form(s).
 
-```
-{
-    "form": {
-        "id": 2,
-        "username": "1@1.com",
-        "workspace_id": "1",
-        "dtable_uuid": "5a40dd8e59b749ff84a73c9fb8a0cf60",
-        "form_id": "1KOJ",
-        "form_config": "{\"form_name\":\"abc\"}",
-        "token": "d76d7428-ba53-4628-8a5b-2e090d693fbf",
-        "form_link": "http://127.0.0.1:8001/dtable/forms/d76d7428-ba53-4628-8a5b-2e090d693fbf"
-    }
-}
 
-```
 
-**Errors**
 
-* 400 Bad Request.
-* 404 Not Found.
-* 403 Permission Denied.
-* 500 Internal Server Error.
+**Sample Response**
 
-## Update a Form
+The returned response lists off the two forms in the base `Survey`:
 
-**PUT** api/v2.1/forms/\<token>/
+> ```
+> {
+>     "form_list": [
+>         {
+>             "id": 71,
+>             "username": "6534ce64315b4b4abfcff9e5491db296@auth.local",
+>             "workspace_id": 377,
+>             "dtable_uuid": "5a40dd8e59b749ff84a73c9fb8a0cf60",
+>             "form_id": "3AG1",
+>             "form_config": "{\"form_name\":\"Customer Survey\"}",
+>             "token": "783af6b3-8c67-4bb8-9529-80063cac6cd9",
+>             "form_link": "https://cloud.seatable.io/dtable/forms/783af6b3-8c67-4bb8-9529-80063cac6cd9/",
+>             "share_type": "anonymous",
+>             "created_at": "2020-11-18T15:35:40+00:00",
+>             "submit_count": 0
+>         },
+>         {
+>             "id": 70,
+>             "username": "6534ce64315b4b4abfcff9e5491db296@auth.local",
+>             "workspace_id": 377,
+>             "dtable_uuid": "5a40dd8e59b749ff84a73c9fb8a0cf60",
+>             "form_id": "3BG1",
+>             "form_config": "{\"form_name\":\"Employee Survey\"}",
+>             "token": "b02c148c-b742-4ded-b9b1-6c8869fe94ba",
+>             "form_link": "https://cloud.seatable.io/dtable/forms/b02c148c-b742-4ded-b9b1-6c8869fe94ba/",
+>             "share_type": "anonymous",
+>             "created_at": "2020-11-18T15:35:03+00:00",
+>             "submit_count": 0
+>         }
+>     ]
+> }
+> ```
+If there's no form in a base, an empty list will be returned without error message.
 
-**Request parameters**
 
-* token (suffix of the form link)
-* form_config (Use form_config={"form_name":"new name"} to give your form the name "new name")
+**Possible Errors**
 
-**Sample request**
+401 Unauthorized: The auth token is invalid:
+>```
+>{
+>    "detail": "Invalid token"
+>}
+>```
 
-```
-curl -X PUT -d 'form_config={"form_name":"new name"}' -H 'Authorization: Token e39d9392d02a770e3edccdc5116da293a7773533' -H 'Accept: application/json; charset=utf-8; indent=4' "http://127.0.0.1:8001/api/v2.1/forms/d76d7428-ba53-4628-8a5b-2e090d693fbf/"
+403 Forbidden: The user doesn't have access to the workspace or the base:
+> ```
+> {
+>     "error_msg": "Permission denied."
+> }
+> ```
 
-```
+404 Not Found: The base was not found:
+> ```
+> {
+>     "error_msg": "DTable Survye not found."
+> }
+> ```
 
-**Sample response**
+## Create A Form
 
-```
-{
-    "form": {
-        "id": 2,
-        "username": "1@1.com",
-        "workspace_id": "1",
-        "dtable_uuid": "5a40dd8e59b749ff84a73c9fb8a0cf60",
-        "form_id": "1KOJ",
-        "form_config": "{\"form_name\":\"new name\"}",
-        "token": "d76d7428-ba53-4628-8a5b-2e090d693fbf",
-        "form_link": "http://127.0.0.1:8001/dtable/forms/d76d7428-ba53-4628-8a5b-2e090d693fbf"
-    }
-}
+Use this request to create a form and get its sharing link.
 
-```
 
-**Errors**
+**URL Structure**
 
-* 400 Bad Request.
-* 404 Not Found.
-* 403 Permission Denied.
-* 500 Internal Server Error.
+> **\[POST]** api/v2.1/forms/
 
-## Delete a Form
 
-**DELETE** api/v2.1/forms/\<token>/
 
-**Request parameters**
+**Request Authentication**
 
-* token (suffix of the form link)
+> User Authentication (Token)
 
-**Sample request**
 
-```
-curl -X DELETE -H 'Authorization: Token e39d9392d02a770e3edccdc5116da293a7773533' -H 'Accept: application/json; charset=utf-8; indent=4' "http://127.0.0.1:8001/api/v2.1/forms/d76d7428-ba53-4628-8a5b-2e090d693fbf/"
 
-```
 
-**Sample response**
+**Sample Request**
 
-```
-{
-    "success": true
-}
+Create a form `Vendor Survey` in the base `Surveys` from workspace `1` and give it the `form_id` of `1KOJ`:
 
-```
+> ```
+> curl -X POST \
+> -H 'Authorization: Token e39d9392d02a770e3edccdc5116da293a7773533' \
+> "https://cloud.seatable.io/api/v2.1/forms/" \
+> -d 'workspace_id=1&name=Surveys&form_id=1KOJ&form_config={"form_name":"Vendor Survey"}' 
+> ```
 
-**Errors**
 
-* 400 Bad Request.
-* 403 Permission Denied.
-* 500 Internal Server Error.
+**Input Parameters**
 
-## Get an Upload Link by a Form Token
+**workspace_id** _\[int, required]_
+> The ID of the workspace where the base is stored.
 
-**GET** api/v2.1/forms/\<token>/upload-link/
+**name** _\[string, required]_
+> The name of the base.
 
-**Sample request**
+**form_id** _\[string, 4-digit, required]_
+> Give the form a unique ID. It's a 4-digit combination of capital letters and numbers, like `1kOJ`. When creating a form on the web UI, this ID will be automatically generated.
 
-```
-curl http://127.0.0.1:8001/api/v2.1/forms/5ac7517a-6315-410f-ac70-a7e02593faf9/upload-link/
+**form_config** _\[string, required]_
+> Use form_config={"form_name":"abc"} to give your form the name "abc".
 
-```
 
-**Sample response**
 
-```
-{
-    "upload_link": "http://127.0.0.1:8082/upload-api/d3f91d16-88e9-494d-8402-78260eb82d65",
-    "parent_path": "/asset/a57b56d3-1cc5-4ebd-8a6c-a1b28ac3dbdf"
-}
+**Return Values**
 
-```
+JSON-object with details of the created form including sharing link. The token is automatically generated.
 
-**Errors**
 
-* 500 Internal Server Error
+**Sample Response**
 
-## List forms by user
+> ```
+> {
+>     "form": {
+>         "id": 72,
+>         "username": "6534ce64315b4b4abfcff9e5491db296@auth.local",
+>         "workspace_id": "377",
+>         "dtable_uuid": "5a40dd8e59b749ff84a73c9fb8a0cf60",
+>         "form_id": "1KOJ",
+>         "form_config": "{\"form_name\":\"Vendor Survey\"}",
+>         "token": "8ffu31e3-3c74-429f-b047-e8cf2f50bfbb",
+>         "form_link": "https://cloud.seatable.io/dtable/forms/8ffu31e3-3c74-429f-b047-e8cf2f50bfbb/",
+>         "share_type": "anonymous",
+>         "created_at": "2020-11-11T13:34:33+00:00",
+>         "submit_count": 0
+>     }
+> }
+> ```
 
-**GET** api/v2.1/forms/
+**Possible Errors**
 
-**Sample request**
+400 Bad Request: The form ID is occupied:
+> ```
+> {
+>     "error_msg": "Table form 1KOJ already exists."
+> }
+> ```
 
-```
-curl -H 'Authorization: Token e39d9392d02a770e3edccdc5116da293a7773533' -H 'Accept: application/json; charset=utf-8; indent=4' "https://cloud.seatable.io/api/v2.1/forms/"
+401 Unauthorized: The auth token is invalid:
+>```
+>{
+>    "detail": "Invalid token"
+>}
+>```
 
-```
+403 Forbidden: The user doesn't have access to the workspace or the base:
+> ```
+> {
+>     "error_msg": "Permission denied."
+> }
+> ```
 
-**Sample response**
+404 Not Found: The base was not found:
+> ```
+> {
+>     "error_msg": "DTable Survey not found."
+> }
+> ```
 
-```
-{
-    "form_list": [
-        {
-            "id": 18,
-            "username": "1ed53263f17645c78dd3f57314051ea0@auth.local",
-            "workspace_id": 2,
-            "dtable_uuid": "38fd2617961f496595c9c26e201f5d47",
-            "form_id": "lzhT",
-            "form_config": "{...}",
-            "token": "b5c511c7-d011-46b1-9806-7027481e1d0d",
-            "form_link": "https://cloud.seatable.io/dtable/forms/b5c511c7-d011-46b1-9806-7027481e1d0d/",
-            "share_type": "anonymous",
-            "group_name": "群组1",
-            "group_id": 1
-        },
-        {
-            "id": 20,
-            "username": "1ed53263f17645c78dd3f57314051ea0@auth.local",
-            "workspace_id": 1,
-            "dtable_uuid": "c18e0ffce1ea4157ae5da32bdb36e676",
-            "form_id": "u3QF",
-            "form_config": "{...}",
-            "token": "95fcefb7-7d6c-4e61-a397-6871611e90a0",
-            "form_link": "https://cloud.seatable.io/dtable/forms/95fcefb7-7d6c-4e61-a397-6871611e90a0/",
-            "share_type": "anonymous"
-        }
-    ]
-}
+## Update A Form
 
-```
+Change the name of a form with its token.
 
-**Errors**
 
-* 403 Permission Denied.
-* 500 Internal Server Error.
+**URL Structure**
+
+> **\[PUT]** api/v2.1/forms/`<token>`/
+
+
+**Request Authentication**
+
+> User Authentication (Token)
+
+
+**Sample Request**
+
+> ```
+> curl -X PUT \
+> -d 'form_config={"form_name":"new name"}' \
+> -H 'Authorization: Token e39d9392d02a770e3edccdc5116da293a7773533' \
+> -H 'Accept: application/json; charset=utf-8; indent=4' \
+> "https://cloud.seatable.io/api/v2.1/forms/8ffu31e3-3c74-429f-b047-e8cf2f50bfbb/"
+> ```
+
+**Input Parameters**
+
+**token** _\[string, required]_
+> The suffix of the form link, like in https\://cloud.seatable.io/dtable/forms/`<token>`/
+
+**form_config** _\[string, required]_
+> Use form_config={"form_name":"new name"} to give your form the name "new name".
+
+
+
+**Return Values**
+
+JSON-object with the details of the updated form.
+
+**Sample Response**
+
+Seen from the response to the sample request, the name of the table has been changed to `new name`:
+
+> ```
+> {
+>     "form": {
+>         "id": 72,
+>         "username": "6534ce64315b4b4abfcff9e5491db296@auth.local",
+>         "workspace_id": "377",
+>         "dtable_uuid": "5a40dd8e59b749ff84a73c9fb8a0cf60",
+>         "form_id": "1KOJ",
+>         "form_config": "{\"form_name\":\"new name\"}",
+>         "token": "8ffu31e3-3c74-429f-b047-e8cf2f50bfbb",
+>         "form_link": "https://cloud.seatable.io/dtable/forms/8ffu31e3-3c74-429f-b047-e8cf2f50bfbb/",
+>         "share_type": "anonymous",
+>         "created_at": "2020-11-11T13:34:33+00:00",
+>         "submit_count": 0
+>     }
+> }
+> ```
+If the new name is equal to the old name, i.e. no change was made, the above details will also be returned without error message.
+
+
+**Possible Errors**
+
+401 Unauthorized: The auth token is invalid:
+>```
+>{
+>    "detail": "Invalid token"
+>}
+>```
+
+403 Forbidden: The user doesn't have access to the base:
+> ```
+> {
+>     "error_msg": "Permission denied."
+> }
+> ```
+
+404 Not Found: The given form token was not found:
+> ```
+> {
+>     "error_msg": "Form 5f4851e3-3c74-429f-b047-e8cf2f50bfba not found."
+> }
+> ```
+
+
+
+## Delete A Form
+
+Delete a form with its token.
+
+
+**URL Structure**
+
+> **\[DELETE]** api/v2.1/forms/`<token>`/
+
+
+**Request Authentication**
+
+> User Authentication (Token)
+
+
+
+**Sample Request**
+
+Delete the form with the token of `d76d7428-ba53-4628-8a5b-2e090d693fbf`:
+
+> ```
+> curl -X DELETE \
+> -H 'Authorization: Token e39d9392d02a770e3edccdc5116da293a7773533' \
+> -H 'Accept: application/json; charset=utf-8; indent=4' \
+> "https://cloud.seatable.io/api/v2.1/forms/d76d7428-ba53-4628-8a5b-2e090d693fbf/"
+> ```
+
+
+**Input Parameters**
+
+**token** _\[string, required]_
+> The suffix of the form link, like in https\://cloud.seatable.io/dtable/forms/`<token>`/
+
+
+**Return Values**
+
+JSON-object with the result of the operation.
+
+
+
+**Sample Response**
+
+> ```
+> {
+>     "success": true
+> }
+> ```
+This API request ensures the given form will not exist any more in the system. Therefore if a form is already deleted or does not exist, the above response will still be returned without error message.
+
+**Possible Errors**
+
+401 Unauthorized: The auth token is invalid:
+>```
+>{
+>    "detail": "Invalid token"
+>}
+>```
+
+403 Forbidden: The user doesn't have access to the base:
+> ```
+> {
+>     "error_msg": "Permission denied."
+> }
+> ```
+
+404 Not Found: The given form token is invalid (This doesn't mean the form has been deleted):
+> ```
+> Sorry, but the requested page could not be found.
+> ```
+
+
+## Get An Upload Link with A Form Token
+
+Get the upload link to a form with its token.
+
+
+**URL Structure**
+
+> **\[GET]** api/v2.1/forms/`<token>`/upload-link/
+
+
+
+**Request Authentication**
+
+None.
+
+**Sample Request**
+
+Get the upload link to the form with the token of `5ac7517a-6315-410f-ac70-a7e02593faf9`
+
+> ```
+> curl https://cloud.seatable.io/api/v2.1/forms/5ac7517a-6315-410f-ac70-a7e02593faf9/upload-link/
+> ```
+
+
+**Input Parameters**
+
+**token** _\[string, required]_
+> The suffix of the form link, like in https\://cloud.seatable.io/dtable/forms/`<token>`/
+
+
+**Return Values**
+
+JSON-object with the upload link and the parent path, as well as relative images and files path to the form.
+
+
+
+**Sample Response**
+
+> ```
+> {
+>     "upload_link": "https://cloud.seatable.io/seafhttp/upload-api/d3f91d16-88e9-494d-8402-78260eb82d65",
+>     "parent_path": "/asset/a57b56d3-1cc5-4ebd-8a6c-a1b28ac3dbdf"
+>     "img_relative_path": "forms",
+>     "file_relative_path": "files/2020-12"
+> }
+> ```
+
+**Possible Errors**
+
+404 Not Found: The form was not found under the given token:
+> ```
+> {
+>     "error_msg": "Form 8e63h5cb-78c9-4c86-abc2-54686e43ce22 not found."
+> }
+> ```
+
+
+
+
+## List User's Forms
+
+
+List all the forms created by the current user.
+
+
+**URL Structure**
+
+> **\[GET]** api/v2.1/forms/
+
+
+**Request Authentication**
+
+> User Authentication (Token)
+
+
+**Sample Request**
+
+> ```
+> curl \
+> -H 'Authorization: Token e39d9392d02a770e3edccdc5116da293a7773533' \
+> -H 'Accept: application/json; charset=utf-8; indent=4' \
+> "https://cloud.seatable.io/api/v2.1/forms/"
+> ```
+
+**Input Parameters**
+
+None.
+
+
+**Return Values**
+
+JSON-object with the list of forms with details.
+
+
+**Sample Response**
+
+> ```
+> {
+>     "form_list": [
+>         {
+>             "id": 86,
+>             "username": "1ed53263f17645c78dd3f57314051ea0@auth.local",
+>             "workspace_id": 1,
+>             "dtable_uuid": "c18e0ffce1ea4157ae5da32bdb36e676",
+>             "form_id": "1KOJ",
+>             "form_config": "{\"form_name\":\"Vendor Survey\"}",
+>             "token": "95fcefb7-7d6c-4e61-a397-6871611e90a0",
+>             "form_link": "https://cloud.seatable.io/dtable/forms/95fcefb7-7d6c-4e61-a397-6871611e90a0/",
+>             "share_type": "anonymous",
+>             "created_at": "2020-11-11T13:33:26+00:00",
+>             "submit_count": 30
+>         },
+>         {
+>             "id": 87,
+>             "username": "1ed53263f17645c78dd3f57314051ea0@auth.local",
+>             "workspace_id": 1,
+>             "dtable_uuid": "38fd2617961f496595c9c26e201f5d47",
+>             "form_id": "1884",
+>             "form_config": "{\"form_name\":\"Employee Survey\"}",
+>             "token": "b5c511c7-d011-46b1-9806-7027481e1d0d",
+>             "form_link": "https://cloud.seatable.io/dtable/forms/b5c511c7-d011-46b1-9806-7027481e1d0d/",
+>             "share_type": "shared_groups",
+>             "created_at": "2020-11-18T14:53:15+00:00",
+>             "submit_count": 20
+>         }
+>     ]
+> }
+> ```
+If the user doesn't have any forms, an empty list will be returned without error message.
+
+
+**Possible Errors**
+
+401 Unauthorized: The auth token is invalid:
+>```
+>{
+>    "detail": "Invalid token"
+>}
+>```
 
 ## Share a Form to Groups
 
-**POST** api/v2.1/forms/\<token>/share/
+Share a form to multiple groups.
 
-**Request parameters**
+
+**URL Structure**
+
+> **\[POST]** api/v2.1/forms/`<token>`/share/
+
+
+**Request Authentication**
+
+> User Authentication (Token)
+
+
+
+**Input Parameters**
 
 * token (suffix of the form link)
 * share_type
 * group_ids (if you don't know the group ids, contact your organization administrator)
 
-**Sample request**
+**Sample Request**
 
-```
-curl -X POST -d 'share_type='group' group_ids=[1, 3, 17]' -H 'Authorization: Token e39d9392d02a770e3edccdc5116da293a7773533' -H 'Accept: application/json; charset=utf-8; indent=4' 
-"https://cloud.seatable.io/api/v2.1/forms/d76d7428-ba53-4628-8a5b-2e090d693fbf/share/"
+Share the form with the token of `d76d7428-ba53-4628-8a5b-2e090d693fbf` to the groups with IDs of `1`, `3`, and `17`:
 
-```
+> ```
+> curl --location --request POST \
+> 'https://cloud.seatable.io/api/v2.1/forms/d76d7428-ba53-4628-8a5b-2e090d693fbf/share/' \
+> --header 'Authorization: Token be531df7bdbb1a146b52c7ea7570bf262c276bb0' \
+> --form 'share_type="shared_groups"' \
+> --form 'group_ids="[1, 3, 17]"'
+> ```
 
-**Sample response**
 
-```
-{
-   "success": true
-}
+**Input Parameters**
 
-```
+**token** _\[string, required]_
+> The suffix of the form link, like in https\://cloud.seatable.io/dtable/forms/`<token>`/
 
-**Errors**
+**share_type** _\[string, required]_
+> To be able to share a form to a group, its `share_type` has to be `shared_groups`.
 
-* 400 Bad Request.
-* 404 Not Found.
-* 403 Permission Denied.
-* 500 Internal Server Error.
+**group_ids** _\[int, multiple, required]_
+> Enter at least one group ID to share the form.
 
-## List shared forms
 
-**GET** api/v2.1/forms/shared/
+**Return Values**
 
-**Sample request**
+JSON-object with the result of the operation.
 
-```
-curl -H 'Authorization: Token e39d9392d02a770e3edccdc5116da293a7773533' -H 'Accept: application/json; charset=utf-8; indent=4' "https://cloud.seatable.io/api/v2.1/forms/shared/"
 
-```
+**Sample Response**
+> 
+> ```
+> {
+>    "success": true
+> }
+> ```
 
-**Sample response**
+**Possible Errors**
 
-```
-{
-    "shared_list": [
-        {
-            "id": 23,
-            "username": "1ed53263f17645c78dd3f57314051ea0@auth.local",
-            "workspace_id": 2,
-            "dtable_uuid": "38fd2617961f496595c9c26e201f5d47",
-            "form_id": "3qq3",
-            "form_config": "{...}",
-            "token": "04b327f5-10c6-4324-a828-e9ffbea3c9f6",
-            "form_link": "https://cloud.seatable.io/dtable/forms/04b327f5-10c6-4324-a828-e9ffbea3c9f6/",
-            "share_type": "shared_groups",
-            "group_name": "群组1",
-            "group_id": 1
-        },
-        {
-            "id": 28,
-            "username": "1ed53263f17645c78dd3f57314051ea0@auth.local",
-            "workspace_id": 1,
-            "dtable_uuid": "c18e0ffce1ea4157ae5da32bdb36e676",
-            "form_id": "0DV9",
-            "form_config": "{...}",
-            "token": "92f35372-0e43-4a90-b978-ef604b0567ce",
-            "form_link": "https://cloud.seatable.io/dtable/forms/92f35372-0e43-4a90-b978-ef604b0567ce/",
-            "share_type": "shared_groups",
-            "group_name": "群组3",
-            "group_id": 3
-        }
-    ]
-}
+400 Bad Request: The `share_type` was invalid:
+> ```
+> {
+>     "error_msg": "share_type invalid."
+> }
+> ```
 
-```
+400 Bad Request: The `group_ids` was invalid:
+> ```
+> {
+>     "error_msg": "group_ids invalid."
+> }
+> ```
 
-**Errors**
+401 Unauthorized: The auth token was invalid:
+> ```
+> {
+>     "detail": "Invalid token"
+> }
+> ```
 
-* 403 Permission Denied.
-* 500 Internal Server Error.
+403 Forbidden: The user doesn't have access to the form:
+> ```
+> {
+>     "error_msg": "Permission denied."
+> }
+> ```
+
+403 Forbidden: The user doesn't have permission to share the form to the target group:
+> ```
+> {
+>     "error_msg": "Group 4 permission denied."
+> }
+> ```
+
+404 Not Found: The form with the given token was not found:
+> ```
+> {
+>     "error_msg": "Form 5a6f6d0a-67ff-4c20-8a85-0bd9a57a5b87 not found."
+> }
+> ```
+
+
+## List Shared Forms
+
+List all the shared forms the user has access to.
+
+
+**URL Structure**
+
+> **\[GET]** api/v2.1/forms/shared/
+
+
+
+**Request Authentication**
+
+> User Authentication (Token)
+
+
+**Sample Request**
+
+> ```
+> curl \
+> -H 'Authorization: Token e39d9392d02a770e3edccdc5116da293a7773533' \
+> -H 'Accept: application/json; charset=utf-8; indent=4' \
+> "https://cloud.seatable.io/api/v2.1/forms/shared/"
+> ```
+
+**Input Parameters**
+
+None.
+
+
+**Return Values**
+
+JSON-object with the list of shared forms and details.
+
+
+
+**Sample Response**
+
+> ```
+> {
+>     "shared_list": [
+>         {
+>             "id": 67,
+>             "username": "1ed53263f17645c78dd3f57314051ea0@auth.local",
+>             "workspace_id": 377,
+>             "dtable_uuid": "2909200462364cf790aecbe649959776",
+>             "form_id": "1884",
+>             "form_config": "{\"form_name\":\"Employee Survey\"}",
+>             "token": "8eid766e-baa8-4a75-b4ae-5dc162a62702",
+>             "form_link": "https://cloud.seatable.io/dtable/forms/8eid766e-baa8-4a75-b4ae-5dc162a62702/",
+>             "share_type": "shared_groups",
+>             "created_at": "2020-11-18T14:53:15+00:00",
+>             "submit_count": 30,
+>             "group_name": "test group",
+>             "group_id": 49
+>         },
+>         {
+>             "id": 86,
+>             "username": "1ed53263f17645c78dd3f57314051ea0@auth.local",
+>             "workspace_id": 377,
+>             "dtable_uuid": "03d8b71c84c74a16b31494c886dc170b",
+>             "form_id": "1KOJ",
+>             "form_config": "{\"form_name\":\"Vendor Survey\"}",
+>             "token": "8e63h5cb-78c9-4c86-abc2-54686e43ce21",
+>             "form_link": "https://cloud.seatable.io/dtable/forms/8e63h5cb-78c9-4c86-abc2-54686e43ce21/",
+>             "share_type": "shared_groups",
+>             "created_at": "2020-11-11T13:33:26+00:00",
+>             "submit_count": 20,
+>             "group_name": "Datamate3",
+>             "group_id": 62
+>         }
+>     ]
+> }
+> ```
+
+**Possible Errors**
+
+401 Unauthorized: The auth token was invalid:
+> ```
+> {
+>     "detail": "Invalid token"
+> }
+> ```
 
 

@@ -21,16 +21,16 @@ Users who have read & write permission to a base are the collaborators, or relat
 
 List all the collaborators to the base `Teamwork` in the workspace `1`:
 
-```
-curl \
--H 'Authorization: Token 5f971000df0d6f35ed7c59580766329a5b37a6df' \
--H 'Accept: application/json; charset=utf-8; indent=4' \
-"http://cloud.seatable.io/api/v2.1/workspace/1/dtable/Teamwork/related-users/"
-```
+> ```
+> curl \
+> -H 'Authorization: Token 5f971000df0d6f35ed7c59580766329a5b37a6df' \
+> -H 'Accept: application/json; charset=utf-8; indent=4' \
+> "http://cloud.seatable.io/api/v2.1/workspace/1/dtable/Teamwork/related-users/"
+> ```
 
 **Input Parameters**
 
-**workspace_id** _\[numeric, required]_
+**workspace_id** _\[int, required]_
 > The ID of the workspace where the target base is stored.
 
 **name** _\[string, required]_

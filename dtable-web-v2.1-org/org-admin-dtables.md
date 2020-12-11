@@ -28,13 +28,13 @@ List two bases in the organization with `org_id` of 23:
 
 **Input Parameters**
 
-**org_id** _\[numeric, required]_
+**org_id** _\[int, required]_
 > The organization ID for the request.
 
-**page** _\[numeric, optional, 1 by default]_ 
+**page** _\[int, optional, 1 by default]_ 
 > Page number of the returned base list.
 
-**per_page** _\[numeric, optional, 25 by default]_
+**per_page** _\[int, optional, 25 by default]_
 > Number of bases displayed on each page.
 
 
@@ -132,10 +132,10 @@ Delete the base with `dtable_id` 277 from the organization with `org_id` 23:
 
 **Input Parameters**
 
-**org_id** _\[numeric, required]_
+**org_id** _\[int, required]_
 > ID of the organization from which the base is to be deleted.
 
-**dtable_id** _\[numeric, required]_
+**dtable_id** _\[int, required]_
 > ID of the base to be deleted. 
 
 
@@ -208,10 +208,10 @@ List one trashed base in the organization with `org_id` 23:
 
 **Input Parameters**
 
-**page** _\[numeric, optional, 1 by default]_ 
+**page** _\[int, optional, 1 by default]_ 
 > Page number of the returned trash base list.
 
-**per_page** _\[numeric, optional, 25 by default]_
+**per_page** _\[int, optional, 25 by default]_
 > Number of trashed bases displayed on each page.
 
 
@@ -296,10 +296,10 @@ Restore the base with `dtable_id` of 277 from the trash bin in the organization 
 
 **Input Parameters**
 
-**org_id** _\[numeric, required]_
+**org_id** _\[int, required]_
 > ID of the organization in which the base is to be restored.
 
-**dtable_id** _\[numeric, required]_
+**dtable_id** _\[int, required]_
 > ID of the base to be restored.
 
 
