@@ -422,7 +422,7 @@ dan
 
 ## Zip and Download Asset Files
 
-Use this API request and the following step to download zipped asset files.
+Use this API request and the following steps to download zipped asset files. When zipping, you can rename the files.
 
 
 **URL Structure**
@@ -435,55 +435,73 @@ Use this API request and the following step to download zipped asset files.
 > User Authentication (Token)
 
 
-
 **Sample Request**
 
-Zip the three images (path and name refer to the following request) of the base with the `dtable_uuid` of `00390415b6dc416a8f2a70a3a1356a18`:
+Use this following sample request to zip and download the files `file1.txt` and `file2.txt` from the base with `dtable_uuid` of `46620d70-c8e5-49ab-8874-9d4a2dc4608c`. Use the `files_map` parameter to list these files and rename them as `name1.txt` and `name2.txt` respectively:
 
 > ```
-> curl --request POST \
-> 'https://cloud.seatable.io/api/v2.1/dtable-asset/00390415b6dc416a8f2a70a3a1356a18/zip-task/' \
-> --header 'Authorization: Token 64b9ee55dc4ab902ff36763ef5c604a76d52875e' \
-> --form 'file=images/2020-04/00000000000000000000000000000011.jpg' \
-> --form 'file=images/2020-04/dcced81d4fee390e13e3254c7858da68.jpg' \
-> --form 'file=images/2020-06/touxiang.jpg'
+> curl -X POST \
+> -H 'Authorization: Token 6e44903481adbe2c404bb075a6d4ac6be00a44b4' \
+> -H 'Accept: application/json; charset=utf-8; indent=4' \
+> -H 'Content-Type: application/json' \
+> -d '{"files_map":{  \
+>         "files/2020-11/file1.txt":"name1.txt", \
+>         "files/2020-11/file2.txt":"name2.txt"} \
+>     }' \
+> 'http://cloud.seatable.io/api/v2.1/dtable-asset/46620d70-c8e5-49ab-8874-9d4a2dc4608c/zip-task/'
 > ```
 
+**Input Parameters**
 
-**Input Parameters** 	
+**dtable_uuid** _\[string, required]_
+> The ID of the base from which you'd like to zip and download the asset.
 
-**file** _\[multiple, string, required]_
-> Path and name of the file(s) to export. List multiple files like above in the sample request.
+**files_map** _\[JSON-object, required]_
+> The `application/json` content type must be passed through the **POST** request's body:
+>
+> ```
+> -H 'Content-Type: application/json' 
+> ```
+>
+> In the `files_map` parameter, list the `file_path` and `new_name` parameters:
+> ```
+> {
+>     "files_map": {
+>         "file_path1": "new_name1",
+>         "file_path2": "new_name2"
+>     }
+> }
+> ```
+
+**file_path** _\[string, required]_
+> The relative path and name of the files/images, including suffix. See the sample request for example.
+
+**new_name** _\[string, optional]_
+> Give new names to the files/images if you would like to rename them when zipping. If left blank, the files will be downloaded with their original names:
+> ```
+> {
+>     "files_map": {
+>         "file_path1": "",
+>         "file_path2": ""
+>     }
+> }
+> ```
 
 
 **Return Values**
 
-JSON-object with the `task_id` of the zipping. 
+JSON-object with the ID of the zipping task.
 
 
-**Sample Response** 
 
-A `task_id` is returned:
+**Sample Response**
 
->```
->{
->    "task_id": "1591853930601"
->}
->```
-
-A generated `task_id` doesn't necessarily mean the files have been successfully zipped. Sometimes the zipping can take a longer time, depending on the number and size of the files. 
-
-Use the returned  `task_id` to query the status of the task: Refer to [task-status](https://docs.seatable.io/published/seatable-api/dtable-web-v2.1/dtable-import-export.md#user-content-Query%20Import/Export%20Status). When finished, **\[GET]** following URL to download. 
-
-```
-/dtable-export-asset-files/?task_id=<task_id>&dtable_uuid=<dtable_uuid>
-```
-
-**Possible Errors**
-
-400 Bad Request: Files' paths or names have error(s):
 > ```
-> {
->     "error_msg": "files_map is invalid."
-> }
+> {"task_id":"1605083246110"}
 > ```
+
+The returned `task_id` means the zipping has started. To check if the zipping has finished, use the [Check Task Status](https://docs.seatable.io/published/seatable-api/dtable-web-v2.1/dtable-import-export.md#user-content-Query%20Import/Export%20Status) request. 
+
+To download the zipped file, **\[GET]** the following URL:
+
+> /dtable-export-asset-files/?task_id=`<task_id>`&dtable_uuid=`<dtable_uuid>`
