@@ -17,7 +17,7 @@ curl -H 'Authorization: Token eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE1N
 
 ```
 
-**Sample Response**
+**Sample Response (200)**
 
 ```
 {
@@ -69,7 +69,7 @@ curl -X POST -d '{
 
 ```
 
-**Sample Response**
+**Sample Response (200)**
 
 ```
 {
@@ -101,7 +101,7 @@ curl -X PUT -d 'seen=true' -H 'Authorization: Token eyJ0eXAiOiJKV1QiLCJhbGciOiJI
 
 ```
 
-**Sample Response**
+**Sample Response (200)**
 
 ```
 {
@@ -134,7 +134,7 @@ curl -X PUT -d 'seen=true' -H 'Authorization: Token eyJ0eXAiOiJKV1QiLCJhbGciOiJI
 
 ```
 
-**Sample Response**
+**Sample Response (200)**
 
 ```
 {
@@ -165,7 +165,7 @@ curl -X DELETE -H 'Authorization: Token eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ
 
 ```
 
-**Sample Response**
+**Sample Response (200)**
 
 ```
 {

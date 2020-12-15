@@ -11,7 +11,7 @@ curl -X GET https://cloud.seatable.io/dtable-server/api/v1/dtable/ff977dc8f06546
 
 ```
 
-**Sample response**
+**Sample Response (200)**
 
 ```
 {

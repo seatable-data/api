@@ -11,7 +11,7 @@ curl --request GET 'https://cloud.seatable.io/api/v2.1/workspace/107/dtable/for-
 
 ```
 
-**Sample Response**
+**Sample Response (200)**
 
 ```
 {

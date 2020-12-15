@@ -281,7 +281,7 @@ JSON-object with the list of bases.
 
 
 
-**Sample Response**
+**Sample Response (200)**
 
 Response from the sample request shows Page 1 with 1 base and its detailed infos. The returned `"count"` value indicates this organization has 6 bases in total: 
 
@@ -368,7 +368,7 @@ List 3 trashed bases in the current system:
 JSON-object with the list of trashed bases.
 
 
-**Sample Response**
+**Sample Response (200)**
 
 Response from the sample request shows Page 1 with 3 bases and their infos. The returned `"count"` indicates there're 41 bases in the trash bin:
 

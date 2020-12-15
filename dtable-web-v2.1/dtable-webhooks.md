@@ -11,7 +11,7 @@ curl --request GET 'https://cloud.seatable.io/api/v2.1/workspace/107/dtable/for-
 
 ```
 
-**Sample response**
+**Sample Response (200)**
 
 ```
 {
@@ -54,7 +54,7 @@ curl --request POST 'https://cloud.seatable.io/api/v2.1/workspace/107/dtable/for
 
 ```
 
-**Sample response**
+**Sample Response (200)**
 
 ```
 {
@@ -88,7 +88,7 @@ curl --request PUT 'https://cloud.seatable.io/api/v2.1/workspace/107/dtable/for-
 
 ```
 
-**Sample response**
+**Sample Response (200)**
 
 ```
 {
@@ -117,7 +117,7 @@ curl --request DELETE 'https://cloud.seatable.io/api/v2.1/workspace/107/dtable/f
 
 ```
 
-**Sample response**
+**Sample Response (200)**
 
 ```
 200 OK

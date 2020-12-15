@@ -47,7 +47,7 @@ In this sample request, the user copies `Projects` from workspace `1` to `80`:
 
 JSON-object with the details of the copied base.
 
-**Sample Response**
+**Sample Response (200)**
 
 > ```
 > {
@@ -143,7 +143,7 @@ With the external link as below, copy the base to the workspace `80`:
 JSON-object with the details of the copied base.
 
 
-**Sample Response**
+**Sample Response (200)**
 
 The details of the copied base are returned:
 > ```

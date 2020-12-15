@@ -41,7 +41,7 @@ List 3 external links in the current system:
 JSON-object with the list of all external links.
 
 
-**Sample response**
+**Sample Response (200)**
 
 Response from the sample request shows Page 1 with 3 external links and their detailed infos. The returned `"has_next_page"` value indicates that there are more external links in the system:
 
@@ -134,7 +134,7 @@ Delete the external link with the token acbdef3e30a3404084b6:
 JSON-object with the result of the operation.
 
 
-**Sample Response**
+**Sample Response (200)**
 
 Response from the sample request indicates the successful deletion of the external link with the given token:
 

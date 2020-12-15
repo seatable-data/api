@@ -16,7 +16,7 @@ curl --request GET 'https://cloud.seatable.io/api/v2.1/user-common-info/xxxxxxx@
 
 ```
 
-**Sample Response**
+**Sample Response (200)**
 
 ```
 {

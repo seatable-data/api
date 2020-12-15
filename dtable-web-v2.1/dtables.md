@@ -19,7 +19,7 @@ curl -X POST -d 'name=nice&owner=xxxx@auth.local&color=#7626FD&icon=icon-softwar
 
 ```
 
-**Sample response**
+**Sample Response (200)**
 
 ```
 {
@@ -64,7 +64,7 @@ curl -X PUT -d "name=hi&new_name=hey" -H 'Authorization:Token 5f971000df0d6f35ed
 
 ```
 
-**Sample response**
+**Sample Response (200)**
 
 ```
 {
@@ -100,7 +100,7 @@ curl -X DELETE -d "name=dtable_2" -H 'Authorization:Token 5f971000df0d6f35ed7c59
 
 ```
 
-**Sample response**
+**Sample Response (200)**
 
 ```
 {

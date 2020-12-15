@@ -14,7 +14,7 @@ curl -H 'Authorization: Token eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZ
 
 ```
 
-**Sample response**
+**Sample Response (200)**
 
 ```json
 {
@@ -62,7 +62,7 @@ https://cloud.seatable.io/dtable-server/api/v1/dtables/7f7dc9c7187a4d9fb6cfff5e5
 
 ```
 
-**Sample response**
+**Sample Response (200)**
 
 ```json
 {
@@ -99,7 +99,7 @@ https://cloud.seatable.io/dtable-server/api/v1/dtables/7f7dc9c7187a4d9fb6cfff5e5
 
 ```
 
-**Sample response**
+**Sample Response (200)**
 
 ```json
 {
@@ -170,7 +170,7 @@ https://cloud.seatable.io/dtable-server/api/v1/dtables/7f7dc9c7187a4d9fb6cfff5e5
 
 ```
 
-**Sample response**
+**Sample Response (200)**
 
 ```json
 {
@@ -219,7 +219,7 @@ https://cloud.seatable.io/dtable-server/api/v1/dtables/7f7dc9c7187a4d9fb6cfff5e5
 
 ```
 
-**Sample response**
+**Sample Response (200)**
 
 ```json
 {

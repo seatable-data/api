@@ -16,7 +16,7 @@ curl -H 'Authorization: Token eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZ
 
 ```
 
-**Sample response**
+**Sample Response (200)**
 
 ```
 "{\"tables\":[{\"_tid\":\"0000\",\"title\":\"Table1\",\"columns\":[{\"key\":\"0000\",\"name\":\"Name\",\"type\":\"\",\"width\":142,\"editable\":true,\"resizable\":true},{\"key\":\"vd8m\",\"name\":\"Media\",\"type\":\"image\",\"editable\":true,\"width\":137,\"resizable\":true,\"draggable\":true,\"data\":null},{\"key\":\"QzuD\",\"name\":\"Label\",\"type\":\"single-select\",\"editable\":true,\"width\":200,\"resizable\":true,\"draggable\":true,\"data\":{\"options\":[{\"name\":\"good\",\"color\":\"#DDFFE6\",\"ID\":\"935357\"}]}}],\"rows\":[{\"_id\":\"0a4852c0-1f14-40f0-9cc7-722892f3f5b9\",\"vd8m\":[],\"QzuD\":\"935357\",\"0000\":\"hello\"}],\"views\":[{\"_vid\":\"0000\",\"type\":\"table\",\"name\":\"默认视图\",\"rows\":[],\"summaries\":{\"0000\":{},\"vd8m\":{},\"QzuD\":{}},\"filters\":[]}],\"Id2Row\":{\"0a4852c0-1f14-40f0-9cc7-722892f3f5b9\":{\"_id\":\"0a4852c0-1f14-40f0-9cc7-722892f3f5b9\",\"vd8m\":[],\"QzuD\":\"935357\",\"0000\":\"hello\"}}}]}"
@@ -44,7 +44,7 @@ curl -H 'Accept: application/json; charset=utf-8; indent=4' -H 'Authorization: T
 
 ```
 
-**Sample response**
+**Sample Response (200)**
 
 ```
 {
@@ -208,7 +208,7 @@ curl -X POST -d "table_name=Table1" -F "csv_file=@/tmp/test.csv" -H 'Authorizati
 
 ```
 
-**Sample response**
+**Sample Response (200)**
 
 ```
 {    

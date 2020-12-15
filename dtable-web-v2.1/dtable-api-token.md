@@ -50,7 +50,7 @@ JSON-object with the API token and other details.
 
 
 
-**Sample Response**
+**Sample Response (201)**
 
 The desired API token has been created:
 
@@ -115,7 +115,7 @@ List all the API tokens of the base `Test` in the workspace `1`:
 JSON-object with the list of API tokens and their details.
 
 
-**Sample Response**
+**Sample Response (200)**
 
 Returned list indicates there are two existing API tokens in this base:
 
@@ -218,7 +218,7 @@ Change the permission of the API token "Google" of the base `Test` in the worksp
 JSON-object with the details of the updated API token.
 
 
-**Sample Response**
+**Sample Response (200)**
 
 The updated details of the API token "Google" are returned:
 
@@ -403,7 +403,7 @@ Delete the API token "Google" from the base `Test` in the workspace `1`:
 JSON-object with the result of the operation.
 
 
-**Sample Response**
+**Sample Response (200)**
 
 The result indicates the delete was successful:
 
@@ -473,7 +473,7 @@ None.
 JSON-object with access token and other details of the base.
 
 
-**Sample Response**
+**Sample Response (200)**
 
 The response returns the access token of the base among other details:
 
@@ -535,7 +535,7 @@ None.
 JSON-object with upload link and parent path.
 
 
-**Sample Response**
+**Sample Response (200)**
 
 > ```
 > {
@@ -593,7 +593,7 @@ JSON-object with the download link.
 
 
 
-**Sample Response**
+**Sample Response (200)**
 
 > ```
 > {

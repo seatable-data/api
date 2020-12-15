@@ -19,7 +19,7 @@ curl -H 'Authorization: Token eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZ
 
 ```
 
-**Sample response**
+**Sample Response (200)**
 
 ```
 {
@@ -150,7 +150,7 @@ curl -H "Content-Type: application/json" -d
 
 ```
 
-**Sample response**
+**Sample Response (200)**
 
 ```
 {
@@ -188,7 +188,7 @@ curl -H 'Authorization: Token eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZ
 
 ```
 
-**Sample response**
+**Sample Response (200)**
 
 ```
 {
@@ -242,7 +242,7 @@ curl -H 'Authorization: Token eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZ
 
 ```
 
-**Sample response**
+**Sample Response (200)**
 
 ```
 {
@@ -273,7 +273,7 @@ curl -H 'Authorization: Token eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZ
 
 ```
 
-**Sample response**
+**Sample Response (200)**
 
 ```
 {
@@ -310,7 +310,7 @@ curl --request POST ' https://cloud.seatable.io/dtable-server/api/v1/dtables/41c
 
 ```
 
-**Sample response**
+**Sample Response (200)**
 
 ```
 {
@@ -339,7 +339,7 @@ curl -H 'Authorization: Token eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZ
 
 ```
 
-**Sample response**
+**Sample Response (200)**
 
 ```
 {
@@ -366,7 +366,7 @@ curl -H 'Authorization: Token eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZ
 
 ```
 
-**Sample response**
+**Sample Response (200)**
 
 ```
 {
@@ -393,7 +393,7 @@ curl -H 'Authorization: Token eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZ
 
 ```
 
-**Sample response**
+**Sample Response (200)**
 
 ```
 {
@@ -426,7 +426,7 @@ curl -H 'Authorization: Token eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZ
 
 ```
 
-**Sample response**
+**Sample Response (200)**
 
 ```
 {
@@ -459,7 +459,7 @@ curl -H 'Authorization: Token eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZ
 
 ```
 
-**Sample response**
+**Sample Response (200)**
 
 ```
 {
@@ -485,7 +485,7 @@ curl -H 'Authorization: Token eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE1N
 
 ```
 
-**Sample Response**
+**Sample Response (200)**
 
 ```
 {

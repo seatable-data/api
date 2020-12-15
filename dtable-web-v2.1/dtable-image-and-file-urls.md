@@ -145,7 +145,7 @@ Open a preview of the `sample.pdf` file in the base with the following `dtable_u
 
 HTML5 reader of the file.
 
-**Sample Response**
+**Sample Response (200)**
 
 A website with the built-in preview of the targeted file.
 

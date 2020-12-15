@@ -226,7 +226,7 @@ curl --request GET 'https://cloud.seatable.io/dtable-server/api/v1/dtables/00390
 
 ```
 
-**Sample Response**
+**Sample Response (200)**
 
 ```
 {

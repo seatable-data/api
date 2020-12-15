@@ -47,7 +47,7 @@ JSON-object with the list of base activities.
 
 
 
-**Sample Response**
+**Sample Response (200)**
 
 The response to the sample request lists off three activities done by the user:
 

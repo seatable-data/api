@@ -43,7 +43,7 @@ Get the attachment upload link to the base named Merchandise in the workspace 1:
 JSON-object with upload link, parent path, images / files relative path.
 
 
-**Sample Response**
+**Sample Response (200)**
 
 >```
 >{
@@ -123,7 +123,7 @@ List the asset directories and files in the /files/2020-03 folder of the base wi
 JSON-object with the list of details of the attachments. The returned `"is_file"` indicates if the object is a file (`true`) or a directory (`false`).
 
 
-**Sample Response**
+**Sample Response (200)**
 
 The two files in the `files/2020-03` folder are listed in the response to the sample request:
 
@@ -220,7 +220,7 @@ Delete the directory `files/2020-03` in the base with `dtable_uuid` of `2e1fb433
 
 JSON-object with the result of the operation.
 
-**Sample Response**
+**Sample Response (200)**
 
 The response to the sample request indicates that the named asset has been deleted.
 
@@ -299,7 +299,7 @@ In the base `merchandise` in workspace "`1`, rotate the image `sample.png` under
 JSON-object with the result of the operation.
 
 
-**Sample Response**
+**Sample Response (200)**
 
 > ```
 > {
@@ -386,7 +386,7 @@ Check if the image `files/2020-04/apple.png` exists in the base `Test` which is 
 JSON-object with the result (`true` or `false`) of the enquiry.
 
 
-**Sample Response**
+**Sample Response (200)**
 
 The response indicates the image exists:
 >```
@@ -494,7 +494,7 @@ JSON-object with the ID of the zipping task.
 
 
 
-**Sample Response**
+**Sample Response (200)**
 
 > ```
 > {"task_id":"1605083246110"}

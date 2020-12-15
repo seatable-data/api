@@ -44,7 +44,7 @@ JSON-object with the access token and other infos of the base.
 
 
 
-**Sample Response**
+**Sample Response (200)**
 
 The access token and other details of the base are returned:
 >```
@@ -109,7 +109,7 @@ None.
 > A base's share link access token is the suffix to its share link, i.e. 'https\://cloud.seatable.io/dtable/external-links/`<share link token>`/'
 
 
-**Sample Response**
+**Sample Response (200)**
 
 > ```
 > {

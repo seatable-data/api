@@ -13,7 +13,7 @@ curl "https://cloud.seatable.io/dtable-server/ping/"
 
 ```
 
-**Sample response**
+**Sample Response (200)**
 
 ```
 pong

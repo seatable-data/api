@@ -38,7 +38,7 @@ JSON-object with details of the settings:
 * `enable_external_user_access_invite_link`: `true` if sharing bases to external users per invite link is allowed
 
 
-**Sample Response**
+**Sample Response (200)**
 
 The sample response indicates the current org settings:
 
@@ -120,7 +120,7 @@ JSON-object with details of the settings:
 
 
 
-**Sample Response**
+**Sample Response (200)**
 
 The response from the sample request confirms the change of settings:
 

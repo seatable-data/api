@@ -42,7 +42,7 @@ List all the collaborators to the base `Teamwork` in the workspace `1`:
 JSON-object with related user list.
 
 
-**Sample Response**
+**Sample Response (200)**
 
 The returned user list includes the basic information of the base's collaborators:
 

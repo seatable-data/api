@@ -12,7 +12,7 @@ curl --request DELETE 'https://cloud.seatable.io/api/v2.1/notifications/' \
 
 ```
 
-**Sample response**
+**Sample Response (200)**
 
 ```
 {

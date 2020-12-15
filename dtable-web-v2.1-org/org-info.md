@@ -38,7 +38,7 @@ Change the name of the organization into "SeaTable":
 JSON-object with the result of the operation.
 
 
-**Sample Response**
+**Sample Response (200)**
 
 The response indicates that the changes were successful:
 > ```
