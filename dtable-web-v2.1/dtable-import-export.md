@@ -52,7 +52,7 @@ JSON-object with the import task's ID and the details of the imported base. The 
 
 
 
-**Sample Response**
+**Sample Response (200)**
 
 The response returned the import task's ID and the details of the imported base:
 
@@ -161,7 +161,7 @@ JSON-object with the import task's ID and the details of the imported base. The 
 
 
 
-**Sample Response**
+**Sample Response (200)**
 
 The response returned the import task's ID and the details of the imported base:
 
@@ -256,7 +256,7 @@ Export and download the base `test` from the workspace `1` as .dtable file:
 
 JSON-object with the zipping task ID and the details of the exported base.
 
-**Sample Response**
+**Sample Response (200)**
 
 A `task_id` and the details of the exported base are returned. Download the file with the `task_id` with the URL provided in [Download the Exported File](https://docs.seatable.io/published/seatable-api/dtable-web-v2.1/dtable-import-export.md#user-content-Get%20Export%20Content).
 
@@ -367,16 +367,22 @@ The response indicates that the task has been finished:
 
 ## Download the Exported File
 
-With 
+With the automatically generated task ID when exporting a file, use this API request to download the zipped .dtable base file.
 
-**GET** api/v2.1/dtable-export-content/
 
-**Input Parameters**
+**URL Structure**
 
-* task_id
-* dtable_uuid
+> **\[GET]** api/v2.1/dtable-export-content/
+
+
+**Request Authentication**
+
+> User Authentication (Token)
+
 
 **Sample Request**
+
+Download the exported base file with the task ID and base UUID as follows:
 
 > ```
 > curl \
@@ -384,33 +390,74 @@ With
 > https://cloud.seatable.io/api/v2.1/dtable-export-content/?task_id=1582970912441&dtable_uuid=d09b6bcc-b6e5-4b8c-b9e2-c4329a8af482
 > ```
 
-**Sample Response**
-
- .dtable zip file
-
-## Cancel Task
-
-**DELETE** api/v2.1/dtable-io-status/
 
 **Input Parameters**
 
-* task_id
-* task_type, "export" or "import"
-* dtable_uuid
+**task_id** _\[int, required]_
+> Automatically generated and returned ID of the importing/exporting task.
 
-**Sample Request**
+**dtable_uuid** _\[int, required]_
+> Automatically generated base identification code when creating or importing a new base.
 
-```
-curl -X DELETE -H "Authorization: Token f6c14812c5403b361b7f8cd61ac8d969cbca63a0" https://cloud.seatable.io/api/v2.1/dtable-export-content/?task_id=1582970912441&dtable_uuid=
-d09b6bcc-b6e5-4b8c-b9e2-c4329a8af482&task_type=export
 
-```
+**Return Values**
 
-**Sample Response**
+Zip file with .dtable suffix.
 
-```
-{'success': true}
 
-```
+**Sample Response (200)**
+
+A .dtable file with the same name as the base is downloaded.
+
+## Cancel Task
+
+With the automatically generated task ID, an ongoing task can be cancelled.
+
+
+**URL Structure**
+
+> **\[DELETE]** api/v2.1/dtable-io-status/
+
+
+**Request Authentication**
+
+> User Authentication (Token)
+
+
+**Sample Request (200)**
+
+Cancel the ongoing exporting process with the following `task_id` and `dtable_uuid`:
+
+> ```
+> curl -X DELETE \
+> -H "Authorization: Token f6c14812c5403b361b7f8cd61ac8d969cbca63a0" \
+> https://cloud.seatable.io/api/v2.1/dtable-export-content/?task_id=1582970912441&dtable_uuid=d09b6bcc-b6e5-4b8c-b9e2-c4329a8af482&task_type=export
+> ```
+
+
+**Input Parameters**
+
+**task_id** _\[int, required]_
+> Automatically generated and returned ID of the importing/exporting task.
+
+**dtable_uuid** _\[int, required]_
+> Automatically generated base identification code when creating or importing a new base.
+
+**task_type** _\[string(`export` or `import`), required]_
+> Announce the ongoing type of task to be cancelled.
+
+
+**Return Values**
+
+JSON-object with the result of the operation.
+
+
+**Sample Response (200)**
+
+> ```
+> {
+>    "success": true
+> }
+> ```
 
 

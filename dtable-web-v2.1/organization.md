@@ -11,7 +11,7 @@ curl --request GET 'https://cloud.seatable.io/api/v2.1/organizations/23/' --head
 
 ```
 
-**Sample Response**
+**Sample Response (200)**
 
 ```
 {
@@ -36,7 +36,7 @@ curl --request POST 'https://cloud.seatable.io/api/v2.1/user/migrate-org/' --hea
 
 ```
 
-**Sample Response**
+**Sample Response (200)**
 
 ```
 {

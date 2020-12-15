@@ -38,7 +38,7 @@ List the forms without inputing any parameter:
 JSON-object with the list of forms.
 
 
-**Sample Response**
+**Sample Response (200)**
 
 Response from the sample request shows the details of 2 forms by default, as the `"page"` and `"per_page"` parameters were not given in the sample request. The returned `"count"` value indicates that there are 46 forms in total:
 
@@ -119,7 +119,7 @@ Delete the form with the token 3f9ee7c8-7338-4ca5-b877-4df454c6ad8b:
 JSON-object with the result of the operation.
 
 
-**Sample Response**
+**Sample Response (200)**
 
 The form with the token given in the sample request is now deleted:
 >```

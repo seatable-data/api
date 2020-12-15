@@ -15,7 +15,7 @@ curl -H "Authorization: Token 3f1e23157c3a1fd740e9dc1c5d748929fe319b95" -H 'Acce
 
 ```
 
-**Sample response**
+**Sample Response (200)**
 
 ```
 {
@@ -38,7 +38,7 @@ curl -H "Authorization: Token 3f1e23157c3a1fd740e9dc1c5d748929fe319b95" -H 'Acce
 
 ```
 
-**Sample response**
+**Sample Response (200)**
 
 ```
 {
@@ -89,7 +89,7 @@ curl -X DELETE -H "Authorization: Token 3f1e23157c3a1fd740e9dc1c5d748929fe319b95
 
 ```
 
-**Sample response**
+**Sample Response (200)**
 
 ```
 {
@@ -118,7 +118,7 @@ curl -H "Authorization: Token 3f1e23157c3a1fd740e9dc1c5d748929fe319b95" -H 'Acce
 
 ```
 
-**Sample response**
+**Sample Response (200)**
 
 ```
 {
@@ -159,7 +159,7 @@ curl -X POST -d "permission=rw&to_user=6f46581085834012abc0ad20a5e85b8a@auth.loc
 
 ```
 
-**Sample response**
+**Sample Response (200)**
 
 ```
 {
@@ -194,7 +194,7 @@ curl -X PUT -d "permission=r" -H "Authorization: Token 3f1e23157c3a1fd740e9dc1c5
 
 ```
 
-**Sample response**
+**Sample Response (200)**
 
 ```
 {
@@ -228,7 +228,7 @@ curl -X PUT -d "permission=r" -H "Authorization: Token 3f1e23157c3a1fd740e9dc1c5
 
 ```
 
-**Sample response**
+**Sample Response (200)**
 
 ```
 {
@@ -255,7 +255,7 @@ curl -X DELETE -H "Authorization: Token 3f1e23157c3a1fd740e9dc1c5d748929fe319b95
 
 ```
 
-**Sample response**
+**Sample Response (200)**
 
 ```
 {
@@ -282,7 +282,7 @@ curl -X DELETE -H "Authorization: Token 3f1e23157c3a1fd740e9dc1c5d748929fe319b95
 
 ```
 
-**Sample response**
+**Sample Response (200)**
 
 ```
 {

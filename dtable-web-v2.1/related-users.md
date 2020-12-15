@@ -20,7 +20,7 @@ curl -X POST -H 'Authorization:Token e1518ab0624eed78ab9456d207e312666fcaf748' -
 
 ```
 
-**Sample response**
+**Sample Response (200)**
 
 ```json
 {

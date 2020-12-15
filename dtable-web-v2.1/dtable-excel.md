@@ -45,7 +45,7 @@ Export the `Table` in the base `Test` in workspace `1` with its default view to 
 .xlsx file.
 
 
-**Sample Response**
+**Sample Response (200)**
 
 An .xlsx file will be downloaded.
 

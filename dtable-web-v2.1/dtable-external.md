@@ -38,7 +38,7 @@ Download the base through the external link with the token `8720e55e17a44aa89990
 .dtable file.
 
 
-**Sample Response**
+**Sample Response (200)**
 
 A .dtable zip file is downloaded.
 

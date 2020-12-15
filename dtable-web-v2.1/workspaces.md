@@ -17,7 +17,7 @@ curl -H 'Authorization: Token 6e44903481adbe2c404bb075a6d4ac6be00a44b4' -H 'Acce
 
 ```
 
-**Sample response**
+**Sample Response (200)**
 
 detail=false
 

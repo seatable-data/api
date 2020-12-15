@@ -44,7 +44,7 @@ JSON-object with the list of form(s).
 
 
 
-**Sample Response**
+**Sample Response (200)**
 
 The returned response lists off the two forms in the base `Survey`:
 
@@ -149,7 +149,7 @@ Create a form `Vendor Survey` in the base `Surveys` from workspace `1` and give 
 
 **form_config** _\[string, required]_
 > Use form_config={"form_name":"abc"} to give your form the name "abc". To customize this form, choose which columns to include in it, set required fields, add descriptions, add remarks, send notifications, add a notice on the top of the form, show a notice after submission, and add a redirect link after submission, etc., refer to the following example (detailed instructions will be added on this page shortly):
-> ```json
+> ```
 >     {
 >         "form_name":"Customer Survey",              // The name of your form
 >         "columns":[                                 // Choose the columns to include
@@ -205,7 +205,7 @@ Create a form `Vendor Survey` in the base `Surveys` from workspace `1` and give 
 JSON-object with details of the created form including sharing link. The form token is automatically generated.
 
 
-**Sample Response**
+**Sample Response (201)**
 
 > ```
 > {
@@ -294,7 +294,7 @@ Change the name of a form with its token.
 
 JSON-object with the details of the updated form.
 
-**Sample Response**
+**Sample Response (200)**
 
 Seen from the response to the sample request, the name of the table has been changed to `new name`:
 
@@ -383,7 +383,7 @@ JSON-object with the result of the operation.
 
 
 
-**Sample Response**
+**Sample Response (200)**
 
 > ```
 > {
@@ -450,7 +450,7 @@ JSON-object with the upload link and the parent path, as well as relative images
 
 
 
-**Sample Response**
+**Sample Response (200)**
 
 > ```
 > {
@@ -508,7 +508,7 @@ None.
 JSON-object with the list of forms with details.
 
 
-**Sample Response**
+**Sample Response (200)**
 
 > ```
 > {
@@ -606,7 +606,7 @@ Share the form with the token of `d76d7428-ba53-4628-8a5b-2e090d693fbf` to the g
 JSON-object with the result of the operation.
 
 
-**Sample Response**
+**Sample Response (200)**
 > 
 > ```
 > {
@@ -695,7 +695,7 @@ JSON-object with the list of shared forms and details.
 
 
 
-**Sample Response**
+**Sample Response (200)**
 
 > ```
 > {

@@ -30,7 +30,7 @@ None.
 
 JSON-object with account details.
 
-**Sample Response**
+**Sample Response (200)**
 
 > ```
 > {
@@ -66,40 +66,6 @@ JSON-object with account details.
 >
 > ```
 
-## Update email address
 
-**PUT** /api/v2.1/user/contact-email/
-
-**URL Structure**
-
-> **\[PUT]** /api/v2.1/user/contact-email/
-
-**Request Authentication**
-
-> User Authentication (Token)
-
-**Sample Request**
-
-> ```
-> curl --request PUT 'https://cloud.seatable.io/api/v2.1/user/contact-email/' \
-> --header 'Authorization: Token 57dbe76c579d7a926539c04c3e8bcbb1e6a65301' \
-> --form 'new_contact_email=1223408988@qq.com'
->
-> ```
-
-**Input Parameters**
-
-**new_contact_email **_\[str, required]_
-
-> your new contact email address
-
-**Sample Response (200)**
-
-> ```
-> {
->     "msg": "email has been sent, please check it in your current email."
-> }
->
-> ```
 
 

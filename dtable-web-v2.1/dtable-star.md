@@ -11,7 +11,7 @@ curl --request GET 'https://cloud.seatable.io/api/v2.1/starred-dtables/' --heade
 
 ```
 
-**Sample Response**
+**Sample Response (200)**
 
 ```
 {
@@ -56,7 +56,7 @@ curl --request POST 'https://cloud.seatable.io/api/v2.1/starred-dtables/' --head
 
 ```
 
-**Sample Response**
+**Sample Response (200)**
 
 ```
 {
@@ -80,7 +80,7 @@ curl --request DELETE 'https://cloud.seatable.io/api/v2.1/starred-dtables/?dtabl
 
 ```
 
-**Sample Response**
+**Sample Response (200)**
 
 ```
 {

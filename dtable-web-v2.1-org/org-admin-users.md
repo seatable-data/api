@@ -44,7 +44,7 @@ List all the users in the current organization.
 JSON-object with the list of users.
 
 
-**Sample Response**
+**Sample Response (200)**
 
 The response from the sample request lists off two users in the organization. The returned `per_page`, `page` and `page_next` values indicate that all the users in this organization are listed.
 
@@ -148,7 +148,7 @@ JSON-object with new user's info. The `email` (user's ID in the system) is gener
 
 
 
-**Sample Response**
+**Sample Response (200)**
 
 The new user is added and their `email` (ID) is generated:
 
@@ -248,7 +248,7 @@ JSON-object with the details of the user.
 
 
 
-**Sample Response**
+**Sample Response (200)**
 
 The returned values confirm the change:
 
@@ -333,7 +333,7 @@ JSON-object indicating the result of the operation.
 
 
 
-**Sample Response**
+**Sample Response (200)**
 
 Response from the sample request indicates the successful deletion of the user:
 > ```
@@ -398,7 +398,7 @@ JSON-object with the new password.
 
 
 
-**Sample Response**
+**Sample Response (200)**
 
 A new password is returned:
 > ```
