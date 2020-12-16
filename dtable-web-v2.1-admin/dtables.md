@@ -213,6 +213,7 @@ Response from the sample request shows Page 1 with 3 bases and their detailed in
 >}
 >
 >```
+If the user's ID was not found, no errors will be raised. Instead, an empty list is returned.
 
 **Possible Errors**
 
@@ -230,13 +231,7 @@ Response from the sample request shows Page 1 with 3 bases and their detailed in
 >}
 >```
 
-If the user's ID was not found, no errors will be raised. Instead, an empty list is returned:
->```
->{
->    "dtable_list": [],
->    "count": 0
->}
->```
+
 
 ## List An Organization's Bases
 
