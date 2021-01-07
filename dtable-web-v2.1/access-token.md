@@ -80,9 +80,9 @@ The access token and other details of the base are returned:
 > ```
 
 
-## Get A Base's Read-only Access Token via Share Link
+## Get A Base's Access Token via Invite Link
 
-Get the read-only access token to a base via its external share link token.
+Get the access token to a base via its invite link token.
 
 
 **URL Structure**
@@ -106,8 +106,12 @@ None.
 **Input Parameters**
 
 **share_link_access_token** _\[string, required]_
-> A base's share link access token is the suffix to its share link, i.e. 'https\://cloud.seatable.io/dtable/external-links/`<share link token>`/'
+> A base's share link access token is the suffix to its invite link, i.e. 'https\://cloud.seatable.io/dtable/links/`<share link token>`/'
 
+
+**Return Values**
+
+JSON-object with the access token and the ID of the base.
 
 **Sample Response (200)**
 
@@ -122,5 +126,10 @@ None.
 
 * 400 Bad Request.
 * 403 Permission Denied.
-
+404 Not Found: The share link token is not valid:
+> ```
+> {
+>     "error_msg": "Share link e3dab1cd248c488bbfdf not found."
+> }
+> ```
 
