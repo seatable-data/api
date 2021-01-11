@@ -38,7 +38,7 @@ Import the `test.dtable` file from local path `@/home/karlheinz/Downloads` to wo
 > The ID of the workspace where your base is stored.
 
 **dtable** _\[file, required]_
-> *.dtable is a zip file containint the data in your base. 
+> *.dtable is a zip file containing the data in your base. 
 
 
 

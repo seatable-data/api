@@ -28,13 +28,13 @@ Export the `Table` in the base `Test` in workspace `1` with its default view to 
 **Input Parameters**
 
 **workspace_id** _\[int, required]_
-> The ID of the workspace where your base is
+> The ID of the workspace where your base is.
 
 **name** _\[string, required]_
-> The name of the base
+> The name of the base.
 
 **table_name** _\[string, required]_
-> The name of the table which you are going to export
+> The name of the table which you are going to export.
 
 **view_name** _\[string, optional]_
 > The name of the view you are going to export. If not given, all the rows in the default view will be exported.

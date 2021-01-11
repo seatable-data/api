@@ -280,7 +280,7 @@ Get the status of the API tokens in a base.
 
 **URL Structure**
 
-> **\[GET]** /api/v2.1/workspace/`<workspace_id>`/dtable/`<dtable_name>`/api-tokens-status/
+> **\[GET]** /api/v2.1/workspace/`<workspace_id>`/dtable/`<name>`/api-tokens-status/
 
 
 **Request Authentication**

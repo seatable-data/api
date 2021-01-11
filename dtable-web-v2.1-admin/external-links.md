@@ -38,7 +38,7 @@ List 3 external links in the current system:
 
 **Return Values**
 
-JSON-object with the list of all external links.
+JSON-object with the list of all external links. The returned `token` value is the token of the external link.
 
 
 **Sample Response (200)**
@@ -64,7 +64,7 @@ Response from the sample request shows Page 1 with 3 external links and their de
 >            "from_dtable": "test",
 >            "creator": "f926c9c169fd48f9ba8273771hf485f1@auth.local",
 >            "creator_name": "Hans Zimmer",
->            "token": "jzgjjgj",
+>            "token": "38dhf0d8ghdk34fngdkj",
 >            "permission": "r",
 >            "create_at": "2020-07-03T11:39:05+00:00",
 >            "view_cnt": 0
@@ -101,11 +101,11 @@ Response from the sample request shows Page 1 with 3 external links and their de
 
 ## Delete An External Link By Token
 
-An external link can be deleted by its token. 
+An external link can be deleted by its external link token. 
 
 **URL Structure**
 
-> **\[DELETE]** /api/v2.1/admin/dtables/`<token>`/
+> **\[DELETE]** /api/v2.1/admin/dtables/`<external_link_token>`/
 
 **Request Authentication**
 
@@ -125,8 +125,8 @@ Delete the external link with the token acbdef3e30a3404084b6:
 
 **Input Parameters**
 
-**token** _\[string, required]_
-> As an external link is generated, its token is used as the suffix to its link. For example: https\://cloud.seatable.io/dtable/external-links/`<token>`/
+**external_link_token** _\[string, required]_
+> As an external link is generated, its token is used as the suffix to its link. For example: https\://cloud.seatable.io/dtable/external-links/`<external_link_token>`/
 
 
 **Return Values**
