@@ -41,18 +41,18 @@ JSON-object with the list of plugins' details.
 
 **Sample Response (200)**
 
-```
+```json
 {
     "plugin_list": [
         {
             "id": 2,
-            "plugin_name": "dedede",
+            "plugin_name": "Map",
             "info": {
-                "name": "dedede",
-                "desc": "my desc",
+                "name": "Map",
+                "desc": "Show your addresses on a map",
                 "last_modified": "2020-01-01"
             },
-            "added_by": "foo",
+            "added_by": "Robert Teamplayer",
             "added_time": "2020-01-13T07:55:50+00:00"
         }
     ]
@@ -84,13 +84,13 @@ curl -X POST -H 'Authorization:Token 0303f89b3607fb86039fdffcf1be6383797b437f' -
 ```json
 {
     "id": 2,
-    "plugin_name": "dedede",
+    "plugin_name": "Timeline",
     "info": {
-        "name": "dedede",
-        "desc": "my desc",
+        "name": "Timeline",
+        "desc": "Show the events on a timeline",
         "last_modified": "2020-01-01"
     },
-    "added_by": "foo",
+    "added_by": "Robert Teamplayer",
     "added_time": "2020-01-13T07:55:50+00:00"
 }
 
@@ -122,13 +122,13 @@ curl -X PUT -H 'Authorization:Token 0303f89b3607fb86039fdffcf1be6383797b437f' -H
 ```json
 {
     "id": 2,
-    "plugin_name": "new plugin",
+    "plugin_name": "Gallery",
     "info": {
-        "name": "new plugin",
-        "desc": "my desc",
+        "name": "Gallery",
+        "desc": "Gallery view of the images",
         "last_modified": "2020-01-01"
     },
-    "added_by": "foo",
+    "added_by": "Robert Teamplayer",
     "added_time": "2020-01-13T07:55:50+00:00"
 }
 

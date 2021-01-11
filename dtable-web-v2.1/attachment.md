@@ -111,6 +111,9 @@ List the asset directories and files in the /files/2020-03 folder of the base wi
 
 **Input Parameters**
 
+**dtable_uuid** _\[string, required]_
+> The ID of the base.
+
 **parent_dir** _\[string, optional]_
 > The path to list, `'/'` by default. Typical directory structures are:
 > * For files: `/files/2020-11` where the `2020-11` stands for the time of upload.
@@ -208,6 +211,9 @@ Delete the directory `files/2020-03` in the base with `dtable_uuid` of `2e1fb433
 
 **Input Parameters**
 
+**dtable_uuid** _\[string, required]_
+> The ID of the base.
+
 **name** _\[string, required]_
 > Name of the directory, the file or the image.
 
@@ -286,6 +292,12 @@ In the base `merchandise` in workspace "`1`, rotate the image `sample.png` under
 > ```
 
 **Input Parameters**
+
+**workspace_id** _\[int, required]_
+> The ID of the workspace where the target base is stored.
+
+**dtable_uuid** _\[string, required]_
+> The ID of the base.
 
 **path** _\[string, required]_
 > The image path, normally in the format like `images/2020-03` where `2020-03` is the upload time.

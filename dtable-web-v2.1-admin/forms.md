@@ -35,7 +35,7 @@ List the forms without inputing any parameter:
 
 **Return Values**
 
-JSON-object with the list of forms.
+JSON-object with the list of forms. The returned `token` value is the form's token.
 
 
 **Sample Response (200)**
@@ -90,7 +90,7 @@ Delete a form with its token.
 
 **URL Structure**
 
-> **\[DELETE]** /api/v2.1/admin/forms/`<token>`/
+> **\[DELETE]** /api/v2.1/admin/forms/`<form_token>`/
 
 **Request Authentication**
 
@@ -110,8 +110,8 @@ Delete the form with the token 3f9ee7c8-7338-4ca5-b877-4df454c6ad8b:
 
 **Input Parameters**
 
-**token** _\[string, required]_
-> As a form is generated, its token is used as the suffix to its link. For example: https\://cloud.seatable.io/dtable/forms/`<token>`/
+**form_token** _\[string, required]_
+> As a form is generated, its token is used as the suffix to its link. For example: https\://cloud.seatable.io/dtable/forms/`<form_token>`/
 
 
 **Return Values**
