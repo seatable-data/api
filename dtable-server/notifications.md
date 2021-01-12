@@ -13,7 +13,7 @@
 **Sample Request**
 
 ```
-curl -H 'Authorization: Token eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE1Nzg3MzczNjMsImR0YWJsZV91dWlkIjoiZDQ4YzNhYWVkYmMxNDMyNWE4OTAxYzJlNzllYTUzMTkiLCJ1c2VybmFtZSI6IjFAMS5jb20iLCJwZXJtaXNzaW9uIjoicncifQ.JAVTMTLiW1exHumjnVQ0Ebkc9xO0JEy5vftlBrHDiyw' "https://cloud.seatable.io/dtable-server/api/v1/dtables/d48c3aaedbc14325a8901c2e79ea5319/notifications/"
+curl -H 'Authorization: Token eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE1Nzg3MzczNjMsImR0YWJsZV91dWlkIjoiZDQ4YzNhYWVkYmMxNDMyNWE4OTAxYzJlNzllYTUzMTkiLCJ1c2VybmFtZSI6IjFAMS5jb20iLCJwZXJtaXNzaW9uIjoicncifQ.JAVTMTLiW1exHumjnVQ0Ebkc9xO0JEy5vftlBrHDiyw' "https://cloud.seatable.io/dtable-server/api/v1/dtables/d48c3aae-dbc1-4325-a890-1c2e79ea5319/notifications/"
 
 ```
 
@@ -65,7 +65,7 @@ curl -X POST -d '{
 	"to_user": "1@1.com",
 	"msg_type": "row_comment",
 	"detail": {"author": "2@2.com", "row_id": "NqXZP3YyTyCBOlPf5RNvWQ", "comment": "world"}
-}' -H 'Content-type: application/json' -H 'Authorization: Token eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE1Nzg3MzczNjMsImR0YWJsZV91dWlkIjoiZDQ4YzNhYWVkYmMxNDMyNWE4OTAxYzJlNzllYTUzMTkiLCJ1c2VybmFtZSI6IjFAMS5jb20iLCJwZXJtaXNzaW9uIjoicncifQ.JAVTMTLiW1exHumjnVQ0Ebkc9xO0JEy5vftlBrHDiyw' "https://cloud.seatable.io/dtable-server/api/v1/dtables/d48c3aaedbc14325a8901c2e79ea5319/notifications/"
+}' -H 'Content-type: application/json' -H 'Authorization: Token eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE1Nzg3MzczNjMsImR0YWJsZV91dWlkIjoiZDQ4YzNhYWVkYmMxNDMyNWE4OTAxYzJlNzllYTUzMTkiLCJ1c2VybmFtZSI6IjFAMS5jb20iLCJwZXJtaXNzaW9uIjoicncifQ.JAVTMTLiW1exHumjnVQ0Ebkc9xO0JEy5vftlBrHDiyw' "https://cloud.seatable.io/dtable-server/api/v1/dtables/d48c3aae-dbc1-4325-a890-1c2e79ea5319/notifications/"
 
 ```
 
@@ -97,7 +97,7 @@ curl -X POST -d '{
 **Sample Request**
 
 ```
-curl -X PUT -d 'seen=true' -H 'Authorization: Token eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE1Nzg3MzczNjMsImR0YWJsZV91dWlkIjoiZDQ4YzNhYWVkYmMxNDMyNWE4OTAxYzJlNzllYTUzMTkiLCJ1c2VybmFtZSI6IjFAMS5jb20iLCJwZXJtaXNzaW9uIjoicncifQ.JAVTMTLiW1exHumjnVQ0Ebkc9xO0JEy5vftlBrHDiyw' "https://cloud.seatable.io/dtable-server/api/v1/dtables/d48c3aaedbc14325a8901c2e79ea5319/notifications/"
+curl -X PUT -d 'seen=true' -H 'Authorization: Token eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE1Nzg3MzczNjMsImR0YWJsZV91dWlkIjoiZDQ4YzNhYWVkYmMxNDMyNWE4OTAxYzJlNzllYTUzMTkiLCJ1c2VybmFtZSI6IjFAMS5jb20iLCJwZXJtaXNzaW9uIjoicncifQ.JAVTMTLiW1exHumjnVQ0Ebkc9xO0JEy5vftlBrHDiyw' "https://cloud.seatable.io/dtable-server/api/v1/dtables/d48c3aae-dbc1-4325-a890-1c2e79ea5319/notifications/"
 
 ```
 
@@ -130,7 +130,7 @@ curl -X PUT -d 'seen=true' -H 'Authorization: Token eyJ0eXAiOiJKV1QiLCJhbGciOiJI
 **Sample Request**
 
 ```
-curl -X PUT -d 'seen=true' -H 'Authorization: Token eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE1Nzg3MzczNjMsImR0YWJsZV91dWlkIjoiZDQ4YzNhYWVkYmMxNDMyNWE4OTAxYzJlNzllYTUzMTkiLCJ1c2VybmFtZSI6IjFAMS5jb20iLCJwZXJtaXNzaW9uIjoicncifQ.JAVTMTLiW1exHumjnVQ0Ebkc9xO0JEy5vftlBrHDiyw' "https://cloud.seatable.io/dtable-server/api/v1/dtables/d48c3aaedbc14325a8901c2e79ea5319/notifications/2/"
+curl -X PUT -d 'seen=true' -H 'Authorization: Token eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE1Nzg3MzczNjMsImR0YWJsZV91dWlkIjoiZDQ4YzNhYWVkYmMxNDMyNWE4OTAxYzJlNzllYTUzMTkiLCJ1c2VybmFtZSI6IjFAMS5jb20iLCJwZXJtaXNzaW9uIjoicncifQ.JAVTMTLiW1exHumjnVQ0Ebkc9xO0JEy5vftlBrHDiyw' "https://cloud.seatable.io/dtable-server/api/v1/dtables/d48c3aae-dbc1-4325-a890-1c2e79ea5319/notifications/2/"
 
 ```
 
@@ -161,7 +161,7 @@ curl -X PUT -d 'seen=true' -H 'Authorization: Token eyJ0eXAiOiJKV1QiLCJhbGciOiJI
 **Sample Request**
 
 ```
-curl -X DELETE -H 'Authorization: Token eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE1Nzg3MzczNjMsImR0YWJsZV91dWlkIjoiZDQ4YzNhYWVkYmMxNDMyNWE4OTAxYzJlNzllYTUzMTkiLCJ1c2VybmFtZSI6IjFAMS5jb20iLCJwZXJtaXNzaW9uIjoicncifQ.JAVTMTLiW1exHumjnVQ0Ebkc9xO0JEy5vftlBrHDiyw' "https://cloud.seatable.io/dtable-server/api/v1/dtables/d48c3aaedbc14325a8901c2e79ea5319/notifications/"
+curl -X DELETE -H 'Authorization: Token eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE1Nzg3MzczNjMsImR0YWJsZV91dWlkIjoiZDQ4YzNhYWVkYmMxNDMyNWE4OTAxYzJlNzllYTUzMTkiLCJ1c2VybmFtZSI6IjFAMS5jb20iLCJwZXJtaXNzaW9uIjoicncifQ.JAVTMTLiW1exHumjnVQ0Ebkc9xO0JEy5vftlBrHDiyw' "https://cloud.seatable.io/dtable-server/api/v1/dtables/d48c3aae-dbc1-4325-a890-1c2e79ea5319/notifications/"
 
 ```
 
