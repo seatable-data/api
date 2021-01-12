@@ -7,7 +7,7 @@ Use this request to export one of the tables in a base to Excel. If there are mu
 
 **URL Structure**
 
-> **\[GET]** api/v2.1/workspace/`<workspace_id>`/dtable/`<name>`/export-excel/
+> **\[GET]** /api/v2.1/workspace/`<workspace_id>`/dtable/`<name>`/export-excel/
 
 
 **Request Authentication**

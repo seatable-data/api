@@ -7,7 +7,7 @@ Bases in SeaTable can by easily exported as *.dtable file and imported in the sa
 
 **URL Structure**
 
-> **\[POST]** api/v2.1/workspace/`<workspace_id>`/import-dtable/
+> **\[POST]** /api/v2.1/workspace/`<workspace_id>`/import-dtable/
 
 
 **Request Authentication**
@@ -116,7 +116,7 @@ When creating a new base, you have the option to import it from a *.csv file.
 
 **URL Structure**
 
-> **\[POST]** api/v2.1/workspace/`<workspace_id>`/import-dtable/
+> **\[POST]** /api/v2.1/workspace/`<workspace_id>`/import-dtable/
 
 
 **Request Authentication**
@@ -222,7 +222,7 @@ A base in SeaTable can be exported as a .dtable file, which is a zip file of the
 
 **URL Structure**
 
-> **\[GET]** api/v2.1/workspace/`<workspace_id>`/dtable/`<name>`/export-dtable/
+> **\[GET]** /api/v2.1/workspace/`<workspace_id>`/dtable/`<name>`/export-dtable/
 
 
 **Request Authentication**
@@ -310,7 +310,7 @@ Sometimes a base is so large, that importing/exporting takes some time. Use the 
 
 **URL Structure**
 
-> **\[GET]** api/v2.1/dtable-io-status/
+> **\[GET]** /api/v2.1/dtable-io-status/
 
 
 **Request Authentication**
@@ -372,7 +372,7 @@ With the automatically generated task ID when exporting a file, use this API req
 
 **URL Structure**
 
-> **\[GET]** api/v2.1/dtable-export-content/
+> **\[GET]** /api/v2.1/dtable-export-content/
 
 
 **Request Authentication**
@@ -416,7 +416,7 @@ With the automatically generated task ID, an ongoing task can be cancelled.
 
 **URL Structure**
 
-> **\[DELETE]** api/v2.1/dtable-io-status/
+> **\[DELETE]** /api/v2.1/dtable-io-status/
 
 
 **Request Authentication**

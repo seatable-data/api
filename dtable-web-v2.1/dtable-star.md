@@ -9,16 +9,13 @@ You can add a star to a base, so as to make it "Favorite". Adding a star to a ba
 
 List all the "favorite" bases which have stars.
 
-
 **URL Structure**
 
 > **\[GET]** /api/v2.1/starred-dtables/
 
-
 **Request Authentication**
 
 > User Authentication (Token)
-
 
 **Sample Request**
 
@@ -26,18 +23,16 @@ List all the "favorite" bases which have stars.
 > curl --request GET \
 > --header 'Authorization: Token 64b9ee55dc4ab902ff36763ef5c604a76d52875e' \
 > 'https://cloud.seatable.io/api/v2.1/starred-dtables/' 
+>
 > ```
-
 
 **Input Parameters**
 
 None.
 
-
 **Return Values**
 
 JSON-object with the list of details of the starred bases.
-
 
 **Sample Response (200)**
 
@@ -74,35 +69,33 @@ The response lists off two starred bases with their details:
 >         }
 >     ]
 > }
+>
 > ```
-If the user doesn't have any starred base, an empty list will be returned without error message.
-
+>
+> If the user doesn't have any starred base, an empty list will be returned without error message.
 
 **Possible Errors**
 
 401 Unauthorized: The auth token is invalid:
->```
->{
+
+> ```
+> {
 >    "detail": "Invalid token"
->}
->```
-
-
+> }
+>
+> ```
 
 ## Add A Star to A Base
 
 Give a star to a base, to make it a "favorite" base.
 
-
 **URL Structure**
 
 > **\[POST]** /api/v2.1/starred-dtables/
 
-
 **Request Authentication**
 
-> User Authentication**
-
+> User Authentication\*\*
 
 **Sample Request**
 
@@ -110,22 +103,19 @@ Give a star to a base, to make it a "favorite" base.
 > curl --request POST \
 > --header 'Authorization: Token 64b9ee55dc4ab902ff36763ef5c604a76d52875e' \
 > 'https://cloud.seatable.io/api/v2.1/starred-dtables/' \
-> --form 'dtable_uuid=00390415b6dc416a8f2a70a3a1356a18'
+> --form 'dtable_uuid=00390415-b6dc-416a-8f2a-70a3a1356a18'
+>
 > ```
-
-
 
 **Input Parameters**
 
 **dtable_uuid** _\[int, required]_
-> The ID of the base.
 
+> The ID of the base.
 
 **Return Values**
 
 JSON-object with the result of the operation.
-
-
 
 **Sample Response (200)**
 
@@ -133,31 +123,38 @@ JSON-object with the result of the operation.
 > {
 >     "success": true
 > }
+>
 > ```
-This request makes sure there's a star on the base. So when you repeat this operation, you'll always get the "success" response.
-
+>
+> This request makes sure there's a star on the base. So when you repeat this operation, you'll always get the "success" response.
 
 **Possible Errors**
 
 401 Unauthorized: The auth token is invalid:
->```
->{
+
+> ```
+> {
 >    "detail": "Invalid token"
->}
->```
+> }
+>
+> ```
 
 403 Forbidden: The user doesn't have access to the requested base:
+
 > ```
 > {
 >     "error_msg": "Permission denied."
 > }
+>
 > ```
 
 404 Not Found: The base was not found with the given ID:
+
 > ```
 > {
 >     "error_msg": "Table not found."
 > }
+>
 > ```
 
 ## Delete Star of A Base
@@ -168,28 +165,24 @@ Remove the star from a favorite base.
 
 > **\[DELETE]** /api/v2.1/starred-dtables/?dtable_uuid=`<dtable_uuid>`
 
-
-
 **Sample Request**
 
 > ```
 > curl --request DELETE \
 > --header 'Authorization: Token 64b9ee55dc4ab902ff36763ef5c604a76d52875e' \
-> 'https://cloud.seatable.io/api/v2.1/starred-dtables/?dtable_uuid=00390415b6dc416a8f2a70a3a1356a18'
+> 'https://cloud.seatable.io/api/v2.1/starred-dtables/?dtable_uuid=00390415-b6dc-416a-8f2a-70a3a1356a18'
+>
 > ```
-
 
 **Input Parameters**
 
 **dtable_uuid** _\[int, required]_
-> The ID of the base.
 
+> The ID of the base.
 
 **Return Values**
 
 JSON-object with the result of the operation.
-
-
 
 **Sample Response (200)**
 
@@ -197,31 +190,38 @@ JSON-object with the result of the operation.
 > {
 >     "success": true
 > }
+>
 > ```
-This request makes sure the base is not a favorite any more. So when you repeat this operation, or do it to a base that's not a favorite, you'll always get the "success" response.
-
-
+>
+> This request makes sure the base is not a favorite any more. So when you repeat this operation, or do it to a base that's not a favorite, you'll always get the "success" response.
 
 **Possible Errors**
 
 401 Unauthorized: The auth token is invalid:
->```
->{
+
+> ```
+> {
 >    "detail": "Invalid token"
->}
->```
+> }
+>
+> ```
 
 403 Forbidden: The user doesn't have access to the requested base:
+
 > ```
 > {
 >     "error_msg": "Permission denied."
 > }
+>
 > ```
 
 404 Not Found: The base was not found with the given ID:
+
 > ```
 > {
 >     "error_msg": "Table not found."
 > }
+>
 > ```
+
 

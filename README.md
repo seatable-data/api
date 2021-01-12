@@ -128,7 +128,7 @@ The two ways will give you the same response as following
 ```
 {    
     "access_token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE1NjkyMjYxNzEsImR0YWJsZV91dWlkIjoiYjFjYWViNjFjZThmNDhiOWFlY2ZkNDZkNDI5OGM2MmQiLCJ1c2VybmFtZSI6IjEyM0BxcS5jb20iLCJwZXJtaXNzaW9uIjoiciIsImFwcF9uYW1lIjoicnR5dSJ9.pUn_HtrNwISji0nOe0_-0b5JyXN0yEIwzhdIaju-8VE",    
-    "dtable_uuid": "b1caeb61ce8f48b9aecfd46d4298c62d",
+    "dtable_uuid": "a57b56d3-1cc5-4ebd-8a6c-a1b28ac3dbdf",
     "dtable_server": 'https://cloud.seatable.io/dtable-server/',
     "dtable_socket: 'https://cloud.seatable.io/',
     ...

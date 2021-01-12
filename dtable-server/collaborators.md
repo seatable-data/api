@@ -7,7 +7,7 @@
 **Sample request**
 
 ```
-curl -X GET https://cloud.seatable.io/dtable-server/api/v1/dtable/ff977dc8f06546729d489defd64cfe8f/related-users/ -H 'authorization: Token eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE1Nzg1NjUzMzUsImR0YWJsZV91dWlkIjoiZmY5NzdkYzhmMDY1NDY3MjlkNDg5ZGVmZDY0Y2ZlOGYiLCJ1c2VybmFtZSI6ImFkbWluQHNlYWZpbGV0ZXN0LmNvbSIsInBlcm1pc3Npb24iOiJydyJ9.7j3nTzViP9LxINGIxf9YR8KyWs633DHRW7SyfXvOF7Y'
+curl -X GET https://cloud.seatable.io/dtable-server/api/v1/dtable/7f7dc9c7-187a-4d9f-b6cf-ff5e5019a6d5/related-users/ -H 'authorization: Token eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE1Nzg1NjUzMzUsImR0YWJsZV91dWlkIjoiZmY5NzdkYzhmMDY1NDY3MjlkNDg5ZGVmZDY0Y2ZlOGYiLCJ1c2VybmFtZSI6ImFkbWluQHNlYWZpbGV0ZXN0LmNvbSIsInBlcm1pc3Npb24iOiJydyJ9.7j3nTzViP9LxINGIxf9YR8KyWs633DHRW7SyfXvOF7Y'
 
 ```
 

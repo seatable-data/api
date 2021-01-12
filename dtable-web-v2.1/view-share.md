@@ -20,7 +20,7 @@ curl -H "Authorization: Token 3f1e23157c3a1fd740e9dc1c5d748929fe319b95" -H 'Acce
 ```
 {
     "access_token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE1OTE2OTE2OTYsImR0YWJsZV91dWlkIjoiMDJhOWUwMDg2MGYyNGIyYjllNjg0OGQ5NDk4NjlhMGMiLCJ1c2VybmFtZSI6IjZmNDY1ODEwODU4MzQwMTJhYmMwYWQyMGE1ZTg1YjhhQGF1dGgubG9jYWwiLCJwZXJtaXNzaW9uIjoicnciLCJ0YWJsZV9pZCI6IjAwMDAiLCJ2aWV3X2lkIjoiMDAwMCJ9.pDi4oHdfKUeImLacMpASvCX7MOXmjKCFkkrQzDt8xZI",
-    "dtable_uuid": "02a9e00860f24b2b9e6848d949869a0c",
+    "dtable_uuid": "a57b56d3-1cc5-4ebd-8a6c-a1b28ac3dbdf",
     "dtable_server": "https://cloud.seatable.io:5000/",
     "dtable_socket": "https://cloud.seatable.io:5000/"
 }
