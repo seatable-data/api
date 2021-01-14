@@ -1,48 +1,92 @@
 # Bases
 
-## Get a base
+## Get A Base's Information
 
-**GET** /dtable-server/api/v1/dtables/:dtable_uuid
+Get the basic information of a base.
 
-**Request parameters**
+**URL Structure**
 
-* dtable_uuid
+> **\[GET]** /dtable-server/api/v1/dtables/`<dtable_uuid>`
 
-**Sample request**
 
-```
-curl -H 'Authorization: Token eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6IjFAMS5jb20iLCJkdGFibGVfdXVpZCI6IjYyMmYxZTZkMzM3NDQ5ZTQ5YjQyOWYyMjUzMDM3YTc2In0.3ytwzZsfZwzifAQtsLzn0AFMnEDSeHxkKlIgD6XKuIs'
- "https://cloud.seatable.io/dtable-server/dtables/7f7dc9c7-187a-4d9f-b6cf-ff5e5019a6d5"
+**Request Authentication**
 
-```
+> Base Access Token
+
+
+
+**Sample Request**
+
+Get the basic information of the base with the following `dtable_uuid` and its `access_token`:
+> ```
+> curl \
+> -H 'Authorization: Token eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6IjFAMS5jb20iLCJkdGFibGVfdXVpZCI6IjYyMmYxZTZkMzM3NDQ5ZTQ5YjQyOWYyMjUzMDM3YTc2In0.3ytwzZsfZwzifAQtsLzn0AFMnEDSeHxkKlIgD6XKuIs' \
+> "https://cloud.seatable.io/dtable-server/dtables/7f7dc9c7-187a-4d9f-b6cf-ff5e5019a6d5"
+> ```
+
+
+**Input Parameters**
+
+**dtable_uuid** _\[string, required]_
+> The ID of the base.
+
+
+**Return Values**
+
+JSON-object with the basic infos of the base.
+
 
 **Sample Response (200)**
 
-```
-"{\"tables\":[{\"_tid\":\"0000\",\"title\":\"Table1\",\"columns\":[{\"key\":\"0000\",\"name\":\"Name\",\"type\":\"\",\"width\":142,\"editable\":true,\"resizable\":true},{\"key\":\"vd8m\",\"name\":\"Media\",\"type\":\"image\",\"editable\":true,\"width\":137,\"resizable\":true,\"draggable\":true,\"data\":null},{\"key\":\"QzuD\",\"name\":\"Label\",\"type\":\"single-select\",\"editable\":true,\"width\":200,\"resizable\":true,\"draggable\":true,\"data\":{\"options\":[{\"name\":\"good\",\"color\":\"#DDFFE6\",\"ID\":\"935357\"}]}}],\"rows\":[{\"_id\":\"0a4852c0-1f14-40f0-9cc7-722892f3f5b9\",\"vd8m\":[],\"QzuD\":\"935357\",\"0000\":\"hello\"}],\"views\":[{\"_vid\":\"0000\",\"type\":\"table\",\"name\":\"默认视图\",\"rows\":[],\"summaries\":{\"0000\":{},\"vd8m\":{},\"QzuD\":{}},\"filters\":[]}],\"Id2Row\":{\"0a4852c0-1f14-40f0-9cc7-722892f3f5b9\":{\"_id\":\"0a4852c0-1f14-40f0-9cc7-722892f3f5b9\",\"vd8m\":[],\"QzuD\":\"935357\",\"0000\":\"hello\"}}}]}"
+> ```
+> {"version":20,"format_version":7,"statistics":[],"links":[],"tables":[{"_id":"0000","name":"Table1","rows":[{"_id":"Qtf7xPmoRaiFyQPO1aNTjA","_participants":[],"_creator":"8cb2a6da6569491ba42905bf1647fd3f@auth.local","_ctime":"2020-11-18T12:42:14.779+00:00","_last_modifier":"8cb2a6da6569491ba42905bf1647fd3f@auth.local","_mtime":"2021-01-14T09:01:57.357+00:00","0000":"Meng","BydO":"2020-08-19"},{"_id":"V_jBEGOXQ3mC3rJkQi-DOQ","_participants":[],"_creator":"8cb2a6da6569491ba42905bf1647fd3f@auth.local","_ctime":"2021-01-14T08:56:05.666+00:00","_last_modifier":"8cb2a6da6569491ba42905bf1647fd3f@auth.local","_mtime":"2021-01-14T08:56:59.458+00:00","0000":"Bao","BydO":"2020-09-18"},{"_id":"HtZb516CTwCZRuBlY8d7Wg","_participants":[],"_creator":"8cb2a6da6569491ba42905bf1647fd3f@auth.local","_ctime":"2021-01-14T08:56:07.135+00:00","_last_modifier":"8cb2a6da6569491ba42905bf1647fd3f@auth.local","_mtime":"2021-01-14T08:57:04.073+00:00","0000":"Daniel","BydO":"2020-10-22"},{"_id":"fS8qtN6FQ1uPOaNAC0Locw","_participants":[],"_creator":"8cb2a6da6569491ba42905bf1647fd3f@auth.local","_ctime":"2021-01-14T08:56:08.259+00:00","_last_modifier":"8cb2a6da6569491ba42905bf1647fd3f@auth.local","_mtime":"2021-01-14T08:57:06.657+00:00","0000":"Jonas","BydO":"2021-01-20"}],"columns":[{"key":"0000","name":"Name","type":"text","width":200,"editable":true,"resizable":true},{"key":"BydO","type":"date","name":"Date","editable":true,"width":200,"resizable":true,"draggable":true,"data":{"format":"YYYY-MM-DD"},"permission_type":"","permitted_users":[]}],"views":[{"_id":"0000","name":"Default
+> View","type":"table","is_locked":false,"rows":[],"formula_rows":{},"summaries":[],"filter_conjunction":"And","filters":[],"sorts":[],"hidden_columns":[],"groupbys":[],"groups":[]}],"id_row_map":{}}]}
+> ```
 
-```
+**Possible Errors**
 
-**Errors**
+403 Forbidden: Probably is the `dtable_uuid` or the `access_token` wrong:
+> ```
+> {
+>     "error_msg": "You don't have permission to get data from the current table."
+> }
+> ```
 
-* Permission Denied.
-* Not Found.
-* Internal Server Error.
+## Get A Base's Metadata
 
-## Get a base's metadata
+Get the metadata of a base.
 
-**GET** /dtable-server/api/v1/dtables/:dtable_uuid/metadata
 
-**Request parameters**
+**URL Structure**
 
-* dtable_uuid
+> **\[GET]** /dtable-server/api/v1/dtables/`<dtable_uuid>`/metadata
 
-**Sample request**
 
-```
-curl -H 'Accept: application/json; charset=utf-8; indent=4' -H 'Authorization: Token eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJkdGFibGVfdXVpZCI6IjVhNDBkZDhlNTliNzQ5ZmY4NGE3M2M5ZmI4YTBjZjYwIiwidXNlcm5hbWUiOiIxQDEuY29tIiwicGVybWlzc2lvbiI6InJ3In0.nbv_87zKSSw8A3dSTV5HVKcIbcNqmrlN-QtjihR_EUA' "https://cloud.seatable.io/dtable-server/api/v1/dtables/7f7dc9c7-187a-4d9f-b6cf-ff5e5019a6d5/metadata/"
+**Request Authentication**
 
-```
+> Base Access Token
+
+
+**Sample Request**
+
+> ```
+> curl \
+> -H 'Accept: application/json; charset=utf-8; indent=4' \
+> -H 'Authorization: Token eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJkdGFibGVfdXVpZCI6IjVhNDBkZDhlNTliNzQ5ZmY4NGE3M2M5ZmI4YTBjZjYwIiwidXNlcm5hbWUiOiIxQDEuY29tIiwicGVybWlzc2lvbiI6InJ3In0.nbv_87zKSSw8A3dSTV5HVKcIbcNqmrlN-QtjihR_EUA' \
+> "https://cloud.seatable.io/dtable-server/api/v1/dtables/7f7dc9c7-187a-4d9f-b6cf-ff5e5019a6d5/metadata/"
+> ```
+
+**Input Parameters**
+
+**dtable_uuid** _\[string, required]_
+> The ID of the base.
+
+
+
+**Return Values**
+
+JSON-object with the metadata of the base.
+
 
 **Sample Response (200)**
 
@@ -52,8 +96,7 @@ curl -H 'Accept: application/json; charset=utf-8; indent=4' -H 'Authorization: T
         "tables": [
             {
                 "_id": "0000",
-                "name": "Good",
-                "is_header_locked": false,
+                "name": "Table1",
                 "columns": [
                     {
                         "key": "0000",
@@ -64,157 +107,196 @@ curl -H 'Accept: application/json; charset=utf-8; indent=4' -H 'Authorization: T
                         "resizable": true
                     },
                     {
-                        "key": "5sec",
-                        "type": "long-text",
-                        "name": "Introduce",
+                        "key": "BydO",
+                        "type": "date",
+                        "name": "Date",
                         "editable": true,
                         "width": 200,
                         "resizable": true,
                         "draggable": true,
-                        "data": null
-                    }
-                ],
-                "views": [
-                    {
-                        "_id": "0000",
-                        "type": "table",
-                        "name": "Default",
-                        "is_locked": true,
-                        "rows": [],
-                        "summaries": {
-                            "0000": {}
+                        "data": {
+                            "format": "YYYY-MM-DD"
                         },
-                        "sorts": [],
-                        "filters": []
-                    }
-                ]
-            },
-            {
-                "_id": "4AeY",
-                "name": "Nice",
-                "is_header_locked": true,
-                "columns": [
-                    {
-                        "key": "0000",
-                        "name": "Name",
-                        "type": "text",
-                        "width": 200,
-                        "editable": true,
-                        "resizable": true
+                        "permission_type": "",
+                        "permitted_users": []
                     }
                 ],
                 "views": [
                     {
                         "_id": "0000",
+                        "name": "Default View",
                         "type": "table",
-                        "name": "boy",
                         "is_locked": false,
                         "rows": [],
-                        "summaries": {
-                            "0000": {}
-                        },
+                        "formula_rows": {},
+                        "summaries": [],
                         "filter_conjunction": "And",
-                        "filters": [
-                            {
-                                "column_key": "Fbgg",
-                                "filter_predicate": "is",
-                                "filter_term": "950539",
-                                "filter_term_modifier": ""
-                            }
-                        ],
-                        "sorts": []
-                    },
-                    {
-                        "_id": "J9VE",
-                        "summaries": {
-                            "0000": {},
-                            "EIFc": {
-                                "sum": 18
-                            }
-                        },
-                        "is_locked": false,
-                        "filters": [
-                            {
-                                "column_key": "Fbgg",
-                                "filter_predicate": "is",
-                                "filter_term": "968434",
-                                "filter_term_modifier": ""
-                            }
-                        ],
+                        "filters": [],
                         "sorts": [],
-                        "rows": [],
-                        "name": "girl",
-                        "type": "table",
-                        "filter_conjunction": "And"
+                        "hidden_columns": [],
+                        "groupbys": [],
+                        "groups": []
                     }
                 ]
             }
         ]
     }
 }
-
 ```
 
-**Errors**
+**Possible Errors**
 
-* Permission Denied.
-* Not Found.
-* Internal Server Error.
+403 Forbidden: Probably is the `dtable_uuid` or the `access_token` wrong:
+> ```
+> {
+>     "error_msg": "You don't have permission to get data from the current table."
+> }
+> ```
 
-## Import a table by uploading a csv file
+## Create A Table by Uploading A CSV File
 
-**POST** /dtable-server/api/v1/:dtable_uuid/import-csv/
+Inside a base, create a new table by uploading and importing a .csv file.
 
-**Request parameters**
 
-* csv_file: the file to upload, required
-* table_name: new table name required
-* lang: the language, required
+**URL Structure**
 
-**Request Sample**
+> **\[POST]** /dtable-server/api/v1/`<dtable_uuid>`/import-csv/
 
-```
-curl -X POST 'https://cloud.seatable.io/dtable-server/api/v1/7f7dc9c7-187a-4d9f-b6cf-ff5e5019a6d5/import-csv/' -H 'authorization: Token eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE1ODM4MzA4MTUsImR0YWJsZV91dWlkIjoiYTU3YjU2ZDMxY2M1NGViZDhhNmNhMWIyOGFjM2RiZGYiLCJ1c2VybmFtZSI6Inhpb25nY2hhby5jaGVuZ0BzZWFmaWxlLmNvbSIsInBlcm1pc3Npb24iOiJydyJ9.hY_dMfsfWa2iO9U0MxPhdQA_v6E7LB55uVAKKAn7kX8' -H 'content-type: multipart/form-data; boundary=----WebKitFormBoundary7MA4YWxkTrZu0gW' -H 'enctype: multipart/form-data' -F csv_file=@yt_2018-03-01-2.csv -F table_name=yt-2 -F lang=zh-cn
 
-```
+**Request Authentication**
 
-**Response Sample**
+> Base Access Token
 
-```
-{
-    "success": true
-}
 
-```
 
-**Errors**
+**Sample Request**
 
-* Not Found.
-* Permission Denied.
-* Internal Server Error.
+> ```
+> curl -X POST \
+> -H 'Authorization: Token eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE1ODM4MzA4MTUsImR0YWJsZV91dWlkIjoiYTU3YjU2ZDMxY2M1NGViZDhhNmNhMWIyOGFjM2RiZGYiLCJ1c2VybmFtZSI6Inhpb25nY2hhby5jaGVuZ0BzZWFmaWxlLmNvbSIsInBlcm1pc3Npb24iOiJydyJ9.hY_dMfsfWa2iO9U0MxPhdQA_v6E7LB55uVAKKAn7kX8' \
+> 'https://cloud.seatable.io/dtable-server/api/v1/7f7dc9c7-187a-4d9f-b6cf-ff5e5019a6d5/import-csv/' \
+> -H 'content-type: multipart/form-data' \
+> -H 'enctype: multipart/form-data' \
+> -F csv_file=@yt_2018-03-01-2.csv \
+> -F table_name=Table2 
+> ```
 
-## Append a table by uploading a csv file
 
-**POST** /dtable-server/api/v1/dtables/:dtable_uuid/append-csv/﻿
+**Input Parameters**
 
-* dtable_uuid
-* table_name
-* csv_file
+**dtable_uuid** _\[string, required]_
+> The ID of the base.
 
-**Sample request**
+**csv_file** _\[file, required]_
+> The .csv file to be uploaded/imported.
 
-```
-curl -X POST -d "table_name=Table1" -F "csv_file=@/tmp/test.csv" -H 'Authorization: Token eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6IjFAMS5jb20iLCJkdGFibGVfdXVpZCI6IjYyMmYxZTZkMzM3NDQ5ZTQ5YjQyOWYyMjUzMDM3YTc2In0.3ytwzZsfZwzifAQtsLzn0AFMnEDSeHxkKlIgD6XKuIs' -H "Content-type: application/json" https://cloud.seatable.io/dtable-server/api/v1/dtables/7f7dc9c7-187a-4d9f-b6cf-ff5e5019a6d5/append-csv/
+**table_name** _\[string, required]_
+> The name of the new table.
 
-```
+**lang** _\[string, optional]_
+> The language of the imported .csv file, e.g. "zh-cn" for Chinese or "de-de" for German.
+
+
+
+**Sample Response**
+
+> ```
+> {
+>     "success": true
+> }
+> ```
+
+**Possible Errors**
+
+400 Bad Request: Table name was missing:
+> ```
+> {
+>     "error_msg": "table_name is invalid."
+> }
+> ```
+
+400 Bad Request: Forgot to include the file in the request:
+> ```
+> {
+>     "error_msg": "File is empty."
+> }
+> ```
+
+403 Forbidden: With the access token, you don't have permission to change this base:
+> ```
+> {
+>     "error_msg": "You don't have permission to import table"
+> }
+> ```
+
+## Upload A CSV File to Append Rows in A Table
+
+In an existing table, you can upload a .csv file with the same headers to append its content below the existing rows. A .csv file with different headers cannot be appended to an existing table.
+
+
+**URL Structure**
+
+> **\[POST]** /dtable-server/api/v1/dtables/`<dtable_uuid>`/append-csv/
+
+
+**Request Authentication**
+
+> Base Access Token
+
+
+**Sample Request**
+
+> ```
+> curl -X POST \
+> -H 'Authorization: Token eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6IjFAMS5jb20iLCJkdGFibGVfdXVpZCI6IjYyMmYxZTZkMzM3NDQ5ZTQ5YjQyOWYyMjUzMDM3YTc2In0.3ytwzZsfZwzifAQtsLzn0AFMnEDSeHxkKlIgD6XKuIs' \
+> -H "Content-type: application/json" \
+> https://cloud.seatable.io/dtable-server/api/v1/dtables/7f7dc9c7-187a-4d9f-b6cf-ff5e5019a6d5/append-csv/ \
+> -d "table_name=Table2" \
+> -F "csv_file=@/tmp/test.csv" 
+> ```
+
+
+**Input Parameters**
+
+**dtable_uuid** _\[string, required]_
+> The ID of the base.
+
+**csv_file** _\[file, required]_
+> The .csv file to be appended.
+
+**table_name** _\[string, required]_
+> The name of the existing table.
+
+
+**Return Values**
+
+JSON-object with the number of rows appended.
+
+
 
 **Sample Response (200)**
 
-```
-{    
-    "success": true
-}
+> ```
+> {
+>     "inserted_row_count": 5
+> }
+> ```
 
-```
+
+**Possible Errors**
+
+400 Bad Request: The format or header of the .csv file is incorrect:
+> ```
+> {
+>     "error_msg": "File error"
+> }
+> ```
+
+403 Forbidden: The access was not granted to change this base:
+> ```
+> {
+>     "error_msg": "You don't have permission to get data from the current table."
+> }
+> ```
 
 
