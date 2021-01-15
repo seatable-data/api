@@ -85,6 +85,50 @@ curl -X POST -d '{
 * **404**: Not Found
 * **500**: Internal Server Error
 
+## Batch add notifications
+
+**POST** /api/v1/dtables/:dtable_uuid/notifications-batch/
+
+**Request Parameters**
+
+* **user_messages**, an array of objects like {to_user:xxx, msg_type:xxx, detail:{xx}}
+
+**Sample Request**
+
+```
+curl -X POST -d '{
+	"user_messages":[
+		{
+			"to_user": "1@1.com",
+	        "msg_type": "row_comment",
+	        "detail": {"author": "2@2.com", "row_id": "NqXZP3YyTyCBOlPf5RNvWQ", "comment": "world"}
+		},
+		{
+			"to_user": "2@2.com",
+	        "msg_type": "row_comment",
+	        "detail": {"author": "2@2.com", "row_id": "NqXZP3YyTyCBOlPf5RNvWQ", "comment": "world"}
+		}
+	]
+}' -H 'Content-type: application/json' -H 'Authorization: Token eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE1Nzg3MzczNjMsImR0YWJsZV91dWlkIjoiZDQ4YzNhYWVkYmMxNDMyNWE4OTAxYzJlNzllYTUzMTkiLCJ1c2VybmFtZSI6IjFAMS5jb20iLCJwZXJtaXNzaW9uIjoicncifQ.JAVTMTLiW1exHumjnVQ0Ebkc9xO0JEy5vftlBrHDiyw' "https://cloud.seatable.io/dtable-server/api/v1/dtables/d48c3aaedbc14325a8901c2e79ea5319/notifications-batch/"
+
+```
+
+**Sample Response**
+
+```
+{
+    "message_send_count": 2
+}
+
+```
+
+**Errors**
+
+* **400**: Bad Request
+* **403**: Permission Denied
+* **404**: Not Found
+* **500**: Internal Server Error
+
 ## Mark all notifications
 
 **PUT** /api/v1/dtables/:dtable_uuid/notifications/

@@ -4,16 +4,13 @@
 
 An org-admin (organization administrator) can use this API call to list all the bases in their own organization.
 
-
 **URL Structure**
 
 > **\[GET]** /api/v2.1/org/`<org_id>`/admin/dtables/
 
-
 **Request Authentication**
 
 > Org-admin Authentication (Token)
-
 
 **Sample Request**
 
@@ -23,27 +20,26 @@ List two bases in the organization with `org_id` of 23:
 > curl --request GET \
 > --header 'Authorization: Token 95ca2c5f0bf469742f21023b191520f5a5c63eb6' \
 > 'https://cloud.seatable.io/api/v2.1/org/23/admin/dtables/?page=1&per_page=2' 
+>
 > ```
-
 
 **Input Parameters**
 
 **org_id** _\[int, required]_
+
 > The organization ID for the request.
 
 **page** _\[int, optional, 1 by default]_ 
+
 > Page number of the returned base list.
 
 **per_page** _\[int, optional, 25 by default]_
+
 > Number of bases displayed on each page.
-
-
 
 **Return Values**
 
 JSON-object with the list of bases with their detailed infos.
-
-
 
 **Sample Response (200)**
 
@@ -85,40 +81,40 @@ Two bases are listed in the response to the sample request. The returned `"count
 >     ],
 >     "count": 8
 > }
+>
 > ```
 
 **Possible Errors**
 
 401 Unauthorized: The auth token is invalid:
->```
->{
+
+> ```
+> {
 >    "detail": "Invalid token"
->}
->```
+> }
+>
+> ```
 
 403 Forbidden: The user doesn't have org-admin permission:
->```
->{
->    "detail": "You do not have permission to perform this action."
->}
->```
 
+> ```
+> {
+>    "detail": "You do not have permission to perform this action."
+> }
+>
+> ```
 
 ## Delete A Base
 
 Delete a base from the organization and move it into the trash bin.
 
-
 **URL Structure**
 
 > **\[DELETE]** /api/v2.1/org/`<org_id>`/admin/dtables/`<dtable_id>`/
 
-
 **Request Authentication**
 
 > Org-admin Authentication (Token)
-
-
 
 **Sample Request**
 
@@ -128,23 +124,22 @@ Delete the base with `dtable_id` 277 from the organization with `org_id` 23:
 > curl --request DELETE \
 > --header 'Authorization: Token 95ca2c5f0bf469742f21023b191520f5a5c63eb6' \
 > 'https://cloud.seatable.io/api/v2.1/org/23/admin/dtables/277/' 
+>
 > ```
 
 **Input Parameters**
 
 **org_id** _\[int, required]_
+
 > ID of the organization from which the base is to be deleted.
 
 **dtable_id** _\[int, required]_
+
 > ID of the base to be deleted. 
-
-
 
 **Return Values**
 
 JSON-object with the result of the operation.
-
-
 
 **Sample Response (200)**
 
@@ -154,47 +149,49 @@ The returned result indicates the base has been deleted.
 > {
 >     "success": true
 > }
+>
 > ```
 
 **Possible Errors**
 
 401 Unauthorized: The auth token is invalid:
->```
->{
+
+> ```
+> {
 >    "detail": "Invalid token"
->}
->```
+> }
+>
+> ```
 
 403 Forbidden: The user doesn't have org-admin permission:
->```
->{
+
+> ```
+> {
 >    "detail": "You do not have permission to perform this action."
->}
->```
+> }
+>
+> ```
 
 404 Not Found: The given base was not found in the organization, or already deleted:
+
 > ```
 > {
 >     "error_msg": "table not found."
 > }
+>
 > ```
 
 ## List Trash Bases
 
 List all the trashed bases in the organization.
 
-
 **URL Structure**
 
 > **\[GET]** /api/v2.1/org/`<org_id>`/admin/trash-dtables/
 
-
-
 **Request Authentication**
 
 > Org-admin Authentication (Token)
-
-
 
 **Sample Request**
 
@@ -204,23 +201,22 @@ List one trashed base in the organization with `org_id` 23:
 > curl --request GET \
 > --header 'Authorization: Token 95ca2c5f0bf469742f21023b191520f5a5c63eb6' \
 > 'https://cloud.seatable.io/api/v2.1/org/23/admin/trash-dtables/?page=1&per_page=1' 
+>
 > ```
 
 **Input Parameters**
 
 **page** _\[int, optional, 1 by default]_ 
+
 > Page number of the returned trash base list.
 
 **per_page** _\[int, optional, 25 by default]_
+
 > Number of trashed bases displayed on each page.
-
-
 
 **Return Values**
 
 JSON-object with trashed base list and the base details.
-
-
 
 **Sample Response (200)**
 
@@ -248,40 +244,40 @@ The returned list shows one trashed base with its detailed information, and the 
 >     ],
 >     "count": 26
 > }
+>
 > ```
 
 **Possible Errors**
 
 401 Unauthorized: The auth token is invalid:
->```
->{
+
+> ```
+> {
 >    "detail": "Invalid token"
->}
->```
+> }
+>
+> ```
 
 403 Forbidden: The user doesn't have org-admin permission for the given organization:
+
 > ```
 > {
 >     "detail": "You do not have permission to perform this action."
 > }
+>
 > ```
-
-
 
 ## Restore a Base
 
 Restore a base from the trash bin.
 
-
 **URL Structure**
 
 > **\[PUT]** /api/v2.1/org/`<org_id>`/admin/trash-dtables/`<dtable_id>`/
 
-
 **Request Authentication**
 
 > Org-admin Authentication (Token)
-
 
 **Sample Request**
 
@@ -291,24 +287,22 @@ Restore the base with `dtable_id` of 277 from the trash bin in the organization 
 > curl --request PUT \
 > --header 'Authorization: Token 95ca2c5f0bf469742f21023b191520f5a5c63eb6' \
 > 'https://cloud.seatable.io/api/v2.1/org/23/admin/trash-dtables/277/' 
+>
 > ```
-
 
 **Input Parameters**
 
 **org_id** _\[int, required]_
+
 > ID of the organization in which the base is to be restored.
 
 **dtable_id** _\[int, required]_
-> ID of the base to be restored.
 
+> ID of the base to be restored.
 
 **Return Values**
 
 JSON-object with the result of the operation.
-
-
-
 
 **Sample Response (200)**
 
@@ -318,29 +312,124 @@ The response indicates the restoring was successful:
 > {
 >     "success": true
 > }
+>
 > ```
 
 **Possible Errors**
 
 401 Unauthorized: The auth token is invalid:
->```
->{
+
+> ```
+> {
 >    "detail": "Invalid token"
->}
->```
+> }
+>
+> ```
 
 403 Forbidden: The user doesn't have org-admin permission for the given organization:
+
 > ```
 > {
 >     "detail": "You do not have permission to perform this action."
 > }
+>
 > ```
 
 404 Not Found: the base was not found in the trash bin:
+
 > ```
 > {
 >     "error_msg": "Table not found."
 > }
+>
+> ```
+
+## Add Base exporting task
+
+**URL Structure**
+
+> **\[GET]** /api/v2.1/org/`<org_id>`/admin/dtables/`<dtable_uuid>`/export-dtable/
+
+**Request Authentication**
+
+> Org-admin Authentication (Token)
+
+**Sample Request**
+
+Export the base with `dtable_uuid` of `97590f70-f5fe-4594-91fc-1382c04eafad` from the trash bin in the organization with `org_id` 2:
+
+> ```
+> curl --request GET \
+> --header 'Authorization: Token 95ca2c5f0bf469742f21023b191520f5a5c63eb6' \
+> 'https://cloud.seatable.io/api/v2.1/org/2/admin/dtables/97590f70-f5fe-4594-91fc-1382c04eafad/export-dtable/' 
+>
+> ```
+
+**Input Parameters**
+
+**org_id** _\[int, required]_
+
+> ID of the organization in which the base is to be restored.
+
+**dtable_uuid** _\[uuid, required]_
+
+> UUID of the base to export.
+
+**Return Values**
+
+JSON-object with the result of the operation.
+
+**Sample Response (200)**
+
+The response indicates the restoring was successful:
+
+> ```
+> {
+>     "task_id": "1609827982613",
+>     "table": {
+>         "id": 87,
+>         "workspace_id": 63,
+>         "uuid": "97590f70-f5fe-4594-91fc-1382c04eafad",
+>         "name": "测试126",
+>         "creator": "冉继伟",
+>         "modifier": "冉继伟",
+>         "created_at": "2020-12-28T02:56:11+00:00",
+>         "updated_at": "2020-12-28T02:56:11+00:00",
+>         "color": null,
+>         "text_color": null,
+>         "icon": null
+>     }
+> }
+>
+> ```
+
+**Possible Errors**
+
+401 Unauthorized: The auth token is invalid:
+
+> ```
+> {
+>    "detail": "Invalid token"
+> }
+>
+> ```
+
+403 Forbidden: The user doesn't have org-admin permission for the given organization:
+
+> ```
+> {
+>     "detail": "You do not have permission to perform this action."
+> }
+>
+> ```
+
+404 Not Found: the base was not found in the trash bin:
+
+> ```
+> {
+>     "error_msg": "Table not found."
+> }
+>
 > ```
 
 

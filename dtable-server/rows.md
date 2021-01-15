@@ -531,4 +531,47 @@ curl -H 'Authorization: Token eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE1N
 
 ```
 
+## Get row by row id in a table
+
+**GET** /api/v1/dtables/:dtable_uuid/rows/:row_id/
+
+* dtable_uuid
+* row_id
+* table_id, required
+* convert, whether convert column ID to column name, default is true
+
+**Sample request**
+
+```
+curl -H 'Authorization: Token eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6IjFAMS5jb20iLCJkdGFibGVfdXVpZCI6IjYyMmYxZTZkMzM3NDQ5ZTQ5YjQyOWYyMjUzMDM3YTc2In0.3ytwzZsfZwzifAQtsLzn0AFMnEDSeHxkKlIgD6XKuIs' https://cloud.seatable.io/dtable-server/api/v1/dtables/7f7dc9c7187a4d9fb6cfff5e5019a6d5/rows/J5jgoxDJTE2zUmAQISpk3g/?table_id=9GlO
+
+```
+
+**Sample response**
+
+```
+{
+    "_id": "J5jgoxDJTE2zUmAQISpk3g",
+    "_mtime": "2020-12-08T04:00:17.330+00:00",
+    "Name": "3322",
+    "Modifier": "0f3b01785de84940a47665ac72fa57ce@auth.local"
+}
+
+```
+
+if convert=false
+
+```
+{
+    "_id": "J5jgoxDJTE2zUmAQISpk3g",
+    "_participants": [],
+    "_creator": "foo@foo.com",
+    "_ctime": "2020-12-02T04:02:43.582+00:00",
+    "_last_modifier": "0f3b01785de84940a47665ac72fa57ce@auth.local",
+    "_mtime": "2020-12-08T03:47:48.218+00:00",
+    "0000": "32"
+}
+
+```
+
 
