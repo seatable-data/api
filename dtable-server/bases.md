@@ -39,7 +39,7 @@ JSON-object with the basic infos of the base.
 **Sample Response (200)**
 
 > ```
-> {"version":20,"format_version":7,"statistics":[],"links":[],"tables":[{"_id":"0000","name":"Table1","rows":[{"_id":"Qtf7xPmoRaiFyQPO1aNTjA","_participants":[],"_creator":"8cb2a6da6569491ba42905bf1647fd3f@auth.local","_ctime":"2020-11-18T12:42:14.779+00:00","_last_modifier":"8cb2a6da6569491ba42905bf1647fd3f@auth.local","_mtime":"2021-01-14T09:01:57.357+00:00","0000":"Meng","BydO":"2020-08-19"},{"_id":"V_jBEGOXQ3mC3rJkQi-DOQ","_participants":[],"_creator":"8cb2a6da6569491ba42905bf1647fd3f@auth.local","_ctime":"2021-01-14T08:56:05.666+00:00","_last_modifier":"8cb2a6da6569491ba42905bf1647fd3f@auth.local","_mtime":"2021-01-14T08:56:59.458+00:00","0000":"Bao","BydO":"2020-09-18"},{"_id":"HtZb516CTwCZRuBlY8d7Wg","_participants":[],"_creator":"8cb2a6da6569491ba42905bf1647fd3f@auth.local","_ctime":"2021-01-14T08:56:07.135+00:00","_last_modifier":"8cb2a6da6569491ba42905bf1647fd3f@auth.local","_mtime":"2021-01-14T08:57:04.073+00:00","0000":"Daniel","BydO":"2020-10-22"},{"_id":"fS8qtN6FQ1uPOaNAC0Locw","_participants":[],"_creator":"8cb2a6da6569491ba42905bf1647fd3f@auth.local","_ctime":"2021-01-14T08:56:08.259+00:00","_last_modifier":"8cb2a6da6569491ba42905bf1647fd3f@auth.local","_mtime":"2021-01-14T08:57:06.657+00:00","0000":"Jonas","BydO":"2021-01-20"}],"columns":[{"key":"0000","name":"Name","type":"text","width":200,"editable":true,"resizable":true},{"key":"BydO","type":"date","name":"Date","editable":true,"width":200,"resizable":true,"draggable":true,"data":{"format":"YYYY-MM-DD"},"permission_type":"","permitted_users":[]}],"views":[{"_id":"0000","name":"Default
+> {"version":20,"format_version":7,"statistics":[],"links":[],"tables":[{"_id":"0000","name":"Table1","rows":[{"_id":"Qtf7xPmoRaiFyQPO1aNTjA","_participants":[],"_creator":"8ch7ft46r69491ba42905bf1647fd3f@auth.local","_ctime":"2020-11-18T12:42:14.779+00:00","_last_modifier":"8ch7ft46r69491ba42905bf1647fd3f@auth.local","_mtime":"2021-01-14T09:01:57.357+00:00","0000":"Meng","BydO":"2020-08-19"},{"_id":"V_jBEGOXQ3mC3rJkQi-DOQ","_participants":[],"_creator":"8ch7ft46r69491ba42905bf1647fd3f@auth.local","_ctime":"2021-01-14T08:56:05.666+00:00","_last_modifier":"8ch7ft46r69491ba42905bf1647fd3f@auth.local","_mtime":"2021-01-14T08:56:59.458+00:00","0000":"Bao","BydO":"2020-09-18"},{"_id":"HtZb516CTwCZRuBlY8d7Wg","_participants":[],"_creator":"8ch7ft46r69491ba42905bf1647fd3f@auth.local","_ctime":"2021-01-14T08:56:07.135+00:00","_last_modifier":"8ch7ft46r69491ba42905bf1647fd3f@auth.local","_mtime":"2021-01-14T08:57:04.073+00:00","0000":"Daniel","BydO":"2020-10-22"},{"_id":"fS8qtN6FQ1uPOaNAC0Locw","_participants":[],"_creator":"8ch7ft46r69491ba42905bf1647fd3f@auth.local","_ctime":"2021-01-14T08:56:08.259+00:00","_last_modifier":"8ch7ft46r69491ba42905bf1647fd3f@auth.local","_mtime":"2021-01-14T08:57:06.657+00:00","0000":"Jonas","BydO":"2021-01-20"}],"columns":[{"key":"0000","name":"Name","type":"text","width":200,"editable":true,"resizable":true},{"key":"BydO","type":"date","name":"Date","editable":true,"width":200,"resizable":true,"draggable":true,"data":{"format":"YYYY-MM-DD"},"permission_type":"","permitted_users":[]}],"views":[{"_id":"0000","name":"Default
 > View","type":"table","is_locked":false,"rows":[],"formula_rows":{},"summaries":[],"filter_conjunction":"And","filters":[],"sorts":[],"hidden_columns":[],"groupbys":[],"groups":[]}],"id_row_map":{}}]}
 > ```
 
@@ -90,59 +90,59 @@ JSON-object with the metadata of the base.
 
 **Sample Response (200)**
 
-```
-{
-    "metadata": {
-        "tables": [
-            {
-                "_id": "0000",
-                "name": "Table1",
-                "columns": [
-                    {
-                        "key": "0000",
-                        "name": "Name",
-                        "type": "text",
-                        "width": 200,
-                        "editable": true,
-                        "resizable": true
-                    },
-                    {
-                        "key": "BydO",
-                        "type": "date",
-                        "name": "Date",
-                        "editable": true,
-                        "width": 200,
-                        "resizable": true,
-                        "draggable": true,
-                        "data": {
-                            "format": "YYYY-MM-DD"
-                        },
-                        "permission_type": "",
-                        "permitted_users": []
-                    }
-                ],
-                "views": [
-                    {
-                        "_id": "0000",
-                        "name": "Default View",
-                        "type": "table",
-                        "is_locked": false,
-                        "rows": [],
-                        "formula_rows": {},
-                        "summaries": [],
-                        "filter_conjunction": "And",
-                        "filters": [],
-                        "sorts": [],
-                        "hidden_columns": [],
-                        "groupbys": [],
-                        "groups": []
-                    }
-                ]
-            }
-        ]
-    }
-}
-```
+> ```
+> {
+>     "metadata": {
+>         "tables": [
+>             {
+>                 "_id": "0000",
+>                 "name": "Table1",
+>                 "columns": [
+>                     {
+>                         "key": "0000",
+>                         "name": "Name",
+>                         "type": "text",
+>                         "width": 200,
+>                         "editable": true,
+>                         "resizable": true
+>                     },
+>                     {
+>                         "key": "BydO",
+>                         "type": "date",
+>                         "name": "Date",
+>                         "editable": true,
+>                         "width": 200,
+>                         "resizable": true,
+>                         "draggable": true,
+>                         "data": {
+>                             "format": "YYYY-MM-DD"
+>                         },
+>                         "permission_type": "",
+>                         "permitted_users": []
+>                     }
+>                 ],
+>                 "views": [
+>                     {
+>                         "_id": "0000",
+>                         "name": "Default View",
+>                         "type": "table",
+>                         "is_locked": false,
+>                         "rows": [],
+>                         "formula_rows": {},
+>                         "summaries": [],
+>                         "filter_conjunction": "And",
+>                         "filters": [],
+>                         "sorts": [],
+>                         "hidden_columns": [],
+>                         "groupbys": [],
+>                         "groups": []
+>                     }
+>                 ]
+>             }
+>         ]
+>     }
+> }
+> ```
 
 **Possible Errors**
 
