@@ -144,7 +144,7 @@ If a `row_id` is wrong or doesn't exist, SeaTable considers this row as not exis
 
 **Possible Errors**
 
-403 Permission Denied: Probably is the `dtable_uuid` or the `access_token` wrong:
+403 Forbidden: Probably is the `dtable_uuid` or the `access_token` wrong:
 > ```
 > {
 >     "error_msg": "You don't have permission to get activities."
