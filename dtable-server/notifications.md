@@ -281,107 +281,219 @@ JSON-object with the count of message sent.
 > }
 > ```
 
-**Errors**
+**Possible Errors**
 
 * **400**: Bad Request
-* **403**: Permission Denied
+* **403**: Forbidden
 * **404**: Not Found
 * **500**: Internal Server Error
 
-## Mark all notifications
 
-**PUT** /api/v1/dtables/:dtable_uuid/notifications/
 
-**Request Parameters**
 
-* **dtable_uuid**
-* **seen**: true or false, otherwise invalid
+## Mark A Notification Read/Unread
+
+Use this request to mark a specific notification as read or unread.
+
+
+**URL Structure**
+
+> **\[PUT]** /api/v1/dtables/`<dtable_uuid>`/notifications/`<notification_id>`/
+
+
+**Request Authentication**
+
+> Base Access Token
+
+
+
 
 **Sample Request**
 
-```
-curl -X PUT -d 'seen=true' -H 'Authorization: Token eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE1Nzg3MzczNjMsImR0YWJsZV91dWlkIjoiZDQ4YzNhYWVkYmMxNDMyNWE4OTAxYzJlNzllYTUzMTkiLCJ1c2VybmFtZSI6IjFAMS5jb20iLCJwZXJtaXNzaW9uIjoicncifQ.JAVTMTLiW1exHumjnVQ0Ebkc9xO0JEy5vftlBrHDiyw' "https://cloud.seatable.io/dtable-server/api/v1/dtables/d48c3aae-dbc1-4325-a890-1c2e79ea5319/notifications/"
+> ```
+> curl -X PUT \
+> -H 'Authorization: Token eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE1Nzg3MzczNjMsImR0YWJsZV91dWlkIjoiZDQ4YzNhYWVkYmMxNDMyNWE4OTAxYzJlNzllYTUzMTkiLCJ1c2VybmFtZSI6IjFAMS5jb20iLCJwZXJtaXNzaW9uIjoicncifQ.JAVTMTLiW1exHumjnVQ0Ebkc9xO0JEy5vftlBrHDiyw' \
+> 'https://cloud.seatable.io/dtable-server/api/v1/dtables/d48c3aae-dbc1-4325-a890-1c2e79ea5319/notifications/2/' \
+> -d 'seen=true' 
+> ```
 
-```
+
+
+**Input Parameters**
+
+**dtable_uuid** _\[string, required]_
+> The ID of the base.
+
+**notification_id** _\[int, required]_
+> The ID of the notification. This can be retrived from the call **List All Notifications**.
+
+**seen** _\[enum(`true`, `false`), required]_
+> Use `true` to mark the notification as read or `false` as unread. All other values are invalid.
+
+
+**Return Values**
+
+JSON-object with the result of the operation.
+
+
 
 **Sample Response (200)**
 
-```
-{
-    "success": true
-}
+> ```
+> {
+>     "success": true
+> }
+> ```
+If a notification is already read/unread and the status wasn't changed, the above response is also returned without error message.
 
-```
 
-**Errors**
+**Possible Errors**
 
-* **400**: Bad Request
-* **403**: Permission Denied
-* **404**: Not Found
-* **500**: Internal Server Error
+400 Bad Request: The parameter `seen` was not correct (`true` or `false`):
+> ```
+> {
+>     "error_msg": "seen invalid."
+> }
+> ```
 
-## Mark a notification
+403 Forbidden: Probably is the `dtable_uuid` or the `access_token` wrong:
+> ```
+> {
+>     "error_msg": "You don't have permission to access the table's notifications."
+> }
+> ```
 
-**PUT** /api/v1/dtables/:dtable_uuid/notifications/:notification_id/
+404 Not Found: Probably the notification's ID is not correct:
+> ```
+> {
+>     "error_msg": "notification 68 not found."
+> }
+> ```
 
-**Request Parameters**
 
-* **dtable_uuid**
-* **notification_id**
-* **seen**: true or false, otherwise invalid
+## Mark All Notifications Read/Unread
+
+Use this request to mark all notifications read or unread.
+
+
+**URL Structure**
+
+> **\[PUT]** /api/v1/dtables/`<dtable_uuid>/notifications/
+
+
+
+**Request Authentication**
+
+> Base Access Token
+
+
+
 
 **Sample Request**
 
-```
-curl -X PUT -d 'seen=true' -H 'Authorization: Token eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE1Nzg3MzczNjMsImR0YWJsZV91dWlkIjoiZDQ4YzNhYWVkYmMxNDMyNWE4OTAxYzJlNzllYTUzMTkiLCJ1c2VybmFtZSI6IjFAMS5jb20iLCJwZXJtaXNzaW9uIjoicncifQ.JAVTMTLiW1exHumjnVQ0Ebkc9xO0JEy5vftlBrHDiyw' "https://cloud.seatable.io/dtable-server/api/v1/dtables/d48c3aae-dbc1-4325-a890-1c2e79ea5319/notifications/2/"
+> ```
+> curl -X PUT \
+> -H 'Authorization: Token eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE1Nzg3MzczNjMsImR0YWJsZV91dWlkIjoiZDQ4YzNhYWVkYmMxNDMyNWE4OTAxYzJlNzllYTUzMTkiLCJ1c2VybmFtZSI6IjFAMS5jb20iLCJwZXJtaXNzaW9uIjoicncifQ.JAVTMTLiW1exHumjnVQ0Ebkc9xO0JEy5vftlBrHDiyw' \
+> 'https://cloud.seatable.io/dtable-server/api/v1/dtables/d48c3aae-dbc1-4325-a890-1c2e79ea5319/notifications/' \
+> -d 'seen=true' 
+> ```
 
-```
+
+**Input Parameters**
+
+**dtable_uuid** _\[string, required]_
+> The ID of the base.
+
+**seen** _\[enum(`true`, `false`), required]_
+> Use `true` to mark the notification as read. All other values than `true` or `false` are invalid.
+
+
+
+**Return Values**
+
+JSON-object with the result of the operation.
+
+
 
 **Sample Response (200)**
 
-```
-{
-    "success": true
-}
+> ```
+> {
+>     "success": true
+> }
+> ```
 
-```
+**Possible Errors**
 
-**Errors**
+400 Bad Request: The parameter `seen` was not correct (`true` or `false`):
+> ```
+> {
+>     "error_msg": "seen invalid."
+> }
+> ```
 
-* **400**: Bad Request
-* **403**: Permission Denied
-* **404**: Not Found
-* **500**: Internal Server Error
+403 Forbidden: Probably is the `dtable_uuid` or the `access_token` wrong:
+> ```
+> {
+>     "error_msg": "You don't have permission to access the table's notifications."
+> }
+> ```
 
-## Clear notifications
 
-**DELETE** /api/v1/dtables/:dtable_uuid/notifications/
 
-**Request Parameters**
 
-* **dtable_uuid**
+
+## Delete All Notifications
+
+Use this request to delete all the notifications irrevocably. 
+
+
+**URL Structure**
+
+> **\[DELETE]** /api/v1/dtables/`<dtable_uuid>`/notifications/
+
+
+**Request Authentication**
+
+> Base Access Token
+
 
 **Sample Request**
 
-```
-curl -X DELETE -H 'Authorization: Token eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE1Nzg3MzczNjMsImR0YWJsZV91dWlkIjoiZDQ4YzNhYWVkYmMxNDMyNWE4OTAxYzJlNzllYTUzMTkiLCJ1c2VybmFtZSI6IjFAMS5jb20iLCJwZXJtaXNzaW9uIjoicncifQ.JAVTMTLiW1exHumjnVQ0Ebkc9xO0JEy5vftlBrHDiyw' "https://cloud.seatable.io/dtable-server/api/v1/dtables/d48c3aae-dbc1-4325-a890-1c2e79ea5319/notifications/"
+> ```
+> curl -X DELETE \
+> -H 'Authorization: Token eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE1Nzg3MzczNjMsImR0YWJsZV91dWlkIjoiZDQ4YzNhYWVkYmMxNDMyNWE4OTAxYzJlNzllYTUzMTkiLCJ1c2VybmFtZSI6IjFAMS5jb20iLCJwZXJtaXNzaW9uIjoicncifQ.JAVTMTLiW1exHumjnVQ0Ebkc9xO0JEy5vftlBrHDiyw' \
+> 'https://cloud.seatable.io/dtable-server/api/v1/dtables/d48c3aae-dbc1-4325-a890-1c2e79ea5319/notifications/'
+> ```
 
-```
+
+**Input Parameters**
+
+**dtable_uuid** _\[string, required]_
+> The ID of the base.
+
+
+
+**Return Values**
+
+JSON-object with the result of the operation.
+
+
 
 **Sample Response (200)**
 
-```
-{
-    "success": true
-}
+> ```
+> {
+>     "success": true
+> }
+> ```
 
-```
+**Possible Errors**
 
-**Errors**
-
-* **400**: Bad Request
-* **403**: Permission Denied
-* **404**: Not Found
-* **500**: Internal Server Error
-
+403 Forbidden: Probably is the `dtable_uuid` or the `access_token` wrong:
+> ```
+> {
+>     "error_msg": "You don't have permission to access the table's notifications."
+> }
+> ```
 

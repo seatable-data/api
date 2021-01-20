@@ -2,22 +2,31 @@
 
 ## Ping
 
-**GET **/dtable-server/ping/
+Use this simple request to check the status of the dtable-server.
 
-Check status of dtable-server
 
-**Sample request**
+**URL Structure**
 
-```
-curl "https://cloud.seatable.io/dtable-server/ping/"
+> **\[GET]** /dtable-server/ping/
 
-```
+
+**Request Authentication**
+
+> None
+
+
+
+
+**Sample Request**
+
+> ```
+> curl 'https://cloud.seatable.io/dtable-server/ping/'
+> ```
 
 **Sample Response (200)**
 
-```
-pong
-
-```
+> ```
+> pong
+> ```
 
 
