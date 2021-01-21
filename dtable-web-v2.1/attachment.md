@@ -460,7 +460,7 @@ Use this following sample request to zip and download the files `file1.txt` and 
 >         "files/2020-11/file1.txt":"name1.txt", \
 >         "files/2020-11/file2.txt":"name2.txt"} \
 >     }' \
-> 'http://cloud.seatable.io/api/v2.1/dtable-asset/46620d70-c8e5-49ab-8874-9d4a2dc4608c/zip-task/'
+> 'https://cloud.seatable.io/api/v2.1/dtable-asset/46620d70-c8e5-49ab-8874-9d4a2dc4608c/zip-task/'
 > ```
 
 **Input Parameters**
