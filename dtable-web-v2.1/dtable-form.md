@@ -127,8 +127,12 @@ Create a form `Vendor Survey` in the base `Surveys` from workspace `1` and give 
 > curl -X POST \
 > -H 'Authorization: Token e39d9392d02a770e3edccdc5116da293a7773533' \
 > "https://cloud.seatable.io/api/v2.1/forms/" \
-> -d 'workspace_id=1&name=Surveys&form_id=1KOJ&form_config={"form_name":"Vendor Survey"}' 
->
+> -d 'workspace_id=1' \
+> -d 'name=Surveys' \
+> -d 'form_id=1KOJ' \
+> -d 'form_config={ \
+>     "form_name":"Vendor Survey" \
+>     }' 
 > ```
 
 **Input Parameters**
@@ -265,7 +269,7 @@ JSON-object with details of the created form including sharing link. The form to
 
 ## Update A Form
 
-Change the name of a form with its token.
+Update a form with its token.
 
 **URL Structure**
 
@@ -571,23 +575,18 @@ Share a form to multiple groups.
 
 > User Authentication (Token)
 
-**Input Parameters**
 
-* token (suffix of the form link)
-* share_type
-* group_ids (if you don't know the group ids, contact your organization administrator)
 
 **Sample Request**
 
 Share the form with the token of `d76d7428-ba53-4628-8a5b-2e090d693fbf` to the groups with IDs of `1`, `3`, and `17`:
 
 > ```
-> curl --location --request POST \
+> curl --request POST \
+> -H 'Authorization: Token 5604b4cc8a60c161c787c6c1320cc4c8a18a7718' \
+> -H 'Content-Type: application/json' \
 > 'https://cloud.seatable.io/api/v2.1/forms/d76d7428-ba53-4628-8a5b-2e090d693fbf/share/' \
-> --header 'Authorization: Token be531df7bdbb1a146b52c7ea7570bf262c276bb0' \
-> --form 'share_type="shared_groups"' \
-> --form 'group_ids="[1, 3, 17]"'
->
+> -d '{"share_type":"shared_groups","group_ids":[1,3,17]}'
 > ```
 
 **Input Parameters**

@@ -1,46 +1,66 @@
 # Related Users
 
-## Get user list by user id list
+## Get User List by User ID List
 
-**GET **api/v2.1/user-list/
+List the basic information of other users in your organization.
+
+**URL Structure**
+
+> **\[POST]** /api/v2.1/user-list/
+
 
 **Request Parameters**
 
 * user_id_list
 
-**Sample request**
+**Sample Request**
 
-```
-curl -X POST -H 'Authorization:Token e1518ab0624eed78ab9456d207e312666fcaf748' -H 'Content-type: application/json' -d '{
-    "user_id_list": [
-        "5758ecdce3e741ad81293a304b6d3388@auth.local",
-        "5ed78cb2cd264b0e8c400f131bc5c4c8@auth.local"
-    ]
-}' -H 'Accept: application/json; indent=4' "https://cloud.seatable.io/dtable-web/api/v2.1/user-list/"
+> ```
+> curl -X POST \
+> -H 'Authorization:Token e1518ab0624eed78ab9456d207e312666fcaf748' \
+> -H 'Content-type: application/json' \
+> -H 'Accept: application/json; indent=4' \
+> 'https://cloud.seatable.io/api/v2.1/user-list/' \
+> -d '{ \
+>     "user_id_list": [ \
+>         "5758ecdce3e741ad81293a304b6d3388@auth.local", \
+>         "5ed78cb2cd264b0e8c400f131bc5c4c8@auth.local"  \
+>     ] \
+> }' 
+> ```
 
-```
+
+**Input Parameters**
+
+**user_id_list** _\[array, required]_
+> In this object, list the users' IDs ending with `@auth.local`.
+
+
+**Return Values**
+
+JSON-object with the list of users.
+
 
 **Sample Response (200)**
 
-```json
-{
-    "user_list": [
-        {
-            "email": "5758ecdce3e741ad81293a304b6d3388@auth.local",
-            "name": "Alex",
-            "contact_email": "1@1.com",
-            "avatar_url": "http://127.0.0.1:8000/media/avatars/0/4/8f833bd2e242f195f40a77c21b39b6/resized/80/03e77af8819c66f25260297dd5e97dc7_uawl0f1.png"
-        },
-        {
-            "email": "5ed78cb2cd264b0e8c400f131bc5c4c8@auth.local",
-            "name": "Bob",
-            "contact_email": "2@2.com",
-            "avatar_url": "http://127.0.0.1:8000/media/avatars/4/8/8da703fbbf61f4c398943c609924c0/resized/80/1ae78cb64ba5442c2929247926af0e6f.png"
-        }
-    ]
-}
-
-```
+> ```
+> {
+>     "user_list": [
+>         {
+>             "email": "244b43hr6fy54bb4afa2c2cb7369d244@auth.local",
+>             "name": "Ginger Ale",
+>             "contact_email": "gingerale@example.com",
+>             "avatar_url": "https://cloud.seatable.io/media/avatars/default.png"
+>         },
+>         {
+>             "email": "8cb2a6da656876hgf42905bf1647fd3f@auth.local",
+>             "name": "Jasmin Tee",
+>             "contact_email": "jasmintee@example.com",
+>             "avatar_url": "https://cloud.seatable.io/media/avatars/default.png"
+>         }
+>     ]
+> }
+> ```
 
 **Errors**
 

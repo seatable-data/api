@@ -1,6 +1,6 @@
 # Base API Token Operations
 
-## Create A Base API Token
+## Create A Permanent Base API Token
 
 This API request creates a base's API token with read-only (`r`) or read & write (`rw`) permission.
 
@@ -37,9 +37,9 @@ Create a read & write API token "Google" for the base `Test` in the workspace `1
 
 **app_name** _\[string, required]_
 
-> The name of the App to be connected to this API.
+> The name of the App to be connected to this API. For each base, the app name is unique.
 
-**permission** _\[string(__`r`__ or __`rw`__), required]_
+**permission** _\[string(__**`r`**__ or __**`rw`**__), required]_
 
 > Set the permission: `r` for read-only and `rw` for read & write.
 
@@ -65,10 +65,110 @@ The desired API token has been created:
 
 **Possible Errors**
 
-* 400 bad request.
-* 404 not found.
-* 403 permission denied.
-* 500 Internal Server Error.
+400 Bad Request: The required parameters were not accepted:
+> ```
+> {
+>     "error_msg": "app_name invalid."
+> }
+> ```
+> or
+> ```
+> {
+>     "error_msg": "permission invalid."
+> }
+> ```
+
+400 Bad Request: The app name is already taken:
+> ```
+> {
+>     "error_msg": "api token already exist."
+> }
+> ```
+
+401 Unauthorized: The auth token was not accepted (miss-spellt or wrong format):
+> ```
+> {
+>     "detail": "Invalid token"
+> }
+> ```
+> or
+> ```
+> {
+>     "detail": "Invalid token header. Token string should not contain spaces."
+> }
+> ```
+
+403 Forbidden: The access was denied:
+> ```
+> {
+>     "error_msg": "Permission denied."
+> }
+> ```
+
+404 Not Found: The base was not found:
+> ```
+> {
+>     "error_msg": "dtable Tesla not found."
+> }
+> ```
+
+## Create A Temporary Base API Token
+
+Create a temporary base API token which expires in 1 hour after the creation.
+
+**URL Structure**
+
+> **\[GET]** /api/v2.1/workspace/`<workspace_id>`/dtable/`<name>`/temp-api-token/
+
+
+**Request Authentication**
+
+> User Authentication (Token)
+
+**Sample Request**
+
+Create a temporary API token for the base named 'Customers' in the workspace with ID of `107`:
+
+> ```
+> curl --request GET \
+> --header 'Authorization: Token 64b9ee55dc4ab902ff36763ef5c604a76d52875e' \
+> 'https://cloud.seatable.io/api/v2.1/workspace/107/dtable/Customers/temp-api-token/' 
+> ```
+
+**Input Parameters**
+
+**workspace_id** _\[int, required]_
+> ID of the workspace where the base is stored.
+
+**name** _\[string, required]_
+> The name of the base.
+
+
+
+**Return Values**
+
+JSON-object with the created API token.
+
+
+
+**Sample Response (200)**
+
+> ```
+> {
+>     "api_token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VybmFtZSI6Ijg0OGE1ZmI1ZjRjMzRiZjU5NTYzMmNkMjc2OGI5Mzc3QGF1dGgubG9jYWwiLCJkdGFibGVfdXVpZCI6IjIwYzU3YjhmLWNjYjYtNDJlYy04OGU4LTVhYTczYTAwODkyNCIsImV4cCI6MTYxMTMwNjYwMy4xMzY1ODY0fQ.HGd3heWx_EmVYrZVGTeV7622OG11tfd_kjU6Lh1tkNc"
+> }
+> ```
+
+**Possible Errors**
+
+
+404 Not Found: The base was not found (probably the name was wrong):
+> ```
+> {
+>     "error_msg": "dtable base not found."
+> }
+> ```
+
 
 ## List A Base's API Tokens
 
@@ -204,7 +304,7 @@ Change the permission of the API token "Google" of the base `Test` in the worksp
 
 > The name of the App to be connected to this API.
 
-**permission** _\[string(__`r`__ or __`rw`__), required]_
+**permission** _\[string(__**`r`**__ or __**`rw`**__), required]_
 
 > Set the permission: `r` for read-only and `rw` for read & write.
 
@@ -366,7 +466,7 @@ Status of the two API tokens in the base `Test` is returned, the returned `conne
 >
 > ```
 
-## Delete a DTable API Token
+## Delete A Base's API Token
 
 Delete one of the API tokens in a base.
 
@@ -497,6 +597,8 @@ The response returns the access token of the base among other details:
 >
 > ```
 
+**Note: **_The _`access_token`_  expiration time is 3 days._
+
 **Possible Errors**
 
 403 Forbidden: The API token was not found or invalid:
@@ -573,7 +675,7 @@ Get the file download link to a base by its API token.
 
 > Base API Token
 
-* path, asset path inside /asset/dtable_uuid/ folder
+
 
 **Sample Request**
 
