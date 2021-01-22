@@ -109,9 +109,23 @@ JSON-object with the result of the operation.
 
 **Possible Errors**
 
+400 Bad Request: The user is already in a organization:
+> ```
+> {
+>     "error_msg": "Already is an organization user."
+> }
+> ```
+
 401 Unauthorized: The auth token is invalid:
 >```
 >{
 >    "detail": "Invalid token"
 >}
 >```
+
+500 Internal Server Error: The user doesn't have a workspace (after registration, the user has to login for at least once to create a workspace. Without a workspace, the migration can be successful, but an error is also returned):
+> ```
+> {
+>     Internal Server Error
+> }
+> ```
