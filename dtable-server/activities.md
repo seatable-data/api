@@ -1,5 +1,84 @@
 # Activities
 
+
+## Get Activity Log
+
+List all the activities logged in the base.
+
+
+**URL Structure**
+
+> **\[GET]** /dtable-server/api/v1/dtables/`<dtable_uuid>`/operations/
+
+
+**Request Authentication**
+
+> Base Access Token
+
+
+**Sample Request**
+> ```
+> curl --request GET \
+> --header 'Authorization: Token eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE1Nzg4MDIxNjUsImR0YWJsZV91dWlkIjoiYTU3YjU2ZDMxY2M1NGViZDhhNmNhMWIyOGFjM2RiZGYiLCJ1c2VybmFtZSI6Inhpb25nY2hhby5jaGVuZ0BzZWFmaWxlLmNvbSIsInBlcm1pc3Npb24iOiJydyJ9.CfhFnZ_zG2oVU3awhbeRMv_ttya5Jb7I4hKrUgoLook' \
+> 'https://cloud.seatable.io/dtable-server/api/v1/dtables/a57b56d3-1cc5-4ebd-8a6c-a1b28ac3dbdf/operations/?page=1' 
+> ```
+
+
+**Input Parameters**
+
+**dtable_uuid** _\[string, required]_
+> The ID of the base.
+
+**page** _\[int, optional, 1 by default]_ 
+> Page number of the returned list. Maximum 25 items are displayed on each page.
+
+
+
+**Return Values**
+
+JSON-object with the list of activities.
+
+
+**Sample Response**
+
+> ```
+> {
+>     "operations": [
+>         {
+>             "author": "244b4667d1754bb4afa2c2cb7369d244@auth.local",
+>             "app": null,
+>             "op_time": 1610981745927,
+>             "operation": "{\"op_type\":\"delete_column\",\"table_id\":\"0000\",\"column_key\":\"iJB4\",\"old_column\":{\"rowType\":\"header\",\"key\":\"iJB4\",\"type\":null,\"name\":null,\"editable\":true,\"width\":200,\"resizable\":true,\"draggable\":true,\"data\":null,\"permission_type\":\"\",\"permitted_users\":[],\"editor\":{\"key\":null,\"ref\":null,\"props\":{},\"_owner\":null},\"formatter\":null,\"left\":1058,\"idx\":5},\"upper_column_key\":\"LfGJ\"}",
+>             "op_id": 118
+>         },
+>         {
+>             "author": "244b4667d1754bb4afa2c2cb7369d244@auth.local",
+>             "app": null,
+>             "op_time": 1610981742518,
+>             "operation": "{\"op_type\":\"delete_column\",\"table_id\":\"0000\",\"column_key\":\"J2mq\",\"old_column\":{\"rowType\":\"header\",\"key\":\"J2mq\",\"type\":null,\"name\":null,\"editable\":true,\"width\":200,\"resizable\":true,\"draggable\":true,\"data\":null,\"permission_type\":\"\",\"permitted_users\":[],\"editor\":{\"key\":null,\"ref\":null,\"props\":{},\"_owner\":null},\"formatter\":null,\"left\":280,\"idx\":2},\"upper_column_key\":\"0000\"}",
+>             "op_id": 117
+>         },
+>         {
+>             "author": "244b4667d1754bb4afa2c2cb7369d244@auth.local",
+>             "app": null,
+>             "op_time": 1610981739830,
+>             "operation": "{\"op_type\":\"delete_column\",\"table_id\":\"0000\",\"column_key\":\"jQyv\",\"old_column\":{\"rowType\":\"header\",\"key\":\"jQyv\",\"type\":null,\"name\":null,\"editable\":true,\"width\":200,\"resizable\":true,\"draggable\":true,\"data\":null,\"permission_type\":\"\",\"permitted_users\":[],\"editor\":{\"key\":null,\"ref\":null,\"props\":{},\"_owner\":null},\"formatter\":null,\"left\":480,\"idx\":3},\"upper_column_key\":\"J2mq\"}",
+>             "op_id": 116
+>         }
+>     ]
+> }
+> ```
+
+
+**Possible Errors**
+
+403 Forbidden: Probably the base's ID or the access token was wrong:
+> ```
+> {
+>     "error_msg": "You don't have permission to get data from the current table."
+> }
+> ```
+
 ## List Row Activities
 
 This API request lists off all the recent activities done to a certain row.
