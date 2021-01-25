@@ -8,7 +8,6 @@ List the basic information of other users in your organization.
 
 > **\[POST]** /api/v2.1/user-list/
 
-
 **Request Parameters**
 
 * user_id_list
@@ -27,19 +26,18 @@ List the basic information of other users in your organization.
 >         "5ed78cb2cd264b0e8c400f131bc5c4c8@auth.local"  \
 >     ] \
 > }' 
+>
 > ```
-
 
 **Input Parameters**
 
 **user_id_list** _\[array, required]_
-> In this object, list the users' IDs ending with `@auth.local`.
 
+> In this object, list the users' IDs ending with `@auth.local`.
 
 **Return Values**
 
 JSON-object with the list of users.
-
 
 **Sample Response (200)**
 
@@ -49,17 +47,16 @@ JSON-object with the list of users.
 >         {
 >             "email": "244b43hr6fy54bb4afa2c2cb7369d244@auth.local",
 >             "name": "Ginger Ale",
->             "contact_email": "gingerale@example.com",
 >             "avatar_url": "https://cloud.seatable.io/media/avatars/default.png"
 >         },
 >         {
 >             "email": "8cb2a6da656876hgf42905bf1647fd3f@auth.local",
 >             "name": "Jasmin Tee",
->             "contact_email": "jasmintee@example.com",
 >             "avatar_url": "https://cloud.seatable.io/media/avatars/default.png"
 >         }
 >     ]
 > }
+>
 > ```
 
 **Errors**
