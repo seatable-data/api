@@ -312,7 +312,7 @@ Similar requests can also be made to move a column or change column type by alte
 > * `'rename_column'` to rename a column, paired with the **new_column_name** parameter;
 > * `'resize_column'` to resize a column, paired with the **new_column_width** parameter;
 > * `'freeze_column'` to freeze or unfreeze a column, paired with the **frozen** parameter;
-> * `'move_column'` to move a column, paired with the **target_column_key** parameter;
+> * `'move_column'` to move a column, paired with the **target_column_key** parameter (you cannot move the first column);
 > * `'modify_column_type'` to modify the type of a column, paired with the **new_column_type** parameter.
 
 **new_column_name** _\[string, optional]_
@@ -362,6 +362,14 @@ A response to the sample request 1 could look like this:
 400 Bad Request: The parameters were not correctly given:
 > ```
 > table_name invalid.
+> ```
+
+400 Bad Request: Parameters or the `column_key` was not accepted (are you trying to move the first column?):
+> ```
+> {
+>     "error_type": "parameter_error",
+>     "error_message": "column_key invalid."
+> }
 > ```
 
 403 Forbidden: Probably is the `dtable_uuid` or the `access_token` wrong:
