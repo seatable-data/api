@@ -191,11 +191,11 @@ In this sample request, try to filter out the records in the "Name" column, whic
 > * `filter_term`: a date string (like "2020-10-27 12:00") or an empty string
 > * `filter_term_modifier`: changes with the change of `filter_predicate`
 > 
->>   if `filter_predicate` is 'is_within', it can be one of the_past_week, the_past_month, the_past_year, this_week, this_month,    this_year, the_next_week, the_next_month, the_next_year, the_next_numbers_of_days, the_past_numbers_of_days.
->>
->>   if `filter_predicate` is 'is_empty' or 'is_not_empty', it is an empty string.
->>
->>   Otherwise,  it can be one of today, tomorrow, yesterday, one_week_ago, one_week_from_now, one_month_ago, one_month_from_now, number_of_days_ago, number_of_days_from_now, exact_date or an empty string.
+>   * if `filter_predicate` is 'is_within', it can be one of the_past_week, the_past_month, the_past_year, this_week, this_month,    this_year, the_next_week, the_next_month, the_next_year, the_next_numbers_of_days, the_past_numbers_of_days.
+>
+>   * if `filter_predicate` is 'is_empty' or 'is_not_empty', it is an empty string.
+>
+>   * Otherwise,  it can be one of today, tomorrow, yesterday, one_week_ago, one_week_from_now, one_month_ago, one_month_from_now, number_of_days_ago, number_of_days_from_now, exact_date or an empty string.
 > 
 > **For the column type Collaborator**
 > 
@@ -407,187 +407,525 @@ JSON-object with grouped rows and their details. The returned `cell_value` is th
 > }
 > ```
 
-## Append a row
+## Append A Row
 
-**POST** /dtable-server/api/v1/dtables/:dtable_uuid/rows/
+Append a new row below the last record.
 
-* dtable_uuid
-* table_name, necessary
-* row, row data of json format
 
-**Sample request**
+**URL Structure**
 
-```
-curl -H 'Authorization: Token eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6IjFAMS5jb20iLCJkdGFibGVfdXVpZCI6IjYyMmYxZTZkMzM3NDQ5ZTQ5YjQyOWYyMjUzMDM3YTc2In0.3ytwzZsfZwzifAQtsLzn0AFMnEDSeHxkKlIgD6XKuIs' -H "Accept: application/json" -H "Content-type: application/json" -X POST -d '{
-	"row": {"Name": "I am new Row"},
-	"table_name": "Table1"
-}' https://cloud.seatable.io/dtable-server/api/v1/dtables/7f7dc9c7-187a-4d9f-b6cf-ff5e5019a6d5/rows/
+> **\[POST]** /dtable-server/api/v1/dtables/`<dtable_uuid>`/rows/
 
-```
 
-**Sample Response (200)**
 
-```
-{
-     '0000': 'I am new Row', 
-     '_id': 'MeKKGQ5gRSyeuREenGAk4w'
-}
+**Sample Request**
 
-```
+> ```
+> curl -X POST \
+> -H 'Authorization: Token eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6IjFAMS5jb20iLCJkdGFibGVfdXVpZCI6IjYyMmYxZTZkMzM3NDQ5ZTQ5YjQyOWYyMjUzMDM3YTc2In0.3ytwzZsfZwzifAQtsLzn0AFMnEDSeHxkKlIgD6XKuIs' \
+> -H "Accept: application/json" \
+> -H "Content-type: application/json" \
+> 'https://cloud.seatable.io/dtable-server/api/v1/dtables/7f7dc9c7-187a-4d9f-b6cf-ff5e5019a6d5/rows/' \
+> -d '{ \
+> 	"row": {"Name": "I'm a new Row"}, \
+> 	"table_name": "Table1" \
+> }' 
+> ```
 
-## Insert a row
 
-**POST** /dtable-server/api/v1/dtables/:dtable_uuid/rows/
+**Input Parameters**
 
-* dtable_uuid
-* table_name, necessary
-* row, row data in json
-* anchor_row_id
-* above_or_below, insert above anchor row if value is 'above', insert below anchor row if value is 'below', default is below
+**dtable_uuid** _\[string, required]_
+> The ID of the base.
 
-**Sample request**
+**table_name** _\[string, required]_
+> The name of the table.
 
-```
-curl -H 'Authorization: Token eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6IjFAMS5jb20iLCJkdGFibGVfdXVpZCI6IjYyMmYxZTZkMzM3NDQ5ZTQ5YjQyOWYyMjUzMDM3YTc2In0.3ytwzZsfZwzifAQtsLzn0AFMnEDSeHxkKlIgD6XKuIs' -H "Accept: application/json" -H "Content-type: application/json" -X POST -d '{
-	"row": {"Name": "I am new Row"},
-	"table_name": "Table1",
-    "anchor_row_id": "HT5R_PjVQrOyX3_5O-t6Aw",
-}' https://cloud.seatable.io/dtable-server/api/v1/dtables/7f7dc9c7-187a-4d9f-b6cf-ff5e5019a6d5/rows/
+**row** _\[array, required]_
+> In this JSON array of objects, fill in the details of the row in the format of `"coloum name": "Content"`.
 
-```
+
+
+**Return Values**
+
+JSON-object with the details of the newly appended row. In the response, the column(s)' name will be replaced by their `key`.
+
+
 
 **Sample Response (200)**
 
-```
-{
-    '0000': 'I am new Row', 
-    '_id': 'L_nn31N2TbyNA1Nmm-NTtg'
-}
+> ```
+> {
+>     "0000": "A new row",
+>     "_id": "VNe7qciMTEKaIb56Hykixg",
+>     "_creator": "8cb2a6da6568fu47ry2905bf1647fd3f@auth.local",
+>     "_last_modifier": "8cb2a6da6568fu47ry2905bf1647fd3f@auth.local"
+> }
+> ```
+If the `row` parameter was not correctly configured, an empty row might be added without returning error message.
 
-```
+**Possible Errors**
 
-## Batch append rows
+400 Bad Request: The table name was probably wrong:
+> ```
+> {
+>     "error_type": "table_not_exist",
+>     "error_message": "table Table11 not found"
+> }
+> ```
 
-**POST** /dtable-server/api/v1/dtables/:dtable_uuid/batch-append-rows/
+403 Forbidden: The permission to the table was denied:
+> ```
+> {
+>     "error_msg": "You don't have permission to get data from the current table."
+> }
+> ```
 
-* **dtable_uuid**
-* **table_name**, necessary
-* **rows**, necessary
+## Insert A Row
 
-**Sample request**
+Insert a new row above or below an existing row.
 
-```
-curl --request POST ' https://cloud.seatable.io/dtable-server/api/v1/dtables/7f7dc9c7-187a-4d9f-b6cf-ff5e5019a6d5/batch-append-rows/' --header 'Authorization: Token eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE2MDQxMTUwMTcsImR0YWJsZV91dWlkIjoiNDFjZDA1ZGFiMjlhNDQyOGJjMzFiZDY2ZjQ2MDA4MTciLCJ1c2VybmFtZSI6Inhpb25nY2hhby5jaGVuZ0BzZWFmaWxlLmNvbSIsInBlcm1pc3Npb24iOiJydyJ9.jAIndSyeNivFnAb9f3nF8MENYK2I26JS8BLUyo7aJRw' --header 'Content-Type: application/json' --data-raw '{
-    "rows": [{
-                "name": "test", 
-                "content": "batch append rows"
-            }, {
-                "name": "test", 
-                "content": "batch append rows"
-            }, {
-                "name": "test", 
-                "content": "batch append rows"
-            }], 
-    "table_name": "Table6"
-}'
 
-```
+**URL Structure**
 
-**Sample Response (200)**
+> **\[POST]** /dtable-server/api/v1/dtables/`<dtable_uuid>`/rows/
 
-```
-{
-    "inserted_row_count": 3
-}
 
-```
 
-## Update a row
 
-**PUT** /dtable-server/api/v1/dtables/:dtable_uuid/rows/
+**Request Authentication**
 
-* dtable_uuid
-* table_name, necessary
-* row, row data in json
-* row_id
+> Base Access Token
 
-**Sample request**
 
-```
-curl -H 'Authorization: Token eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6IjFAMS5jb20iLCJkdGFibGVfdXVpZCI6IjYyMmYxZTZkMzM3NDQ5ZTQ5YjQyOWYyMjUzMDM3YTc2In0.3ytwzZsfZwzifAQtsLzn0AFMnEDSeHxkKlIgD6XKuIs' -H "Accept: application/json" -H "Content-type: application/json" -X PUT -d '{
-	"row": {"Name": "NewName"},
-	"table_name": "Table1",
-    "row_id": "HT5R_PjVQrOyX3_5O-t6Aw",
-}' https://cloud.seatable.io/dtable-server/api/v1/dtables/7f7dc9c7-187a-4d9f-b6cf-ff5e5019a6d5/rows/
 
-```
+**Sample Request**
 
-**Sample Response (200)**
+> ```
+> curl -X POST \
+> -H 'Authorization: Token eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6IjFAMS5jb20iLCJkdGFibGVfdXVpZCI6IjYyMmYxZTZkMzM3NDQ5ZTQ5YjQyOWYyMjUzMDM3YTc2In0.3ytwzZsfZwzifAQtsLzn0AFMnEDSeHxkKlIgD6XKuIs' \
+> -H "Accept: application/json" \
+> -H "Content-type: application/json" \
+> 'https://cloud.seatable.io/dtable-server/api/v1/dtables/7f7dc9c7-187a-4d9f-b6cf-ff5e5019a6d5/rows/' \
+> -d '{ \
+> 	"row": {"Name": "I am new Row"}, \
+> 	"table_name": "Table1", \
+>   "anchor_row_id": "HT5R_PjVQrOyX3_5O-t6Aw" \
+> }' 
+> ```
 
-```
-{
-    "success": true
-}
 
-```
+**Input Parameters**
 
-## Delete a row
+**dtable_uuid** _\[string, required]_
+> The ID of the base.
 
-**DELETE** /dtable-server/api/v1/dtables/:dtable_uuid/rows/
+**table_name** _\[string, required]_
+> The name of the table.
 
-* dtable_uuid
-* table_name, necessary
-* row_id
+**row** _\[array, required]_
+> In this JSON array of objects, fill in the details of the row in the format of `{"coloum name": "Content"}`.
 
-**Sample request**
+**anchor_row_id** _\[string, required]_
+> Reference row of the insertion.
 
-```
-curl -H 'Authorization: Token eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6IjFAMS5jb20iLCJkdGFibGVfdXVpZCI6IjYyMmYxZTZkMzM3NDQ5ZTQ5YjQyOWYyMjUzMDM3YTc2In0.3ytwzZsfZwzifAQtsLzn0AFMnEDSeHxkKlIgD6XKuIs' -H "Accept: application/json" -H "Content-type: application/json" -X DELETE -d '{
-	"table_name": "Table1",
-    "row_id": "HT5R_PjVQrOyX3_5O-t6Aw",
-}' https://cloud.seatable.io/dtable-server/api/v1/dtables/7f7dc9c7-187a-4d9f-b6cf-ff5e5019a6d5/rows/
+**above_or_below** _\[enum(`above`, `below`), optional, `below` by default]_
+> To insert the new row `above` or `below` the anchor row.
 
-```
+
+
+**Return Values**
+
+JSON-object with the details of the newly inserted row.
+
 
 **Sample Response (200)**
 
-```
-{
-    "success": true
-}
+> ```
+> {
+>     '0000': 'I am new Row', 
+>     '_id': 'L_nn31N2TbyNA1Nmm-NTtg'
+> }
+> ```
 
-```
 
-## Batch delete rows
+**Possible Errors**
 
-**DELETE** /dtable-server/api/v1/dtables/:dtable_uuid/batch-delete-rows/ 
+400 Bad Request: The table's name was wrong:
+> ```
+> {
+>     "error_type": "table_not_exist",
+>     "error_message": "table Table11 not found"
+> }
+> ```
 
-* dtable_uuid
-* table_name, necessary
-* row_ids, necessary
+403 Forbidden: The permission to the table was denied:
+> ```
+> {
+>     "error_msg": "You don't have permission to get data from the current table."
+> }
+> ```
 
-**Sample request**
 
-```
-curl -H 'Authorization: Token eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6IjFAMS5jb20iLCJkdGFibGVfdXVpZCI6IjYyMmYxZTZkMzM3NDQ5ZTQ5YjQyOWYyMjUzMDM3YTc2In0.3ytwzZsfZwzifAQtsLzn0AFMnEDSeHxkKlIgD6XKuIs' -H "Accept: application/json" -H "Content-type: application/json" -X DELETE -d '{
-	"table_name": "Table1",
-    "row_ids": ["HT5R_PjVQrOyX3_5O-t6Aw", "IjFAMS5jb20iLCJkdGweffe",]
-}' https://cloud.seatable.io/dtable-server/api/v1/dtables/7f7dc9c7-187a-4d9f-b6cf-ff5e5019a6d5/batch-delete-rows/
 
-```
+## Batch Append Rows
+
+Append multiple rows in one request.
+
+
+**URL Structure**
+
+> **\[POST]** /dtable-server/api/v1/dtables/`<dtable_uuid>`/batch-append-rows/
+
+
+
+**Request Authentication**
+
+> Base Access Token
+
+
+**Sample Request**
+
+> ```
+> curl --request POST \
+> --header 'Authorization: Token eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE2MDQxMTUwMTcsImR0YWJsZV91dWlkIjoiNDFjZDA1ZGFiMjlhNDQyOGJjMzFiZDY2ZjQ2MDA4MTciLCJ1c2VybmFtZSI6Inhpb25nY2hhby5jaGVuZ0BzZWFmaWxlLmNvbSIsInBlcm1pc3Npb24iOiJydyJ9.jAIndSyeNivFnAb9f3nF8MENYK2I26JS8BLUyo7aJRw' \
+> --header 'Content-Type: application/json' \
+> 'https://cloud.seatable.io/dtable-server/api/v1/dtables/7f7dc9c7-187a-4d9f-b6cf-ff5e5019a6d5/batch-append-rows/' 
+> --data-raw '{ \
+>     "rows": [{ \
+>                 "Name": "Jasmin", \
+>                 "Content": "Tea" \
+>             }, { \
+>                 "Name": "Ginger", \
+>                 "Content": "Ale" \
+>             }, { \
+>                 "Name": "Matcha", \
+>                 "Content": "Latte" \
+>             }], \
+>     "table_name": "Table6" \
+> }'
+> ```
+
+
+
+**Input Parameters**
+
+**dtable_uuid** _\[string, required]_
+> The ID of the base.
+
+**table_name** _\[string, required]_
+> The name of the table.
+
+**row** _\[array, required]_
+> In this JSON array of objects, fill in the details of the row in the format of `{"coloum name": "Content"}`.
+
+
+
+**Return Values**
+
+JSON-object with the number of successfully added rows.
+
+
 
 **Sample Response (200)**
 
-```
-{
-    "success": true
-}
+> ```
+> {
+>     "inserted_row_count": 3
+> }
+> ```
+If one or more columns were not found in the table, they are ignored without returning an error message.
 
-```
+**Possible Errors**
 
-## Add a row link
+403 Forbidden: The permission to the table was denied:
+> ```
+> {
+>     "error_msg": "You don't have permission to get data from the current table."
+> }
+> ```
 
-**POST** /dtable-server/api/v1/dtables/:dtable_uuid/links/
+404 Not Found: The table name was probably wrong:
+> ```
+> {
+>     "error_msg": "table Table11 not found"
+> }
+> ```
+
+## Update A Row
+
+Change the records in an existing row.
+
+
+**URL Structure**
+
+> **\[PUT]** /dtable-server/api/v1/dtables/`<dtable_uuid>`/rows/
+
+
+
+
+
+**Request Authentication**
+
+> Base Access Token
+
+**Sample Request**
+
+> ```
+> curl -X PUT \
+> -H 'Authorization: Token eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6IjFAMS5jb20iLCJkdGFibGVfdXVpZCI6IjYyMmYxZTZkMzM3NDQ5ZTQ5YjQyOWYyMjUzMDM3YTc2In0.3ytwzZsfZwzifAQtsLzn0AFMnEDSeHxkKlIgD6XKuIs' \
+> -H "Accept: application/json" \
+> -H "Content-type: application/json"  \
+> 'https://cloud.seatable.io/dtable-server/api/v1/dtables/7f7dc9c7-187a-4d9f-b6cf-ff5e5019a6d5/rows/' \
+> -d '{ \
+> 	"row": {"Name": "NewName"}, \
+> 	"table_name": "Table1", \
+>   "row_id": "HT5R_PjVQrOyX3_5O-t6Aw" \
+> }' 
+> ```
+
+
+
+**Input Parameters**
+
+**dtable_uuid** _\[string, required]_
+> The ID of the base.
+
+**table_name** _\[string, required]_
+> The name of the table.
+
+**row** _\[array, required]_
+> In this JSON array of objects, fill in the details of the row in the format of `{"coloum name": "Content"}`.
+
+**row_id** _\[string, required]_
+> ID of the row to be updated.
+
+
+
+
+**Return Values**
+
+JSON-object with the result of the operation.
+
+
+**Sample Response (200)**
+
+> ```
+> {
+>     "success": true
+> }
+> ```
+
+
+**Possible Errors**
+
+400 Bad Request: The table's name was wrong:
+> ```
+> {
+>     "error_type": "table_not_exist",
+>     "error_message": "table Table11 not found"
+> }
+> ```
+
+400 Bad Request: The row was not found, probably wrong `row_id`:
+> ```
+> {
+>     "error_type": "row_not_exist",
+>     "error_message": "Row does not exist."
+> }
+> ```
+
+403 Forbidden: The permission to the table was denied:
+> ```
+> {
+>     "error_msg": "You don't have permission to get data from the current table."
+> }
+> ```
+
+
+
+## Delete A Row
+
+
+When a row is deleted, you can restore it within 7 days. To restore rows that are deleted in a longer time, restoring a snapshot could be an alternative. The length that a snapshot can be stored depends on your plan. For more details, refer to the [SeaTable Plans](https://seatable.io/en/pricing/).
+
+
+**URL Structure**
+
+> **\[DELETE]** /dtable-server/api/v1/dtables/`<dtable_uuid>`/rows/
+
+
+
+**Request Authentication**
+
+> Base Access Token
+
+
+
+**Sample Request**
+
+> ```
+> curl -X DELETE\
+> -H 'Authorization: Token eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6IjFAMS5jb20iLCJkdGFibGVfdXVpZCI6IjYyMmYxZTZkMzM3NDQ5ZTQ5YjQyOWYyMjUzMDM3YTc2In0.3ytwzZsfZwzifAQtsLzn0AFMnEDSeHxkKlIgD6XKuIs' \
+> -H "Accept: application/json" \
+> -H "Content-type: application/json"  \
+> 'https://cloud.seatable.io/dtable-server/api/v1/dtables/7f7dc9c7-187a-4d9f-b6cf-ff5e5019a6d5/rows/'
+> -d '{
+> 	"table_name": "Table1", \
+>     "row_id": "HT5R_PjVQrOyX3_5O-t6Aw" \
+> }' 
+> ```
+
+
+**Input Parameters**
+
+**dtable_uuid** _\[string, required]_
+> The ID of the base.
+
+**table_name** _\[string, required]_
+> The name of the table.
+
+**row_id** _\[string, required]_
+> ID of the row to be deleted.
+
+
+
+
+**Return Values**
+
+JSON-object with the result of the operation.
+
+
+
+**Sample Response (200)**
+
+> ```
+> {
+>     "success": true
+> }
+> ```
+
+
+**Possible Errors**
+
+400 Bad Request: The table was not found:
+> ```
+> {
+>     "error_type": "table_not_exist",
+>     "error_message": "table Table11 not found"
+> }
+> ```
+
+403 Forbidden: The permission to the table was denied:
+> ```
+> {
+>     "error_msg": "You don't have permission to get data from the current table."
+> }
+> ```
+
+500 Internal Server Error: The row was not found, probably already deleted:
+> ```
+> Internal Server Error
+> ```
+
+
+
+
+
+## Batch Delete Rows
+
+Delete multiple rows in one request.
+
+
+
+**URL Structure**
+
+> **\[DELETE]** /dtable-server/api/v1/dtables/`<dtable_uuid>`/batch-delete-rows/ 
+
+
+
+
+**Request Authentication**
+
+> Base Access Token
+
+
+
+**Sample Request**
+
+> ```
+> curl -X DELETE \
+> -H 'Authorization: Token eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6IjFAMS5jb20iLCJkdGFibGVfdXVpZCI6IjYyMmYxZTZkMzM3NDQ5ZTQ5YjQyOWYyMjUzMDM3YTc2In0.3ytwzZsfZwzifAQtsLzn0AFMnEDSeHxkKlIgD6XKuIs' \
+> -H "Accept: application/json" \
+> -H "Content-type: application/json"  \
+> 'https://cloud.seatable.io/dtable-server/api/v1/dtables/7f7dc9c7-187a-4d9f-b6cf-ff5e5019a6d5/batch-delete-rows/' \
+> -d '{ \
+> 	"table_name": "Table1", \
+>     "row_ids": ["HT5R_PjVQrOyX3_5O-t6Aw", "IjFAMS5jb20iLCJkdGweffe"] \
+> }' 
+> ```
+
+
+**Input Parameters**
+
+**dtable_uuid** _\[string, required]_
+> The ID of the base.
+
+**table_name** _\[string, required]_
+> The name of the table.
+
+**row_ids** _\[list, required]_
+> A list of `row_id` to be deleted.
+
+
+
+**Return Values**
+
+JSON-object with the result of the operation.
+
+
+
+**Sample Response (200)**
+
+> ```
+> {
+>     "success": true
+> }
+> ```
+
+
+**Possible Errors**
+
+400 Bad Request: The table was not found:
+> ```
+> {
+>     "error_type": "table_not_exist",
+>     "error_message": "table Table11 not found"
+> }
+> ```
+
+403 Forbidden: The permission to the table was denied:
+> ```
+> {
+>     "error_msg": "You don't have permission to get data from the current table."
+> }
+> ```
+
+500 Internal Server Error: At least one row was not found, probably already deleted:
+> ```
+> Internal Server Error
+> ```
+
+
+
+## Link A Row
+
+Set up a link between two rows.
+
+
+**URL Structure**
+
+> **\[POST]** /dtable-server/api/v1/dtables/`<dtable_uuid>`/links/
 
 * dtable_uuid
 * link_id, necessary
@@ -596,18 +934,22 @@ curl -H 'Authorization: Token eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZ
 * table_row_id, necessary
 * other_table_row_id, necessary
 
-**Sample request**
+**Sample Request**
 
-```
-curl -H 'Authorization: Token eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6IjFAMS5jb20iLCJkdGFibGVfdXVpZCI6IjYyMmYxZTZkMzM3NDQ5ZTQ5YjQyOWYyMjUzMDM3YTc2In0.3ytwzZsfZwzifAQtsLzn0AFMnEDSeHxkKlIgD6XKuIs' -H "Accept: application/json" -H "Content-type: application/json" -X POST -d '{
-	"table_name": "Table1",
-    "other_table_name": "Table2",
-    "link_id": '1206'
-    "table_row_id": "OkuYk0OWSIyi7zZKJ2NC4g",
-    "other_table_row_id": "eyuMiAwaQlSSr983O03oUA"
-}' https://cloud.seatable.io/dtable-server/api/v1/dtables/7f7dc9c7-187a-4d9f-b6cf-ff5e5019a6d5/links/
-
-```
+> ```
+> curl -X POST \
+> -H 'Authorization: Token eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6IjFAMS5jb20iLCJkdGFibGVfdXVpZCI6IjYyMmYxZTZkMzM3NDQ5ZTQ5YjQyOWYyMjUzMDM3YTc2In0.3ytwzZsfZwzifAQtsLzn0AFMnEDSeHxkKlIgD6XKuIs' \
+> -H "Accept: application/json" \
+> -H "Content-type: application/json"  \
+> 'https://cloud.seatable.io/dtable-server/api/v1/dtables/7f7dc9c7-187a-4d9f-b6cf-ff5e5019a6d5/links/'
+> -d '{ \
+> 	"table_name": "Table1", \
+>   "other_table_name": "Table2", \
+>   "link_id": '1206' \
+>   "table_row_id": "OkuYk0OWSIyi7zZKJ2NC4g", \
+>   "other_table_row_id": "eyuMiAwaQlSSr983O03oUA" \
+> }' 
+> ```
 
 **Sample Response (200)**
 
@@ -651,7 +993,9 @@ curl -H 'Authorization: Token eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZ
 
 ```
 
-## List deleted rows
+## List Deleted Rows
+
+
 
 **GET** /dtable-server/api/v1/dtables/:dtable_uuid/deleted-rows/
 
