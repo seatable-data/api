@@ -924,12 +924,13 @@ Set up a link between two rows.
 
 > **\[POST]** /dtable-server/api/v1/dtables/`<dtable_uuid>`/links/
 
-* dtable_uuid
-* link_id, necessary
-* table_name, necessary
-* other_table_name, necessary
-* table_row_id, necessary
-* other_table_row_id, necessary
+
+
+**Request Authentication**
+
+> Base Access Token
+
+
 
 **Sample Request**
 
@@ -949,152 +950,422 @@ Set up a link between two rows.
 >
 > ```
 
+
+**Input Parameters**
+
+**dtable_uuid** _\[string, required]_
+
+> The ID of the base.
+
+**link_id** _\[string, required]_
+
+> The ID of this link, a 4-digit combination of numbers (0-9) and letters (a-z and A-Z).
+
+**table_name** _\[string, required]_
+
+> The name of the current table.
+
+**other_table_name** _\[string, required]_
+
+> The name of the table to be linked.
+
+**table_row_id** _\[string, required]_
+
+> The ID of the current row.
+
+**other_table_row_id** _\[string, required]_
+
+> The ID of the row to be linked.
+
+
+
+**Return Values**
+
+JSON-object with the result of the operation.
+
+
+
 **Sample Response (200)**
 
-```
-{
-    "success": true
-}
+> ```
+> {
+>     "success": true
+> }
+> ```
 
-```
 
-## Delete a row link
 
-**DELETE** /dtable-server/api/v1/dtables/:dtable_uuid/links/
+**Possible Errors**
 
-* dtable_uuid
-* link_id, necessary
-* table_name, necessary
-* other_table_name, necessary
-* table_row_id, necessary
-* other_table_row_id, necessary
+400 Bad Request: At least one of the tables' names was not accepted:
+> ```
+> {
+>     "error_type": "table_not_exist",
+>     "error_message": "table table11 or Table1 not found"
+> }
+> ```
 
-**Sample request**
+400 Bad Request: The row's ID was not accepted:
+> ```
+> {
+>     "error_type": "row_not_exist",
+>     "error_message": "Row does not exist."
+> }
+> ```
 
-```
-curl -H 'Authorization: Token eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6IjFAMS5jb20iLCJkdGFibGVfdXVpZCI6IjYyMmYxZTZkMzM3NDQ5ZTQ5YjQyOWYyMjUzMDM3YTc2In0.3ytwzZsfZwzifAQtsLzn0AFMnEDSeHxkKlIgD6XKuIs' -H "Accept: application/json" -H "Content-type: application/json" -X DELETE -d '{
-	"table_name": "Table1",
-    "other_table_name": "Table2",
-    "link_id": '1206',
-    "table_row_id": "OkuYk0OWSIyi7zZKJ2NC4g",
-    "other_table_row_id": "eyuMiAwaQlSSr983O03oUA"
-}' https://cloud.seatable.io/dtable-server/api/v1/dtables/7f7dc9c7-187a-4d9f-b6cf-ff5e5019a6d5/links/
+403 Forbidden: The access token was not accepted:
+> ```
+> {
+>     "error_msg": "You don't have permission to get data from the current table."
+> }
+> ```
 
-```
 
-**Sample Response (200)**
 
-```
-{
-    "success": true
-}
 
-```
+## Delete A Row Link
 
-## List Deleted Rows
+Delete an existing link between two rows.
 
-**GET** /dtable-server/api/v1/dtables/:dtable_uuid/deleted-rows/
 
-**Request Parameters**
+**URL Structure**
 
-* dtable_uuid
-* page: page number, default 1, optional
-* per_page: number of rows per page, default 25, optional
+> **\[DELETE]** /dtable-server/api/v1/dtables/`<dtable_uuid>`/links/
+
+
+
+**Request Authentication**
+
+> Base Access Token
+
+
 
 **Sample Request**
 
-```
-curl -H 'Authorization: Token eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE1Nzg3MzczNjMsImR0YWJsZV91dWlkIjoiZDQ4YzNhYWVkYmMxNDMyNWE4OTAxYzJlNzllYTUzMTkiLCJ1c2VybmFtZSI6IjFAMS5jb20iLCJwZXJtaXNzaW9uIjoicncifQ' "https://cloud.seatable.io/dtable-server/api/v1/dtables/7f7dc9c7-187a-4d9f-b6cf-ff5e5019a6d5/deleted-rows/"
+> ```
+> curl -X DELETE \
+> -H 'Authorization: Token eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6IjFAMS5jb20iLCJkdGFibGVfdXVpZCI6IjYyMmYxZTZkMzM3NDQ5ZTQ5YjQyOWYyMjUzMDM3YTc2In0.3ytwzZsfZwzifAQtsLzn0AFMnEDSeHxkKlIgD6XKuIs' \
+> -H "Accept: application/json" \
+> -H "Content-type: application/json" \
+> https://cloud.seatable.io/dtable-server/api/v1/dtables/7f7dc9c7-187a-4d9f-b6cf-ff5e5019a6d5/links/ \
+> -d '{ \
+> 	"table_name": "Table1", \
+>     "other_table_name": "Table2", \
+>     "link_id": '1206', \
+>     "table_row_id": "OkuYk0OWSIyi7zZKJ2NC4g", \
+>     "other_table_row_id": "eyuMiAwaQlSSr983O03oUA" \
+> }' 
+> ```
 
-```
+
+**Input Parameters**
+
+**dtable_uuid** _\[string, required]_
+
+> The ID of the base.
+
+**link_id** _\[string, required]_
+
+> The ID of the link to be deleted. This link can be found with the API request **Get A Base's Metadata**. 
+
+**table_name** _\[string, required]_
+
+> The name of the current table.
+
+**other_table_name** _\[string, required]_
+
+> The name of the linked table.
+
+**table_row_id** _\[string, required]_
+
+> The ID of the current row.
+
+**other_table_row_id** _\[string, required]_
+
+> The ID of the linked row.
+
+
+
+
+**Return Values**
+
+JSON-object with the result of the operation.
+
 
 **Sample Response (200)**
 
-```
-{
-    "deleted_rows": [
-        {
-            "id": 37,
-            "dtable_uuid": "7f7dc9c7-187a-4d9f-b6cf-ff5e5019a6d5",
-            "row_id": "ZPFv2pm1SiaQpulvzkHm5Q",
-            "op_user": "1@1.com",
-            "op_time": "2020-03-17T10:31:35.000Z",
-            "detail": {
-                "table_id": "0000",
-                "table_name": "test",
-                "row_name": "test",
-                "row_data": [
-                    {
-                        "column_key": "0000",
-                        "column_name": "名称",
-                        "column_type": "text",
-                        "column_data": {},
-                        "value": "test"
-                    },
-                    {
-                        "column_key": "AKLn",
-                        "column_name": "files",
-                        "column_type": "file",
-                        "column_data": {},
-                        "value": [
-                            {
-                                "name": "1.html",
-                                "size": 514,
-                                "type": "file",
-                                "url": "http://127.0.0.1:8001/workspace/1/asset/46620d70-c8e5-49ab-8874-9d4a2dc4608c/files/2020-03/1.html"
-                            }
-                        ]
-                    }
-                ]
-            },
-            "op_app": null
-        }
-    ]
-}
+> ```
+> {
+>     "success": true
+> }
+> ```
 
-```
 
-## Get row by row id in a table
+**Possible Errors**
 
-**GET** /api/v1/dtables/:dtable_uuid/rows/:row_id/
+400 Bad Request: At least one of the tables' names was not accepted:
+> ```
+> {
+>     "error_type": "table_not_exist",
+>     "error_message": "table table11 or Table1 not found"
+> }
+> ```
 
-* dtable_uuid
-* row_id
-* table_id, required
-* convert, whether convert column ID to column name, default is true
+400 Bad Request: The row's ID was not accepted:
+> ```
+> {
+>     "error_type": "row_not_exist",
+>     "error_message": "Row does not exist."
+> }
+> ```
 
-**Sample request**
+403 Forbidden: The access token was not accepted:
+> ```
+> {
+>     "error_msg": "You don't have permission to get data from the current table."
+> }
+> ```
 
-```
-curl -H 'Authorization: Token eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6IjFAMS5jb20iLCJkdGFibGVfdXVpZCI6IjYyMmYxZTZkMzM3NDQ5ZTQ5YjQyOWYyMjUzMDM3YTc2In0.3ytwzZsfZwzifAQtsLzn0AFMnEDSeHxkKlIgD6XKuIs' https://cloud.seatable.io/dtable-server/api/v1/dtables/7f7dc9c7187a4d9fb6cfff5e5019a6d5/rows/J5jgoxDJTE2zUmAQISpk3g/?table_id=9GlO
 
-```
 
-**Sample response**
 
-```
-{
-    "_id": "J5jgoxDJTE2zUmAQISpk3g",
-    "_mtime": "2020-12-08T04:00:17.330+00:00",
-    "Name": "3322",
-    "Modifier": "0f3b01785de84940a47665ac72fa57ce@auth.local"
-}
+## List Deleted Rows
 
-```
+The deleted rows are kept in record for 7 days. Use this request to list these deleted rows. To find rows deleted longer than 7 days ago, use Snapshots as alternative.
 
-if convert=false
 
-```
-{
-    "_id": "J5jgoxDJTE2zUmAQISpk3g",
-    "_participants": [],
-    "_creator": "foo@foo.com",
-    "_ctime": "2020-12-02T04:02:43.582+00:00",
-    "_last_modifier": "0f3b01785de84940a47665ac72fa57ce@auth.local",
-    "_mtime": "2020-12-08T03:47:48.218+00:00",
-    "0000": "32"
-}
+**URL Structure**
 
-```
+> **\[GET]** /dtable-server/api/v1/dtables/`<dtable_uuid>`/deleted-rows/
 
+
+
+**Request Authentication**
+
+> Base Access Token
+
+
+
+
+
+**Sample Request**
+
+> ```
+> curl 
+> -H 'Authorization: Token eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE1Nzg3MzczNjMsImR0YWJsZV91dWlkIjoiZDQ4YzNhYWVkYmMxNDMyNWE4OTAxYzJlNzllYTUzMTkiLCJ1c2VybmFtZSI6IjFAMS5jb20iLCJwZXJtaXNzaW9uIjoicncifQ' \
+> "https://cloud.seatable.io/dtable-server/api/v1/dtables/7f7dc9c7-187a-4d9f-b6cf-ff5e5019a6d5/deleted-rows/"
+> ```
+
+
+
+
+
+**Input Parameters**
+
+**dtable_uuid** _\[string, required]_
+> The ID of the base.
+
+**page** _\[int, optional, 1 by default]_ 
+> Page number of the returned list. 
+
+**per_page** _\[int, optional, 25 by default]_
+> Number of deleted rows to be displayed per page.
+
+
+
+
+**Return Values**
+
+JSON-object with the list of deleted rows.
+
+
+
+
+**Sample Response (200)**
+
+> ```
+> {
+>     "deleted_rows": [
+>         {
+>             "id": 37,
+>             "dtable_uuid": "7f7dc9c7-187a-4d9f-b6cf-ff5e5019a6d5",
+>             "row_id": "ZPFv2pm1SiaQpulvzkHm5Q",
+>             "op_user": "244b43hr6fy54bb4afa2c2cb7369d244@auth.local",
+>             "op_time": "2020-03-17T10:31:35.000Z",
+>             "detail": {
+>                 "table_id": "0000",
+>                 "table_name": "Table1",
+>                 "row_name": "Jasmin Tea",
+>                 "row_data": [
+>                     {
+>                         "column_key": "0000",
+>                         "column_name": "Name",
+>                         "column_type": "text",
+>                         "column_data": {},
+>                         "value": "test"
+>                     },
+>                     {
+>                         "column_key": "AKLn",
+>                         "column_name": "Details",
+>                         "column_type": "file",
+>                         "column_data": {},
+>                         "value": [
+>                             {
+>                                 "name": "example.html",
+>                                 "size": 514,
+>                                 "type": "file",
+>                                 "url": "http://cloud.seatable.io/workspace/1/asset/> 46620d70-c8e5-49ab-8874-9d4a2dc4608c/files/2020-03/example.html"
+>                             }
+>                         ]
+>                     }
+>                 ]
+>             },
+>             "op_app": null
+>         }
+>     ]
+> }
+> ```
+If there's no deleted rows in the last 7 days, an empty list is returned without error message.
+
+
+**Possible Errors**
+
+403 Forbidden: The access to the base was not accepted (wrong access token or `dtable_uuid`):
+> ```
+> {
+>     "error_msg": "You don't have permission to get deleted rows."
+> }
+> ```
+
+
+
+
+## Get Row by Row ID in A Table
+
+With the row's ID, get its details with this request.
+
+
+**URL Structure**
+
+> **\[GET]** /api/v1/dtables/`<dtable_uuid>`/rows/`<row_id>`/
+
+
+
+**Request Authentication**
+
+> Base Access Token
+
+
+
+
+**Sample Request**
+
+> ```
+> curl \
+> -H 'Authorization: Token eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6IjFAMS5jb20iLCJkdGFibGVfdXVpZCI6IjYyMmYxZTZkMzM3NDQ5ZTQ5YjQyOWYyMjUzMDM3YTc2In0.3ytwzZsfZwzifAQtsLzn0AFMnEDSeHxkKlIgD6XKuIs' \
+> https://cloud.seatable.io/dtable-server/api/v1/dtables/7f7dc9c7187a4d9fb6cfff5e5019a6d5/rows/J5jgoxDJTE2zUmAQISpk3g/?table_id=9GlO
+> ```
+
+
+**Input Parameters**
+
+**dtable_uuid** _\[string, required]_
+> The ID of the base.
+
+**row_id** _\[string, required]_
+> The ID of the row to be queried.
+
+**table_id** _\[string, required]_
+> The ID of the table.
+
+**convert** _\[enum(`true`, `false`), `true` by default]_
+> Whether the column's ID should be converted into column's name. If `true`, column's name is returned.
+
+
+**Return Values**
+
+JSON-object with the details of the row.
+
+**Sample Response**
+
+> ```
+> {
+>     "_id": "Qtf7xPmoRaiFyQPO1aNTjA",
+>     "_mtime": "2021-01-27T14:59:45.716+00:00",
+>     "Name": "Lisa",
+>     "Date": "2020-08-19",
+>     "collabs": [
+>         "244b43hr6fy54bb4afa2c2cb7369d244@auth.local"
+>     ],
+>     "Content": "Bon",
+>     "link": []
+> }
+> ```
+
+if `convert` = `false`
+
+> ```
+> {
+>     "_id": "Qtf7xPmoRaiFyQPO1aNTjA",
+>     "_participants": [
+>         {
+>             "avatar_url": "https://cloud.seatable.io/media/avatars/default.png",
+>             "contact_email": "lisa@example.com",
+>             "email": "244b43hr6fy54bb4afa2c2cb7369d244@auth.local",
+>             "name": "Ginger Ale"
+>         },
+>         {
+>             "avatar_url": "https://cloud.seatable.io/image-view/avatars/3/7/a0a57575a3ca0c78e8c5b6b0d0dbda/resized/80/cd7f6edd2c75afd3b7299917b3767c0f.png",
+>             "contact_email": "jasmin@example.com",
+>             "email": "8cb2a6da656876hgf42905bf1647fd3f@auth.local",
+>             "name": "Jasmin Tee"
+>         }
+>     ],
+>     "_creator": "8cb2a6da656876hgf42905bf1647fd3f@auth.local",
+>     "_ctime": "2020-11-18T12:42:14.779+00:00",
+>     "_last_modifier": "8cb2a6da656876hgf42905bf1647fd3f@auth.local",
+>     "_mtime": "2021-01-27T14:59:45.716+00:00",
+>     "0000": "Lisa",
+>     "BydO": "2020-08-19",
+>     "LfGJ": [
+>         "244b43hr6fy54bb4afa2c2cb7369d244@auth.local"
+>     ],
+>     "on03": OK,
+>     "9SpZ": [
+>         "8cb2a6da656876hgf42905bf1647fd3f@auth.local"
+>     ],
+>     "g200": [
+>         {
+>             "name": "users.md",
+>             "size": 1957,
+>             "type": "file",
+>             "url": "https://table.seafile.com/workspace/204/asset/650d8a0d-7e27-46a8-8b18-6cc6f3db2057/files/2021-01/users.md"
+>         }
+>     ],
+>     "x1w3": "Bon"
+> }
+> ```
+
+**Possible Errors**
+
+403 Forbidden: Probably the access token or the ID of the base was wrong:
+> ```
+> {
+>     "error_msg": "You don't have permission to get data from the current table."
+> }
+> ```
+
+404 Not Found: The table's ID was not found:
+> ```
+> {
+>     "error_msg": "table not found"
+> }
+> ```
+
+404 Not Found: The row's ID was not found in the table:
+> ```
+> {
+>     "error_msg": "row not found"
+> }
+> ```
 
