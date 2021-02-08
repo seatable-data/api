@@ -640,17 +640,18 @@ None.
 
 **Return Values**
 
-JSON-object with upload link and parent path.
+JSON-object with upload link and parent path, as well as the relative paths for images and files.
 
 **Sample Response (200)**
 
-> ```
-> {
->     "upload_link": "https://cloud.seatable.io/seafhttp/upload-api/047537b8-833d-4c05-bf5e-4ddbe8e408e3",
->     "parent_path": "/asset/5a40dd8e-59b7-49ff-84a7-3c9fb8a0cf60"
-> }
->
-> ```
+```
+{
+    "upload_link": "https://cloud.seatable.io/seafhttp/upload-api/047537b8-833d-4c05-bf5e-4ddbe8e408e3",
+    "parent_path": "/asset/5a40dd8e-59b7-49ff-84a7-3c9fb8a0cf60",
+    "img_relative_path": "images/2021-02",
+    "file_relative_path": "files/2021-02"
+}
+```
 
 **Possible Errors**
 
