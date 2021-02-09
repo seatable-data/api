@@ -8,9 +8,10 @@ List the basic information of other users in your organization.
 
 > **\[POST]** /api/v2.1/user-list/
 
-**Request Parameters**
 
-* user_id_list
+**Request Authentication**
+
+> User Authentication (Token)
 
 **Sample Request**
 
@@ -32,7 +33,6 @@ List the basic information of other users in your organization.
 **Input Parameters**
 
 **user_id_list** _\[array, required]_
-
 > In this object, list the users' IDs ending with `@auth.local`.
 
 **Return Values**
