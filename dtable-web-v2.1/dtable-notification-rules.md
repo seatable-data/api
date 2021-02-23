@@ -134,7 +134,7 @@ Use this request and its parameters to add a new notification rule.
 > '{ \
 > 	"run_condition": "per_day", \
 > 	"trigger": { \
-> 		"rule_name": 'Test' \
+> 		"rule_name": "Test" \
 > 		"condition": "rows_modified", \
 > 		"table_id":0000, \
 > 		"view_id":0000 \
@@ -176,7 +176,7 @@ Use this request and its parameters to add a new notification rule.
 >> >> * For 'Records near deadline', use `per_day` in the **run_condition** param and `near_deadline` here.
 >> >> * For 'Records modified', use `per_update` in the **run_condition** param and `rows_modified` here.
 >> >> * For 'Records meet specific conditions after modification', use `per_update` in the **run_condition** param and `filters_satisfy` here.
->> >
+>> 
 >> For the case **Records near deadline**, when `run_condition` is `per_day` and `condition` is `near_deadline`, you'll define which date column to use as deadline dates, and optionally define how many days before and to which time of the day should the notification be sent:
 >> >
 >> > **date_column_name** _\[string, required]_
@@ -187,7 +187,7 @@ Use this request and its parameters to add a new notification rule.
 >> >
 >> > **notify_hour** _\[int(0-23), optional]_
 >> >> Specify to which hour of the day should the notification be sent.
->> >
+>> 
 >> For the case **Records modified**, when `run_condition` is `per_update` and `condition` is `rows_modified`, a notification is sent right away inside the base editor. If this notification is not read within two hours, it'll be sent via email, if the receiver has enabled email notification in their personal settings:
 >> > There is no further trigger conditions necessary.
 >>
@@ -200,7 +200,7 @@ Use this request and its parameters to add a new notification rule.
 >> >> When certain columns should be watched, use this list to include their keys, so only when there's modification in these columns, this notification rule will be triggered.
 >> >
 >> > **filters** and **filter_conjunction** refer to the API Request [**List Rows by Filters**](https://docs.seatable.io/published/seatable-api/dtable-server/rows.md#user-content-List%20Rows%20by%20Filters). You can define filters for all the fields in the table as a combination to the watched fields. So that only when the filtered records in the watched fields are modified, will this notification rule be triggered.
->>
+>
 > **action** _\[JSON object, required]_
 >> In this JSON object, define the users to be notified with the following params:
 >> > **type** _\[enum(`notify`), optional]_
