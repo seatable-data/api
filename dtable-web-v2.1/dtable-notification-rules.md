@@ -134,7 +134,7 @@ Use this request and its parameters to add a new notification rule.
 > '{ \
 > 	"run_condition": "per_day", \
 > 	"trigger": { \
-> 		"rule_name": "Test" \
+> 		"rule_name": "Test", \
 > 		"condition": "rows_modified", \
 > 		"table_id":0000, \
 > 		"view_id":0000 \
@@ -294,7 +294,7 @@ Update the params of an existing notification rule.
 
 **URL Structure**
 
-> **\[PUT]** /api/v2.1/workspace/`<workspace_id>`/dtable/`<base_name>`/notification-rules/`<dtable_notification_rule_id>`/
+> **\[PUT]** /api/v2.1/workspace/`<workspace_id>`/dtable/`<base_name>`/notification-rules/`<notification_rule_id>`/
 
 **Request Authentication**
 
@@ -310,7 +310,7 @@ Update the params of an existing notification rule.
 > -d '{ \
 > 	"run_condition": "per_day", \
 > 	"trigger": { \
-> 		"rule_name": 'Test 2' \
+> 		"rule_name": "Test 2", \
 > 		"condition": "rows_modified", \
 > 		"table_id":"0000", \
 > 		"view_id":"0000" \
@@ -324,7 +324,10 @@ Update the params of an existing notification rule.
 
 **Input Parameters**
 
-See the API request **Add A Base Notification Rule**.
+**notification_rule_id** _\[int, required]_
+> The ID of the notification rule to be updated. This can be retrieved with the request **List Notification Rules in A Base**.
+
+For the other params, refer to the API request **Add A Base Notification Rule**.
 
 **Return Values**
 
@@ -338,7 +341,7 @@ JSON-object with the details of the updated notification rule.
 >         "dtable": "t1",
 >         "run_condition": "per_day",
 >         "trigger": {
->             "rule_name": 'Test 2'
+>             "rule_name": "Test 2"
 >             "condition": "rows_modified",
 >             "table_id": "0000",
 >             "view_id": "0000"
@@ -352,6 +355,33 @@ JSON-object with the details of the updated notification rule.
 >         "creator": "admin",
 >         "ctime": "2020-04-29T03:00:42+00:00",
 >         "last_trigger_time": ""
+> }
+> ```
+
+**Possible Errors**
+
+401 Unauthorized: The auth token is invalid:
+
+> ```
+> {
+>    "detail": "Invalid token"
+> }
+>
+> ```
+
+403 Forbidden: The user doesn't have access to the requested base:
+
+> ```
+> {
+>     "error_msg": "Permission denied."
+> }
+>
+> ```
+
+404 Not Found: Probably was the notification rule ID incorrect:
+> ```
+> {
+>     "error_msg": "notification_rule 1 not found."
 > }
 > ```
 

@@ -228,7 +228,7 @@ In this sample request, try to filter out the records in the "Name" column, whic
 >
 > **For the column types File、Image、Long_text、URL**
 >
-> * not support 
+> * not supported yet 
 
 **filter_conjunction** _\[enum(__`And`__, __`Or`__), optional]_
 
