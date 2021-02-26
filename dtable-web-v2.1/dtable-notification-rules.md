@@ -385,46 +385,68 @@ JSON-object with the details of the updated notification rule.
 > }
 > ```
 
-## Delete a Base notification rule
+
+## Delete A Base Notification Rule
+
+Delete a base notification rule irrevocably.
 
 **URL Structure**
 
-> **\[DELETE] **api/v2.1/workspace/`<workspace_id>`/dtable/`<name>`/notification-rules/\<dtable_notification_rule_id>/
+> **\[DELETE]**api/v2.1/workspace/`<workspace_id>`/dtable/`<base_name>`/notification-rules/`<notification_rule_id>`/
 
 **Request Authentication**
 
 > User Authentication (Token)
 
-**Sample request**
+**Sample Request**
 
 > ```
-> curl 
-> -X DELETE -H 'Authorization: Token e39d9392d02a770e3edccdc5116da293a7773533' 
-> -H 'Accept: application/json; charset=utf-8; indent=4' "https://cloud.seatable.io/api/v2.1/workspace/1/dtable/t1/notification-rules/1/"
->
+> curl -X DELETE \
+> -H 'Authorization: Token e39d9392d02a770e3edccdc5116da293a7773533' \
+> -H 'Accept: application/json; charset=utf-8; indent=4' \
+> "https://cloud.seatable.io/api/v2.1/workspace/1/dtable/t1/notification-rules/1/"
 > ```
 
 **Input Parameters**
 
 **workspace_id** _\[int, required]_
-
 > The ID of the workspace where the base is stored.
 
-**name** _\[string, required]_
-
+**base_name** _\[string, required]_
 > The name of the base.
+
+**notification_rule_id** _\[int, required]_
+> The ID of the notification rule to be updated. This can be retrieved with the request **List Notification Rules in A Base**.
 
 **Return Values**
 
-JSON-object of the Base notification rule' details.
+JSON-object with the result of the operation.
 
 **Sample Response (200)**
 
-```
-{
-    "success": true
-}
+> ```
+> {
+>     "success": true
+> }
+> ```
+If the notification rule was not found or already deleted, the same response is returned without error message.
 
-```
+**Possible Errors**
 
+401 Unauthorized: The auth token is invalid:
 
+> ```
+> {
+>    "detail": "Invalid token"
+> }
+>
+> ```
+
+403 Forbidden: The user doesn't have access to the requested base:
+
+> ```
+> {
+>     "error_msg": "Permission denied."
+> }
+>
+> ```
