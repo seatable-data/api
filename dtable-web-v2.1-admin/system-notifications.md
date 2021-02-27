@@ -165,138 +165,66 @@ JSON-object of the notification's details.
 > }
 > ```
 
-## Sys-admin delete a user notification
+## Delete A System Notification to A User
+
+Delete a system notification with its ID.
 
 **URL Structure**
 
-> **\[DELETE]** api/v2.1/admin/sys-user-notifications/`<notification_id>`/
+> **\[DELETE]** /api/v2.1/admin/sys-user-notifications/`<notification_id>`/
 
 **Request Authentication**
 
 > Admin Authentication (Token)
 
-**Sample request **
+**Sample Request**
 
 > ```
-> curl 
-> -X DELETE https://cloud.seatable.io/api/v2.1/admin/sys-user-notifications/15/ 
-> -H 'Authorization: Token 42468cbb413c2a628d2ee6249dc8b2935364aaaa' 
->
+> curl -X DELETE \
+> -H 'Authorization: Token 42468cbb413c2a628d2ee6249dc8b2935364aaaa' \
+> 'https://cloud.seatable.io/api/v2.1/admin/sys-user-notifications/15/'
 > ```
 
 **Input Parameters**
 
 **notification_id** _\[int, required]_
-
-> The ID of the notification.
-
-**Sample Response (200)**
-
-```
-{
-    "success": true
-}
-
-```
-
-## Mark a user-specific notification as seen
-
-**URL Structure**
-
-> **\[PUT]** api/v2.1/sys-user-notifications/\<notification_id>/seen/
-
-**Request Authentication**
-
-> Admin Authentication (Token)
-
-**Sample request **
-
-```
-curl 
--X PUT https://cloud.seatable.io/api/v2.1/sys-user-notifications/11/seen/ 
--H 'Authorization: Token 42468cbb413c2a628d2ee6249dc8b2935364aaaa' 
-
-```
-
-**Input Parameters**
-
-**notification_id** _\[int, required]_
-
-> The ID of the notification.
+> The ID of the system notification.
 
 **Return Values**
 
-JSON-object of the notification' details.
+JSON-object with the result of the operation.
 
 **Sample Response (200)**
 
-```
-{
-    "notification": {
-        "id": 17,
-        "msg": "Test customer seen notice",
-        "username": "87d485c2281a42adbddb137a1070f395@auth.local",
-        "name": "冉继伟",
-        "seen": true,
-        "created_at": "2020-12-25T03:31:03+00:00"
-    }
-}
+> ```
+> {
+>     "success": true
+> }
+> ```
 
-```
+**Possible Errors**
 
-## List the user's unseen notifications
+401 Unauthorized: The auth token is invalid:
+>```
+>{
+>    "detail": "Invalid token"
+>}
+>```
 
-**URL Structure**
+403 Forbidden: The current user doesn't have admin clearance:
+> ```
+> {
+>     "detail": "You do not have permission to perform this action."
+> }
+> ```
 
-> **\[GET]** api/v2.1/sys-user-notifications/unseen/
+404 Not Found: The notification with the given ID was not found, probably already deleted:
+> ```
+> {
+>     "error_msg": "notification 15 not found."
+> }
+> ```
 
-**Request Authentication**
 
-> Admin Authentication (Token)
-
-**Sample request **
-
-```
-curl 
--X GET https://cloud.seatable.io/api/v2.1/sys-user-notifications/unseen/ 
--H 'Authorization: Token 5c5446465b445ae5bd16b3464e8fff69127d4496' 
-
-```
-
-**Return Values**
-
-JSON-object with the list of unseen notifications' details.
-
-**Sample Response (200)**
-
-```
-{
-    "notifications": [
-        {
-            "id": 41,
-            "msg": "xxx",
-            "username": "0febcccbb7d744b581911d3fa628e631@auth.local",
-            "name": "tom",
-            "contact_email": "r350178982@126.com",
-            "seen": false,
-            "org_name": "宇枫国际有限公司",
-            "created_at": "2021-01-19T09:12:42+00:00",
-            "msg_format": "xxx"
-        },
-        {
-            "id": 40,
-            "msg": "xxx",
-            "username": "0febcccbb7d744b581911d3fa628e631@auth.local",
-            "name": "jack",
-            "contact_email": "r350178982@126.com",
-            "seen": false,
-            "org_name": "宇枫国际有限公司",
-            "created_at": "2021-01-19T09:12:33+00:00",
-            "msg_format": "xxx"
-        },
-
-```
-
-### 
 
 
