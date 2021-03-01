@@ -20,7 +20,7 @@ List three activities done by the user:
 > curl \
 > -H 'Authorization: Token a407800e307ee8eb545fab94e2d22bb37944661f' \
 > -H 'Accept: application/json; charset=utf-8; indent=4' \
-> "http://cloud.seatable.io/api/v2.1/dtable-activities/page=1&per_page=3"
+> "http://cloud.seatable.io/api/v2.1/dtable-activities/?page=1&per_page=3"
 >
 > ```
 
