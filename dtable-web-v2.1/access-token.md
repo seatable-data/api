@@ -8,7 +8,7 @@ Get a base's access token with the user's auth token.
 
 **URL Structure**
 
-> **\[GET]** /api/v2.1/workspace/`<workspace_id>`/dtable/`<dtable_name>`/access-token/
+> **\[GET]** /api/v2.1/workspace/`<workspace_id>`/dtable/`<base_name>`/access-token/
 
 **Request Authentication**
 
@@ -32,7 +32,7 @@ With the user's auth token, get the access token of the base "Hello" in the work
 
 > The ID of the workspace where the base is located.
 
-**dtable_name** _\[string, required]_
+**base_name** _\[string, required]_
 
 > The name of the base.
 

@@ -45,21 +45,21 @@ JSON-object with the list of activities.
 > {
 >     "operations": [
 >         {
->             "author": "244b4667d1754bb4afa2c2cb7369d244@auth.local",
+>             "author": "12345678d1754bb4afa2c2cb7369d244@auth.local",
 >             "app": null,
 >             "op_time": 1610981745927,
 >             "operation": "{\"op_type\":\"delete_column\",\"table_id\":\"0000\",\"column_key\":\"iJB4\",\"old_column\":{\"rowType\":\"header\",\"key\":\"iJB4\",\"type\":null,\"name\":null,\"editable\":true,\"width\":200,\"resizable\":true,\"draggable\":true,\"data\":null,\"permission_type\":\"\",\"permitted_users\":[],\"editor\":{\"key\":null,\"ref\":null,\"props\":{},\"_owner\":null},\"formatter\":null,\"left\":1058,\"idx\":5},\"upper_column_key\":\"LfGJ\"}",
 >             "op_id": 118
 >         },
 >         {
->             "author": "244b4667d1754bb4afa2c2cb7369d244@auth.local",
+>             "author": "12345678d1754bb4afa2c2cb7369d244@auth.local",
 >             "app": null,
 >             "op_time": 1610981742518,
 >             "operation": "{\"op_type\":\"delete_column\",\"table_id\":\"0000\",\"column_key\":\"J2mq\",\"old_column\":{\"rowType\":\"header\",\"key\":\"J2mq\",\"type\":null,\"name\":null,\"editable\":true,\"width\":200,\"resizable\":true,\"draggable\":true,\"data\":null,\"permission_type\":\"\",\"permitted_users\":[],\"editor\":{\"key\":null,\"ref\":null,\"props\":{},\"_owner\":null},\"formatter\":null,\"left\":280,\"idx\":2},\"upper_column_key\":\"0000\"}",
 >             "op_id": 117
 >         },
 >         {
->             "author": "244b4667d1754bb4afa2c2cb7369d244@auth.local",
+>             "author": "12345678d1754bb4afa2c2cb7369d244@auth.local",
 >             "app": null,
 >             "op_time": 1610981739830,
 >             "operation": "{\"op_type\":\"delete_column\",\"table_id\":\"0000\",\"column_key\":\"jQyv\",\"old_column\":{\"rowType\":\"header\",\"key\":\"jQyv\",\"type\":null,\"name\":null,\"editable\":true,\"width\":200,\"resizable\":true,\"draggable\":true,\"data\":null,\"permission_type\":\"\",\"permitted_users\":[],\"editor\":{\"key\":null,\"ref\":null,\"props\":{},\"_owner\":null},\"formatter\":null,\"left\":480,\"idx\":3},\"upper_column_key\":\"J2mq\"}",
