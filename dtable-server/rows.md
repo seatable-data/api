@@ -230,7 +230,7 @@ In this sample request, try to filter out the records in the "Name" column, whic
 >
 > * not supported yet 
 
-**filter_conjunction** _\[enum(__`And`__, __`Or`__), optional]_
+**filter_conjunction** _\[enum(__**`And`**__, __**`Or`**__), optional]_
 
 > The conjunction type of multiple filter conditions. 
 
@@ -332,7 +332,7 @@ If the rows in a certain view are grouped, this request can return the details o
 
 > The name of the view. If left blank, "Default View" will be applied.
 
-**grouping** _\[enum(__`true`__, __`false`__), required]_
+**grouping** _\[enum(__**`true`**__, __**`false`**__), required]_
 
 > To return a grouped object, use `grouping=true`. If not used or `false` is used, the returned rows are not grouped, although they might be grouped in the view.
 
@@ -537,7 +537,7 @@ Insert a new row above or below an existing row.
 
 > Reference row of the insertion.
 
-**row_insert_position** _\[enum(`insert_above`, `insert_below`), optional, `insert_below` by default]_
+**row_insert_position** _\[enum(__`insert_above`__, __`insert_below`__), optional, __`insert_below`__ by default]_
 
 > To insert the new row above or below the anchor row.
 
@@ -924,13 +924,9 @@ Set up a link between two rows.
 
 > **\[POST]** /dtable-server/api/v1/dtables/`<dtable_uuid>`/links/
 
-
-
 **Request Authentication**
 
 > Base Access Token
-
-
 
 **Sample Request**
 
@@ -949,7 +945,6 @@ Set up a link between two rows.
 > }' 
 >
 > ```
-
 
 **Input Parameters**
 
@@ -977,13 +972,9 @@ Set up a link between two rows.
 
 > The ID of the row to be linked.
 
-
-
 **Return Values**
 
 JSON-object with the result of the operation.
-
-
 
 **Sample Response (200)**
 
@@ -991,54 +982,51 @@ JSON-object with the result of the operation.
 > {
 >     "success": true
 > }
+>
 > ```
-
-
 
 **Possible Errors**
 
 400 Bad Request: At least one of the tables' names was not accepted:
+
 > ```
 > {
 >     "error_type": "table_not_exist",
 >     "error_message": "table table11 or Table1 not found"
 > }
+>
 > ```
 
 400 Bad Request: The row's ID was not accepted:
+
 > ```
 > {
 >     "error_type": "row_not_exist",
 >     "error_message": "Row does not exist."
 > }
+>
 > ```
 
 403 Forbidden: The access token was not accepted:
+
 > ```
 > {
 >     "error_msg": "You don't have permission to get data from the current table."
 > }
+>
 > ```
-
-
-
 
 ## Delete A Row Link
 
 Delete an existing link between two rows.
 
-
 **URL Structure**
 
 > **\[DELETE]** /dtable-server/api/v1/dtables/`<dtable_uuid>`/links/
 
-
-
 **Request Authentication**
 
 > Base Access Token
-
-
 
 **Sample Request**
 
@@ -1055,8 +1043,8 @@ Delete an existing link between two rows.
 >     "table_row_id": "OkuYk0OWSIyi7zZKJ2NC4g", \
 >     "other_table_row_id": "eyuMiAwaQlSSr983O03oUA" \
 > }' 
+>
 > ```
-
 
 **Input Parameters**
 
@@ -1084,13 +1072,9 @@ Delete an existing link between two rows.
 
 > The ID of the linked row.
 
-
-
-
 **Return Values**
 
 JSON-object with the result of the operation.
-
 
 **Sample Response (200)**
 
@@ -1098,55 +1082,51 @@ JSON-object with the result of the operation.
 > {
 >     "success": true
 > }
+>
 > ```
-
 
 **Possible Errors**
 
 400 Bad Request: At least one of the tables' names was not accepted:
+
 > ```
 > {
 >     "error_type": "table_not_exist",
 >     "error_message": "table table11 or Table1 not found"
 > }
+>
 > ```
 
 400 Bad Request: The row's ID was not accepted:
+
 > ```
 > {
 >     "error_type": "row_not_exist",
 >     "error_message": "Row does not exist."
 > }
+>
 > ```
 
 403 Forbidden: The access token was not accepted:
+
 > ```
 > {
 >     "error_msg": "You don't have permission to get data from the current table."
 > }
+>
 > ```
-
-
-
 
 ## List Deleted Rows
 
 The deleted rows are kept in record for 7 days. Use this request to list these deleted rows. To find rows deleted longer than 7 days ago, use Snapshots as alternative.
 
-
 **URL Structure**
 
 > **\[GET]** /dtable-server/api/v1/dtables/`<dtable_uuid>`/deleted-rows/
 
-
-
 **Request Authentication**
 
 > Base Access Token
-
-
-
-
 
 **Sample Request**
 
@@ -1154,32 +1134,26 @@ The deleted rows are kept in record for 7 days. Use this request to list these d
 > curl 
 > -H 'Authorization: Token eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE1Nzg3MzczNjMsImR0YWJsZV91dWlkIjoiZDQ4YzNhYWVkYmMxNDMyNWE4OTAxYzJlNzllYTUzMTkiLCJ1c2VybmFtZSI6IjFAMS5jb20iLCJwZXJtaXNzaW9uIjoicncifQ' \
 > "https://cloud.seatable.io/dtable-server/api/v1/dtables/7f7dc9c7-187a-4d9f-b6cf-ff5e5019a6d5/deleted-rows/"
+>
 > ```
-
-
-
-
 
 **Input Parameters**
 
 **dtable_uuid** _\[string, required]_
+
 > The ID of the base.
 
 **page** _\[int, optional, 1 by default]_ 
+
 > Page number of the returned list. 
 
 **per_page** _\[int, optional, 25 by default]_
+
 > Number of deleted rows to be displayed per page.
-
-
-
 
 **Return Values**
 
 JSON-object with the list of deleted rows.
-
-
-
 
 **Sample Response (200)**
 
@@ -1224,39 +1198,33 @@ JSON-object with the list of deleted rows.
 >         }
 >     ]
 > }
+>
 > ```
-If there's no deleted rows in the last 7 days, an empty list is returned without error message.
-
+>
+> If there's no deleted rows in the last 7 days, an empty list is returned without error message.
 
 **Possible Errors**
 
 403 Forbidden: The access to the base was not accepted (wrong access token or `dtable_uuid`):
+
 > ```
 > {
 >     "error_msg": "You don't have permission to get deleted rows."
 > }
+>
 > ```
-
-
-
 
 ## Get Row by Row ID in A Table
 
 With the row's ID, get its details with this request.
 
-
 **URL Structure**
 
 > **\[GET]** /api/v1/dtables/`<dtable_uuid>`/rows/`<row_id>`/
 
-
-
 **Request Authentication**
 
 > Base Access Token
-
-
-
 
 **Sample Request**
 
@@ -1264,23 +1232,26 @@ With the row's ID, get its details with this request.
 > curl \
 > -H 'Authorization: Token eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6IjFAMS5jb20iLCJkdGFibGVfdXVpZCI6IjYyMmYxZTZkMzM3NDQ5ZTQ5YjQyOWYyMjUzMDM3YTc2In0.3ytwzZsfZwzifAQtsLzn0AFMnEDSeHxkKlIgD6XKuIs' \
 > https://cloud.seatable.io/dtable-server/api/v1/dtables/7f7dc9c7187a4d9fb6cfff5e5019a6d5/rows/J5jgoxDJTE2zUmAQISpk3g/?table_id=9GlO
+>
 > ```
-
 
 **Input Parameters**
 
 **dtable_uuid** _\[string, required]_
+
 > The ID of the base.
 
 **row_id** _\[string, required]_
+
 > The ID of the row to be queried.
 
-**table_id** _\[string, required]_
-> The ID of the table.
+**table_id **or** table_name** _\[string, required]_
 
-**convert** _\[enum(`true`, `false`), `true` by default]_
+> The ID or name of the table.
+
+**convert** _\[enum(__`true`__, __`false`__), __`true`__ by default]_
+
 > Whether the column's ID should be converted into column's name. If `true`, column's name is returned.
-
 
 **Return Values**
 
@@ -1300,6 +1271,7 @@ JSON-object with the details of the row.
 >     "Content": "Bon",
 >     "link": []
 > }
+>
 > ```
 
 if `convert` = `false`
@@ -1344,28 +1316,36 @@ if `convert` = `false`
 >     ],
 >     "x1w3": "Bon"
 > }
+>
 > ```
 
 **Possible Errors**
 
 403 Forbidden: Probably the access token or the ID of the base was wrong:
+
 > ```
 > {
 >     "error_msg": "You don't have permission to get data from the current table."
 > }
+>
 > ```
 
 404 Not Found: The table's ID was not found:
+
 > ```
 > {
 >     "error_msg": "table not found"
 > }
+>
 > ```
 
 404 Not Found: The row's ID was not found in the table:
+
 > ```
 > {
 >     "error_msg": "row not found"
 > }
+>
 > ```
+
 
