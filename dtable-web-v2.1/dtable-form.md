@@ -153,56 +153,59 @@ Create a form `Vendor Survey` in the base `Surveys` from workspace `1` and give 
 
 > Use form_config={"form_name":"abc"} to give your form the name "abc". To customize this form, choose which columns to include in it, set required fields, add descriptions, add remarks, send notifications, add a notice on the top of the form, show a notice after submission, and add a redirect link after submission, etc., refer to the following example (detailed instructions will be added on this page shortly):
 >
-> ```
->     {
->         "form_name":"Customer Survey",              // The name of your form
->         "columns":[                                 // Choose the columns to include
->             {
->                 "key":"0000",                       // The column ID
->                 "is_required":false,                // Set obligation
->                 "description":"",                   // Add a description if needed
->                 "filters":[],                       // Conditional question (details follow)
->                 "filter_conjunction":"And"          // Filter behavior (details follow)
->             },
->             {
->                 "key":"zJSb",
->                 "is_required":false,
->                 "description":"",
->                 "filters":[],
->                 "filter_conjunction":"And"
->             },
->             {
->                 "key":"xIy2",
->                 "is_required":false,
->                 "description":"",
->                 "filters":[],
->                 "filter_conjunction":"And"
->             }
->         ],
->         "table_id":"0000",                          // ID of the table
->         "remarkOption":{                            // A notice at the bottom
->             "isRemarkContentShow":false,              
->             "remarkContent":""
->             },
->         "notification_config":{                     // If notification will be sent  
->             "is_send_notification":false,
->             "notification_selected_users":[]
->             },
->         "top_remark_option":{                       // A notice at the top  
->             "is_top_remark_content_show":false,
->             "top_remark_content":""
->             },
->         "success_message_option":{                  // A message after submission
->             "is_success_message_show":true,
->             "success_message":"Thanks!"
->             },
->         "success_redirect_option":{                 // A redirect URL after submission  
->             "is_success_redirect_show":true,
->             "success_redirect":"www.google.com"
->             }
->     }
->
-> ```
+```
+    {
+        "form_name":"Customer Survey",              // The name of your form
+        "columns":[                                 // Choose the columns to include
+            {
+                "key":"0000",                       // The column ID
+                "is_required":false,                // Set obligation
+                "description":"",                   // Add a description if needed
+                "filters":[],                       // Conditional question (details follow)
+                "filter_conjunction":"And"          // Filter behavior (details follow)
+            },
+            {
+                "key":"zJSb",
+                "is_required":false,
+                "description":"",
+                "filters":[],
+                "filter_conjunction":"And"
+            },
+            {
+                "key":"xIy2",
+                "is_required":false,
+                "description":"",
+                "filters":[],
+                "filter_conjunction":"And"
+            }
+        ],
+        "table_id":"0000",                          // ID of the table
+        "remarkOption":{                            // A notice at the bottom
+            "isRemarkContentShow":false,              
+            "remarkContent":""
+            },
+        "notification_config":{                     // If notification will be sent  
+            "is_send_notification":false,
+            "notification_selected_users":[]
+            },
+        "top_remark_option":{                       // A notice at the top  
+            "is_top_remark_content_show":false,
+            "top_remark_content":""
+            },
+        "success_message_option":{                  // A message after submission
+            "is_success_message_show":true,
+            "success_message":"Thanks!"
+            },
+        "success_redirect_option":{                 // A redirect URL after submission  
+            "is_success_redirect_show":true,
+            "success_redirect":"www.google.com"
+            },
+        ""submit_deadline_option":{                 // An optional submission deadline
+            "is_submit_deadline_show":true,
+            "submit_deadline":"2021-10-28 00:00:00"
+            }
+    }
+```
 
 **Return Values**
 
